@@ -44,26 +44,24 @@
 
 ;; Sets up exec-path-from-shell so that Emacs will use the correct
 ;; environment variables
-(load "shell-integration.el")
+(load "my-shell-integration.el")
 
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
-(load "navigation.el")
+(load "my-navigation.el")
 
 ;; These customizations change the way emacs looks and disable/enable
 ;; some user interface elements
-(load "ui.el")
-(load "theme.el")
+(load "my-ui.el")
+(load "my-theme.el")
 
 ;; These customizations make editing a bit nicer.
-(load "editing.el")
+(load "my-editing.el")
 
 ;; Hard-to-categorize customizations
-(load "misc.el")
+(load "my-misc.el")
 
-;; For editing lisps
-(load "elisp-editing.el")
-(load "setup-erlang.el")
+(load "my-languages.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -71,6 +69,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+ '(frame-background-mode (quote dark))
  '(ns-alternate-modifier (quote none))
  '(ns-command-modifier (quote control))
  '(ns-control-modifier (quote meta)))
