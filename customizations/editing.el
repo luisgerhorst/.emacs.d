@@ -25,9 +25,6 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
-;; Don't use hard tabs
-(setq-default indent-tabs-mode nil)
-
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
 ;; http://www.emacswiki.org/emacs/SavePlace
@@ -43,21 +40,23 @@
                                                "backups"))))
 (setq auto-save-default nil)
 
-
-;; comments
-(defun toggle-comment-on-line ()
-  "comment or uncomment current line"
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region."
   (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
-(global-set-key (kbd "C-;") 'toggle-comment-on-line)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end)))
+(global-set-key (kbd "C-;") 'comment-or-uncomment-region-or-line)
 
-;; yay rainbows!
-(global-rainbow-delimiters-mode t)
+;; Tabs
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil) ;; Spaces instead of tabs.
 
-;; use 2 spaces for tabs
 (defun die-tabs ()
+  "Replace tabs with spaces."
   (interactive)
-  (set-variable 'tab-width 2)
   (mark-whole-buffer)
   (untabify (region-beginning) (region-end))
   (keyboard-quit))
