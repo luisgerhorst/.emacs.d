@@ -5,7 +5,7 @@
 ;; for a more technical explanation.
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 
-(load-theme 'solarized t)
+(load-theme 'solarized)
 
 ;; increase font size for better readability
 (set-face-attribute 'default nil :height 130)
