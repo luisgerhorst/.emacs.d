@@ -60,6 +60,7 @@
 ;; These customizations change the way emacs looks and disable/enable
 ;; some user interface elements
 (load "ui.el")
+(load "theme.el")
 
 ;; These customizations make editing a bit nicer.
 (load "editing.el")
@@ -69,10 +70,6 @@
 
 ;; For editing lisps
 (load "elisp-editing.el")
-
-;; Langauage-specific
-(load "setup-clojure.el")
-(load "setup-js.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
