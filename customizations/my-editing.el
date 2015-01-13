@@ -1,10 +1,10 @@
 ;; Customizations relating to editing a buffer.
 
 ;; Highlights matching parenthesis
-(show-paren-mode 1)
+(show-paren-mode t)
 
 ;; Highlight current line
-(global-hl-line-mode 1)
+(global-hl-line-mode t)
 
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
@@ -59,3 +59,15 @@
   (condition-case nil
       (ns-get-selection-internal 'CLIPBOARD)
     (quit nil)))
+
+;; Auto Complete
+(require 'fuzzy)
+(require 'auto-complete)
+(setq ac-auto-show-menu t
+      ac-quick-help-delay 0.5
+      ac-use-fuzzy t)
+(global-auto-complete-mode t)
+
+;; Auto Highlight
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
