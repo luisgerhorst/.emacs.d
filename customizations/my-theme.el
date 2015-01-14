@@ -7,5 +7,7 @@
 
 (load-theme 'solarized)
 
-;; increase font size for better readability
+;; Font Size
 (set-face-attribute 'default nil :height 130)
+;; Font Family
+(set-face-attribute 'default nil :family "Input Mono")
