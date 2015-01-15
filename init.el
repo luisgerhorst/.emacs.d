@@ -49,6 +49,8 @@
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(electric-indent-mode t)
  '(frame-background-mode (quote dark))
+ '(mac-command-modifier (quote control))
+ '(mac-control-modifier (quote meta))
  '(ns-alternate-modifier (quote none))
  '(ns-command-modifier (quote control))
  '(ns-control-modifier (quote meta)))
