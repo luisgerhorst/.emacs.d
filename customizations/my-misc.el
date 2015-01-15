@@ -10,7 +10,3 @@
 
 ;; Go straight to scratch buffer on startup
 (setq inhibit-startup-message t)
-
-;; Together with .zshrc allows opening gui emacs from terminal.
-;; http://stackoverflow.com/questions/10171280/how-to-launch-gui-emacs-from-command-line-in-osx
-(server-start)
