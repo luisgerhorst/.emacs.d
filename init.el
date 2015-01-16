@@ -47,6 +47,7 @@
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.4")
  '(electric-indent-mode t)
  '(frame-background-mode (quote dark))
  '(mac-command-modifier (quote control))
