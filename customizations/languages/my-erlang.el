@@ -1,4 +1,4 @@
-;; Start EDTS.
+;; Start EDTS
 (require 'edts-start)
 
 ;; Load Erlang with Homebrew path and MELPA package.
@@ -24,4 +24,4 @@
 
 ;; Minor modes for erlang-mode. May require edts to work nicely.
 (add-hook 'erlang-mode-hook #'auto-complete-mode)
-;; (add-hook 'erlang-mode-hook #'auto-highlight-symbol-mode)
+(add-hook 'erlang-mode-hook #'auto-highlight-symbol-mode)

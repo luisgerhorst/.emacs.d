@@ -68,6 +68,8 @@
       ac-use-fuzzy t)
 (global-auto-complete-mode t)
 
-;; Auto Highlight
+;; Highlight Symbol
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
+(ahs-set-idle-interval 604800) ;; 1 Week -> Diabled, use ahs-highlight-now
+(global-set-key (kbd "C-=") 'ahs-highlight-now)
