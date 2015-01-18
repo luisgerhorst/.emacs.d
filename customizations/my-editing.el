@@ -68,8 +68,7 @@
       ac-use-fuzzy t)
 (global-auto-complete-mode t)
 
-;; Highlight Symbol
-(require 'auto-highlight-symbol)
-(global-auto-highlight-symbol-mode t)
-(ahs-set-idle-interval 604800) ;; 1 Week -> Diabled, use ahs-highlight-now
-(global-set-key (kbd "C-=") 'ahs-highlight-now)
+;; Smart Scan
+(define-globalized-minor-mode my/global-smartscan-mode smartscan-mode
+  (lambda () (smartscan-mode t)))
+(my/global-smartscan-mode t)
