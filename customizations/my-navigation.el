@@ -61,5 +61,4 @@
   (interactive)
   (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
     (ido-find-file-in-dir finder-dir)))
-;; Bind to C-x C-o
-(global-set-key (kbd "C-x C-o") 'ido-find-file-in-finder-dir)
+(global-set-key (kbd "C-x M-f") 'ido-find-file-in-finder-dir)

@@ -24,7 +24,3 @@
 
 ;; Minor modes for erlang-mode. May require edts to work nicely.
 (add-hook 'erlang-mode-hook #'auto-complete-mode)
-
-(add-hook 'edts-mode-hook 'my/turn-off-ahs-mode)
-(defun my/turn-off-ahs-mode ()
-  (auto-highlight-symbol-mode nil))

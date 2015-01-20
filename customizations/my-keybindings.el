@@ -7,3 +7,6 @@
 ;; Enable upcase / downcase region.
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+;; Other Window.
+(global-set-key (kbd "M-o") 'other-window)
