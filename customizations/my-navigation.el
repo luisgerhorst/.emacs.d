@@ -49,10 +49,17 @@
 ;; Shows a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-
 ;; Enhances M-x to allow easier execution of commands. Provides
 ;; a filterable list of possible commands in the minibuffer
 ;; http://www.emacswiki.org/emacs/Smex
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
+
+;; ido-find-file-in-dir but start in directory currently open in Finder.
+(defun ido-find-file-in-finder-dir ()
+  (interactive)
+  (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
+    (ido-find-file-in-dir finder-dir)))
+;; Bind to C-x C-o
+(global-set-key (kbd "C-x C-o") 'ido-find-file-in-finder-dir)

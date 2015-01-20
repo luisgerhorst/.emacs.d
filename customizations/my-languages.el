@@ -4,3 +4,4 @@
 (load "my-haskell.el")
 (load "my-javascript.el")
 (load "my-markdown.el")
+(load "my-latex.el")

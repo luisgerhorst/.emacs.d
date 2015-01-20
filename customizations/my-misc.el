@@ -17,3 +17,9 @@
 ;; Discover
 (require 'discover)
 (global-discover-mode t)
+
+;; Focus on emacs when opening file. Doesn't work.
+;; (defun activate-emacs (FILENAME &optional WILDCARDS)
+;;   (message "activating window")
+;;   (do-applescript "tell application \"Emacs\" to activate"))
+;; (advice-add 'find-file :after #'activate-emacs)
