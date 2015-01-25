@@ -13,3 +13,6 @@
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+
+;; Auto Fill for comments, function defined in ../my-editing.el
+(add-hook 'emacs-lisp-mode-hook 'my/comment-auto-fill)

@@ -17,7 +17,7 @@
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (require 'recentf)
 (recentf-mode 1)
-(setq recentf-max-menu-items 40)
+(setq recentf-max-menu-items 100)
 
 
 ;; ido-mode allows you to more easily navigate choices. For example,
@@ -61,4 +61,4 @@
   (interactive)
   (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
     (ido-find-file-in-dir finder-dir)))
-(global-set-key (kbd "C-x M-f") 'ido-find-file-in-finder-dir)
+(global-set-key (kbd "C-x C-v") 'ido-find-file-in-finder-dir)

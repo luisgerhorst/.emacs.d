@@ -55,3 +55,6 @@
 
 ;; no bell
 (setq ring-bell-function 'ignore)
+
+;; Scroll in smaller steps.
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))

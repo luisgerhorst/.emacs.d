@@ -72,3 +72,8 @@
 (define-globalized-minor-mode my/global-smartscan-mode smartscan-mode
   (lambda () (smartscan-mode t)))
 (my/global-smartscan-mode t)
+
+;; Auto Fill for comments, enable per major mode in languages/*.el
+(defun my/comment-auto-fill ()
+  (setq-local comment-auto-fill-only-comments t)
+  (auto-fill-mode 1))
