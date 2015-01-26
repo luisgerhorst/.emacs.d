@@ -233,6 +233,8 @@
 ;; environment variables
 (load "my-shell-integration.el")
 
+(load "my-evil.el")
+
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
 (load "my-navigation.el")
