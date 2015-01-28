@@ -10,3 +10,6 @@
 
 ;; Other Window.
 (global-set-key (kbd "M-o") 'other-window)
+
+;; Hippie Expand.
+(global-set-key "\M- " 'hippie-expand)

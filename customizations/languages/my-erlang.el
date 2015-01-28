@@ -13,7 +13,8 @@
   ;; Indent newlines. Using something like
   ;; (global-set-key (kbd "RET") 'newline-and-indent) 
   ;; doesn't work with erlang-mode.
-  (local-set-key (kbd "RET") '(lambda ()(interactive)(newline)(indent-for-tab-command))))
+  (local-set-key (kbd "RET") '(lambda ()(interactive)(newline)(indent-for-tab-command)))
+  (auto-highlight-symbol-mode t))
 
 ;; When in erlang-shell-mode:
 (add-hook 'erlang-shell-mode-hook 'my/erlang-shell-mode-hook)

@@ -60,20 +60,21 @@
       (ns-get-selection-internal 'CLIPBOARD)
     (quit nil)))
 
-;; Auto Complete
-;; (require 'fuzzy)
-;; (require 'auto-complete)
-;; (setq ac-auto-show-menu t
-;;       ac-quick-help-delay 0.5
-;;       ac-use-fuzzy t)
-;; (global-auto-complete-mode t)
-
-;; Smart Scan
-(define-globalized-minor-mode my/global-smartscan-mode smartscan-mode
-  (lambda () (smartscan-mode t)))
-(my/global-smartscan-mode t)
-
 ;; Auto Fill for comments, enable per major mode in languages/*.el
 (defun my/comment-auto-fill ()
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode 1))
+
+;; Auto Highligh Symbol
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
+(customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
+(ahs-set-idle-interval 9999999999) ;; 'Disable' automatic highlighting
+(global-set-key (kbd "M-n") (lambda ()
+                              (interactive)
+                              (ahs-highlight-now)
+                              (ahs-forward)))
+(global-set-key (kbd "M-p") (lambda ()
+                              (interactive)
+                              (ahs-highlight-now)
+                              (ahs-backward)))
