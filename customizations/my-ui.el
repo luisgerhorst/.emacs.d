@@ -58,3 +58,8 @@
 
 ;; Scroll in smaller steps.
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+
+;; Powerline
+(add-to-list 'load-path "~/.emacs.d/vendor/powerline")
+(require 'powerline)
+(powerline-center-theme)
