@@ -16,13 +16,13 @@
       (tool-bar-mode -1))
 
 ;; Don't show native OS scroll bars for buffers because they're redundant
-;; (when (fboundp 'scroll-bar-mode)
-;;   (scroll-bar-mode -1))
+(when (fboundp 'scroll-bar-mode)
+  (scroll-bar-mode -1))
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
 ;; (in lines high) Emacs will have whenever you start it
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 316) (height . 81)))
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 317) (height . 81)))
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq ;; makes killing/yanking interact with the clipboard
@@ -62,4 +62,4 @@
 ;; Powerline
 (add-to-list 'load-path "~/.emacs.d/vendor/powerline")
 (require 'powerline)
-(powerline-center-theme)
+(powerline-vim-theme)
