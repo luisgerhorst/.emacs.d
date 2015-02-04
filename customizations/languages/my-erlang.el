@@ -25,7 +25,6 @@
 
 ;; Minor modes for erlang-mode. May require edts to work nicely.
 (add-hook 'erlang-mode-hook 'my/comment-auto-fill)
-(add-hook 'erlang-mode-hook #'enable-paredit-mode)
 
 ;; Not enabled because of flackering cursor when frame is split.
 ;; (add-hook 'erlang-mode-hook #'auto-complete-mode)
