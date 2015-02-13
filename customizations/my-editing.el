@@ -78,3 +78,7 @@
                               (interactive)
                               (ahs-highlight-now)
                               (ahs-backward)))
+
+;; Enable upcase / downcase region.
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
