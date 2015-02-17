@@ -59,11 +59,6 @@
 ;; Scroll in smaller steps.
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
-;; Powerline
-(add-to-list 'load-path "~/.emacs.d/vendor/powerline")
-(require 'powerline)
-(powerline-vim-theme)
-
 ;; Disable Mouse
 (dolist (k '([mouse-1] [down-mouse-1] [drag-mouse-1] [double-mouse-1] [triple-mouse-1]  
              [mouse-2] [down-mouse-2] [drag-mouse-2] [double-mouse-2] [triple-mouse-2]
