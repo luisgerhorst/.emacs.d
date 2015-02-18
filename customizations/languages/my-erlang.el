@@ -26,13 +26,13 @@
 ;; Minor modes for erlang-mode. May require edts to work nicely.
 (add-hook 'erlang-mode-hook 'my/comment-auto-fill)
 
+;; Reindent yanked lines
+(add-to-list 'yank-indent-modes 'erlang-mode)
+
 ;; Not enabled because of flackering cursor when frame is split.
 ;; (add-hook 'erlang-mode-hook #'auto-complete-mode)
 
-
-;; ;; EDTS - diabled because of error "Could not start main server"
+;; EDTS
 (require 'edts-start)
 ;; (add-hook 'edts-mode-hook 'my/edts-mode-hook)
-;; (defun my/edts-mode-hook ()
-;;   ;; Diable AHS
-;;   (auto-highlight-symbol-mode -1))
+;; (defun my/edts-mode-hook ())
