@@ -31,3 +31,6 @@
                    name (file-name-nondirectory new-name)))))))
 
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+
+;; No need for ~ files when editing
+(setq create-lockfiles nil)

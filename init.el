@@ -2,17 +2,13 @@
 ;; UI, turn of early to prevent momentary display
 ;;;;
 
-;; Turn off the menu bar at the top of each frame because it's distracting
-(menu-bar-mode -1)
+;; Diable menu, tool and scroll bar.
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; You can uncomment this to remove the graphical toolbar at the top. After
-;; awhile, you won't need the toolbar.
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode -1))
-
-;; Don't show native OS scroll bars for buffers because they're redundant
-(when (fboundp 'scroll-bar-mode)
-  (scroll-bar-mode -1))
+;; No startup screen.
+(setq inhibit-startup-message t)
 
 ;;;;
 ;; Packages
@@ -44,7 +40,7 @@
 ;;
 ;; (require 'yaml-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-;; 
+;;
 ;; Adding this code will make Emacs enter yaml mode whenever you open
 ;; a .yml file
 (add-to-list 'load-path (expand-file-name "vendor/" user-emacs-directory))
