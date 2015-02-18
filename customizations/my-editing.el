@@ -125,9 +125,5 @@
 
 ;; Auto Complete
 
-;; (require 'auto-complete)
-
-;; Diable menu when going to next/previous line after having typed a variable.
-;; Doesn't work for some reason.
-;; (advice-remove 'previous-line #'ad-Advice-previous-line)
-;; (advice-remove 'next-line #'ad-Advice-next-line)
+(require 'auto-complete)
+(setq ac-auto-show-menu nil)
