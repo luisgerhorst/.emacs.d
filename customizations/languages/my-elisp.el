@@ -16,3 +16,6 @@
 
 ;; Auto Fill for comments, function defined in ../my-editing.el
 (add-hook 'emacs-lisp-mode-hook 'my/comment-auto-fill)
+
+;; Auto Complete
+(add-hook 'emacs-lisp-mode-hook 'global-auto-complete-mode)
