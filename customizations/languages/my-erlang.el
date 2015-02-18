@@ -9,7 +9,11 @@
 
   ;; No spaces when inserting parenthesis
   (setq-local parens-require-space nil)
-  (setq-local parens-require-spaces nil))
+  (setq-local parens-require-spaces nil)
+
+  (defun my/erlang-paredit-space-for-delimiter-p (endp delimiter)
+    nil)
+  (add-to-list 'paredit-space-for-delimiter-predicates 'my/erlang-paredit-space-for-delimiter-p))
 
 ;; When in erlang-shell-mode:
 (add-hook 'erlang-shell-mode-hook 'my/erlang-shell-mode-hook)
