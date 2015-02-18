@@ -74,6 +74,8 @@
 (load "my-ui.el")
 (load "my-theme.el")
 
+(load "my-files.el")
+
 ;; These customizations make editing a bit nicer.
 (load "my-editing.el")
 
