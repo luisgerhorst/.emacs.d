@@ -47,7 +47,7 @@
 (dolist (command '(yank yank-pop))
   (eval `(defadvice ,command (after indent-region activate)
            (and (not current-prefix-arg)
-                (member major-mode                        
+                (member major-mode
                         ;; Insert modes here:
                         '(emacs-lisp-mode js2-mode haskell-mode))
                 (let ((mark-even-if-inactive transient-mark-mode))
@@ -124,6 +124,21 @@
   (yank 1))
 
 ;; Auto Complete
-
 (require 'auto-complete)
 (setq ac-auto-show-menu nil)
+
+;; Join Lines
+(global-set-key (kbd "C-^") 'join-line)
+
+;; Goto line
+
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
+
+(global-set-key [remap goto-line] 'goto-line-with-feedback)

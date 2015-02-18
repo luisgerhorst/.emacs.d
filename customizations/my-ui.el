@@ -4,9 +4,6 @@
 ;; a matter of preference and may require some fiddling to match your
 ;; preferences
 
-;; Show line numbers
-(global-linum-mode)
-
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
 ;; (in lines high) Emacs will have whenever you start it
