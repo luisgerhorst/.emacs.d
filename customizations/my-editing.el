@@ -125,7 +125,3 @@
   (end-of-line 0)
   (indent-for-tab-command))
 (global-set-key (kbd "C-o") 'open-line-and-indent)
-
-;; Commenting
-(global-set-key (kbd "C-;") 'comment-dwim)
-
