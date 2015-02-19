@@ -1,5 +1,9 @@
 ;; Customizations relating to editing a buffer.
 
+;; Makes copy/paste command operate on current line if region is not
+;; active. Also does some other stuff.
+(load "whole-line-or-region.el")
+
 ;; Highlights matching parenthesis
 (show-paren-mode t)
 
@@ -14,24 +18,6 @@
 ;; keep track of saved places in ~/.emacs.d/places
 (setq save-place-file (concat user-emacs-directory "places"))
 
-;; Emacs can automatically create backup files. This tells Emacs to
-;; put all backups in ~/.emacs.d/backups. More info:
-;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html
-(setq backup-directory-alist `(("." . ,(concat user-emacs-directory
-                                               "backups"))))
-;; Prevent asking to recover changed file when changes were discarded.
-(setq auto-save-default nil)
-
-(defun comment-or-uncomment-region-or-line ()
-  "Comments or uncomments the region or the current line if there's no active region."
-  (interactive)
-  (let (beg end)
-    (if (region-active-p)
-        (setq beg (region-beginning) end (region-end))
-      (setq beg (line-beginning-position) end (line-end-position)))
-    (comment-or-uncomment-region beg end)))
-(global-set-key (kbd "C-;") 'comment-or-uncomment-region-or-line)
-
 ;; Tabs
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil) ;; Spaces instead of tabs.
@@ -42,16 +28,6 @@
   (mark-whole-buffer)
   (untabify (region-beginning) (region-end))
   (keyboard-quit))
-
-;; Indent yanked text in specified modes
-(dolist (command '(yank yank-pop))
-  (eval `(defadvice ,command (after indent-region activate)
-           (and (not current-prefix-arg)
-                (member major-mode
-                        ;; Insert modes here:
-                        '(emacs-lisp-mode js2-mode haskell-mode))
-                (let ((mark-even-if-inactive transient-mark-mode))
-                  (indent-region (region-beginning) (region-end) nil))))))
 
 ;; fix weird os x kill error
 (defun ns-get-pasteboard ()
@@ -127,7 +103,8 @@
 (require 'auto-complete)
 (setq ac-auto-show-menu nil)
 
-;; Join Lines
+;; Join Lines, there seems to be an error with M-^, when I press M-^ Emacs
+;; thinks this key is pressed.
 (global-set-key (kbd "C-^") 'join-line)
 
 ;; Goto line
@@ -148,3 +125,7 @@
   (end-of-line 0)
   (indent-for-tab-command))
 (global-set-key (kbd "C-o") 'open-line-and-indent)
+
+;; Commenting
+(global-set-key (kbd "C-;") 'comment-dwim)
+

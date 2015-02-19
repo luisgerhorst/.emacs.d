@@ -1,3 +1,10 @@
+;; Emacs can automatically create backup files. This tells Emacs to
+;; put all backups in ~/.emacs.d/backups. More info:
+;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+;; Prevent asking to recover changed file when changes were discarded.
+(setq auto-save-default nil)
+
 (defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
   (interactive)
