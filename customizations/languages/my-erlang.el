@@ -25,6 +25,7 @@
 ;; Minor modes for erlang-mode.
 (add-hook 'erlang-mode-hook 'my/comment-auto-fill)
 (add-hook 'erlang-mode-hook #'enable-paredit-mode)
+(add-hook 'erlang-mode-hook #'aggressive-indent-mode)
 
 ;; Reindent yanked lines
 (add-to-list 'yank-indent-modes 'erlang-mode)
