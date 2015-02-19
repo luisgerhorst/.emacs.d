@@ -140,3 +140,11 @@
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
+
+;; Open Line and Indent
+(defun open-line-and-indent ()
+  (interactive)
+  (newline-and-indent)
+  (end-of-line 0)
+  (indent-for-tab-command))
+(global-set-key (kbd "C-o") 'open-line-and-indent)
