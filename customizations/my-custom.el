@@ -173,7 +173,8 @@
  '(ns-alternate-modifier (quote none))
  '(ns-command-modifier (quote control))
  '(ns-control-modifier (quote meta))
- '(ns-pop-up-frames nil))
+ '(ns-pop-up-frames nil)
+ '(paradox-automatically-star t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
