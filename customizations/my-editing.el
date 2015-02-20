@@ -136,8 +136,18 @@
 ;; ParEdit movement functions that are also usefull in non-Lisp modes.
 (defun my/enable-paredit-movement ()
   (require 'paredit)
+  (local-set-key (kbd "C-M-f") 'paredit-forward) ; Goes up if at end of sexp.
+  (local-set-key (kbd "C-M-b") 'paredit-backward) ; Goes up if at start of sexp.
+  (local-set-key (kbd "C-M-u") 'paredit-backward-up)
+  (local-set-key (kbd "C-M-d") 'paredit-forward-down)
   (local-set-key (kbd "C-M-n") 'paredit-forward-up)
   (local-set-key (kbd "C-M-p") 'paredit-backward-down))
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
+
+;; Backward kill sexp.
+(global-set-key (kbd "<C-M-backspace>")
+                (lambda ()
+                  (interactive)
+                  (kill-sexp -1)))

@@ -19,5 +19,9 @@
 ;; Indent newlines and continue comments.
 (add-to-list 'erlang-electric-commands 'erlang-electric-newline)
 
+(add-hook 'erlang-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-j") 'erlang-electric-newline)))
+
 ;; EDTS
 (require 'edts-start)
