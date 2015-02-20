@@ -1,14 +1,10 @@
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; shell scripts
-(setq-default sh-basic-offset 4)
-(setq-default sh-indentation 4)
-
 ;; Start server to allow opening files from shell
 (server-start)
 
-;; Discover
+;; Discover Emacs with popup buffers.
 (require 'discover)
 (global-discover-mode t)
 
@@ -17,3 +13,6 @@
 ;;   (message "activating window")
 ;;   (do-applescript "tell application \"Emacs\" to activate"))
 ;; (advice-add 'find-file :after #'activate-emacs)
+
+;; Always prefer newer versions of a file.
+(setq load-prefer-newer t)

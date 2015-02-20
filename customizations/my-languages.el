@@ -5,3 +5,4 @@
 (load "my-javascript.el")
 (load "my-markdown.el")
 (load "my-latex.el")
+(load "my-shell.el")

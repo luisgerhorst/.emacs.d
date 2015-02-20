@@ -1,3 +1,5 @@
+(require 'erlang)
+
 ;; When in erlang-shell-mode:
 (add-hook 'erlang-shell-mode-hook 'my/erlang-shell-mode-hook)
 (defun my/erlang-shell-mode-hook ()
@@ -7,18 +9,15 @@
 
 ;; Minor modes for erlang-mode.
 (add-hook 'erlang-mode-hook 'my/comment-auto-fill)
-(add-hook 'erlang-mode-hook #'aggressive-indent-mode)
 
-;; ParEdit
-(add-hook 'erlang-mode-hook #'enable-paredit-mode)
-(add-hook 'erlang-mode-hook 'my/erlang-paredit-mode-hook)
-(defun my/erlang-paredit-mode-hook ()
-  ;; No space when inserting parentheses.
-  (defun my/erlang-paredit-space-for-delimiter-p (endp delimiter) nil)
-  (setq-local paredit-space-for-delimiter-predicates '(my/erlang-paredit-space-for-delimiter-p))
-  
-  ;; No paredit-comment-dwim (inserts lisp comments).
-  (local-set-key [remap paredit-comment-dwim] 'comment-dwim))
+;; ParEdit movement.
+(add-hook 'erlang-mode-hook 'my/enable-paredit-movement)
+
+;; Indent yanked text.
+(add-to-list 'yank-indent-modes 'erlang-mode)
+
+;; Indent newlines and continue comments.
+(add-to-list 'erlang-electric-commands 'erlang-electric-newline)
 
 ;; EDTS
 (require 'edts-start)

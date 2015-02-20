@@ -118,10 +118,26 @@
     (linum-mode -1)))
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
 
-;; Open Line and Indent
 (defun open-line-and-indent ()
   (interactive)
   (newline-and-indent)
   (end-of-line 0)
   (indent-for-tab-command))
 (global-set-key (kbd "C-o") 'open-line-and-indent)
+
+(defun join-line-and-indent ()
+  "Join this line to following line and indent."
+  (interactive)
+  (join-line t)
+  (indent-for-tab-command))
+;; Actually, this is M-^ on my keyboard because of some bug in my Emacs.
+(global-set-key (kbd "C-^") 'join-line-and-indent)
+
+;; ParEdit movement functions that are also usefull in non-Lisp modes.
+(defun my/enable-paredit-movement ()
+  (require 'paredit)
+  (local-set-key (kbd "C-M-n") 'paredit-forward-up)
+  (local-set-key (kbd "C-M-p") 'paredit-backward-down))
+
+;; Continue comment on newline.
+(setq-default comment-multi-line t)
