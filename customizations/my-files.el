@@ -41,3 +41,6 @@
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
+
+;; Cleaner dired.
+(add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
