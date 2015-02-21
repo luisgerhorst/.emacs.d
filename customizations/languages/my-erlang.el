@@ -21,7 +21,9 @@
 
 (add-hook 'erlang-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-j") 'erlang-electric-newline)))
+            (local-set-key (kbd "C-j") 'erlang-electric-newline)
+            ;; Line comments directly after code.
+            (setq-local comment-column 0)))
 
 ;; EDTS
 (require 'edts-start)

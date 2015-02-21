@@ -126,9 +126,8 @@
 (global-set-key (kbd "C-o") 'open-line-and-indent)
 
 (defun join-line-and-indent ()
-  "Join this line to following line and indent."
   (interactive)
-  (join-line t)
+  (join-line)
   (indent-for-tab-command))
 ;; Actually, this is M-^ on my keyboard because of some bug in my Emacs.
 (global-set-key (kbd "C-^") 'join-line-and-indent)
