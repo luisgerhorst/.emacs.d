@@ -74,13 +74,14 @@
 
 ;; These customizations make editing a bit nicer.
 (load "my-editing.el")
-
-;; Hard-to-categorize customizations
-(load "my-misc.el")
+(load "my-movement.el")
 
 (load "my-languages.el")
 
 (load "my-keybindings.el")
+
+;; Hard-to-categorize customizations
+(load "my-misc.el")
 
 ;; This is for private stuff. Never publish.
 (load "my-private.el")
