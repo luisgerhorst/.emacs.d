@@ -84,4 +84,3 @@
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
-
