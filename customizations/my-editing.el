@@ -44,6 +44,7 @@
 ;; Auto Highligh Symbol
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
+(define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
 (customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
 (ahs-set-idle-interval 9999999999) ;; 'Disable' automatic highlighting
 (global-set-key (kbd "M-n") (lambda ()
@@ -63,7 +64,7 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; Manipulate whitespace
+;; Fancier manipulate whitespace function.
 (global-set-key (kbd "M-SPC") 'cycle-spacing)
 
 ;; automatically indenting yanked text if in programming-modes
@@ -129,24 +130,8 @@
   (interactive)
   (join-line)
   (indent-for-tab-command))
-;; Actually, this is M-^ on my keyboard because of some bug in my Emacs.
+;; Actually, this is M-^ on my keyboard because of some bug on computer.
 (global-set-key (kbd "C-^") 'join-line-and-indent)
-
-;; ParEdit movement functions that are also usefull in non-Lisp modes.
-(defun my/enable-paredit-movement ()
-  (require 'paredit)
-  (local-set-key (kbd "C-M-f") 'paredit-forward) ; Goes up if at end of sexp.
-  (local-set-key (kbd "C-M-b") 'paredit-backward) ; Goes up if at start of sexp.
-  (local-set-key (kbd "C-M-u") 'paredit-backward-up)
-  (local-set-key (kbd "C-M-d") 'paredit-forward-down)
-  (local-set-key (kbd "C-M-n") 'paredit-forward-up)
-  (local-set-key (kbd "C-M-p") 'paredit-backward-down))
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
-
-;; Backward kill sexp.
-(global-set-key (kbd "<C-M-backspace>")
-                (lambda ()
-                  (interactive)
-                  (kill-sexp -1)))

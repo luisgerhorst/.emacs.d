@@ -171,6 +171,8 @@
  '(fill-column 80)
  '(frame-background-mode (quote dark))
  '(ns-alternate-modifier (quote none))
+ '(ns-antialias-text t)
+ '(ns-auto-hide-menu-bar nil)
  '(ns-command-modifier (quote control))
  '(ns-control-modifier (quote meta))
  '(ns-pop-up-frames nil)

@@ -10,9 +10,6 @@
 ;; Minor modes for erlang-mode.
 (add-hook 'erlang-mode-hook 'my/comment-auto-fill)
 
-;; ParEdit movement.
-(add-hook 'erlang-mode-hook 'my/enable-paredit-movement)
-
 ;; Indent yanked text.
 (add-to-list 'yank-indent-modes 'erlang-mode)
 
@@ -21,7 +18,6 @@
 
 (add-hook 'erlang-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-j") 'erlang-electric-newline)
             ;; Line comments directly after code.
             (setq-local comment-column 0)))
 
