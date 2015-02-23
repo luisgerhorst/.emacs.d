@@ -2,7 +2,7 @@
 
 (global-set-key (kbd "M-i") 'imenu)
 
-;; Goto line
+;; Fancier goto-line
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input"
   (interactive)
@@ -11,6 +11,7 @@
         (linum-mode 1)
         (goto-line (read-number "Goto line: ")))
     (linum-mode -1)))
+;; Replace goto-line
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
 
 ;; Auto Highligh Symbol

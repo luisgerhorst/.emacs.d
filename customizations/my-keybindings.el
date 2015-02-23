@@ -6,6 +6,3 @@
 
 ;; Paradox list packages.
 (global-set-key (kbd "<f6>") 'paradox-list-packages)
-
-;; Other Window.
-(global-set-key (kbd "M-o") 'other-window)
