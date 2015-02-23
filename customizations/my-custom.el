@@ -170,7 +170,7 @@
  '(electric-indent-mode t)
  '(evil-want-C-u-scroll t)
  '(evil-want-C-w-delete nil)
- '(evil-want-C-w-in-emacs-state t)
+ '(evil-want-C-w-in-emacs-state nil)
  '(fill-column 80)
  '(frame-background-mode (quote dark))
  '(ns-alternate-modifier (quote none))
