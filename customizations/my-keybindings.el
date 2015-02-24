@@ -1,8 +1,11 @@
 ;; Only put keybinding that don't fit into another file here.
 ;; e.g. for editing commands use `my-editing.el`
 
-;; Open magit.
+;; Git interface.
 (global-set-key (kbd "<f5>") 'magit-status)
 
-;; Paradox list packages.
+;; Fancier list-packages.
 (global-set-key (kbd "<f6>") 'paradox-list-packages)
+
+;; Easier shortcut to switch buffer.
+(global-set-key (kbd "M-o") 'other-window)
