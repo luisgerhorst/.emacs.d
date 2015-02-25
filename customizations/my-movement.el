@@ -36,3 +36,6 @@
 (setq-default save-place t)
 ;; keep track of saved places in ~/.emacs.d/places
 (setq save-place-file (concat user-emacs-directory "places"))
+
+;; Jump directly to a word beginning with a given char.
+(global-set-key (kbd "C-#") 'ace-jump-mode)
