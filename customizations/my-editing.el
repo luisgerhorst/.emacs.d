@@ -84,3 +84,6 @@
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
+
+;; Add newlines with C-n when at end of buffer.
+(setq next-line-add-newlines t)
