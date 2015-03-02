@@ -17,7 +17,7 @@
 ;; Auto Highligh Symbol
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
-(define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
+(define-key auto-highlight-symbol-mode-map (kbd "M--") nil) ; Thats negative-argument.
 (customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
 (ahs-set-idle-interval 9999999999) ;; 'Disable' automatic highlighting
 (global-set-key (kbd "M-n") (lambda ()
@@ -38,4 +38,4 @@
 (setq save-place-file (concat user-emacs-directory "places"))
 
 ;; Jump directly to a word beginning with a given char.
-(global-set-key (kbd "C-#") 'ace-jump-mode)
+(evil-leader/set-key "j" 'ace-jump-mode)
