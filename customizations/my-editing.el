@@ -16,16 +16,12 @@
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode 1))
 
-;; Enable upcase / downcase region.
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-
 ;; Expand Region
 (require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+(evil-leader/set-key "e" 'er/expand-region)
 
-;; Fancier manipulate whitespace function.
-(global-set-key (kbd "M-SPC") 'cycle-spacing)
+;; Fancy manipulate whitespace function.
+(evil-leader/set-key "SPC" 'cycle-spacing)
 
 ;; automatically indenting yanked text if in programming-modes
 
@@ -63,24 +59,6 @@
 ;; Auto Complete
 (require 'auto-complete)
 (setq ac-auto-show-menu nil)
-
-;; Join Lines, there seems to be an error with M-^, when I press M-^ Emacs
-;; thinks this key is pressed.
-(global-set-key (kbd "C-^") 'join-line)
-
-(defun open-line-and-indent ()
-  (interactive)
-  (newline-and-indent)
-  (end-of-line 0)
-  (indent-for-tab-command))
-(global-set-key (kbd "C-o") 'open-line-and-indent)
-
-(defun join-line-and-indent ()
-  (interactive)
-  (join-line)
-  (indent-for-tab-command))
-;; Actually, this is M-^ on my keyboard because of some bug on computer.
-(global-set-key (kbd "C-^") 'join-line-and-indent)
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
