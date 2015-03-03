@@ -62,6 +62,21 @@
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
 
-;; Make Emacs commenting functions work like NERD Commenter one's.
-(evil-leader/set-key "c A" 'comment-dwim)
-(advice-add 'comment-dwim :after (lambda (ARG) (evil-append 1)))
+;; Make Emacs commenting functions work like NERD Commenter's one's.
+
+(evil-leader/set-key "c A"
+  (lambda (ARG)
+    (interactive "*P")
+    (comment-dwim ARG)
+    (evil-append 1)))
+
+(defun comment-or-uncomment-region-or-line ()
+    "Comments or uncomments the region or the current line if there's no active region."
+    (interactive)
+    (let (beg end)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (comment-or-uncomment-region beg end)))
+
+(evil-leader/set-key "c c" 'comment-or-uncomment-region-or-line)
