@@ -16,10 +16,6 @@
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode 1))
 
-;; Expand Region
-(require 'expand-region)
-(evil-leader/set-key "e" 'er/expand-region)
-
 ;; Fancy manipulate whitespace function.
 (evil-leader/set-key "SPC" 'cycle-spacing)
 
