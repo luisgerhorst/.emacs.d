@@ -54,7 +54,10 @@
 
 ;; Auto Complete
 (require 'auto-complete)
-(setq ac-auto-show-menu nil)
+(setq ac-auto-start nil)
+;; Normally, Evil's primitive auto complete commands are bound to these keys.
+(define-key evil-insert-state-map (kbd "C-n") 'auto-complete)
+(define-key evil-insert-state-map (kbd "C-p") nil) ; We don't need this with auto-complete.
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
