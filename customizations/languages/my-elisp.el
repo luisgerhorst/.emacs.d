@@ -19,3 +19,9 @@
 
 ;; Auto Complete
 (add-hook 'emacs-lisp-mode-hook 'global-auto-complete-mode)
+
+;; Evil
+(evil-leader/set-key-for-mode 'emacs-lisp-mode "c A" 'paredit-comment-dwim)
+(require 'paredit)
+(advice-add 'paredit-comment-dwim :after
+            (lambda (&optional argument) (evil-append 1)))

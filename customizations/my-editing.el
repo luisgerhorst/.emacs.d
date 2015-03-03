@@ -61,3 +61,7 @@
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
+
+;; Make Emacs commenting functions work like NERD Commenter one's.
+(evil-leader/set-key "c A" 'comment-dwim)
+(advice-add 'comment-dwim :after (lambda (ARG) (evil-append 1)))
