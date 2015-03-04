@@ -20,14 +20,24 @@
 (define-key auto-highlight-symbol-mode-map (kbd "M--") nil) ; Thats negative-argument.
 (customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
 (ahs-set-idle-interval 9999999999) ;; 'Disable' automatic highlighting
-(global-set-key (kbd "M-n") (lambda ()
-                              (interactive)
-                              (ahs-highlight-now)
-                              (ahs-forward)))
-(global-set-key (kbd "M-p") (lambda ()
-                              (interactive)
-                              (ahs-highlight-now)
-                              (ahs-backward)))
+
+;; ahs-forward/backward always leave the point at the same postion in the symbol so
+;; we don't have to worry about this.
+(evil-define-motion my/evil-ahs-highlight-and-forward (count)
+  (interactive "<c>")
+  (ahs-highlight-now)
+  (let ((n (or count 1)))
+    (cond ((< 0 n) (dotimes (i n) (ahs-forward)))
+          ((< n 0) (dotimes (i (- n)) (ahs-backward))))))
+
+(evil-define-motion my/evil-ahs-highlight-and-backward (count)
+  (interactive "<c>")
+  (my/evil-ahs-highlight-and-forward (- (or count 1))))
+
+(define-key evil-normal-state-map (kbd "*") 'my/evil-ahs-highlight-and-forward)
+(define-key evil-motion-state-map (kbd "*") 'my/evil-ahs-highlight-and-forward)
+(define-key evil-normal-state-map (kbd "#") 'my/evil-ahs-highlight-and-backward)
+(define-key evil-motion-state-map (kbd "#") 'my/evil-ahs-highlight-and-backward)
 
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
@@ -39,3 +49,10 @@
 
 ;; Jump directly to a word beginning with a given char.
 (evil-leader/set-key "j" 'ace-jump-mode)
+
+;; Move by sexp VIM-style.
+(require 'evil-sexp)
+(define-key evil-normal-state-map (kbd "M-h") 'evil-backward-sexp)
+(define-key evil-normal-state-map (kbd "M-l") 'evil-forward-sexp)
+(define-key evil-normal-state-map (kbd "M-j") 'evil-enter-sexp)
+(define-key evil-normal-state-map (kbd "M-k") 'evil-exit-sexp)
