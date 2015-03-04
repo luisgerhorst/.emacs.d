@@ -48,10 +48,3 @@
 
 ;; Jump directly to a word beginning with a given char.
 (evil-leader/set-key "j" 'ace-jump-mode)
-
-;; Move by sexp VIM-style.
-(require 'evil-sexp)
-(define-key evil-normal-state-map (kbd "M-h") 'evil-backward-sexp)
-(define-key evil-normal-state-map (kbd "M-l") 'evil-forward-sexp)
-(define-key evil-normal-state-map (kbd "M-j") 'evil-enter-sexp)
-(define-key evil-normal-state-map (kbd "M-k") 'evil-exit-sexp)
