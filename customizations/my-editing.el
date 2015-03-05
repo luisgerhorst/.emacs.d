@@ -62,7 +62,9 @@
 
 ;; Auto Complete
 (require 'auto-complete)
-(setq ac-auto-show-menu nil)
+(setq ac-auto-start nil)
+(setq ac-use-menu-map t)
+(global-set-key (kbd "C-M-i") 'auto-complete)
 
 ;; Join Lines, there seems to be an error with M-^, when I press M-^ Emacs
 ;; thinks this key is pressed.
