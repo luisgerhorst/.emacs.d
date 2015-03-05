@@ -35,8 +35,8 @@
   (my/evil-ahs-highlight-and-forward (- (or count 1))))
 
 ;; Replace evil-search-word-forward/backward.
-(define-key evil-motion-state-map (kbd "*") 'my/evil-ahs-highlight-and-forward)
-(define-key evil-motion-state-map (kbd "#") 'my/evil-ahs-highlight-and-backward)
+(define-key evil-motion-state-map (kbd "±") 'my/evil-ahs-highlight-and-forward)
+(define-key evil-motion-state-map (kbd "‘") 'my/evil-ahs-highlight-and-backward)
 
 ;; When you visit a file, point goes to the last place where it was when you
 ;; previously visited the same file.
