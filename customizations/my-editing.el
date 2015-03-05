@@ -16,8 +16,16 @@
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode 1))
 
-;; Fancy manipulate whitespace function.
-(evil-leader/set-key "SPC" 'cycle-spacing)
+;; Enable upcase / downcase region.
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+;; Expand Region
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;; Fancier manipulate whitespace function.
+(global-set-key (kbd "M-SPC") 'cycle-spacing)
 
 ;; automatically indenting yanked text if in programming-modes
 
@@ -54,29 +62,28 @@
 
 ;; Auto Complete
 (require 'auto-complete)
-(setq ac-auto-start nil)
-;; Normally, Evil's primitive auto complete commands are bound to these keys.
-(define-key evil-insert-state-map (kbd "C-n") 'auto-complete)
-(define-key evil-insert-state-map (kbd "C-p") nil) ; We don't need this with auto-complete.
+(setq ac-auto-show-menu nil)
+
+;; Join Lines, there seems to be an error with M-^, when I press M-^ Emacs
+;; thinks this key is pressed.
+(global-set-key (kbd "C-^") 'join-line)
+
+(defun open-line-and-indent ()
+  (interactive)
+  (newline-and-indent)
+  (end-of-line 0)
+  (indent-for-tab-command))
+(global-set-key (kbd "C-o") 'open-line-and-indent)
+
+(defun join-line-and-indent ()
+  (interactive)
+  (join-line)
+  (indent-for-tab-command))
+;; Actually, this is M-^ on my keyboard because of some bug on computer.
+(global-set-key (kbd "C-^") 'join-line-and-indent)
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
 
-;; Make Emacs commenting functions work like NERD Commenter's one's.
-
-(evil-leader/set-key "c A"
-  (lambda (ARG)
-    (interactive "*P")
-    (comment-dwim ARG)
-    (evil-append 1)))
-
-(defun comment-or-uncomment-region-or-line ()
-    "Comments or uncomments the region or the current line if there's no active region."
-    (interactive)
-    (let (beg end)
-        (if (region-active-p)
-            (setq beg (region-beginning) end (region-end))
-            (setq beg (line-beginning-position) end (line-end-position)))
-        (comment-or-uncomment-region beg end)))
-
-(evil-leader/set-key "c c" 'comment-or-uncomment-region-or-line)
+;; Add newlines with C-n when at end of buffer.
+(setq next-line-add-newlines t)

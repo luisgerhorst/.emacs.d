@@ -17,29 +17,20 @@
 ;; Auto Highligh Symbol
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
-(define-key auto-highlight-symbol-mode-map (kbd "M--") nil) ; Thats negative-argument.
+(define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
 (customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
 (ahs-set-idle-interval 9999999999) ;; 'Disable' automatic highlighting
+(global-set-key (kbd "M-n") (lambda ()
+                              (interactive)
+                              (ahs-highlight-now)
+                              (ahs-forward)))
+(global-set-key (kbd "M-p") (lambda ()
+                              (interactive)
+                              (ahs-highlight-now)
+                              (ahs-backward)))
 
-;; ahs-forward/backward always leave the point at the same postion in the symbol so
-;; we don't have to worry about this.
-(evil-define-motion my/evil-ahs-highlight-and-forward (count)
-  (interactive "<c>")
-  (ahs-highlight-now)
-  (let ((n (or count 1)))
-    (cond ((< 0 n) (dotimes (i n) (ahs-forward)))
-          ((< n 0) (dotimes (i (- n)) (ahs-backward))))))
-
-(evil-define-motion my/evil-ahs-highlight-and-backward (count)
-  (interactive "<c>")
-  (my/evil-ahs-highlight-and-forward (- (or count 1))))
-
-;; Replace evil-search-word-forward/backward.
-(define-key evil-motion-state-map (kbd "±") 'my/evil-ahs-highlight-and-forward)
-(define-key evil-motion-state-map (kbd "‘") 'my/evil-ahs-highlight-and-backward)
-
-;; When you visit a file, point goes to the last place where it was when you
-;; previously visited the same file.
+;; When you visit a file, point goes to the last place where it
+;; was when you previously visited the same file.
 ;; http://www.emacswiki.org/emacs/SavePlace
 (require 'saveplace)
 (setq-default save-place t)
@@ -47,4 +38,4 @@
 (setq save-place-file (concat user-emacs-directory "places"))
 
 ;; Jump directly to a word beginning with a given char.
-(evil-leader/set-key "j" 'ace-jump-mode)
+(global-set-key (kbd "C-#") 'ace-jump-mode)

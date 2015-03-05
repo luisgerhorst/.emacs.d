@@ -169,7 +169,7 @@
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.4")
  '(electric-indent-mode t)
  '(evil-want-C-u-scroll t)
- '(evil-want-C-w-delete t)
+ '(evil-want-C-w-delete nil)
  '(evil-want-C-w-in-emacs-state nil)
  '(fill-column 80)
  '(frame-background-mode (quote dark))
