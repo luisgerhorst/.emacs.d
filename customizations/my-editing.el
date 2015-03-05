@@ -22,7 +22,7 @@
 
 ;; Expand Region
 (require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-2") 'er/expand-region)
 
 ;; Fancier manipulate whitespace function.
 (global-set-key (kbd "M-SPC") 'cycle-spacing)

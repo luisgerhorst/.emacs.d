@@ -38,4 +38,4 @@
 (setq save-place-file (concat user-emacs-directory "places"))
 
 ;; Jump directly to a word beginning with a given char.
-(global-set-key (kbd "C-#") 'ace-jump-mode)
+(global-set-key (kbd "C-ö") 'ace-jump-mode)
