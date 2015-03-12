@@ -56,8 +56,8 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
-;; ido-find-file-in-dir but start in directory currently open in Finder.
 (defun ido-find-file-in-finder-dir ()
+  "ido-find-file-in-dir but start in directory currently open in Finder"
   (interactive)
   (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
     (ido-find-file-in-dir finder-dir)))

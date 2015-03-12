@@ -7,7 +7,8 @@
   (local-set-key (kbd "<up>") 'comint-previous-input)
   (local-set-key (kbd "<down>") 'comint-next-input)
   ;; auto-complete
-  (define-key erlang-shell-mode-map (kbd "C-M-i") nil))
+  (define-key erlang-shell-mode-map (kbd "C-M-i") nil)
+  (auto-complete-mode 1))
 
 ;; auto-complete
 (define-key erlang-mode-map (kbd "C-M-i") nil)
