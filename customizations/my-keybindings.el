@@ -7,5 +7,3 @@
 ;; Fancier list-packages.
 (global-set-key (kbd "<f6>") 'paradox-list-packages)
 
-;; Easier shortcut to switch buffer.
-(global-set-key (kbd "M-o") 'other-window)
