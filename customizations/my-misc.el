@@ -24,8 +24,8 @@
       (ns-get-selection-internal 'CLIPBOARD)
     (quit nil)))
 
-;; Start emacs in background to test config.
 (defun test-emacs-config ()
+  "Start shell Emacs in background to test config."
   (interactive)
   (require 'async)
   (async-start
