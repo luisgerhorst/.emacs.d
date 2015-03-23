@@ -2,7 +2,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Start server to allow opening files from shell
-(server-start)
+;; (server-start)
 
 ;; Discover Emacs with popup buffers.
 (require 'discover)
