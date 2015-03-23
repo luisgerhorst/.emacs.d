@@ -25,7 +25,7 @@
 (global-set-key (kbd "C-2") 'er/expand-region)
 
 ;; Fancier manipulate whitespace function.
-(global-set-key (kbd "M-SPC") 'cycle-spacing)
+(global-set-key [remap just-one-space] 'cycle-spacing)
 
 ;; automatically indenting yanked text if in programming-modes
 
@@ -66,29 +66,25 @@
 (setq ac-use-menu-map t)
 (global-set-key (kbd "C-M-i") 'auto-complete)
 
-;; Join Lines, there seems to be an error with M-^, when I press M-^ Emacs
-;; thinks this key is pressed.
+;; There seems to be an error with M-^ in my Emacs, when I press M-^, Emacs
+;; thinks C-^ is pressed.
 (global-set-key (kbd "C-^") 'join-line)
 
+(global-set-key [remap join-line] 'join-line-and-indent)
+(defun join-line-and-indent ()
+  (interactive)
+  (join-line)
+  (indent-for-tab-command))
+
+(global-set-key [remap open-line] 'open-line-and-indent)
 (defun open-line-and-indent ()
   (interactive)
   (newline-and-indent)
   (end-of-line 0)
   (indent-for-tab-command))
-(global-set-key (kbd "C-o") 'open-line-and-indent)
-
-(defun join-line-and-indent ()
-  (interactive)
-  (join-line)
-  (indent-for-tab-command))
-;; Actually, this is M-^ on my keyboard because of some bug on computer.
-(global-set-key (kbd "C-^") 'join-line-and-indent)
 
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
-
-;; Add newlines with C-n when at end of buffer.
-(setq next-line-add-newlines t)
 
 ;; `comment-line` function will be built in in Emacs 25.1
 ;; http://endlessparentheses.com/new-in-emacs-25-1-comment-line.html
