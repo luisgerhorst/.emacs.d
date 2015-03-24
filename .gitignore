@@ -17,3 +17,4 @@ backups
 /elpa/edts-20150123.342/log/*
 /.tutor/
 /elpa/*.txt
+/eshell/
