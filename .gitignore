@@ -18,3 +18,4 @@ backups
 /.tutor/
 /elpa/*.txt
 /eshell/
+/elpa/edts-20150306.327/log/
