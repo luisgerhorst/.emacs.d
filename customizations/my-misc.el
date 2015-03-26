@@ -17,13 +17,6 @@
 ;; Always prefer newer versions of a file.
 (setq load-prefer-newer t)
 
-;; fix weird os x kill error
-(defun ns-get-pasteboard ()
-  "Returns the value of the pasteboard, or nil for unsupported formats."
-  (condition-case nil
-      (ns-get-selection-internal 'CLIPBOARD)
-    (quit nil)))
-
 (defun test-emacs-config ()
   "Start shell Emacs in background to test config."
   (interactive)
