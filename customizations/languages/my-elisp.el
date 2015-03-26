@@ -19,3 +19,8 @@
 
 ;; Auto Complete
 (add-hook 'emacs-lisp-mode-hook 'global-auto-complete-mode)
+
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c e") 'eval-buffer)))
