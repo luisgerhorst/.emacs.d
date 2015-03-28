@@ -22,6 +22,7 @@
 
 (global-set-key (kbd "C-x C-v") 'ido-find-file-in-finder-dir)
 
+;; TODO: Make cd silent.
 (defun open-directory-in-iterm (directory)
   "Switch to iTerm and cd to directory."
   (do-applescript (concat  "
