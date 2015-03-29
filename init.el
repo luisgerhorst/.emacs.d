@@ -68,7 +68,7 @@
 ;; These customizations change the way emacs looks and disable/enable
 ;; some user interface elements
 (load "my-ui.el")
-(load "my-theme.el")
+(load "my-look.el")
 
 (load "my-files.el")
 
