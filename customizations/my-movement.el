@@ -39,3 +39,12 @@
 
 ;; Jump directly to a word beginning with a given char.
 (global-set-key (kbd "C-ö") 'ace-jump-mode)
+
+;; Automatically wrap isearch.
+(defadvice isearch-search (after isearch-no-fail activate)
+  (unless isearch-success
+    (ad-disable-advice 'isearch-search 'after 'isearch-no-fail)
+    (ad-activate 'isearch-search)
+    (isearch-repeat (if isearch-forward 'forward))
+    (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
+    (ad-activate 'isearch-search)))
