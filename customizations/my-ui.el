@@ -75,3 +75,11 @@
 
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+
+(defun revert-to-startup-view ()
+  "Close all other windows and open scratch buffer in current one."
+  (interactive)
+  (delete-other-windows)
+  (switch-to-buffer "*scratch*"))
+
+(global-set-key (kbd "C-c c") 'revert-to-startup-view)
