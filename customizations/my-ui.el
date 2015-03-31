@@ -58,11 +58,8 @@
 ;; Highlight current line
 (global-hl-line-mode t)
 
-;; Switch buffer.
-(global-set-key (kbd "M-o") 'ace-window)
-(setq aw-keys '(?j ?k ?l ?ö ?ä ?a ?s ?d ?f ?g ?h)) ; First right home row, then
-                                                   ; left, the ones in the
-                                                   ; middle at the end.
+;; Better shortcut for switching buffers (normally C-x o).
+(global-set-key (kbd "M-o") 'other-window)
 
 ;; Ask before closing Emacs to prevent bad habit of closing it when you really
 ;; want to kill the current buffer.
