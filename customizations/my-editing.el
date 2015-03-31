@@ -21,6 +21,7 @@
 (put 'upcase-region 'disabled nil)
 
 ;; Expand Region
+(require-package 'expand-region)
 (require 'expand-region)
 (global-set-key (kbd "C-2") 'er/expand-region)
 
@@ -29,6 +30,7 @@
 
 ;; automatically indenting yanked text if in programming-modes
 
+(require-package 'dash)
 (require 'dash)
 
 (defvar yank-indent-modes '()
@@ -61,6 +63,7 @@
   (yank 1))
 
 ;; Auto Complete
+(require-package 'auto-complete)
 (require 'auto-complete)
 (setq ac-auto-start nil)
 (setq ac-use-menu-map t)

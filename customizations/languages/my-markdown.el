@@ -1,4 +1,7 @@
 ;; Markdown
+
+(require-package 'markdown-mode)
+
 (defun my/markdown-mode-hook ()
   (setq buffer-face-mode-face '(:family "Input Serif"))
   (buffer-face-mode)

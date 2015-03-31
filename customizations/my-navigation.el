@@ -14,6 +14,7 @@
 
 ;; Turn on recent file mode so that you can more easily switch to
 ;; recently edited files when you first start emacs
+(require-package 'recentf)
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (require 'recentf)
 (recentf-mode 1)
@@ -44,6 +45,7 @@
 
 ;; This enables ido in all contexts where it could be useful, not just
 ;; for selecting buffer and file names
+(require-package 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
 ;; Shows a list of buffers
@@ -52,8 +54,10 @@
 ;; Enhances M-x to allow easier execution of commands. Provides
 ;; a filterable list of possible commands in the minibuffer
 ;; http://www.emacswiki.org/emacs/Smex
+(require-package 'smex)
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
+(require-package 'projectile)
 (projectile-global-mode)

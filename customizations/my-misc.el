@@ -5,6 +5,7 @@
 ;; (server-start)
 
 ;; Discover Emacs with popup buffers.
+(require-package 'discover)
 (require 'discover)
 (global-discover-mode t)
 
@@ -33,6 +34,7 @@
         (insert output)
         (search-backward "ERROR!")))))
 
+(require-package 'god-mode)
 (require 'god-mode)
 (global-set-key (kbd "<f7>") 'god-local-mode)
 

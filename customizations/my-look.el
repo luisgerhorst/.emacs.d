@@ -4,6 +4,8 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Custom-Themes.html
 ;; for a more technical explanation.
 
+(require-package 'solarized-theme)
+
 (setq solarized-high-contrast-mode-line t)
 (setq solarized-use-more-italic t)
 (setq solarized-distinct-fringe-background t)

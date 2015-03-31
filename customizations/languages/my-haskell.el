@@ -1,3 +1,5 @@
+(require-package 'haskell-mode)
+
 ;; Haskell indentation
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 

@@ -15,6 +15,7 @@
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
 
 ;; Auto Highligh Symbol
+(require-package 'auto-highlight-symbol)
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 (define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
@@ -38,4 +39,5 @@
 (setq save-place-file (concat user-emacs-directory "places"))
 
 ;; Jump directly to a word beginning with a given char.
+(require-package 'ace-jump-mode)
 (global-set-key (kbd "C-ö") 'ace-jump-mode)

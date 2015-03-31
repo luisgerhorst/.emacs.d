@@ -1,3 +1,4 @@
+(require-package 'erlang)
 (require 'erlang)
 
 ;; When in erlang-shell-mode:
@@ -28,4 +29,5 @@
             (setq-local comment-column 0)))
 
 ;; EDTS
+(require-package 'edts)
 (require 'edts-start)

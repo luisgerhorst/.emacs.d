@@ -12,8 +12,6 @@
 /projectile-bookmarks.eld
 /projectile.cache
 /tramp
-/elpa/*-readme.txt
-/elpa/archives/
-/elpa/edts-*/log/
+/elpa/
 
 /customizations/my-private.el
