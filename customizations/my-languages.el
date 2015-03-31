@@ -6,3 +6,5 @@
 (load "my-markdown.el")
 (load "my-latex.el")
 (load "my-shell.el")
+(load "my-css.el")
+(load "my-swift.el")
