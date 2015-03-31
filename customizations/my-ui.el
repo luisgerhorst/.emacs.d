@@ -76,10 +76,11 @@
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
-(defun revert-to-startup-view ()
-  "Close all other windows and open scratch buffer in current one."
+(defun clean-up-emacs ()
+  "Save all files and show scratch buffer in single window. Run when done working on some project."
   (interactive)
+  (save-some-buffers)
   (delete-other-windows)
   (switch-to-buffer "*scratch*"))
 
-(global-set-key (kbd "C-c c") 'revert-to-startup-view)
+(global-set-key (kbd "C-c c") 'clean-up-emacs)
