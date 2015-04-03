@@ -81,3 +81,5 @@
   (switch-to-buffer "*scratch*"))
 
 (global-set-key (kbd "C-c c") 'clean-up-emacs)
+
+(setq next-screen-context-lines 10)
