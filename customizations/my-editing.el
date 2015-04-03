@@ -103,3 +103,5 @@ With negative prefix, apply to -N lines above."
    (goto-char (line-end-position n)))
   (forward-line 1)
   (back-to-indentation))
+
+(global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
