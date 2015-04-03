@@ -1,4 +1,7 @@
+;;; Install EDTS first, may cause some strange bug (https://github.com/tjarvstrand/edts/issues/145)
+(require-package 'edts)
 (require-package 'erlang)
+
 (require 'erlang)
 
 ;; When in erlang-shell-mode:
@@ -29,5 +32,5 @@
             (setq-local comment-column 0)))
 
 ;; EDTS
-(require-package 'edts)
-(require 'edts-start)
+(add-hook 'after-init-hook (lambda () (require 'edts-start)))
+
