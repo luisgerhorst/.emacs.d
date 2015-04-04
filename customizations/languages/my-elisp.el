@@ -20,7 +20,8 @@
 (add-hook 'emacs-lisp-mode-hook 'my/comment-auto-fill)
 
 ;; Auto Complete
-(add-hook 'emacs-lisp-mode-hook 'global-auto-complete-mode)
+(require-package 'company)
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()

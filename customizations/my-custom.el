@@ -3,6 +3,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ac-auto-show-menu 0.8)
+ '(ac-auto-start 3)
+ '(ac-use-fuzzy t)
+ '(ac-use-menu-map t)
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(bibtex-BibTeX-entry-alist
    (quote
@@ -164,6 +168,12 @@
        ("author" nil nil))))))
  '(blink-cursor-mode nil)
  '(coffee-tab-width 2)
+ '(company-backends
+   (quote
+    (company-etags company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake company-capf
+                   (company-dabbrev-code company-gtags company-keywords)
+                   company-oddmuse company-files company-dabbrev)))
+ '(company-etags-use-main-table-list nil)
  '(cursor-in-non-selected-windows t)
  '(custom-safe-themes
    (quote

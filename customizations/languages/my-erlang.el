@@ -9,13 +9,7 @@
 (defun my/erlang-shell-mode-hook ()
   ;; Use up/down keys to navigate history.
   (local-set-key (kbd "<up>") 'comint-previous-input)
-  (local-set-key (kbd "<down>") 'comint-next-input)
-  ;; auto-complete
-  (define-key erlang-shell-mode-map (kbd "C-M-i") nil)
-  (auto-complete-mode 1))
-
-;; auto-complete
-(define-key erlang-mode-map (kbd "C-M-i") nil)
+  (local-set-key (kbd "<down>") 'comint-next-input))
 
 ;; Minor modes for erlang-mode.
 (add-hook 'erlang-mode-hook 'my/comment-auto-fill)
@@ -32,5 +26,4 @@
             (setq-local comment-column 0)))
 
 ;; EDTS
-(add-hook 'after-init-hook (lambda () (require 'edts-start)))
-
+(require 'edts-start)

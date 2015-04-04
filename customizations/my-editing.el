@@ -62,13 +62,6 @@
   (interactive)
   (yank 1))
 
-;; Auto Complete
-(require-package 'auto-complete)
-(require 'auto-complete)
-(setq ac-auto-start nil)
-(setq ac-use-menu-map t)
-(global-set-key (kbd "C-M-i") 'auto-complete)
-
 ;; There seems to be an error with M-^ in my Emacs, when I press M-^, Emacs
 ;; thinks C-^ is pressed.
 (global-set-key (kbd "C-^") 'join-line)
@@ -105,3 +98,10 @@ With negative prefix, apply to -N lines above."
   (back-to-indentation))
 
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
+
+(require-package 'auto-complete)
+(require 'auto-complete)
+;; Use M-n and M-p to select next/previous completion and use these for moving
+;; by line.
+(define-key ac-menu-map (kbd "C-n") nil)
+(define-key ac-menu-map (kbd "C-p") nil)
