@@ -101,7 +101,9 @@ With negative prefix, apply to -N lines above."
 
 (require-package 'auto-complete)
 (require 'auto-complete)
-;; Use M-n and M-p to select next/previous completion and use these for moving
-;; by line.
-(define-key ac-menu-map (kbd "C-n") nil)
-(define-key ac-menu-map (kbd "C-p") nil)
+(add-hook 'auto-complete-mode-hook
+          (lambda ()
+            ;; Use M-n and M-p to select next/previous completion and use these for moving
+            ;; by line.
+            (define-key ac-menu-map (kbd "C-n") nil)
+            (define-key ac-menu-map (kbd "C-p") nil)))
