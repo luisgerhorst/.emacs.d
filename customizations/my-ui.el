@@ -83,3 +83,5 @@
 (global-set-key (kbd "C-c c") 'clean-up-emacs)
 
 (setq next-screen-context-lines 10)
+
+(setq default-indicate-empty-lines t)
