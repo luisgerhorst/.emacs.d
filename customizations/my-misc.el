@@ -43,3 +43,5 @@
   (setq cursor-type (if god-local-mode 'bar 'box)))
 (add-hook 'god-mode-enabled-hook 'my/god-mode-update-cursor)
 (add-hook 'god-mode-disabled-hook 'my/god-mode-update-cursor)
+
+(setq magit-last-seen-setup-instructions "1.4.0")
