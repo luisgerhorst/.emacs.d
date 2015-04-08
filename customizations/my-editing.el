@@ -107,3 +107,25 @@ With negative prefix, apply to -N lines above."
             ;; by line.
             (define-key ac-menu-map (kbd "C-n") nil)
             (define-key ac-menu-map (kbd "C-p") nil)))
+
+(require-package 'paredit)
+(require 'paredit)
+
+;; These also work in strings.
+(global-set-key (kbd "C-M-u") #'paredit-backward-up)
+(global-set-key (kbd "C-M-d") #'paredit-forward-down)
+;; I need these more often then forward/backward-list.
+(global-set-key (kbd "C-M-p") #'paredit-backward-down)
+(global-set-key (kbd "C-M-n") #'paredit-forward-up)
+;; More handy then C-M-k with negative argument.
+(global-set-key (kbd "<C-M-backspace>") (lambda (&optional argument)
+                                          (interactive "P")
+                                          (kill-sexp (- (or argument 1)))))
+
+;; Use this when you want to enable paredit in a non-lisp.
+(defun my/disable-paredit-spaces-before-paren ()
+  ;; Function which always returns nil -> never insert a space when insert a parentheses.
+  (defun my/erlang-paredit-space-for-delimiter-p (endp delimiter) nil)
+  ;; Set this function locally as only predicate to check when determining if a space should be inserted
+  ;; before a newly created pair of parentheses.
+  (setq-local paredit-space-for-delimiter-predicates '(my/erlang-paredit-space-for-delimiter-p)))
