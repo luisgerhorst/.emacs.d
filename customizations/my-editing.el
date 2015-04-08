@@ -129,3 +129,6 @@ With negative prefix, apply to -N lines above."
   ;; Set this function locally as only predicate to check when determining if a space should be inserted
   ;; before a newly created pair of parentheses.
   (setq-local paredit-space-for-delimiter-predicates '(my/erlang-paredit-space-for-delimiter-p)))
+
+;; Nicely edit camel case words.
+(global-subword-mode 1)
