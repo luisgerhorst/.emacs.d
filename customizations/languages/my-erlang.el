@@ -1,6 +1,5 @@
-;;; Install EDTS first, may cause some strange bug (https://github.com/tjarvstrand/edts/issues/145)
+;;; Install EDTS not erlang, may cause some strange bug (https://github.com/tjarvstrand/edts/issues/145)
 (require-package 'edts)
-(require-package 'erlang)
 
 (require 'erlang)
 
