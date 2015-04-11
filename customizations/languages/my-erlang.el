@@ -26,3 +26,6 @@
 
 ;; EDTS
 (require 'edts-start)
+
+(add-to-list 'auto-mode-alist '("/rebar\.config\\'" . erlang-mode))
+
