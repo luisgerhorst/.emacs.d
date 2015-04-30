@@ -106,7 +106,7 @@ locate PACKAGE."
 
 (load "my-languages.el")
 
-(load "my-keybindings.el")
+(load "my-apps.el")
 
 ;; Hard-to-categorize customizations
 (load "my-misc.el")
