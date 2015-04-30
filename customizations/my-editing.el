@@ -132,3 +132,8 @@ With negative prefix, apply to -N lines above."
 
 ;; Nicely edit camel case words.
 (global-subword-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Nice box around comment ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-M-,") #'comment-box)
