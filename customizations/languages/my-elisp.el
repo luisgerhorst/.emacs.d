@@ -26,3 +26,7 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c e") 'eval-buffer)))
+
+;; Do M-x bug-hunter-init-file RET RET and it will show your the source of the
+;; problem when your init.el fails.
+(require-package 'bug-hunter)
