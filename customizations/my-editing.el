@@ -82,10 +82,16 @@
 ;; Continue comment on newline.
 (setq-default comment-multi-line t)
 
+;; comment-line if region is inactive, comment-box otherwise.
+(global-set-key (kbd "C-;")
+                (lambda (n)
+                  (interactive "p")
+                  (if (use-region-p)
+                      (comment-box (region-beginning) (region-end) (or n 0))
+                    (endless/comment-line (or n 1)))))
+
 ;; `comment-line` function will be built in in Emacs 25.1
 ;; http://endlessparentheses.com/new-in-emacs-25-1-comment-line.html
-(global-set-key (kbd "C-;") #'endless/comment-line)
-
 (defun endless/comment-line (n)
   "Comment or uncomment current line and leave point after it.
 With positive prefix, apply to N lines including current one.
@@ -132,8 +138,3 @@ With negative prefix, apply to -N lines above."
 
 ;; Nicely edit camel case words.
 (global-subword-mode 1)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Nice box around comment ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(global-set-key (kbd "C-M-,") #'comment-box)
