@@ -29,3 +29,7 @@
 
 (add-to-list 'auto-mode-alist '("/rebar\.config\\'" . erlang-mode))
 
+(add-hook 'edts-mode-hook
+          (lambda ()
+            ;; Slows down display speed.
+            (auto-complete-mode -1)))
