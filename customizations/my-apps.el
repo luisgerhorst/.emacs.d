@@ -13,6 +13,9 @@
 
 (define-key launcher-map "c" #'calc)
 
+;; Shell
+(define-key launcher-map "s" #'ansi-term)
+
 (require-package 'sx)
 ;; Ordered by frequency of use, for no particular reason.
 (define-key launcher-map "qq" #'sx-tab-all-questions)
