@@ -32,4 +32,23 @@
 (add-hook 'edts-mode-hook
           (lambda ()
             ;; Slows down display speed.
-            (auto-complete-mode -1)))
+            (auto-complete-mode -1)
+            ;; Use comment box with ===
+            (local-set-key (kbd "C-;")
+                           (lambda (n)
+                             (interactive "p")
+                             (if (use-region-p)
+                                 (my/comment-box-markdown-style) 
+                               (endless/comment-line (or n 1)))))))
+
+(defun my/comment-box-markdown-style ()
+  (when (< (mark) (point)) (exchange-point-and-mark))
+  (beginning-of-line)
+  (insert "===================================================================\n")
+  (previous-line)
+  (exchange-point-and-mark)
+  (beginning-of-line)
+  (next-line)
+  (insert "===================================================================\n")
+  (comment-region (region-beginning) (region-end)))
+
