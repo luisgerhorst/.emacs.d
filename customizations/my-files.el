@@ -47,3 +47,4 @@
 
 ;; Like Nerdtree for Vim
 (require-package 'neotree)
+(global-set-key (kbd "C-c t") 'neotree-toggle)
