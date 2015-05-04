@@ -44,3 +44,6 @@
 
 ;; Cleaner dired.
 (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
+
+;; Like Nerdtree for Vim
+(require-package 'neotree)
