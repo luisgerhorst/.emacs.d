@@ -24,3 +24,8 @@
 (define-key launcher-map "qu" #'sx-tab-unanswered-my-tags)
 (define-key launcher-map "qa" #'sx-ask)
 (define-key launcher-map "qs" #'sx-search)
+
+;; Because proced does not work on OS X.
+(require-package 'vkill)
+(autoload 'vkill "vkill" nil t)
+(autoload 'list-unix-processes "vkill" nil t)
