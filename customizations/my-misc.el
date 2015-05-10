@@ -45,3 +45,6 @@
 (add-hook 'god-mode-disabled-hook 'my/god-mode-update-cursor)
 
 (setq magit-last-seen-setup-instructions "1.4.0")
+
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
