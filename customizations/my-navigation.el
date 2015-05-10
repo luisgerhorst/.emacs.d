@@ -41,7 +41,7 @@
 
 ;; Includes buffer names of recently open files, even if they're not
 ;; open now
-(setq ido-use-virtual-buffers t)
+;; (setq ido-use-virtual-buffers t)
 
 ;; This enables ido in all contexts where it could be useful, not just
 ;; for selecting buffer and file names
