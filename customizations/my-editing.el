@@ -117,12 +117,6 @@ With negative prefix, apply to -N lines above."
 (require-package 'paredit)
 (require 'paredit)
 
-;; These also work in strings.
-(global-set-key (kbd "C-M-u") #'paredit-backward-up)
-(global-set-key (kbd "C-M-d") #'paredit-forward-down)
-;; I need these more often then forward/backward-list.
-(global-set-key (kbd "C-M-p") #'paredit-backward-down)
-(global-set-key (kbd "C-M-n") #'paredit-forward-up)
 ;; More handy then C-M-k with negative argument.
 (global-set-key (kbd "<C-M-backspace>") (lambda (&optional argument)
                                           (interactive "P")

@@ -41,3 +41,10 @@
 ;; Jump directly to a word beginning with a given char.
 (require-package 'ace-jump-mode)
 (global-set-key (kbd "C-ö") 'ace-jump-mode)
+
+;; These also work in strings.
+(global-set-key (kbd "C-M-u") #'paredit-backward-up)
+(global-set-key (kbd "C-M-d") #'paredit-forward-down)
+;; I need these more often then forward/backward-list.
+(global-set-key (kbd "C-M-p") #'paredit-backward-down)
+(global-set-key (kbd "C-M-n") #'paredit-forward-up)
