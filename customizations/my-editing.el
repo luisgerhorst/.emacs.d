@@ -138,3 +138,7 @@ With negative prefix, apply to -N lines above."
 
 ;; Nicely edit camel case words.
 (global-subword-mode 1)
+
+;; Especially C-w is handy for killing whole lines.
+(require-package 'whole-line-or-region)
+(whole-line-or-region-mode 1)
