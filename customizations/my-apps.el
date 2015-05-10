@@ -1,7 +1,7 @@
 ;; Standalone features / tools installation and keybindings.
 
 (define-prefix-command 'launcher-map)
-(global-set-key (kbd "<f5>") 'launcher-map)
+(global-set-key (kbd "C-c l") 'launcher-map)
 
 ;; Git interface.
 (require-package 'magit)
