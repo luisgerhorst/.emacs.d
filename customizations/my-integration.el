@@ -52,3 +52,6 @@ end tell
   (open-directory-in-iterm (file-name-directory (buffer-file-name))))
 
 (global-set-key (kbd "<f8>") 'open-current-directory-in-iterm)
+
+;; Use ls from GNU coreutils for dired.
+(setq insert-directory-program (executable-find "gls"))
