@@ -182,6 +182,9 @@
  '(electric-indent-mode t)
  '(fill-column 80)
  '(frame-background-mode (quote dark))
+ '(ido-ignore-files
+   (quote
+    ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
  '(magit-use-overlays nil)
  '(ns-alternate-modifier (quote none))
  '(ns-antialias-text t)
