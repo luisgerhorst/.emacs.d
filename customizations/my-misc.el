@@ -48,3 +48,5 @@
 
 (when (fboundp 'winner-mode)
   (winner-mode 1))
+
+(require-package 'dash-at-point)
