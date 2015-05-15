@@ -73,6 +73,10 @@ locate PACKAGE."
 ;; a .yml file
 (add-to-list 'load-path (expand-file-name "vendor/" user-emacs-directory))
 
+;; Prefix key for launching apps.
+(define-prefix-command 'launcher-map)
+(global-set-key (kbd "H-s") 'launcher-map)
+
 ;;;;
 ;; My Customizations
 ;;;;

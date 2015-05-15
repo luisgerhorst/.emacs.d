@@ -2,25 +2,25 @@
 
 ;; Git interface.
 (require-package 'magit)
-(global-set-key (kbd "H-g") 'magit-status)
+(define-key launcher-map (kbd "g") 'magit-status)
 
 ;; Fancier list-packages.
 (require-package 'paradox)
-(global-set-key (kbd "H-x") 'paradox-list-packages)
+(define-key launcher-map (kbd "p") 'paradox-list-packages)
 
-(global-set-key (kbd "H-c") #'calc)
+(define-key launcher-map (kbd "c") #'calc)
 
 ;; Shell
-(global-set-key (kbd "H-s") #'ansi-term)
+(define-key launcher-map (kbd "s") #'ansi-term)
 
 (require-package 'sx)
 ;; Ordered by frequency of use, for no particular reason.
-(global-set-key (kbd "H-q q") #'sx-tab-all-questions)
-(global-set-key (kbd "H-q i") #'sx-inbox)
-(global-set-key (kbd "H-q o") #'sx-open-link)
-(global-set-key (kbd "H-q u") #'sx-tab-unanswered-my-tags)
-(global-set-key (kbd "H-q a") #'sx-ask)
-(global-set-key (kbd "H-q s") #'sx-search)
+(define-key launcher-map (kbd "q q") #'sx-tab-all-questions)
+(define-key launcher-map (kbd "q i") #'sx-inbox)
+(define-key launcher-map (kbd "q o") #'sx-open-link)
+(define-key launcher-map (kbd "q u") #'sx-tab-unanswered-my-tags)
+(define-key launcher-map (kbd "q a") #'sx-ask)
+(define-key launcher-map (kbd "q s") #'sx-search)
 
 ;; Because proced does not work on OS X.
 (require-package 'vkill)
