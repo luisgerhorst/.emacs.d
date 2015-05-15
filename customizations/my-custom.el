@@ -191,6 +191,7 @@
  '(ns-auto-hide-menu-bar nil)
  '(ns-command-modifier (quote control))
  '(ns-control-modifier (quote meta))
+ '(ns-function-modifier (quote hyper))
  '(ns-pop-up-frames nil)
  '(paradox-automatically-star t))
 (custom-set-faces
