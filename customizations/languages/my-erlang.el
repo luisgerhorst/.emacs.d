@@ -22,7 +22,10 @@
 (add-hook 'erlang-mode-hook
           (lambda ()
             ;; Line comments directly after code.
-            (setq-local comment-column 0)))
+            (setq-local comment-column 0)
+            ;; Better shortcuts for moving to beginning / end of a clause
+            (local-set-key (kbd "H-a") 'erlang-beginning-of-clause)
+            (local-set-key (kbd "H-e") 'erlang-end-of-clause)))
 
 ;; EDTS
 (require 'edts-start)

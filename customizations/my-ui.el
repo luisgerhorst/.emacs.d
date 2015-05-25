@@ -59,7 +59,7 @@
 (global-hl-line-mode t)
 
 ;; Better shortcut for switching buffers (normally C-x o).
-(global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "H-w") 'other-window)
 
 ;; Ask before closing Emacs to prevent bad habit of closing it when you really
 ;; want to kill the current buffer.
@@ -85,3 +85,5 @@
 (setq next-screen-context-lines 10)
 
 (setq default-indicate-empty-lines t)
+
+(global-set-key (kbd "H-z") 'undo)
