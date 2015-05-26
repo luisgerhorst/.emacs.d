@@ -55,3 +55,12 @@
   (insert "===================================================================\n")
   (comment-region (region-beginning) (region-end)))
 
+;; Yaws
+
+(require 'xml-lite)
+
+(require 'two-mode-mode)
+
+(or (assoc "\\.yaws$" auto-mode-alist)
+    (setq auto-mode-alist (cons '("\\.yaws$" . two-mode-mode)
+                                auto-mode-alist)))
