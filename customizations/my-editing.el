@@ -136,3 +136,7 @@ With negative prefix, apply to -N lines above."
 ;; Especially C-w is handy for killing whole lines.
 (require-package 'whole-line-or-region)
 (whole-line-or-region-mode 1)
+
+;; Show invisible chars.
+(require-package 'leerzeichen)
+(require 'leerzeichen)

@@ -193,10 +193,11 @@
  '(ns-control-modifier (quote meta))
  '(ns-function-modifier (quote hyper))
  '(ns-pop-up-frames nil)
- '(paradox-automatically-star t))
+ '(paradox-automatically-star t)
+ '(show-trailing-whitespace t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(leerzeichen ((t (:foreground "#475B62")))))
