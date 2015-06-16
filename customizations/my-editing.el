@@ -62,11 +62,8 @@
   (interactive)
   (yank 1))
 
-;; There seems to be an error with M-^ in my Emacs, when I press M-^, Emacs
-;; thinks C-^ is pressed.
-(global-set-key (kbd "C-^") 'join-line)
-
-(global-set-key [remap join-line] 'join-line-and-indent)
+(global-set-key (kbd "C-^") #'join-line)
+(global-set-key [remap join-line] #'join-line-and-indent)
 (defun join-line-and-indent ()
   (interactive)
   (join-line)
@@ -140,3 +137,4 @@ With negative prefix, apply to -N lines above."
 ;; Show invisible chars.
 (require-package 'leerzeichen)
 (require 'leerzeichen)
+

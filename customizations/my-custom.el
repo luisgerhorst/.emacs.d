@@ -189,12 +189,12 @@
  '(ns-alternate-modifier (quote none))
  '(ns-antialias-text t)
  '(ns-auto-hide-menu-bar nil)
- '(ns-command-modifier (quote control))
- '(ns-control-modifier (quote meta))
+ '(ns-command-modifier (quote meta))
+ '(ns-control-modifier (quote control))
  '(ns-function-modifier (quote hyper))
  '(ns-pop-up-frames nil)
  '(paradox-automatically-star t)
- '(show-trailing-whitespace t))
+ '(show-trailing-whitespace nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
