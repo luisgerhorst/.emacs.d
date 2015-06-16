@@ -36,12 +36,14 @@
           (lambda ()
             ;; Slows down display speed.
             (auto-complete-mode -1)
+            ;; Use simple company mode instead.
+            (company-mode-on)
             ;; Use comment box with ===
             (local-set-key (kbd "C-;")
                            (lambda (n)
                              (interactive "p")
                              (if (use-region-p)
-                                 (my/comment-box-markdown-style) 
+                                 (my/comment-box-markdown-style)
                                (endless/comment-line (or n 1)))))))
 
 (defun my/comment-box-markdown-style ()
@@ -58,9 +60,5 @@
 ;; Yaws
 
 (require 'xml-lite)
-
 (require 'two-mode-mode)
-
-(or (assoc "\\.yaws$" auto-mode-alist)
-    (setq auto-mode-alist (cons '("\\.yaws$" . two-mode-mode)
-                                auto-mode-alist)))
+(add-to-list 'auto-mode-alist '("\\.yaws$" . two-mode-mode))
