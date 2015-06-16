@@ -7,8 +7,11 @@
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; No startup screen.
-(setq inhibit-startup-message t)
+;; Bookmark on startup.
+(setq initial-buffer-choice
+      (lambda ()
+        (bookmark-bmenu-list)
+        (get-buffer "*Bookmark List*")))
 
 ;;;;
 ;; Packages

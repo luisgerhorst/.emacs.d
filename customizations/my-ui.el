@@ -74,15 +74,6 @@
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
-(defun clean-up-emacs ()
-  "Save all files and show scratch buffer in single window. Run when done working on some project."
-  (interactive)
-  (save-some-buffers)
-  (delete-other-windows)
-  (switch-to-buffer "*scratch*"))
-
-(global-set-key (kbd "C-c c") 'clean-up-emacs)
-
 (setq next-screen-context-lines 10)
 
 (setq default-indicate-empty-lines t)
