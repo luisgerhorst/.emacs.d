@@ -7,7 +7,9 @@
  '(ac-auto-start 3)
  '(ac-use-fuzzy t)
  '(ac-use-menu-map t)
+ '(ahs-case-fold-search nil)
  '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 9999999999)
  '(bibtex-BibTeX-entry-alist
    (quote
     (("Article" "Article in Journal"
