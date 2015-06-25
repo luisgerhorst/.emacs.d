@@ -1,5 +1,8 @@
 ;; Work nice together with other apps / Mac OS X.
 
+;; For emacsclient.
+(server-start)
+
 ;; Sets up exec-path-from-shell
 ;; https://github.com/purcell/exec-path-from-shell
 (when (memq window-system '(mac ns))
