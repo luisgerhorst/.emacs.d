@@ -187,6 +187,7 @@
  '(ido-ignore-files
    (quote
     ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
+ '(magit-completing-read-function (quote magit-ido-completing-read))
  '(magit-use-overlays nil)
  '(ns-alternate-modifier (quote none))
  '(ns-antialias-text t)
