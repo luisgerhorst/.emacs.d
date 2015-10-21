@@ -9,3 +9,4 @@
 (load "my-css.el")
 (load "my-swift.el")
 (load "my-apache.el")
+(load "my-python.el")
