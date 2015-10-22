@@ -10,6 +10,16 @@
  '(ahs-case-fold-search nil)
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(ahs-idle-interval 9999999999)
+ '(auto-coding-alist
+   (quote
+    (("\\.\\(arc\\|zip\\|lzh\\|lha\\|zoo\\|[jew]ar\\|xpi\\|rar\\|7z\\|ARC\\|ZIP\\|LZH\\|LHA\\|ZOO\\|[JEW]AR\\|XPI\\|RAR\\|7Z\\)\\'" . no-conversion-multibyte)
+     ("\\.\\(exe\\|EXE\\)\\'" . no-conversion)
+     ("\\.\\(sx[dmicw]\\|odt\\|tar\\|t[bg]z\\)\\'" . no-conversion)
+     ("\\.\\(gz\\|Z\\|bz\\|bz2\\|xz\\|gpg\\)\\'" . no-conversion)
+     ("\\.\\(jpe?g\\|png\\|gif\\|tiff?\\|p[bpgn]m\\)\\'" . no-conversion)
+     ("\\.pdf\\'" . no-conversion)
+     ("/#[^/]+#\\'" . utf-8-emacs-unix)
+     ("\\.tex\\'" . utf-8))))
  '(bibtex-BibTeX-entry-alist
    (quote
     (("Article" "Article in Journal"
