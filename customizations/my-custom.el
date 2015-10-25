@@ -211,7 +211,6 @@
  '(ns-pop-up-frames nil)
  '(paradox-automatically-star t)
  '(python-environment-directory "~/.pyenv/versions")
- '(python-shell-interpreter "/usr/local/bin/python3")
  '(show-trailing-whitespace nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
