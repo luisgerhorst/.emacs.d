@@ -6,13 +6,6 @@
 
 (require-package 'solarized-theme)
 
-(setq solarized-high-contrast-mode-line t)
-(setq solarized-use-more-italic t)
-(setq solarized-distinct-fringe-background t)
+;; See customize group Solarized for options.
 
 (load-theme 'solarized-dark t)
-
-;; Font Size
-(set-face-attribute 'default nil :height 130)
-;; Font Family
-(set-face-attribute 'default nil :family "Input Mono")

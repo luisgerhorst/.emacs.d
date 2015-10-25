@@ -1,9 +1,5 @@
 ;; Customizations relating to editing a buffer.
 
-;; Tabs
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)     ; Spaces instead of tabs.
-
 (defun die-tabs ()
   "Replace tabs with spaces."
   (interactive)
@@ -76,9 +72,6 @@
   (end-of-line 0)
   (indent-for-tab-command))
 
-;; Continue comment on newline.
-(setq-default comment-multi-line t)
-
 ;; comment-line if region is inactive, comment-box otherwise.
 (global-set-key (kbd "C-;")
                 (lambda (n)
@@ -126,9 +119,6 @@ With negative prefix, apply to -N lines above."
   ;; Set this function locally as only predicate to check when determining if a space should be inserted
   ;; before a newly created pair of parentheses.
   (setq-local paredit-space-for-delimiter-predicates '(my/erlang-paredit-space-for-delimiter-p)))
-
-;; Nicely edit camel case words.
-(global-subword-mode 1)
 
 ;; Especially C-w is handy for killing whole lines.
 (require-package 'whole-line-or-region)

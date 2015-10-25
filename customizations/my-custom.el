@@ -180,6 +180,7 @@
        ("author" nil nil))))))
  '(blink-cursor-mode nil)
  '(coffee-tab-width 2)
+ '(comment-multi-line t)
  '(company-backends
    (quote
     (company-etags company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake company-capf
@@ -192,9 +193,9 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
  '(electric-indent-mode t)
- '(expand-region-preferred-python-mode (quote fgallina-python))
  '(fill-column 72)
  '(frame-background-mode (quote dark))
+ '(global-subword-mode t)
  '(ido-ignore-files
    (quote
     ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
@@ -210,11 +211,20 @@
  '(ns-function-modifier (quote hyper))
  '(ns-pop-up-frames nil)
  '(paradox-automatically-star t)
+ '(projectile-global-mode t)
  '(python-environment-directory "~/.pyenv/versions")
- '(show-trailing-whitespace nil))
+ '(python-shell-interpreter "/usr/local/bin/python3")
+ '(recentf-max-menu-items 100)
+ '(recentf-mode t)
+ '(show-trailing-whitespace t)
+ '(solarized-distinct-fringe-background t)
+ '(solarized-high-contrast-mode-line t)
+ '(solarized-use-more-italic t)
+ '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:height 130 :family "Input Mono"))))
  '(leerzeichen ((t (:foreground "#475B62")))))

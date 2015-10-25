@@ -64,11 +64,8 @@
 (require-package 'recentf)
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-items 100)
 (global-set-key (kbd "C-c r") 'recentf-open-files)
 
 (require-package 'projectile)
 (require 'projectile)
 (global-set-key (kbd "H-d") 'projectile-command-map)
-(projectile-global-mode)
