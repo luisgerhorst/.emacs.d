@@ -7,16 +7,12 @@
 ;; Discover Emacs with popup buffers.
 (require-package 'discover)
 (require 'discover)
-(global-discover-mode t)
 
 ;; Focus on emacs when opening file. Doesn't work.
 ;; (defun activate-emacs (FILENAME &optional WILDCARDS)
 ;;   (message "activating window")
 ;;   (do-applescript "tell application \"Emacs\" to activate"))
 ;; (advice-add 'find-file :after #'activate-emacs)
-
-;; Always prefer newer versions of a file.
-(setq load-prefer-newer t)
 
 (defun test-emacs-config ()
   "Start shell Emacs in background to test config."
@@ -45,8 +41,3 @@
 (add-hook 'god-mode-disabled-hook 'my/god-mode-update-cursor)
 
 (setq magit-last-seen-setup-instructions "1.4.0")
-
-(when (fboundp 'winner-mode)
-  (winner-mode 1))
-
-(require-package 'dash-at-point)

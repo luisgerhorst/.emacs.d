@@ -195,12 +195,14 @@
  '(electric-indent-mode t)
  '(fill-column 72)
  '(frame-background-mode (quote dark))
+ '(global-discover-mode t)
  '(global-subword-mode t)
  '(ido-ignore-files
    (quote
     ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
  '(indent-tabs-mode nil)
  '(jedi:environment-root "3.5.0")
+ '(load-prefer-newer t)
  '(magit-completing-read-function (quote magit-ido-completing-read))
  '(magit-use-overlays nil)
  '(ns-alternate-modifier (quote none))
@@ -220,7 +222,8 @@
  '(solarized-distinct-fringe-background t)
  '(solarized-high-contrast-mode-line t)
  '(solarized-use-more-italic t)
- '(tab-width 4))
+ '(tab-width 4)
+ '(winner-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
