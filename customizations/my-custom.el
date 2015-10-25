@@ -218,4 +218,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(leerzeichen ((t (:foreground "#475B62")))))
+ '(leerzeichen ((t (:foreground "#475B62"))))
+ '(rst-adornment ((t (:inherit font-lock-keyword-face :family "Input Mono"))))
+ '(rst-level-1 ((t (:background "grey15" :family "Input Mono"))))
+ '(rst-level-2 ((t (:background "grey22" :family "Input Mono"))))
+ '(rst-level-3 ((t (:background "grey29" :family "Input Mono"))))
+ '(rst-level-4 ((t (:background "grey36" :family "Input Mono"))))
+ '(rst-level-5 ((t (:background "grey43" :family "Input Mono"))))
+ '(rst-level-6 ((t (:background "grey50" :family "Input Mono")))))

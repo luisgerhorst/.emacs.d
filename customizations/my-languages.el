@@ -3,7 +3,7 @@
 (load "my-erlang.el")
 (load "my-haskell.el")
 (load "my-javascript.el")
-(load "my-markdown.el")
+(load "my-text.el")
 (load "my-latex.el")
 (load "my-shell.el")
 (load "my-css.el")
