@@ -193,7 +193,7 @@
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
  '(electric-indent-mode t)
  '(expand-region-preferred-python-mode (quote fgallina-python))
- '(fill-column 80)
+ '(fill-column 72)
  '(frame-background-mode (quote dark))
  '(ido-ignore-files
    (quote
