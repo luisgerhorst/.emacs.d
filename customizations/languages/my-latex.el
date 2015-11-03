@@ -1,4 +1,7 @@
 (defun my/latex-mode-hook ()
   (setq buffer-face-mode-face '(:family "Input Serif"))
-  (buffer-face-mode))
+  (buffer-face-mode 1)
+  (visual-line-mode 1)
+  (setq show-trailing-whitespace 1)
+  (auto-fill-mode 1))
 (add-hook 'latex-mode-hook 'my/latex-mode-hook)
