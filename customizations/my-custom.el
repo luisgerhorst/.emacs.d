@@ -218,7 +218,7 @@
  '(python-shell-interpreter "/usr/local/bin/python3")
  '(recentf-max-menu-items 100)
  '(recentf-mode t)
- '(show-trailing-whitespace t)
+ '(show-trailing-whitespace nil)
  '(solarized-distinct-fringe-background t)
  '(solarized-high-contrast-mode-line t)
  '(solarized-use-more-italic t)
