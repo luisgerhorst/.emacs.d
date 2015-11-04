@@ -4,13 +4,8 @@
 ;; a matter of preference and may require some fiddling to match your
 ;; preferences
 
-;; Uncomment the lines below by removing semicolons and play with the
-;; values in order to set the width (in characters wide) and height
-;; (in lines high) Emacs will have whenever you start it
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 86) (height . 157)))
-
 ;; Start Emacs in Fullscreen
-(set-frame-parameter nil 'fullscreen 'fullboth)
+;; (set-frame-parameter nil 'fullscreen 'fullboth)
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq ;; makes killing/yanking interact with the clipboard
