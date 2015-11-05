@@ -21,7 +21,10 @@
 (require 'expand-region)
 (global-set-key (kbd "C-2") 'er/expand-region)
 
-;; Fancier manipulate whitespace function.
+;;; Fancier manipulate whitespace function.
+;; M-SPC does not work on my Mac, is used for opening Spotlight. If you
+;; don't have such problems you may remove the first line.
+(global-set-key (kbd "H-SPC") 'just-one-space)
 (global-set-key [remap just-one-space] 'cycle-spacing)
 
 ;; automatically indenting yanked text if in programming-modes
@@ -108,9 +111,10 @@ With negative prefix, apply to -N lines above."
 (require 'paredit)
 
 ;; More handy then C-M-k with negative argument.
-(global-set-key (kbd "<C-M-backspace>") (lambda (&optional argument)
-                                          (interactive "P")
-                                          (kill-sexp (- (or argument 1)))))
+(global-set-key (kbd "<C-M-backspace>")
+                (lambda (&optional argument)
+                  (interactive "P")
+                  (kill-sexp (- (or argument 1)))))
 
 ;; Use this when you want to enable paredit in a non-lisp.
 (defun my/disable-paredit-spaces-before-paren ()
@@ -124,7 +128,7 @@ With negative prefix, apply to -N lines above."
 (require-package 'whole-line-or-region)
 (whole-line-or-region-mode 1)
 
-;; Show invisible chars.
+;; Call to show invisible chars.
 (require-package 'leerzeichen)
 (require 'leerzeichen)
 
