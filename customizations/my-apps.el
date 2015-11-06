@@ -1,5 +1,8 @@
 ;; Standalone features / tools installation and keybindings.
 
+;; laucher-map defined in init.el because it may be used in multiple
+;; config files.
+
 ;; Git interface.
 (require-package 'magit)
 (define-key launcher-map (kbd "g") 'magit-status)
