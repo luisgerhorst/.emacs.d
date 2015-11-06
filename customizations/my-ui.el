@@ -30,9 +30,6 @@
 ;; No cursor blinking, it's distracting
 (blink-cursor-mode 0)
 
-;; full path in title bar
-(setq-default frame-title-format "%f")
-
 ;; don't pop up font menu
 (global-set-key (kbd "s-t") '(lambda () (interactive)))
 
