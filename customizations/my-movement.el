@@ -51,10 +51,10 @@
 
 ;;; Scroll relative to current window size.
 
-(setq relative-scroll-context-lines 0.5)
+(setq relative-scroll-ratio 0.5)
 
 (defun relative-scroll-lines ()
-  (max 1 (round (* relative-scroll-context-lines (window-total-height)))))
+  (max 1 (round (* relative-scroll-ratio (window-total-height)))))
 
 (defun relative-scroll-up-command (&optional argument)
   (interactive "^P")
