@@ -71,8 +71,6 @@
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
-(setq next-screen-context-lines 10)
-
 (setq default-indicate-empty-lines t)
 
 (global-set-key (kbd "H-z") 'undo)
