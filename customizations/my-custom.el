@@ -208,6 +208,7 @@
  '(jedi:environment-root "3.5.0")
  '(load-prefer-newer t)
  '(magit-completing-read-function (quote magit-ido-completing-read))
+ '(magit-push-always-verify nil)
  '(magit-use-overlays nil)
  '(ns-alternate-modifier (quote none))
  '(ns-antialias-text t)
