@@ -48,3 +48,20 @@
 ;; I need these more often then forward/backward-list.
 (global-set-key (kbd "C-M-p") #'paredit-backward-down)
 (global-set-key (kbd "C-M-n") #'paredit-forward-up)
+
+;;; Scroll relative to current window size.
+
+(setq relative-scroll-context-lines 0.5)
+
+(defun relative-scroll-lines ()
+  (max 1 (round (* relative-scroll-context-lines (window-total-height)))))
+
+(defun relative-scroll-up-command (&optional argument)
+  (interactive "^P")
+  (scroll-up-command (or argument (relative-scroll-lines))))
+(global-set-key [remap scroll-up-command] 'relative-scroll-up-command)
+
+(defun relative-scroll-down-command (&optional argument)
+  (interactive "^P")
+  (scroll-down-command (or argument (relative-scroll-lines))))
+(global-set-key [remap scroll-down-command] 'relative-scroll-down-command)
