@@ -9,4 +9,4 @@
   (add-to-list 'company-backends 'company-jedi)
   (company-mode-on)
   (my/comment-auto-fill)
-  (electric-indent-just-newline))
+  (electric-indent-just-newline nil))
