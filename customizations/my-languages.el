@@ -11,3 +11,4 @@
 (load "my-swift.el")
 (load "my-apache.el")
 (load "my-python.el")
+(load "my-nxc.el")
