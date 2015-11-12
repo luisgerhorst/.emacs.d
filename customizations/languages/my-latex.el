@@ -5,6 +5,5 @@
 (setq TeX-newline-function 'newline-and-indent)
 
 (defun my/latex-mode-hook ()
-  (auto-fill-mode 1)
   (visual-line-mode 1))
 (add-hook 'LaTeX-mode-hook 'my/latex-mode-hook)
