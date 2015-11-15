@@ -118,5 +118,7 @@ locate PACKAGE."
 ;; Hard-to-categorize customizations
 (load "my-misc.el")
 
+(load "my-machine-local.el")
+
 ;; This is for private stuff. Never publish.
 (load "my-private.el")
