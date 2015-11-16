@@ -41,3 +41,14 @@
 (add-hook 'god-mode-disabled-hook 'my/god-mode-update-cursor)
 
 (setq magit-last-seen-setup-instructions "1.4.0")
+
+;;; Call when you are done with a task. Better than quitting Emacs.
+
+(defun end-emacs-session ()
+  (interactive)
+  (save-some-buffers)
+  (delete-other-windows)
+  (command-execute 'bookmark-bmenu-list)
+  (ns-do-hide-emacs))
+
+(global-set-key (kbd "<f6>") 'end-emacs-session)
