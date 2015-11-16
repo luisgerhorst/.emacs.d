@@ -16,6 +16,7 @@
 /elpa/
 
 /customizations/my-private.el
+/customizations/my-machine-local.el
 /url/
 /bookmarks
 /eshell/
