@@ -8,9 +8,15 @@
   (buffer-face-mode -1)
   (local-set-key (kbd "C-c f") 'buffer-face-mode)
 
+  ;; Disable modes usefull for programming.
   (show-paren-mode -1)
+  (subword-mode -1)
+
+  ;; Prper line wrapping for text.
   (visual-line-mode 1)
-  (auto-fill-mode 1))
+  (require-package 'visual-fill-column)
+  (require 'visual-fill-column)
+  (visual-fill-column-mode 1))
 
 (add-hook 'markdown-mode-hook 'my/markdown-mode-hook)
 

@@ -1,7 +1,7 @@
+(require 'python)
+
 (require-package 'company)
 (require-package 'company-jedi)
-
-(require 'python)
 (require 'company-jedi)
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)

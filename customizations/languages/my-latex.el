@@ -5,5 +5,7 @@
 (setq TeX-newline-function 'newline-and-indent)
 
 (defun my/latex-mode-hook ()
-  (visual-line-mode 1))
+  ;; Proper line wrapping for text.
+  (visual-line-mode 1)
+  (auto-fill-mode 1))
 (add-hook 'LaTeX-mode-hook 'my/latex-mode-hook)
