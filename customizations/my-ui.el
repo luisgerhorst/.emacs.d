@@ -57,8 +57,9 @@
 (global-set-key (kbd "H-w") 'other-window)
 
 ;; Ask before closing Emacs to prevent bad habit of closing it when you really
-;; want to kill the current buffer.
-(setq confirm-kill-emacs 'y-or-n-p)
+;; want to kill the current buffer. Causes problems when mac shuts down
+;; and Emacs is still open.
+;; (setq confirm-kill-emacs 'y-or-n-p)
 
 (setq default-indicate-empty-lines t)
 
