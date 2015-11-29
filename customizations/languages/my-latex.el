@@ -1,5 +1,8 @@
 (require-package 'auctex)
 
+(require-package 'company)
+(require-package 'company-auctex)
+
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq TeX-newline-function 'newline-and-indent)
