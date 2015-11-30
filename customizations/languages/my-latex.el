@@ -20,6 +20,6 @@
   ;; Make suggestions immediately.
   (setq company-dabbrev-time-limit 0.0)
   (setq company-dabbrev-minimum-length 2)
-  (company-mode 1))
+  (company-mode-on))
 
 (add-hook 'LaTeX-mode-hook 'my/latex-mode-hook)
