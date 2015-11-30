@@ -51,4 +51,5 @@
   (command-execute 'bookmark-bmenu-list)
   (ns-do-hide-emacs))
 
-(global-set-key (kbd "C-c c") 'end-emacs-session)
+(global-set-key [remap save-buffers-kill-terminal] 'end-emacs-session)
+(global-set-key (kbd "C-c c") 'save-buffers-kill-terminal)
