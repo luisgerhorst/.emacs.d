@@ -202,9 +202,16 @@
  '(global-subword-mode t)
  '(helm-M-x-fuzzy-match t)
  '(helm-autoresize-mode t)
+ '(ido-cr+-fallback-function (quote completing-read-default))
+ '(ido-enable-flex-matching t)
+ '(ido-everywhere t)
  '(ido-ignore-files
    (quote
     ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
+ '(ido-max-window-height 1)
+ '(ido-mode (quote both) nil (ido))
+ '(ido-ubiquitous-mode t)
+ '(ido-use-filename-at-point (quote guess))
  '(indent-tabs-mode nil)
  '(initial-frame-alist (quote ((vertical-scroll-bars))))
  '(jedi:environment-root "3.5.0")

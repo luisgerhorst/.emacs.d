@@ -1,9 +1,6 @@
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
 
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-use-filename-at-point 'guess)
 (ido-mode 1)
 
 ;; This enables ido in all contexts where it could be useful, not just
