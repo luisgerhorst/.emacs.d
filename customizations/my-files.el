@@ -59,12 +59,13 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; Turn on recent file mode so that you can more easily switch to
-;; recently edited files when you first start emacs
 (require-package 'recentf)
-(setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (require 'recentf)
-(global-set-key (kbd "C-c r") 'recentf-open-files)
+(defun ido-choose-from-recentf ()
+  "Use ido to select a recently visited file from the `recentf-list'"
+  (interactive)
+  (find-file (ido-completing-read "Open file: " recentf-list nil t)))
+(global-set-key (kbd "C-c r") 'ido-choose-from-recentf)
 
 (require-package 'projectile)
 (require 'projectile)
