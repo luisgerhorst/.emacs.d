@@ -13,7 +13,10 @@
 (require-package 'discover)
 (require 'discover)
 
-(add-to-list 'load-path (expand-file-name "vendor/async" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "vendor/helm" user-emacs-directory))
-(require 'helm-config)
-(global-set-key [remap execute-extended-command] 'helm-M-x)
+;; Enhances M-x to allow easier execution of commands. Provides
+;; a filterable list of possible commands in the minibuffer
+;; http://www.emacswiki.org/emacs/Smex
+(require-package 'smex)
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
