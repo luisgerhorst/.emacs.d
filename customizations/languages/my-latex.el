@@ -7,7 +7,6 @@
 (setq TeX-parse-self t)
 (setq TeX-newline-function 'newline-and-indent)
 
-
 (defun my/latex-mode-hook ()
   ;; Proper line wrapping for text.
   (visual-line-mode 1)
@@ -15,6 +14,7 @@
   
   ;; Only auto-complete using auctex backends (not regular words in
   ;; text).
+  (require 'company-auctex)
   (setq company-backends '())
   (company-auctex-init)
   ;; Make suggestions immediately.
