@@ -42,6 +42,8 @@
 (require-package 'ace-jump-mode)
 (global-set-key (kbd "C-ö") 'ace-jump-mode)
 
+(require-package 'paredit)
+(require 'paredit)
 ;; These also work in strings.
 (global-set-key (kbd "C-M-u") #'paredit-backward-up)
 (global-set-key (kbd "C-M-d") #'paredit-forward-down)

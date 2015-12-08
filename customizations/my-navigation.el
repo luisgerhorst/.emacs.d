@@ -29,7 +29,7 @@
 (ido-ubiquitous-mode 1)
 
 ;; Shows a list of buffers
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; Enhances M-x to allow easier execution of commands. Provides
 ;; a filterable list of possible commands in the minibuffer
@@ -38,3 +38,7 @@
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
+
+;; Discover Emacs with popup buffers.
+(require-package 'discover)
+(require 'discover)
