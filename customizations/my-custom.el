@@ -200,6 +200,8 @@
  '(frame-resize-pixelwise t)
  '(global-discover-mode t)
  '(global-subword-mode t)
+ '(helm-M-x-fuzzy-match t)
+ '(helm-autoresize-mode t)
  '(ido-ignore-files
    (quote
     ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
@@ -210,6 +212,8 @@
  '(magit-completing-read-function (quote magit-ido-completing-read))
  '(magit-push-always-verify nil)
  '(magit-use-overlays nil)
+ '(neo-hidden-regexp-list (quote ("\\.pyc$" "~$" "^#.*#$" "\\.elc$")))
+ '(neo-theme (quote nerd))
  '(ns-alternate-modifier (quote none))
  '(ns-antialias-text t)
  '(ns-auto-hide-menu-bar nil)
