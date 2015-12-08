@@ -1,6 +1,7 @@
 ;; These customizations make it easier for you to navigate files,
 ;; switch buffers, and choose options from the minibuffer.
 
+;; See customize for options.
 (ido-mode 1)
 
 ;; This enables ido in all contexts where it could be useful, not just
