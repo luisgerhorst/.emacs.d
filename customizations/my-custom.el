@@ -208,7 +208,7 @@
  '(ido-ignore-files
    (quote
     ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
- '(ido-max-window-height 1)
+ '(ido-max-window-height nil)
  '(ido-mode (quote both) nil (ido))
  '(ido-ubiquitous-mode t)
  '(ido-use-filename-at-point (quote guess))
