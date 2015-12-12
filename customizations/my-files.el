@@ -65,7 +65,7 @@
   "Use ido to select a recently visited file from the `recentf-list'"
   (interactive)
   (find-file (ido-completing-read "Open file: " recentf-list nil t)))
-(global-set-key (kbd "C-c r") 'ido-choose-from-recentf)
+(global-set-key (kbd "C-x f") 'ido-choose-from-recentf)
 
 (require-package 'projectile)
 (require 'projectile)
