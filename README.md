@@ -40,11 +40,11 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 
 -   __Interactive Spell on Mac OS X__
 
-    Install `aspell` with `brew install aspell`. Then
-    [download](ftp://ftp.gnu.org/gnu/aspell/dict/0index.html) the
-    dictionaries for the languages you need (see README in downloaded
-    folder for install instruction, you may need `sudo` when doing `make
-    install`).
+    Install `aspell` with `brew install aspell`. Then download the
+    dictionaries for the languages you need from
+    `ftp://ftp.gnu.org/gnu/aspell/dict/0index.html` (see README in
+    downloaded folder for install instruction, you may need `sudo` when
+    doing `make install`).
 
     Then `customize` the variable `ispell-dictionary`, set it to the
     dictionary you want to use (e.g. `de_DE` for German, run
