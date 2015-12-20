@@ -22,7 +22,7 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 -   __Python Autocompletion__
 
     The config is using the environments from `pyenv` (usually located
-    in `~/.pyenv/versions`). See customize able variable
+    in `~/.pyenv/versions`). See customizeable variable
     `jedi:environment-root` for current version used. Run `pyenv install
     VERSION` to install a specific version (preferably the one
     `jedi:environment-root` is set to) before opening any Python files.
@@ -40,10 +40,10 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 
 -   __Interactive Spell on Mac OS X__
 
-    Install `aspell` with `brew install aspell`. Then install the
-    dictionaries for the languages you need, [download](
-    ftp://ftp.gnu.org/gnu/aspell/dict/0index.html) and install them (see
-    README in downloaded folder, you may need `sudo` when doing `make
+    Install `aspell` with `brew install aspell`. Then
+    [download](ftp://ftp.gnu.org/gnu/aspell/dict/0index.html) the
+    dictionaries for the languages you need (see README in downloaded
+    folder for install instruction, you may need `sudo` when doing `make
     install`).
 
     Then `customize` the variable `ispell-dictionary`, set it to the
