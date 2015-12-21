@@ -4,6 +4,9 @@
 ;; See customize for options.
 (ido-mode 1)
 
+;; Turn this behavior off because it's annoying
+(setq ido-use-filename-at-point nil)
+
 ;; This enables ido in all contexts where it could be useful, not just
 ;; for selecting buffer and file names
 (require-package 'ido-ubiquitous)
