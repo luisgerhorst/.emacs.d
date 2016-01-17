@@ -214,6 +214,7 @@
  '(ido-use-filename-at-point (quote guess))
  '(indent-tabs-mode nil)
  '(initial-frame-alist (quote ((vertical-scroll-bars))))
+ '(ispell-dictionary "de_DE")
  '(jedi:environment-root "3.5.0")
  '(load-prefer-newer t)
  '(magit-completing-read-function (quote magit-ido-completing-read))
