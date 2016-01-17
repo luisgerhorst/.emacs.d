@@ -79,6 +79,8 @@ end tell
 ;; (defun activate-emacs (FILENAME &optional WILDCARDS)
 ;;   (message "activating window")
 ;;   (do-applescript "tell application \"Emacs\" to activate"))
-;; (advice-add 'find-file :after #'activate-emacs)
+;; (advice-add 'ns-find-file :after #'activate-emacs)
 
-(global-set-key [remap suspend-frame] 'ns-do-hide-emacs)
+(when (eq system-type 'darwin)
+  (global-set-key [remap suspend-frame] 'ns-do-hide-emacs))
+
