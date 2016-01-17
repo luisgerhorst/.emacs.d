@@ -12,3 +12,4 @@
 (load "my-apache.el")
 (load "my-python.el")
 (load "my-nxc.el")
+(load "my-objc.el")
