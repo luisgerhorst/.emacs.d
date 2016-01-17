@@ -80,3 +80,5 @@ end tell
 ;;   (message "activating window")
 ;;   (do-applescript "tell application \"Emacs\" to activate"))
 ;; (advice-add 'find-file :after #'activate-emacs)
+
+(global-set-key [remap suspend-frame] 'ns-do-hide-emacs)
