@@ -2,19 +2,19 @@
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq ;; makes killing/yanking interact with the clipboard
-      x-select-enable-clipboard t
+ x-select-enable-clipboard t
 
-      ;; I'm actually not sure what this does but it's recommended?
-      x-select-enable-primary t
+ ;; I'm actually not sure what this does but it's recommended?
+ x-select-enable-primary t
 
-      ;; Save clipboard strings into kill ring before replacing them.
-      ;; When one selects something in another program to paste it into Emacs,
-      ;; but kills something in Emacs before actually pasting it,
-      ;; this selection is gone unless this variable is non-nil
-      save-interprogram-paste-before-kill t
+ ;; Save clipboard strings into kill ring before replacing them.
+ ;; When one selects something in another program to paste it into Emacs,
+ ;; but kills something in Emacs before actually pasting it,
+ ;; this selection is gone unless this variable is non-nil
+ save-interprogram-paste-before-kill t
 
-      ;; Mouse yank commands yank at point instead of at click.
-      mouse-yank-at-point t)
+ ;; Mouse yank commands yank at point instead of at click.
+ mouse-yank-at-point t)
 
 ;; For emacsclient.
 (server-start)
@@ -75,12 +75,5 @@ end tell
 ;; Use ls from GNU coreutils for dired.
 (setq insert-directory-program (executable-find "gls"))
 
-;; Focus on emacs when opening file. Doesn't work.
-;; (defun activate-emacs (FILENAME &optional WILDCARDS)
-;;   (message "activating window")
-;;   (do-applescript "tell application \"Emacs\" to activate"))
-;; (advice-add 'ns-find-file :after #'activate-emacs)
-
 (when (eq system-type 'darwin)
   (global-set-key [remap suspend-frame] 'ns-do-hide-emacs))
-
