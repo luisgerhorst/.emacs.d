@@ -122,3 +122,8 @@ locate PACKAGE."
 
 ;; This is for private stuff. Never publish.
 (load "my-private.el")
+
+;; Update the Emacs config automatically using git.
+(setq git-pull-emacs-config-command
+      (concat "cd " user-emacs-directory "; git pull"))
+(start-process-shell-command "git pull .emacs.d" "*Auto Update Emacs Config*" git-pull-emacs-config-command)
