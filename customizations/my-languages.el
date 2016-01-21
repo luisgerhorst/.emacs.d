@@ -2,7 +2,6 @@
 (load "my-elisp.el")
 (load "my-erlang.el")
 (load "my-haskell.el")
-(load "my-javascript.el")
 (load "my-markdown.el")
 (load "my-rst.el")
 (load "my-latex.el")
