@@ -211,7 +211,7 @@
  '(ido-max-window-height nil)
  '(ido-mode (quote both) nil (ido))
  '(ido-ubiquitous-mode t)
- '(ido-use-filename-at-point (quote guess))
+ '(ido-use-filename-at-point nil)
  '(indent-tabs-mode nil)
  '(initial-frame-alist (quote ((vertical-scroll-bars))))
  '(ispell-dictionary "de_DE")
