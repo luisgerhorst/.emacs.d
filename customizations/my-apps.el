@@ -45,3 +45,20 @@
         (delete-region (point-min) (point-max))
         (insert output)
         (search-backward "ERROR!")))))
+
+;; Mail
+
+;; Options required for sending mails. Additional variables have to be
+;; set in private.el.
+
+;; See
+;; http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
+;; for a good tutorial.
+(setq send-mail-function 'smtpmail-send-it
+      message-send-mail-function 'smtpmail-send-it
+      smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+      smtpmail-debug-info t
+      starttls-extra-arguments nil
+      starttls-gnutls-program (executable-find "gnutls-cli")
+      smtpmail-warn-about-unknown-extensions t
+      starttls-use-gnutls t)

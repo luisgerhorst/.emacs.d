@@ -1,1 +1,7 @@
 ;; (setq paradox-github-token "YOUR_GITHUB_TOKEN")
+
+;; (setq user-full-name "YOUR_FULL_NAME"
+;;       user-mail-address "YOUR_EMAIL_ADRESS"
+;;       smtpmail-default-smtp-server "OUTGOING_SMTP_SERVER"
+;;       smtpmail-smtp-server "OUTGOING_SMTP_SERVER"
+;;       smtpmail-smtp-service OUTGOING_SMTP_SERVER_PORT)

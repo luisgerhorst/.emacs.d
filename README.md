@@ -1,6 +1,6 @@
 # .emacs.d
 
-My `.emacs.d`. Originally derived from
+My `.emacs.d` for Mac OS X. Originally derived from
 [flyingmachine/emacs-for-clojure](https://github.com/flyingmachine/emacs-for-clojure).
 
 ## Installation
@@ -50,6 +50,34 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     dictionary you want to use (e.g. `de_DE` for German, run
     `ispell-change-dictionary` to see a list of available dictionaries
     and change the used on temporarily).
+
+-   __Sending Mail__
+
+    For connecting to a SMTP server that requires authentication
+    `gnutls` is required, install it with
+
+    ```sh
+    brew install gnutls
+    ```
+
+    The credentials for the server are stored in `~/.authinfo`, run
+
+    ```sh
+    touch ~/.authinfo
+    chmod 600 ~/.authinfo
+    ```
+
+    to create it and set it's permissions properly. Then insert the credentials in the following format:
+
+    ```
+    machine YOUR_SMTP_SERVER port YOUR_SMTP_SERVER_PORT login YOUR_SERVER_LOGIN password YOUR_PASSWORD
+    ```
+
+    `YOUR_SMTP_SERVER_PORT` is probably `587`, `YOUR_SERVER_LOGIN` is
+    your E-Mail adress. Now make sure you edit
+    `customizations/private.el` to contain all variables required for
+    sending mails. You may also have a look at `customizations/apps.el`
+    for more options.
 
 Now open Emacs, all required packages will be installed automatically
 which may take a while.
