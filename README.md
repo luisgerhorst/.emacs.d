@@ -79,5 +79,7 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     sending mails. You may also have a look at `customizations/apps.el`
     for more options.
 
+    Source: http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
+
 Now open Emacs, all required packages will be installed automatically
 which may take a while.
