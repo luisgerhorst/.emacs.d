@@ -2,6 +2,6 @@
 
 ;; (setq user-full-name "YOUR_FULL_NAME"
 ;;       user-mail-address "YOUR_EMAIL_ADRESS"
-;;       smtpmail-default-smtp-server "OUTGOING_SMTP_SERVER"
-;;       smtpmail-smtp-server "OUTGOING_SMTP_SERVER"
-;;       smtpmail-smtp-service OUTGOING_SMTP_SERVER_PORT)
+;;       smtpmail-default-smtp-server "YOUR_SMTP_SERVER"
+;;       smtpmail-smtp-server "YOUR_SMTP_SERVER"
+;;       smtpmail-smtp-service YOUR_SMTP_SERVER_PORT)
