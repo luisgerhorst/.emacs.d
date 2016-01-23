@@ -1,7 +1,25 @@
 ;; (setq paradox-github-token "YOUR_GITHUB_TOKEN")
 
+;;; For sending mail.
+
 ;; (setq user-full-name "YOUR_FULL_NAME"
 ;;       user-mail-address "YOUR_EMAIL_ADRESS"
 ;;       smtpmail-default-smtp-server "YOUR_SMTP_SERVER"
 ;;       smtpmail-smtp-server "YOUR_SMTP_SERVER"
 ;;       smtpmail-smtp-service YOUR_SMTP_SERVER_PORT)
+
+;;; For reading mail.
+
+;; (setq mu4e-maildir "~/.maildir")
+;; (setq mu4e-drafts-folder "/INBOX.Drafts")
+;; (setq mu4e-sent-folder   "/INBOX.Sent Items")
+;; (setq mu4e-trash-folder "/INBOX.Trash")
+
+;; ;; shortcuts
+;; (setq mu4e-maildir-shortcuts
+;;       '( ("/INBOX" . ?i)
+;;          ("/INBOX.Sent Items" . ?s)))
+
+;; ;; something about ourselves
+;; (setq user-mail-address "YOUR_EMAIL_ADRESS"
+;;       user-full-name  "YOUR_FULL_NAME")
