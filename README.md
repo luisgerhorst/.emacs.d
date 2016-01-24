@@ -83,26 +83,60 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 
 -   __Receiving Mail__
 
-    Here's a tutorial: http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/
+    We'll use `offlineimap` to fetch mail from the server, install it
+    with
 
-    Follow the tutorial, also have a look at the comments. The files
-    `customizations/my-apps.el`,
-    `customizations/my-machine-local.el.template` and
-    `customizations/my-private.el.template` already contain the options
-    you need, just modify them according to your mail provider.
+    ```sh
+    brew install offline-imap
+    ```
 
-    To install `mu4e` I only had to run
+    Now configure it, here's the config when you're using FastMail:
+
+    ```
+    [general]
+    accounts = FastMail
+
+    [Account FastMail]
+    localrepository = FastMailLocal
+    remoterepository = FastMailRemote
+
+    [Repository FastMailLocal]
+    type = Maildir
+    localfolders = ~/.maildir
+
+    [Repository FastMailRemote]
+    type = IMAP
+    remotehost = mail.messagingengine.com
+    remoteuser = YOUR_MAIL@fastmail.fm
+    remotepass = YOUR_PASSWORD
+    cert_fingerprint = 958b1601563aef92607a41eb5bad22e3cace8431
+    ```
+
+    Do not configure it to run indefinitely, automatically syncing your
+    mail periodically (with `autorefresh`). Also do not make your OS
+    start it as a deamon on login (e.g. by copying some plists to
+    `~/Library/LaunchAgents` as the homebrew formula suggests). `mu4e`
+    will take care of everything.
+
+    Now run `offlineimap` once from the terminal to fill your Maildir
+    with messages.
+
+    When done, install `mu4e` using
 
     ```sh
     EMACS=$(which emacs) brew install mu --with-emacs --HEAD
     ```
 
-    and make sure `/usr/local/share/emacs/site-lisp/mu/mu4e` (probably
-    also `.../site-lisp/mu4e`) is in my Emacs load path to make it
-    work. Renaming `/usr/bin/emacs` was not required (I have Emacs
-    installed with Homebrew and in my PATH `/usr/local/bin` comes before
-    `/usr/bin`, also because of some limitations of OS X 10.11.2 I could
-    not modify `/usr/bin` anyway, even with `sudo`).
+    Then `mu index --maildir=~/.maildir` to index you Maildir.
+
+    Then configure `mu4e` according to your mail provider. The files
+    `customizations/my-apps.el`,
+    `customizations/my-machine-local.el.template` and
+    `customizations/my-private.el.template` already contain the options
+    you need, just modify them.
+
+    Here's a tutorial that may also help you:
+http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/
 
 Now open Emacs, all required packages will be installed automatically
 which may take a while.
