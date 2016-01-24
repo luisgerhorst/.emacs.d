@@ -75,11 +75,34 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 
     `YOUR_SMTP_SERVER_PORT` is probably `587`, `YOUR_SERVER_LOGIN` is
     your E-Mail adress. Now make sure you edit
-    `customizations/private.el` to contain all variables required for
-    sending mails. You may also have a look at `customizations/apps.el`
+    `customizations/my-private.el` to contain all variables required for
+    sending mails. You may also have a look at `customizations/my-apps.el`
     for more options.
 
     Source: http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
+
+-   __Receiving Mail__
+
+    Here's a tutorial: http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/
+
+    Follow the tutorial, also have a look at the comments. The files
+    `customizations/my-apps.el`,
+    `customizations/my-machine-local.el.template` and
+    `customizations/my-private.el.template` already contain the options
+    you need, just modify them according to your mail provider.
+
+    To install `mu4e` I only had to run
+
+    ```sh
+    EMACS=$(which emacs) brew install mu --with-emacs --HEAD
+    ```
+
+    and make sure `/usr/local/share/emacs/site-lisp/mu/mu4e` (probably
+    also `.../site-lisp/mu4e`) is in my Emacs load path to make it
+    work. Renaming `/usr/bin/emacs` was not required (I have Emacs
+    installed with Homebrew and in my PATH `/usr/local/bin` comes before
+    `/usr/bin`, also because of some limitations of OS X 10.11.2 I could
+    not modify `/usr/bin` anyway, even with `sudo`).
 
 Now open Emacs, all required packages will be installed automatically
 which may take a while.

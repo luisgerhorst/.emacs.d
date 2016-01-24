@@ -1,6 +1,9 @@
+
+;; If you hit GitHubs rate limit when using paradox, you can enter your
+;; GitHub access token here to increase it.
 ;; (setq paradox-github-token "YOUR_GITHUB_TOKEN")
 
-;;; For sending mail.
+;;; Sending mail.
 
 ;; (setq user-full-name "YOUR_FULL_NAME"
 ;;       user-mail-address "YOUR_EMAIL_ADRESS"
@@ -8,18 +11,34 @@
 ;;       smtpmail-smtp-server "YOUR_SMTP_SERVER"
 ;;       smtpmail-smtp-service YOUR_SMTP_SERVER_PORT)
 
-;;; For reading mail.
+;;; Reading mail.
 
+;; Specify the location of your Maildir and the purpose of the folders
+;; it contains. The following config is for a directory structure that
+;; looks like this:
+;;
+;; ~/.maildir
+;; ├── INBOX
+;; ├── INBOX.Archive
+;; ├── INBOX.Drafts
+;; ├── INBOX.Junk Mail
+;; ├── INBOX.Notes
+;; ├── INBOX.Sent Items
+;; └── INBOX.Trash
 ;; (setq mu4e-maildir "~/.maildir")
 ;; (setq mu4e-drafts-folder "/INBOX.Drafts")
 ;; (setq mu4e-sent-folder   "/INBOX.Sent Items")
 ;; (setq mu4e-trash-folder "/INBOX.Trash")
 
-;; ;; shortcuts
+;; Shortcuts to access specific folders.
 ;; (setq mu4e-maildir-shortcuts
 ;;       '( ("/INBOX" . ?i)
 ;;          ("/INBOX.Sent Items" . ?s)))
 
-;; ;; something about ourselves
+;; Personal information.
 ;; (setq user-mail-address "YOUR_EMAIL_ADRESS"
 ;;       user-full-name  "YOUR_FULL_NAME")
+
+;; Uncomment this if your mail provider automatically saves sent
+;; messages to your sent folder (e.g. Gmail, FastMail not for instance).
+;; (setq mu4e-sent-messages-behavior 'delete)

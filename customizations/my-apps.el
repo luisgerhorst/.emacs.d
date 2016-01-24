@@ -65,12 +65,8 @@
 
 ;; Reading Mail.
 
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
-(setq mu4e-mu-binary "/usr/local/bin/mu")
 
-;; don't save message to Sent Messages, Gmail/IMAP takes care of this
-(setq mu4e-sent-messages-behavior 'delete)
 ;; allow for updating mail using 'U' in the main view:
 (setq mu4e-get-mail-command "offlineimap")
 
