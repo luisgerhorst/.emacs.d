@@ -68,6 +68,10 @@
 (require 'mu4e)
 
 (define-key launcher-map (kbd "m") #'mu4e)
+;; Start mu4e in background when opening Emacs (to receive notifications
+;; about new mail).
+(add-hook 'after-init-hook (lambda () (mu4e 1)))
+
 
 (setq mu4e-get-mail-command "offlineimap")
 (setq mu4e-update-interval (* 10 60))
