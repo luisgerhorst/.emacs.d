@@ -113,6 +113,9 @@ locate PACKAGE."
 
 (load "my-languages.el")
 
+(load "my-mail.el")
+(load "my-mail-private.el")
+
 (load "my-apps.el")
 
 ;; Hard-to-categorize customizations
@@ -122,6 +125,7 @@ locate PACKAGE."
 
 ;; This is for private stuff. Never publish.
 (load "my-private.el")
+
 
 ;; Update the Emacs config automatically using git.
 (setq git-pull-emacs-config-command

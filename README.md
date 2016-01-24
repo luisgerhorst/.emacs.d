@@ -136,10 +136,10 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     Then `mu index --maildir=~/.maildir` to index you Maildir.
 
     Then configure `mu4e` according to your mail provider. The files
-    `customizations/my-apps.el`,
+    `customizations/my-mail.el`,
     `customizations/my-machine-local.el.template` and
-    `customizations/my-private.el.template` already contain the options
-    you need, just modify them.
+    `customizations/my-mail-private.el.template` already contain the
+    options you need, just modify them.
 
     Here's a tutorial that may also help you:
 http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/
