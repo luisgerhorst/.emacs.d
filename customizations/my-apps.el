@@ -67,6 +67,8 @@
 
 (require 'mu4e)
 
+(define-key launcher-map (kbd "m") #'mu4e)
+
 ;; allow for updating mail using 'U' in the main view:
 (setq mu4e-get-mail-command "offlineimap")
 
@@ -86,12 +88,15 @@
 ;;   - view in browser (provided below)
 (setq mu4e-html2text-command "textutil -stdin -format html -convert txt -stdout")
 
-;; spell check
-(add-hook 'mu4e-compose-mode-hook
-          (defun my-do-compose-stuff ()
-            "My settings for message composition."
-            (set-fill-column 72)
-            (flyspell-mode)))
+(defun my/mu4e-compose-mode-hook ()
+  "My settings for message composition."
+  (visual-line-mode 1)
+  (auto-fill-mode -1)
+  (require-package 'visual-fill-column)
+  (require 'visual-fill-column)
+  (visual-fill-column-mode 1))
+
+(add-hook 'mu4e-compose-mode-hook 'my/mu4e-compose-mode-hook)
 
 ;; add option to view html message in a browser
 ;; `aV` in view to activate

@@ -87,7 +87,7 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     with
 
     ```sh
-    brew install offline-imap
+    brew install offlineimap
     ```
 
     Now configure it, here's the config when you're using FastMail:
