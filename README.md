@@ -144,5 +144,9 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     Here's a tutorial that may also help you:
 http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/
 
+    Install `terminal-notifier` using `brew install terminal-notifier`
+    for desktop notifications by
+    [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
+
 Now open Emacs, all required packages will be installed automatically
 which may take a while.
