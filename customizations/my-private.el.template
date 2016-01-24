@@ -48,3 +48,6 @@
 ;; Uncomment this if your mail provider automatically saves sent
 ;; messages to your sent folder (e.g. Gmail, FastMail not for instance).
 ;; (setq mu4e-sent-messages-behavior 'delete)
+
+;; (setq mu4e-alert-interesting-mail-query
+;;       "flag:unread AND ( maildir:\"/Inbox\" OR maildir:\"/Arbeit\" OR maildir:\"/Uni\" )")

@@ -69,8 +69,8 @@
 
 (define-key launcher-map (kbd "m") #'mu4e)
 
-;; allow for updating mail using 'U' in the main view:
 (setq mu4e-get-mail-command "offlineimap")
+(setq mu4e-update-interval (* 10 60))
 
 ;; show images
 (setq mu4e-show-images t)
@@ -103,5 +103,7 @@
 (add-to-list 'mu4e-view-actions
              '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
-;; fetch mail every 10 mins
-(setq mu4e-update-interval 600)
+(require-package 'mu4e-alert)
+(mu4e-alert-set-default-style 'notifier)
+(add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
+(add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
