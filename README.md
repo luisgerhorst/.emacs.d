@@ -103,6 +103,7 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     [Repository FastMailLocal]
     type = Maildir
     localfolders = ~/.maildir
+    # nametrans = lambda folder: "INBOX" if folder == "Inbox" else "INBOX." + folder
 
     [Repository FastMailRemote]
     type = IMAP
@@ -110,13 +111,18 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     remoteuser = YOUR_MAIL@fastmail.fm
     remotepass = YOUR_PASSWORD
     cert_fingerprint = 958b1601563aef92607a41eb5bad22e3cace8431
+    # folderfilter = lambda folder: folder not in ['INBOX.Inbox']
+    # nametrans = lambda folder: "Inbox" if folder == "INBOX" else re.sub('^INBOX\.', '', folder)
     ```
 
     Do not configure it to run indefinitely, automatically syncing your
     mail periodically (with `autorefresh`). Also do not make your OS
     start it as a deamon on login (e.g. by copying some plists to
     `~/Library/LaunchAgents` as the homebrew formula suggests). `mu4e`
-    will take care of everything.
+    will take care of everything. Read the
+    [`offlineimap` docs](http://docs.offlineimap.org/en/latest/nametrans.html)
+    to set up nametrans properly. You can ommit this if you don't want
+    nice folder names.
 
     Now run `offlineimap` once from the terminal to fill your Maildir
     with messages.
