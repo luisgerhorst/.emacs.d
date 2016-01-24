@@ -30,10 +30,14 @@
 ;; (setq mu4e-sent-folder   "/INBOX.Sent Items")
 ;; (setq mu4e-trash-folder "/INBOX.Trash")
 
-;; Shortcuts to access specific folders.
+;; Shortcuts to access specific folders / mails.
 ;; (setq mu4e-maildir-shortcuts
 ;;       '( ("/INBOX" . ?i)
 ;;          ("/INBOX.Sent Items" . ?s)))
+;; (setq mu4e-bookmarks
+;;       '(("flag:unread AND ( maildir:\"/INBOX\" OR maildir:\"/INBOX.Arbeit\" OR maildir:\"/INBOX.Uni\" )"
+;;          "Unread personal messages"
+;;          ?u)))
 
 ;; Personal information.
 ;; (setq user-mail-address "YOUR_EMAIL_ADRESS"
