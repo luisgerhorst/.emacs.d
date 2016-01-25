@@ -26,10 +26,10 @@
 (setq mu4e-get-mail-command "offlineimap")
 (setq mu4e-update-interval (* 10 60))
 
-;; On startup, pick first context in `mu4e-contexts'.
+;; First one is the default fallback context.
 (setq mu4e-context-policy 'pick-first)
-;; Use current context if none matches.
-(setq mu4e-compose-context-policy nil)
+(setq mu4e-compose-context-policy 'pick-first)
+
 (setq mu4e-show-images t)
 
 (when (fboundp 'imagemagick-register-types)
