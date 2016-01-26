@@ -1,5 +1,5 @@
-;; These customizations make it easier for you to navigate files,
-;; switch buffers, and choose options from the minibuffer.
+;;;; These customizations make it easier for you to navigate files,
+;;;; switch buffers, and choose options from the minibuffer.
 
 ;; See customize for options.
 (ido-mode 1)
@@ -12,9 +12,19 @@
 (require-package 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
-;; Discover Emacs with popup buffers.
+
+;;; Discover Emacs with popup buffers.
+
 (require-package 'discover)
 (require 'discover)
+
+;; More intuitive shortcuts for bookmark commands, but still with nice
+;; discover popup.
+(discover-add-context-menu
+ ;; See discover.el for key.
+ :context-menu (assq 'rectangles discover-context-menus)
+ :bind "H-r")
+
 
 ;; Enhances M-x to allow easier execution of commands. Provides
 ;; a filterable list of possible commands in the minibuffer
