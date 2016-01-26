@@ -1,7 +1,7 @@
-;; Mail
+;;;; Mail
 
-;; Options required for sending mails. Additional variables have to be
-;; set in private.el.
+;;; Options required for sending mails. Additional variables have to be
+;;; set in private.el.
 
 ;; See
 ;; http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
@@ -15,7 +15,7 @@
       smtpmail-warn-about-unknown-extensions t
       starttls-use-gnutls t)
 
-;; Reading Mail.
+;;; Reading Mail.
 
 (require 'mu4e)
 
@@ -31,7 +31,6 @@
 (setq mu4e-compose-context-policy 'pick-first)
 
 (setq mu4e-show-images t)
-
 (when (fboundp 'imagemagick-register-types)
   (imagemagick-register-types))
 
@@ -43,6 +42,11 @@
 ;;   - w3m -dump -cols 80 -T text/html
 ;;   - view in browser (provided below)
 (setq mu4e-html2text-command "textutil -stdin -format html -convert txt -stdout")
+
+;; add option to view html message in a browser
+;; `aV` in view to activate
+(add-to-list 'mu4e-view-actions
+             '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
 (require-package 'visual-fill-column)
 (require 'visual-fill-column)
@@ -60,10 +64,7 @@
 (add-hook 'mu4e-compose-mode-hook 'my/mu4e-compose-mode-hook)
 (add-hook 'mu4e-view-mode-hook 'my/mu4e-view-mode-hook)
 
-;; add option to view html message in a browser
-;; `aV` in view to activate
-(add-to-list 'mu4e-view-actions
-             '("ViewInBrowser" . mu4e-action-view-in-browser) t)
+;;; Get notified when new mails arrive.
 
 (require-package 'mu4e-alert)
 (mu4e-alert-set-default-style 'notifier)
