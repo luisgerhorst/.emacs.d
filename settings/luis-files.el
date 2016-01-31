@@ -45,10 +45,6 @@
 ;; Cleaner dired.
 (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
 
-;; Like Nerdtree for Vim
-(require-package 'neotree)
-(define-key launcher-map (kbd "t") 'neotree-toggle)
-
 ;; "When several buffers visit identically-named files,
 ;; Emacs must give the buffers distinct names. The usual method
 ;; for making buffer names unique adds ‘<2>’, ‘<3>’, etc. to the end
@@ -58,14 +54,6 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Uniquify.html
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
-
-(require-package 'recentf)
-(require 'recentf)
-(defun ido-choose-from-recentf ()
-  "Use ido to select a recently visited file from the `recentf-list'"
-  (interactive)
-  (find-file (ido-completing-read "Open file: " recentf-list nil t)))
-(global-set-key (kbd "C-x f") 'ido-choose-from-recentf)
 
 (require-package 'projectile)
 (require 'projectile)

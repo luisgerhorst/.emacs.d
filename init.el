@@ -6,14 +6,24 @@
 
 ;;; Packages
 
-;; Define package repositories
 (require 'package)
+
+(setq package-enable-at-startup nil)
 
 (add-to-list 'package-archives '("elpa" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
-;; On-demand installation of packages
+(package-initialize)
+
+;(unless (package-installed-p 'use-package)
+;  (package-refresh-contents)
+;  (package-install 'use-package))
+
+;(require use-package)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 (defun require-package (package &optional min-version no-refresh)
   "Install given PACKAGE, optionally requiring MIN-VERSION.
@@ -40,17 +50,6 @@ locate PACKAGE."
      (message "Couldn't install package `%s': %S" package err)
      nil)))
 
-;; Load and activate emacs packages. Do this first so that the packages
-;; are loaded before you start trying to modify them.  This also sets
-;; the load path.
-(setq package-enable-at-startup nil)
-(package-initialize)
-
-;; Download the ELPA archive description if needed. This informs Emacs
-;; about the latest versions of all packages, and makes them available
-;; for download.
-(when (not package-archive-contents)
-  (package-refresh-contents))
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.

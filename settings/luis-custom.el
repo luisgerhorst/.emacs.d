@@ -200,18 +200,6 @@
  '(frame-resize-pixelwise t)
  '(global-discover-mode t)
  '(global-subword-mode t)
- '(helm-M-x-fuzzy-match t)
- '(helm-autoresize-mode t)
- '(ido-cr+-fallback-function (quote completing-read-default))
- '(ido-enable-flex-matching t)
- '(ido-everywhere t)
- '(ido-ignore-files
-   (quote
-    ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\.DS_Store")))
- '(ido-max-window-height nil)
- '(ido-mode (quote both) nil (ido))
- '(ido-ubiquitous-mode t)
- '(ido-use-filename-at-point nil)
  '(indent-tabs-mode nil)
  '(initial-frame-alist (quote ((vertical-scroll-bars))))
  '(ispell-dictionary "de_DE")
