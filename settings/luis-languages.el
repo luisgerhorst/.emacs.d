@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d/customizations/languages")
+(add-to-list 'load-path "~/.emacs.d/settings/languages")
 (load "luis-elisp.el")
 (load "luis-erlang.el")
 (load "luis-haskell.el")

@@ -69,52 +69,33 @@ locate PACKAGE."
 (define-prefix-command 'launcher-map)
 (global-set-key (kbd "H-s") 'launcher-map)
 
-;;;;
-;; My Customizations
-;;;;
+;;; Settings
 
 ;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "customizations/my-custom.el" user-emacs-directory))
+(setq custom-file (expand-file-name "settings/luis-custom.el" user-emacs-directory))
 (load custom-file)
 
 ;; Add a directory to our load path so that when you `load` things
 ;; below, Emacs knows where to look for the corresponding file.
-(add-to-list 'load-path (expand-file-name "customizations/" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "settings/" user-emacs-directory))
 
-;; Sets up exec-path-from-shell so that Emacs will use the correct
-;; environment variables
-(load "my-integration.el")
+(load "luis-integration.el")
+(load "luis-navigation.el")
+(load "luis-user-interaction.el")
+(load "luis-look.el")
+(load "luis-files.el")
+(load "luis-editing.el")
+(load "luis-movement.el")
+(load "luis-languages.el")
+(load "luis-mail.el")
+(load "luis-apps.el")
+(load "luis-misc.el")
 
-;; These customizations make it easier for you to navigate files,
-;; switch buffers, and choose options from the minibuffer.
-(load "my-navigation.el")
+;; Excluded from Git.
+(load "luis-machine-local.el")
+(load "luis-private.el")
 
-;; These customizations change the way emacs looks and disable/enable
-;; some user interface elements
-(load "my-user-interaction.el")
-(load "my-look.el")
-
-(load "my-files.el")
-
-;; These customizations make editing a bit nicer.
-(load "my-editing.el")
-(load "my-movement.el")
-
-(load "my-languages.el")
-
-(load "my-mail.el")
-(load "my-mail-private.el")
-
-(load "my-apps.el")
-
-;; Hard-to-categorize customizations
-(load "my-misc.el")
-
-(load "my-machine-local.el")
-
-;; This is for private stuff. Never publish.
-(load "my-private.el")
-
+;;; Update
 
 ;; Update the Emacs config automatically using git.
 (setq git-pull-emacs-config-command

@@ -5,11 +5,11 @@
 
 ;; Git interface.
 (require-package 'magit)
-(define-key launcher-map (kbd "g") 'magit-status)
+(define-key launcher-map (kbd "g") #'magit-status)
 
 ;; Fancier list-packages.
 (require-package 'paradox)
-(define-key launcher-map (kbd "p") 'paradox-list-packages)
+(define-key launcher-map (kbd "p") #'paradox-list-packages)
 
 (define-key launcher-map (kbd "c") #'calc)
 

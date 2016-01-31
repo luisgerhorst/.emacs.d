@@ -16,9 +16,9 @@
 /tramp
 /elpa/
 
-/customizations/my-private.el
-/customizations/my-machine-local.el
+/settings/luis-private.el
+/settings/luis-mail-private.el
+/settings/luis-machine-local.el
 /url/
 /bookmarks
 /eshell/
-/customizations/my-mail-private.el

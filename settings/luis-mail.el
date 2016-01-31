@@ -1,30 +1,26 @@
 ;;;; Mail
 
-;;; Options required for sending mails. Additional variables have to be
-;;; set in private.el.
+;;; Sending Mail.
 
 ;; See
 ;; http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
 ;; for a good tutorial.
-(setq send-mail-function 'smtpmail-send-it
-      message-send-mail-function 'smtpmail-send-it
-      smtpmail-auth-credentials (expand-file-name "~/.authinfo")
-      smtpmail-debug-info t
-      starttls-extra-arguments nil
-      starttls-gnutls-program (executable-find "gnutls-cli")
-      smtpmail-warn-about-unknown-extensions t
-      starttls-use-gnutls t)
+
+(setq send-mail-function 'smtpmail-send-it)
 
 ;;; Reading Mail.
 
 (require 'mu4e)
+
+;; Replace compose-mail with mu4e's version.
+(global-set-key [remap compose-mail] #'mu4e-compose-new)
 
 ;; Start mu4e in background when opening Emacs (to receive notifications
 ;; about new mail).
 (add-hook 'after-init-hook (lambda () (mu4e 1)))
 
 (setq mu4e-get-mail-command "offlineimap")
-(setq mu4e-update-interval (* 10 60))
+(setq mu4e-update-interval (* 5 60))
 
 ;; First one is the default fallback context.
 (setq mu4e-context-policy 'pick-first)
@@ -63,6 +59,10 @@
 
 (add-hook 'mu4e-compose-mode-hook 'my/mu4e-compose-mode-hook)
 (add-hook 'mu4e-view-mode-hook 'my/mu4e-view-mode-hook)
+
+;;; Load account specific configuration.
+
+(load "luis-mail-private.el")
 
 ;;; Get notified when new mails arrive.
 
