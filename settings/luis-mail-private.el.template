@@ -88,3 +88,8 @@
 ;;                         (cdr (assq 'user-mail-address
 ;;                                    (mu4e-context-vars context)))))
 ;;                     mu4e-contexts)))
+
+;;; Alerts
+
+;; (setq mu4e-alert-interesting-mail-query
+;;       "flag:unread AND ( maildir:\"/Inbox\" OR maildir:\"/Arbeit\" OR maildir:\"/Uni\" )")
