@@ -1,21 +1,10 @@
-;;;;
-;; UI, turn of early to prevent momentary display
-;;;;
-
-;; Diable menu, tool and scroll bar.
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
 ;; Bookmark on startup.
 (setq initial-buffer-choice
       (lambda ()
         (bookmark-bmenu-list)
         (get-buffer "*Bookmark List*")))
 
-;;;;
-;; Packages
-;;;;
+;;; Packages
 
 ;; Define package repositories
 (require 'package)
@@ -51,15 +40,15 @@ locate PACKAGE."
      (message "Couldn't install package `%s': %S" package err)
      nil)))
 
-;; Load and activate emacs packages. Do this first so that the
-;; packages are loaded before you start trying to modify them.
-;; This also sets the load path.
+;; Load and activate emacs packages. Do this first so that the packages
+;; are loaded before you start trying to modify them.  This also sets
+;; the load path.
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-;; Download the ELPA archive description if needed.
-;; This informs Emacs about the latest versions of all packages, and
-;; makes them available for download.
+;; Download the ELPA archive description if needed. This informs Emacs
+;; about the latest versions of all packages, and makes them available
+;; for download.
 (when (not package-archive-contents)
   (package-refresh-contents))
 
