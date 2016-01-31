@@ -1,7 +1,5 @@
 # .emacs.d
 
-I no longer use this config, see my new [Spacemacs config](https://github.com/luisgerhorst/dotfiles/tree/master/.spacemacs.d).
-
 My `.emacs.d` for Mac OS X. Originally derived from
 [flyingmachine/emacs-for-clojure](https://github.com/flyingmachine/emacs-for-clojure).
 
