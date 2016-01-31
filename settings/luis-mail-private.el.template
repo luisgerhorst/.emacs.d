@@ -14,7 +14,7 @@
  ;; it contains. The following config is for a directory structure that
  ;; looks like this:
  
- ;; ~/.maildir
+ ;; ~/.maildir/fastmail
  ;; ├── Inbox
  ;; ├── Archive
  ;; ├── Drafts
