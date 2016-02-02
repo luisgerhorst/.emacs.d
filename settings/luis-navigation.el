@@ -24,9 +24,6 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x f") 'helm-recentf)
 
-(setq helm-autoresize-mode t
-      helm-autoresize-max-height 30)
-
 ;; Show input at the top.
 (setq helm-echo-input-in-header-line t)
 ;; Hide minibuffer in Helm session, since we use the header line
