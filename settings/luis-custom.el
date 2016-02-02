@@ -240,4 +240,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:height 130 :family "Input Mono"))))
+ '(helm-ff-dotted-directory ((t (:foreground "#586e75"))))
+ '(helm-ff-dotted-symlink-directory ((t (:foreground "#586e75"))))
+ '(helm-selection ((t (:background "#839496" :foreground "#002b36" :underline nil))))
+ '(helm-source-header ((t (:background "#268bd2" :foreground "#002b36" :underline nil))))
  '(leerzeichen ((t (:foreground "#475B62")))))
