@@ -91,3 +91,6 @@
     ("w" "window configuration to register" window-configuration-to-register)
     ("x" "copy to register" copy-to-register))))
  :bind "H-r")                           ; More convenient shortcut.
+
+
+(provide 'luis-interactive)

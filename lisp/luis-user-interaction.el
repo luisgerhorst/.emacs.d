@@ -1,5 +1,3 @@
-;; Improve user interaction.
-
 ;; Scroll in smaller steps.
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
@@ -13,11 +11,6 @@
 
 ;; Better shortcut for switching buffers (normally C-x o).
 (global-set-key (kbd "H-w") 'other-window)
-
-;; Ask before closing Emacs to prevent bad habit of closing it when you really
-;; want to kill the current buffer. Causes problems when mac shuts down
-;; and Emacs is still open.
-;; (setq confirm-kill-emacs 'y-or-n-p)
 
 (global-set-key (kbd "H-z") 'undo)
 
@@ -33,3 +26,6 @@
 
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
+
+
+(provide 'luis-user-interaction)

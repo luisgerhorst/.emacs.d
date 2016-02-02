@@ -131,3 +131,5 @@ With negative prefix, apply to -N lines above."
 ;; Call to show invisible chars.
 (require-package 'leerzeichen)
 (require 'leerzeichen)
+
+(provide 'luis-editing)

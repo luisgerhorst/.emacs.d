@@ -62,7 +62,7 @@
 
 ;;; Load account specific configuration.
 
-(load "luis-mail-private.el")
+(require 'luis-mail-private)
 
 ;;; Get notified when new mails arrive.
 
@@ -70,3 +70,5 @@
 (mu4e-alert-set-default-style 'notifier)
 (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
 (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+
+(provide 'luis-mail)

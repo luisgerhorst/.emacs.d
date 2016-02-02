@@ -16,8 +16,12 @@
  ;; Mouse yank commands yank at point instead of at click.
  mouse-yank-at-point t)
 
-;; For emacsclient.
-(server-start)
+;;----------------------------------------------------------------------------
+;; Allow access from emacsclient
+;;----------------------------------------------------------------------------
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; Sets up exec-path-from-shell
 ;; https://github.com/purcell/exec-path-from-shell
@@ -103,3 +107,6 @@ end tell
 (when (eq system-type 'darwin)
   (advice-add 'handle-delete-frame :override
               #'handle-delete-frame-without-kill-emacs))
+
+
+(provide 'luis-osx-integration)

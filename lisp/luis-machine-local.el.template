@@ -2,7 +2,7 @@
 ;; (add-to-list 'default-frame-alist '(height . 46))
 ;; (add-to-list 'default-frame-alist '(width . 157))
 
-;;; 27" screen
+;;; Half 27" screen.
 ;; (add-to-list 'default-frame-alist '(height . 86))
 ;; (add-to-list 'default-frame-alist '(width . 157))
 
@@ -12,3 +12,5 @@
 ;; Required for reading mail. Location of mu binary (the following path
 ;; should be correct if mu was installed with homebrew).
 ;; (setq mu4e-mu-binary "/usr/local/bin/mu")
+
+(provide 'luis-machine-local)

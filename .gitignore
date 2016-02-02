@@ -15,10 +15,10 @@
 /projectile.cache
 /tramp
 /elpa/
-
-/settings/luis-private.el
-/settings/luis-mail-private.el
-/settings/luis-machine-local.el
 /url/
 /bookmarks
 /eshell/
+
+/lisp/luis-private.el
+/lisp/luis-mail-private.el
+/lisp/luis-machine-local.el

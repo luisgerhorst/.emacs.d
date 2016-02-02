@@ -55,3 +55,5 @@
 
 ;; Don't ask when deleting directory.
 (setq dired-recursive-deletes 'always)
+
+(provide 'luis-files)

@@ -67,3 +67,6 @@
   (interactive "^P")
   (scroll-down-command (or argument (relative-scroll-lines))))
 (global-set-key [remap scroll-down-command] 'relative-scroll-down-command)
+
+
+(provide 'luis-movement)

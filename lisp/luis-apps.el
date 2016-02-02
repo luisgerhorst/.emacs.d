@@ -48,3 +48,5 @@
         (delete-region (point-min) (point-max))
         (insert output)
         (search-backward "ERROR!")))))
+
+(provide 'luis-apps)
