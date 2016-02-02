@@ -18,7 +18,7 @@
         (kill-buffer buffer)
         (message "File '%s' successfully removed" filename)))))
 
-(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
+(global-set-key (kbd "C-c f d") 'delete-current-buffer-file)
 
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
@@ -37,13 +37,16 @@
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
-(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+(global-set-key (kbd "C-c f r") 'rename-current-buffer-file)
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
 ;; Cleaner dired.
 (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
+
+;; Don't ask when deleting directory.
+(setq dired-recursive-deletes 'always)
 
 ;; "When several buffers visit identically-named files,
 ;; Emacs must give the buffers distinct names. The usual method
