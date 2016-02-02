@@ -1,41 +1,15 @@
-;;; Helm
+;;; Interactively do things
 
-(add-to-list 'load-path
-             (expand-file-name "vendor/async" user-emacs-directory))
-(add-to-list 'load-path
-             (expand-file-name "vendor/helm" user-emacs-directory))
-(require 'helm-config)
+;; See customize for options.
+(ido-mode 1)
 
-;; Basic helm with fuzzy-matching everywhere.
-(helm-mode 1)
-(setq helm-mode-fuzzy-match t)
+;; Turn this behavior off because it's annoying
+(setq ido-use-filename-at-point nil)
 
-;; Always fuzzy-match.
-(setq helm-M-x-fuzzy-match t
-      helm-apropos-fuzzy-match t
-      helm-file-cache-fuzzy-match t
-      helm-imenu-fuzzy-match t
-      helm-lisp-fuzzy-completion t
-      helm-recentf-fuzzy-match t
-      helm-semantic-fuzzy-match t
-      helm-buffers-fuzzy-matching t)
-
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x f") 'helm-recentf)
-
-;; Show input at the top.
-(setq helm-echo-input-in-header-line t)
-;; Hide minibuffer in Helm session, since we use the header line
-;; already.
-(defun helm-hide-minibuffer-maybe ()
-  (when (with-helm-buffer helm-echo-input-in-header-line)
-    (let ((ov (make-overlay (point-min) (point-max) nil nil t)))
-      (overlay-put ov 'window (selected-window))
-      (overlay-put ov 'face (let ((bg-color (face-background 'default nil)))
-                              `(:background ,bg-color :foreground ,bg-color)))
-      (setq-local cursor-type nil))))
-(add-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
+;; This enables ido in all contexts where it could be useful, not just
+;; for selecting buffer and file names
+(require-package 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
 
 ;; "When several buffers visit identically-named files,
 ;; Emacs must give the buffers distinct names. The usual method
@@ -46,6 +20,14 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Uniquify.html
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+;; Enhances M-x to allow easier execution of commands. Provides
+;; a filterable list of possible commands in the minibuffer
+;; http://www.emacswiki.org/emacs/Smex
+(require-package 'smex)
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
 
 ;;; Discover Emacs with popup buffers.
 
