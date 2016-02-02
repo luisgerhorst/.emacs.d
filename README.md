@@ -10,12 +10,12 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 
 -   __Local Config__
 
-    Rename the file `customizations/luis-private.el.template` to
-    `customizations/luis-private.el`. You may also edit it to contain all
+    Rename the file `lisp/luis-private.el.template` to
+    `lisp/luis-private.el`. You may also edit it to contain all
     desired values. The file will not be included in your git
     repository.
 
-    Do the same for `customizations/luis-machine-local.el.template`. Its
+    Do the same for `lisp/luis-machine-local.el.template`. Its
     for settings specific to your machine (e.g. settings that depend on
     your screen size). Git also ignores this file.
 
@@ -32,7 +32,7 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     `gls` (GNU-Version of `ls`) has to be in your `$PATH`. Do `brew
     install coreutils`. If you want to use the default `ls` change
     `insert-directory-program` (is set in
-    `customizations/luis-integration.el`).
+    `lisp/luis-integration.el`).
 
 -   __Erlang__
 
@@ -75,8 +75,8 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 
     `YOUR_SMTP_SERVER_PORT` is probably `587`, `YOUR_SERVER_LOGIN` is
     your E-Mail adress. Now make sure you edit
-    `customizations/luis-private.el` to contain all variables required for
-    sending mails. You may also have a look at `customizations/luis-apps.el`
+    `lisp/luis-private.el` to contain all variables required for
+    sending mails. You may also have a look at `lisp/luis-apps.el`
     for more options.
 
     Source: http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
@@ -136,9 +136,9 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     Then `mu index --maildir=~/.maildir` to index you Maildir.
 
     Then configure `mu4e` according to your mail provider. The files
-    `customizations/luis-mail.el`,
-    `customizations/luis-machine-local.el.template` and
-    `customizations/luis-mail-private.el.template` already contain the
+    `lisp/luis-mail.el`,
+    `lisp/luis-machine-local.el.template` and
+    `lisp/luis-mail-private.el.template` already contain the
     options you need, just modify them.
 
     Here's a tutorial that may also help you:
