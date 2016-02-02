@@ -1,9 +1,18 @@
+;;; Emacs Files
+
 ;; Emacs can automatically create backup files. This tells Emacs to
 ;; put all backups in ~/.emacs.d/backups. More info:
 ;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html
-(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups"))))
+
 ;; Prevent asking to recover changed file when changes were discarded.
 (setq auto-save-default nil)
+
+;; No need for ~ files when editing.
+(setq create-lockfiles nil)
+
+;;; Easy actions on current file.
 
 (defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
@@ -39,25 +48,10 @@
 
 (global-set-key (kbd "C-c f r") 'rename-current-buffer-file)
 
-;; No need for ~ files when editing
-(setq create-lockfiles nil)
+;;; Dired
 
 ;; Cleaner dired.
 (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
 
 ;; Don't ask when deleting directory.
 (setq dired-recursive-deletes 'always)
-
-;; "When several buffers visit identically-named files,
-;; Emacs must give the buffers distinct names. The usual method
-;; for making buffer names unique adds ‘<2>’, ‘<3>’, etc. to the end
-;; of the buffer names (all but one of them).
-;; The forward naming method includes part of the file's directory
-;; name at the beginning of the buffer name
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Uniquify.html
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
-(require-package 'projectile)
-(require 'projectile)
-(global-set-key (kbd "H-d") 'projectile-command-map)

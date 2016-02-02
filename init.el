@@ -16,12 +16,6 @@
 
 (package-initialize)
 
-;(unless (package-installed-p 'use-package)
-;  (package-refresh-contents)
-;  (package-install 'use-package))
-
-;(require use-package)
-
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -37,7 +31,6 @@ re-downloaded in order to locate PACKAGE."
         (package-refresh-contents)
         (require-package package min-version t)))))
 
-
 (defun maybe-require-package (package &optional min-version no-refresh)
   "Try to install PACKAGE, and return non-nil if successful.
 In the event of failure, return nil and print a warning message.
@@ -49,7 +42,6 @@ locate PACKAGE."
     (error
      (message "Couldn't install package `%s': %S" package err)
      nil)))
-
 
 ;; Place downloaded elisp files in ~/.emacs.d/vendor. You'll then be able
 ;; to load them.
