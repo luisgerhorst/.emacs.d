@@ -32,7 +32,7 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     `gls` (GNU-Version of `ls`) has to be in your `$PATH`. Do `brew
     install coreutils`. If you want to use the default `ls` change
     `insert-directory-program` (is set in
-    `lisp/luis-integration.el`).
+    `lisp/luis-files.el`).
 
 -   __Erlang__
 
@@ -136,10 +136,9 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     Then `mu index --maildir=~/.maildir` to index you Maildir.
 
     Then configure `mu4e` according to your mail provider. The files
-    `lisp/luis-mail.el`,
-    `lisp/luis-machine-local.el.template` and
-    `lisp/luis-mail-private.el.template` already contain the
-    options you need, just modify them.
+    `lisp/luis-mail.el`, `lisp/luis-machine-local.el.template` and
+    `lisp/lib/luis-mail-private.el.template` already contain the options
+    you need, just modify them.
 
     Here's a tutorial that may also help you:
 http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/
