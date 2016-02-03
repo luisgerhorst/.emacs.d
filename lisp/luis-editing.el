@@ -1,4 +1,7 @@
-;; Customizations relating to editing a buffer.
+;;;; Customizations relating to editing a buffer.
+
+;; Indentation settings.
+(require 'luis-indentation)
 
 (defun die-tabs ()
   "Replace tabs with spaces."
@@ -16,64 +19,11 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-;; Expand Region
-(require-package 'expand-region)
-(require 'expand-region)
-(global-set-key (kbd "C-2") 'er/expand-region)
-
 ;;; Fancier manipulate whitespace function.
 ;; M-SPC does not work on my Mac, is used for opening Spotlight. If you
 ;; don't have such problems you may remove the first line.
 (global-set-key (kbd "H-SPC") 'just-one-space)
 (global-set-key [remap just-one-space] 'cycle-spacing)
-
-;; automatically indenting yanked text if in programming-modes
-
-(require-package 'dash)
-(require 'dash)
-
-(defvar yank-indent-modes '()
-  "Modes in which to indent regions that are yanked (or yank-popped)")
-
-(defvar yank-advised-indent-threshold 1000
-  "Threshold (# chars) over which indentation does not automatically occur.")
-
-(defun yank-advised-indent-function (beg end)
-  "Do indentation, as long as the region isn't too large."
-  (if (<= (- end beg) yank-advised-indent-threshold)
-      (indent-region beg end nil)))
-
-(defadvice yank (after yank-indent activate)
-  "If current mode is one of 'yank-indent-modes, indent yanked text (with prefix arg don't indent)."
-  (if (and (not (ad-get-arg 0))
-           (--any? (derived-mode-p it) yank-indent-modes))
-      (let ((transient-mark-mode nil))
-        (yank-advised-indent-function (region-beginning) (region-end)))))
-
-(defadvice yank-pop (after yank-pop-indent activate)
-  "If current mode is one of 'yank-indent-modes, indent yanked text (with prefix arg don't indent)."
-  (if (and (not (ad-get-arg 0))
-           (member major-mode yank-indent-modes))
-      (let ((transient-mark-mode nil))
-        (yank-advised-indent-function (region-beginning) (region-end)))))
-
-(defun yank-unindented ()
-  (interactive)
-  (yank 1))
-
-(global-set-key (kbd "C-^") #'join-line)
-(global-set-key [remap join-line] #'join-line-and-indent)
-(defun join-line-and-indent ()
-  (interactive)
-  (join-line)
-  (indent-for-tab-command))
-
-(global-set-key [remap open-line] 'open-line-and-indent)
-(defun open-line-and-indent ()
-  (interactive)
-  (newline-and-indent)
-  (end-of-line 0)
-  (indent-for-tab-command))
 
 ;; comment-line if region is inactive, comment-box otherwise.
 (global-set-key (kbd "C-;")
@@ -128,8 +78,9 @@ With negative prefix, apply to -N lines above."
 (require-package 'whole-line-or-region)
 (whole-line-or-region-mode 1)
 
-;; Call to show invisible chars.
+;; Use to show invisible chars.
 (require-package 'leerzeichen)
 (require 'leerzeichen)
+
 
 (provide 'luis-editing)

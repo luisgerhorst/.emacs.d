@@ -94,4 +94,5 @@
 ;; (setq mu4e-alert-interesting-mail-query
 ;;       "flag:unread AND ( maildir:\"/Inbox\" OR maildir:\"/Arbeit\" OR maildir:\"/Uni\" )")
 
+
 (provide 'luis-mail-private)

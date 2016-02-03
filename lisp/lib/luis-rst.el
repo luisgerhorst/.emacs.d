@@ -11,3 +11,6 @@
   ;; Proper line wrapping for text.
   (visual-line-mode 1)
   (auto-fill-mode 1))
+
+
+(provide 'luis-rst)

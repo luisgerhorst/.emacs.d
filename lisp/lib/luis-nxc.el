@@ -4,3 +4,6 @@
   (my/comment-auto-fill))
 
 (add-to-list 'auto-mode-alist '("\\.nxc\\'" . my/nxc-mode))
+
+
+(provide 'luis-nxc)

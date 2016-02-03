@@ -5,3 +5,6 @@
 
 ;; Use Haskell mode for Elm
 (add-to-list 'auto-mode-alist '("\\.elm\\'" . haskell-mode))
+
+
+(provide 'luis-haskell)

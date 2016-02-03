@@ -16,10 +16,10 @@
 ;; No cursor blinking, it's distracting
 (blink-cursor-mode 0)
 
-;; no bell
+;; No bell.
 (setq ring-bell-function 'ignore)
 
-;; Highlights matching parenthesis
+;; Highlight matching parenthesis.
 (show-paren-mode t)
 
 (setq default-indicate-empty-lines t)

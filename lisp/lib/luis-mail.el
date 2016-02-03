@@ -71,4 +71,5 @@
 (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
 (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
 
+
 (provide 'luis-mail)

@@ -62,3 +62,6 @@
 (require 'xml-lite)
 (require 'two-mode-mode)
 (add-to-list 'auto-mode-alist '("\\.yaws\\'" . two-mode-mode))
+
+
+(provide 'luis-erlang)

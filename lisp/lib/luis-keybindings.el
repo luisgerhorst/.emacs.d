@@ -3,4 +3,4 @@
 (global-set-key (kbd "H-s") 'launcher-map)
 
 
-(provide 'luis-utils)
+(provide 'luis-keybindings)

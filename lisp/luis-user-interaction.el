@@ -12,18 +12,6 @@
 ;; Better shortcut for switching buffers (normally C-x o).
 (global-set-key (kbd "H-w") 'other-window)
 
-(global-set-key (kbd "H-z") 'undo)
-
-(require-package 'god-mode)
-(require 'god-mode)
-(global-set-key (kbd "<f7>") 'god-local-mode)
-
-(defun my/god-mode-update-cursor ()
-  "Cursor is vertical bar if in god-mode."
-  (setq cursor-type (if god-local-mode 'bar 'box)))
-(add-hook 'god-mode-enabled-hook 'my/god-mode-update-cursor)
-(add-hook 'god-mode-disabled-hook 'my/god-mode-update-cursor)
-
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 

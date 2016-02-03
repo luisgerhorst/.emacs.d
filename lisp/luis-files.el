@@ -1,3 +1,5 @@
+;;;; Settings for interacting with the file system.
+
 ;;; Emacs Files
 
 ;; Emacs can automatically create backup files. This tells Emacs to
@@ -55,5 +57,9 @@
 
 ;; Don't ask when deleting directory.
 (setq dired-recursive-deletes 'always)
+
+;; Use ls from GNU coreutils for dired.
+(setq insert-directory-program (executable-find "gls"))
+
 
 (provide 'luis-files)

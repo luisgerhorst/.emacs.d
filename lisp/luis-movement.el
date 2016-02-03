@@ -1,19 +1,3 @@
-;; Navigate in a buffer.
-
-(global-set-key (kbd "M-i") 'imenu)
-
-;; Fancier goto-line
-(defun goto-line-with-feedback ()
-  "Show line numbers temporarily, while prompting for the line number input"
-  (interactive)
-  (unwind-protect
-      (progn
-        (linum-mode 1)
-        (goto-line (read-number "Goto line: ")))
-    (linum-mode -1)))
-;; Replace goto-line
-(global-set-key [remap goto-line] 'goto-line-with-feedback)
-
 ;; Auto Highligh Symbol
 (require-package 'auto-highlight-symbol)
 (require 'auto-highlight-symbol)
@@ -37,10 +21,6 @@
 (setq-default save-place t)
 ;; keep track of saved places in ~/.emacs.d/places
 (setq save-place-file (concat user-emacs-directory "places"))
-
-;; Jump directly to a word beginning with a given char.
-(require-package 'ace-jump-mode)
-(global-set-key (kbd "C-ö") 'ace-jump-mode)
 
 (require-package 'paredit)
 (require 'paredit)

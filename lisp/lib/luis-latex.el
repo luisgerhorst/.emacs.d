@@ -23,3 +23,6 @@
   (company-mode-on))
 
 (add-hook 'LaTeX-mode-hook 'my/latex-mode-hook)
+
+
+(provide 'luis-latex)

@@ -28,8 +28,7 @@
 (when (memq window-system '(mac ns))
   (require-package 'exec-path-from-shell)
   (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs
-   '("PATH")))
+  (exec-path-from-shell-copy-envs '("PATH")))
 
 ;; Fix weird OS X kill error.
 (defun ns-get-pasteboard ()
@@ -43,8 +42,6 @@
   (interactive)
   (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
     (ido-find-file-in-dir finder-dir)))
-
-(global-set-key (kbd "C-x C-v") 'ido-find-file-in-finder-dir)
 
 ;; TODO: Make cd silent.
 (defun open-directory-in-iterm (directory)
@@ -73,11 +70,6 @@ end tell
   "Open active buffer's directory in iTerm."
   (interactive)
   (open-directory-in-iterm (file-name-directory (buffer-file-name))))
-
-(global-set-key (kbd "<f8>") 'open-current-directory-in-iterm)
-
-;; Use ls from GNU coreutils for dired.
-(setq insert-directory-program (executable-find "gls"))
 
 (when (eq system-type 'darwin)
   (global-set-key [remap suspend-frame] 'ns-do-hide-emacs))
@@ -109,4 +101,4 @@ end tell
               #'handle-delete-frame-without-kill-emacs))
 
 
-(provide 'luis-osx-integration)
+(provide 'luis-integration)

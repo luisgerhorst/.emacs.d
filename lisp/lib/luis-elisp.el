@@ -32,3 +32,6 @@
 (require-package 'bug-hunter)
 
 (add-to-list 'auto-mode-alist '("\\.el.template\\'" . emacs-lisp-mode))
+
+
+(provide 'luis-elisp)
