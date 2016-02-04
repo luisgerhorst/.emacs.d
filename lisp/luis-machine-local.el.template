@@ -1,8 +1,4 @@
-;;; 13" screen with Dock hidden
-;; (add-to-list 'default-frame-alist '(height . 46))
-;; (add-to-list 'default-frame-alist '(width . 157))
-
-;;; Half 27" screen.
+;;; Initial frame size.
 ;; (add-to-list 'default-frame-alist '(height . 86))
 ;; (add-to-list 'default-frame-alist '(width . 157))
 
