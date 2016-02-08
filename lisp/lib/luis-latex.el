@@ -24,5 +24,11 @@
 
 (add-hook 'LaTeX-mode-hook 'my/latex-mode-hook)
 
+(defun bjm/align-& (start end)
+  "Align columns by ampersand"
+  (interactive "r")
+  (align-regexp start end
+                "\\(\\s-*\\)&" 1 1 t))
+
 
 (provide 'luis-latex)
