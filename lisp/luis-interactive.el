@@ -35,7 +35,12 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
-;;; Discover Emacs with popup buffers.
+;;; Discover Emacs commands and shortcuts with popup buffers.
+
+(require-package 'which-key)
+(require 'which-key)
+(setq which-key-idle-delay 0.4)
+(which-key-mode)
 
 (require-package 'discover)
 (require 'discover)
