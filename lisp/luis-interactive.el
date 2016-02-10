@@ -39,7 +39,7 @@
 
 (require-package 'which-key)
 (require 'which-key)
-(setq which-key-idle-delay 0.4)
+(which-key-setup-side-window-right-bottom)
 (which-key-mode)
 
 (require-package 'discover)
