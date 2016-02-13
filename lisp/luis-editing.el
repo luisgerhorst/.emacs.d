@@ -10,6 +10,7 @@
   (untabify (region-beginning) (region-end))
   (keyboard-quit))
 
+
 ;; Auto Fill for comments, enable per major mode in languages/*.el
 (defun my/comment-auto-fill ()
   (setq-local comment-auto-fill-only-comments t)
@@ -46,6 +47,13 @@ With negative prefix, apply to -N lines above."
   (forward-line 1)
   (back-to-indentation))
 
+
+;; Delete trailing whitespaces from modified lines.
+(require-package 'ws-butler)
+(require 'ws-butler)
+(add-hook 'prog-mode-hook 'ws-butler-mode)
+
+;; Manually delete all trailing whitespaces.
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
 
 (require-package 'auto-complete)
