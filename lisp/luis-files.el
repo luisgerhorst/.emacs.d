@@ -68,11 +68,5 @@
 ;; Use ls from GNU coreutils for dired.
 (setq insert-directory-program (executable-find "gls"))
 
-;;; Open rencently opened file.
-
-(require-package 'crux)
-(require 'crux)
-(global-set-key (kbd "C-x f") #'crux-recentf-ido-find-file)
-
 
 (provide 'luis-files)
