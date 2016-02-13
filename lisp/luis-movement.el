@@ -14,6 +14,14 @@
                               (ahs-highlight-now)
                               (ahs-backward)))
 
+;; C-s with overview.
+(require-package 'swiper)
+(require 'ivy)
+(setq ivy-display-style 'plain)
+(setq ivy-wrap t)
+(setq ivy-height 10)
+(global-set-key (kbd "C-s") 'swiper)
+
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
 ;; http://www.emacswiki.org/emacs/SavePlace
