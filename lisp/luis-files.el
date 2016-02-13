@@ -68,5 +68,12 @@
 ;; Use ls from GNU coreutils for dired.
 (setq insert-directory-program (executable-find "gls"))
 
+;;; Auto saving
+
+(require-package 'super-save)
+(require 'super-save)
+(super-save-mode 1)
+(setq auto-save-default nil)
+
 
 (provide 'luis-files)
