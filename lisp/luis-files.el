@@ -1,6 +1,13 @@
 ;;;; Settings for interacting with the file system.
 
-;;; Emacs Files
+;;; Tramp
+
+;; For some reason my Emacs 24.5.1 installed via Homebrew --with-cocoa
+;; throws function not defined errors for tramp-tramp-file-p.
+;; - 2016-02-13 ~Luis
+(require 'tramp)
+
+;;; Files created by Emacs.
 
 ;; Emacs can automatically create backup files. This tells Emacs to
 ;; put all backups in ~/.emacs.d/backups. More info:
