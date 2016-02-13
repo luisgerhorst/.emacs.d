@@ -13,9 +13,6 @@
 ;; Minor modes for erlang-mode.
 (add-hook 'erlang-mode-hook 'my/comment-auto-fill)
 
-;; Indent yanked text.
-(add-to-list 'yank-indent-modes 'erlang-mode)
-
 ;; Indent newlines and continue comments.
 (add-to-list 'erlang-electric-commands 'erlang-electric-newline)
 
