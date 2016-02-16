@@ -21,6 +21,7 @@
 
 (setq mu4e-get-mail-command "offlineimap")
 (setq mu4e-update-interval (* 5 60))
+(setq mu4e-hide-index-messages t)
 
 ;; First one is the default fallback context.
 (setq mu4e-context-policy 'pick-first)
