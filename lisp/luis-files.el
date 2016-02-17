@@ -68,6 +68,20 @@
 ;; Use ls from GNU coreutils for dired.
 (setq insert-directory-program (executable-find "gls"))
 
+;;; IDO recentf
+
+(require-package 'recentf)
+(require 'recentf)
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using Ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
+
+(global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+
 ;;; Auto saving
 
 (require-package 'super-save)
