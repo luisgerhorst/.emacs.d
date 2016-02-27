@@ -227,8 +227,6 @@
  '(recentf-mode t)
  '(recentf-save-file "~/.emacs.d/.recentf")
  '(show-trailing-whitespace nil)
- '(solarized-distinct-fringe-background t)
- '(solarized-high-contrast-mode-line t)
  '(solarized-use-more-italic t)
  '(tab-width 4)
  '(winner-mode t))
