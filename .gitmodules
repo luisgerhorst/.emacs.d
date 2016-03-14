@@ -1,7 +1,3 @@
-[submodule "vendor/async"]
-	path = vendor/async
-	url = https://github.com/jwiegley/emacs-async.git
-
-[submodule "vendor/helm"]
-	path = vendor/helm
-	url = https://github.com/emacs-helm/helm.git
+[submodule "mu4e-alert"]
+	path = site-lisp/mu4e-alert
+	url = git@github.com:iqbalansari/mu4e-alert.git
