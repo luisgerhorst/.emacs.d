@@ -40,34 +40,6 @@
 (when (fboundp 'imagemagick-register-types)
   (imagemagick-register-types))
 
-;; Convert html to text properly.
-;; Possible options:
-;;   - html2text -utf8 -width 72
-;;   - textutil -stdin -format html -convert txt -stdout
-;;   - html2markdown | grep -v '&nbsp_place_holder;' (Requires html2text pypi)
-;;   - w3m -dump -cols 80 -T text/html
-;;   - http://emacs.stackexchange.com/questions/3051/how-can-i-use-eww-as-a-renderer-for-mu4e
-
-(defun luis-mu4e-shr2text ()
-  "Html to text using the shr engine; this can be used in
-`mu4e-html2text-command' in a new enough emacs. Based on code by
-Titus von der Malsburg."
-  (interactive)
-  (let ((dom (libxml-parse-html-region (point-min) (point-max)))
-        ;; When HTML emails contain references to remote images,
-        ;; retrieving these images leaks information. For example,
-        ;; the sender can see when I openend the email and from which
-        ;; computer (IP address). For this reason, it is preferrable
-        ;; to not retrieve images.
-        ;; See this discussion on mu-discuss:
-        ;; https://groups.google.com/forum/#!topic/mu-discuss/gr1cwNNZnXo
-        (shr-inhibit-images nil))
-    (erase-buffer)
-    (shr-insert-document dom)
-    (goto-char (point-min))))
-
-(setq mu4e-html2text-command 'luis-mu4e-shr2text)
-
 ;; add option to view html message in a browser
 ;; `aV` in view to activate
 (add-to-list 'mu4e-view-actions
