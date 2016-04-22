@@ -7,4 +7,7 @@
 
 (add-hook 'org-mode-hook 'my/org-mode-hook)
 
+(add-to-list 'org-latex-packages-alist
+             '("ngerman" "babel" t))
+
 (provide 'luis-org)
