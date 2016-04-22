@@ -3,6 +3,9 @@
 ;; Indentation settings.
 (require 'luis-indentation)
 
+;; Snippet setup.
+(require 'luis-snippet)
+
 (defun die-tabs ()
   "Replace tabs with spaces."
   (interactive)
