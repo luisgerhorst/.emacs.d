@@ -11,5 +11,6 @@
 (require 'luis-python)
 (require 'luis-nxc)
 (require 'luis-objc)
+(require 'luis-c)
 
 (provide 'luis-modes)
