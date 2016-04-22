@@ -12,5 +12,6 @@
 (require 'luis-nxc)
 (require 'luis-objc)
 (require 'luis-c)
+(require 'luis-org)
 
 (provide 'luis-modes)
