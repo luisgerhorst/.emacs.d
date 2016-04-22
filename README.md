@@ -38,6 +38,10 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
 
     `erl` has to be in your `$PATH`. Do `brew install erlang`.
 
+-   __Java__
+
+    Install the [JDK](http://www.oracle.com/technetwork/java/index.html), then [build jdee-server](https://github.com/jdee-emacs/jdee-server#building). Now you can set `jdee-server-dir` (template in `luis-machine-local.el.template`).
+
 -   __Interactive Spell on Mac OS X__
 
     Install `aspell` with `brew install aspell`. Then download the
