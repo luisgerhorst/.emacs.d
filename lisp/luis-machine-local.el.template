@@ -9,5 +9,12 @@
 ;; should be correct if mu was installed with homebrew).
 ;; (setq mu4e-mu-binary "/usr/local/bin/mu")
 
+;; Follow these instructions first:
+;; https://github.com/jdee-emacs/jdee-server#building
+;; jdee-server source should already be located in ~/.emacs.d/jdee-server
+;; (setq jdee-server-dir (expand-file-name
+;;                        "jdee-server/target"
+;;                        user-emacs-directory))
+
 
 (provide 'luis-machine-local)

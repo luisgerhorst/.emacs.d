@@ -13,5 +13,6 @@
 (require 'luis-objc)
 (require 'luis-c)
 (require 'luis-org)
+(require 'luis-java)
 
 (provide 'luis-modes)
