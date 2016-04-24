@@ -63,7 +63,7 @@ With negative prefix, apply to -N lines above."
   (back-to-indentation))
 
 
-;; Delete trailing whitespaces from modified lines.
+;; Auto-delete trailing whitespaces from modified lines.
 (require-package 'ws-butler)
 (require 'ws-butler)
 (add-hook 'prog-mode-hook 'ws-butler-mode)
@@ -104,6 +104,18 @@ With negative prefix, apply to -N lines above."
 ;; Use to show invisible chars.
 (require-package 'leerzeichen)
 (require 'leerzeichen)
+
+;; Open line above.
+(defun redux/smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at it's beginning, according to the current mode."
+  (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(global-set-key (kbd "H-o") 'redux/smart-open-line-above)
 
 
 (provide 'luis-editing)
