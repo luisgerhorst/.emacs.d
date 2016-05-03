@@ -14,5 +14,6 @@
 (require 'luis-c)
 (require 'luis-org)
 (require 'luis-java)
+(require 'luis-asm)
 
 (provide 'luis-modes)
