@@ -127,5 +127,8 @@ Position the cursor at it's beginning, according to the current mode."
 
 (global-set-key (kbd "H-o") 'redux/smart-open-line-above)
 
+;; Join lines. M-^ does not work on my Mac.
+(global-set-key (kbd "C-^") 'delete-indentation)
+
 
 (provide 'luis-editing)
