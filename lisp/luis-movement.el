@@ -20,7 +20,7 @@
 (setq ivy-display-style 'plain)
 (setq ivy-wrap t)
 (setq ivy-height 10)
-(global-set-key (kbd "C-s") 'swiper)
+;; (global-set-key (kbd "C-s") 'swiper)
 
 (require-package 'avy)
 (require 'avy)
