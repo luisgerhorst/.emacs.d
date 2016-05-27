@@ -130,5 +130,8 @@ Position the cursor at it's beginning, according to the current mode."
 ;; Join lines. M-^ does not work on my Mac.
 (global-set-key (kbd "C-^") 'delete-indentation)
 
+;; Always insert matching brackets.
+(electric-pair-mode t)
+
 
 (provide 'luis-editing)
