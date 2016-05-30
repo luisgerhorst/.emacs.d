@@ -5,6 +5,6 @@
 
 (add-hook 'jdee-mode-hook
           (lambda ()
-            (local-set-key (kbd "M-i") 'dabbrev-expand)))
+            (company-mode-on)))
 
 (provide 'luis-java)

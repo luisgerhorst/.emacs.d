@@ -80,6 +80,10 @@ With negative prefix, apply to -N lines above."
             (define-key ac-menu-map (kbd "C-n") nil)
             (define-key ac-menu-map (kbd "C-p") nil)))
 
+(require-package 'company)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 1)
+
 (require-package 'paredit)
 (require 'paredit)
 
