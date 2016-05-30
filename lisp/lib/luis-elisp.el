@@ -21,15 +21,11 @@
 
 ;; Auto Complete
 (require-package 'company)
-(add-hook 'emacs-lisp-mode-hook 'company-mode)
+(add-hook 'emacs-lisp-mode-hook #'company-mode)
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c e") 'eval-buffer)))
-
-;; Do M-x bug-hunter-init-file RET RET and it will show your the source of the
-;; problem when your init.el fails.
-(require-package 'bug-hunter)
 
 (add-to-list 'auto-mode-alist '("\\.el.template\\'" . emacs-lisp-mode))
 

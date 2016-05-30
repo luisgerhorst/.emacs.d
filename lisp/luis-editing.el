@@ -80,10 +80,16 @@ With negative prefix, apply to -N lines above."
             (define-key ac-menu-map (kbd "C-n") nil)
             (define-key ac-menu-map (kbd "C-p") nil)))
 
+;;; Company Completion
 (require-package 'company)
+(require 'company)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
+;; Put clang at the end because it's pretty slow.
+(setq company-backends (append (delete 'company-clang company-backends) '(company-clang)))
+(global-set-key (kbd "M-i") 'company-complete)
 
+;;; Paredit
 (require-package 'paredit)
 (require 'paredit)
 

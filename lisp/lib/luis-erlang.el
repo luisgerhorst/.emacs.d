@@ -33,8 +33,6 @@
           (lambda ()
             ;; Slows down display speed.
             (auto-complete-mode -1)
-            ;; Use simple company mode instead.
-            (company-mode-on)
             ;; Use comment box with ===
             (local-set-key (kbd "C-;")
                            (lambda (n)
@@ -42,6 +40,9 @@
                              (if (use-region-p)
                                  (my/comment-box-markdown-style)
                                (endless/comment-line (or n 1)))))))
+
+(require-package 'company)
+(add-hook 'edts-mode-hook #'company-mode)
 
 (defun my/comment-box-markdown-style ()
   (when (< (mark) (point)) (exchange-point-and-mark))

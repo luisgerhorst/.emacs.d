@@ -3,8 +3,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.java\\'" . jdee-mode))
 
-(add-hook 'jdee-mode-hook
-          (lambda ()
-            (company-mode-on)))
+(require-package 'company)
+(add-hook 'jdee-mode-hook #'company-mode)
 
 (provide 'luis-java)
