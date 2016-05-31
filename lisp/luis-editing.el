@@ -83,11 +83,20 @@ With negative prefix, apply to -N lines above."
 ;;; Company Completion
 (require-package 'company)
 (require 'company)
+(global-set-key (kbd "<tab>") 'company-complete)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
-;; Put clang at the end because it's pretty slow.
-(setq company-backends (append (delete 'company-clang company-backends) '(company-clang)))
-(global-set-key (kbd "M-i") 'company-complete)
+
+;; Used to only enable certain backends in a buffer to avoid possibly
+;; annoying completions while for example writing comments.
+(defun luis/setq-local-company-backends (local-company-backends)
+  (if (company-safe-backends-p local-company-backends)
+      (setq-local company-backends local-company-backends)
+    (progn
+      (message "Warning: '%S did not fullfill company-safe-backends-p predicate. Automatic completion was disabled in this buffer."
+               local-company-backends)
+      ;; Disable automatic completion if cursor is idle locally.
+      (setq-local company-idle-delay nil))))
 
 ;;; Paredit
 (require-package 'paredit)

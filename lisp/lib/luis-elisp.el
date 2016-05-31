@@ -24,11 +24,14 @@
 (require 'company)
 (add-hook 'emacs-lisp-mode-hook #'company-mode)
 
+(require-package 'dash)
+(require 'dash)
+
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            ;; Add delay to prevent annoying completions while writing
-            ;; comments.
-            (setq-local company-idle-delay 0.5)
+            ;; Only complete using company-elisp to prevent annoying
+            ;; suggestions in comments and strings.
+            (luis/setq-local-company-backends '(company-elisp))
             (local-set-key (kbd "C-c e") 'eval-buffer)))
 
 (add-to-list 'auto-mode-alist '("\\.el.template\\'" . emacs-lisp-mode))
