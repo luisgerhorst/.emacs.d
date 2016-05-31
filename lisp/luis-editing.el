@@ -115,16 +115,6 @@ With negative prefix, apply to -N lines above."
 (require-package 'leerzeichen)
 (require 'leerzeichen)
 
-;; Open line.
-(defun redux/smart-open-line ()
-  "Insert an empty line after the current line.
-Position the cursor at its beginning, according to the current mode."
-  (interactive)
-  (move-end-of-line nil)
-  (newline-and-indent))
-
-(global-set-key [remap open-line] 'redux/smart-open-line)
-
 ;; Open line above.
 (defun redux/smart-open-line-above ()
   "Insert an empty line above the current line.
