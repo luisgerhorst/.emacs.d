@@ -85,15 +85,12 @@ With negative prefix, apply to -N lines above."
 (global-set-key (kbd "<tab>") 'company-complete)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
-;; Each mode will add the completion backends it needs.
-(setq company-backends '(company-elisp
-                         company-nxml
+(setq company-backends '(company-nxml
                          company-css
                          (company-dabbrev-code
                           company-gtags
                           company-etags
-                          company-keywords)
-                         company-clang))
+                          company-keywords)))
 
 ;; Used to only enable certain backends in a buffer to avoid possibly
 ;; annoying completions while for example writing comments.
