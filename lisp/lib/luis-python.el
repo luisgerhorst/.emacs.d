@@ -1,6 +1,7 @@
 (require 'python)
 
 (require-package 'company)
+(require 'company)
 (require-package 'company-jedi)
 (require 'company-jedi)
 (add-to-list 'company-backends 'company-jedi)

@@ -75,17 +75,25 @@ With negative prefix, apply to -N lines above."
 (require 'auto-complete)
 (add-hook 'auto-complete-mode-hook
           (lambda ()
-            ;; Use M-n and M-p to select next/previous completion and use these for moving
-            ;; by line.
+            ;; Use M-n and M-p to select next/previous completion and
+            ;; use these for moving by line.
             (define-key ac-menu-map (kbd "C-n") nil)
             (define-key ac-menu-map (kbd "C-p") nil)))
 
 ;;; Company Completion
 (require-package 'company)
-(require 'company)
 (global-set-key (kbd "<tab>") 'company-complete)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
+;; Each mode will add the completion backends it needs.
+(setq company-backends '(company-elisp
+                         company-nxml
+                         company-css
+                         (company-dabbrev-code
+                          company-gtags
+                          company-etags
+                          company-keywords)
+                         company-clang))
 
 ;; Used to only enable certain backends in a buffer to avoid possibly
 ;; annoying completions while for example writing comments.
@@ -93,7 +101,9 @@ With negative prefix, apply to -N lines above."
   (if (company-safe-backends-p local-company-backends)
       (setq-local company-backends local-company-backends)
     (progn
-      (message "Warning: '%S did not fullfill company-safe-backends-p predicate. Automatic completion was disabled in this buffer."
+      (message (concat "Warning: '%S did not fullfill "
+                       "company-safe-backends-p predicate. "
+                       "Automatic completion was disabled in this buffer.")
                local-company-backends)
       ;; Disable automatic completion if cursor is idle locally.
       (setq-local company-idle-delay nil))))
@@ -110,10 +120,12 @@ With negative prefix, apply to -N lines above."
 
 ;; Use this when you want to enable paredit in a non-lisp.
 (defun my/disable-paredit-spaces-before-paren ()
-  ;; Function which always returns nil -> never insert a space when insert a parentheses.
+  ;; Function which always returns nil -> never insert a space when
+  ;; insert a parentheses.
   (defun my/erlang-paredit-space-for-delimiter-p (endp delimiter) nil)
-  ;; Set this function locally as only predicate to check when determining if a space should be inserted
-  ;; before a newly created pair of parentheses.
+  ;; Set this function locally as only predicate to check when
+  ;; determining if a space should be inserted before a newly created
+  ;; pair of parentheses.
   (setq-local paredit-space-for-delimiter-predicates '(my/erlang-paredit-space-for-delimiter-p)))
 
 ;; Especially C-w is handy for killing whole lines.

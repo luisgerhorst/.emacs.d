@@ -42,7 +42,8 @@
                                (endless/comment-line (or n 1)))))))
 
 (require-package 'company)
-(add-hook 'edts-mode-hook #'company-mode)
+(require 'company)
+(add-hook 'edts-mode-hook #'company-mode-on)
 
 (defun my/comment-box-markdown-style ()
   (when (< (mark) (point)) (exchange-point-and-mark))

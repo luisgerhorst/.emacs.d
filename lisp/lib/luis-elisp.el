@@ -22,16 +22,10 @@
 ;; Auto Complete
 (require-package 'company)
 (require 'company)
-(add-hook 'emacs-lisp-mode-hook #'company-mode)
-
-(require-package 'dash)
-(require 'dash)
+(add-hook 'emacs-lisp-mode-hook #'company-mode-on)
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            ;; Only complete using company-elisp to prevent annoying
-            ;; suggestions in comments and strings.
-            (luis/setq-local-company-backends '(company-elisp))
             (local-set-key (kbd "C-c e") 'eval-buffer)))
 
 (add-to-list 'auto-mode-alist '("\\.el.template\\'" . emacs-lisp-mode))

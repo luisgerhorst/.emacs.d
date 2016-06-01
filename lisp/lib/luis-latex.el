@@ -8,7 +8,7 @@
 (require-package 'company-auctex)
 (require 'company-auctex)
 (company-auctex-init)
-(add-hook 'LaTeX-mode-hook #'company-mode)
+(add-hook 'LaTeX-mode-hook #'company-mode-on)
 
 (defun my/latex-mode-hook ()
   ;; Proper line wrapping for text.

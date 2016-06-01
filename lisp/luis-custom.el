@@ -181,11 +181,6 @@
  '(blink-cursor-mode nil)
  '(coffee-tab-width 2)
  '(comment-multi-line t)
- '(company-backends
-   (quote
-    (company-etags company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake company-capf
-                   (company-dabbrev-code company-gtags company-keywords)
-                   company-oddmuse company-files company-dabbrev)))
  '(company-etags-use-main-table-list nil)
  '(cursor-in-non-selected-windows t)
  '(custom-safe-themes
