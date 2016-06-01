@@ -21,9 +21,7 @@
 
 ;; Auto Complete
 (require-package 'company)
-(require 'company)
 (add-hook 'emacs-lisp-mode-hook #'company-mode-on)
-(add-to-list 'company-backends 'company-elisp)
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()

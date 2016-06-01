@@ -85,7 +85,8 @@ With negative prefix, apply to -N lines above."
 (global-set-key (kbd "<tab>") 'company-complete)
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
-(setq company-backends '(company-nxml
+(setq company-backends '(company-elisp
+                         company-nxml
                          company-css
                          (company-dabbrev-code
                           company-gtags
