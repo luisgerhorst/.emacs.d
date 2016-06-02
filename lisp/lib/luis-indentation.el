@@ -10,8 +10,8 @@
  ;; semicolon or code block bracket.
  '(and (or (derived-mode-p 'jdee-mode)
            (derived-mode-p 'c-mode))
-       (null (string-match "[;{}]"
-                           (thing-at-point 'line)))))
+       (not (string-match "[;{}]"
+                          (thing-at-point 'line)))))
 
 
 (provide 'luis-indentation)
