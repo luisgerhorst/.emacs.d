@@ -70,13 +70,25 @@
 
 ;;; IDO recentf
 
+(setq recentf-auto-cleanup 'never
+      recentf-max-menu-items 100
+      recentf-max-saved-items 100)
+
 (require-package 'recentf)
 (require 'recentf)
+(recentf-mode 1)
+
+;; Add files to be excluded to the list passed to regexp-opt.
+(add-to-list 'recentf-exclude (regexp-opt '("/Users/luis/.emacs.d/bookmarks"
+                                            "/Users/luis/.emacs.d/ido.last")))
 
 (defun recentf-ido-find-file ()
   "Find a recent file using Ido."
   (interactive)
-  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+  (let ((file (ido-completing-read
+               "Choose recent file: "
+               (mapcar 'abbreviate-file-name recentf-list)
+               nil t)))
     (when file
       (find-file file))))
 

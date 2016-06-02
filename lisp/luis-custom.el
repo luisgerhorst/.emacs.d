@@ -213,14 +213,6 @@
  '(projectile-global-mode t)
  '(python-environment-directory "~/.pyenv/versions")
  '(python-shell-interpreter "/usr/local/bin/python3")
- '(recentf-auto-cleanup (quote never))
- '(recentf-exclude
-   (quote
-    ("/\\(\\(\\(COMMIT\\|NOTES\\|PULLREQ\\|TAG\\)_EDIT\\|MERGE_\\|\\)MSG\\|BRANCH_DESCRIPTION\\)\\'")))
- '(recentf-max-menu-items 100)
- '(recentf-max-saved-items 100)
- '(recentf-mode t)
- '(recentf-save-file "~/.emacs.d/.recentf")
  '(show-trailing-whitespace nil)
  '(solarized-use-more-italic t)
  '(tab-width 4)
