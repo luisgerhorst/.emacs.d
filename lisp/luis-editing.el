@@ -89,8 +89,6 @@ With negative prefix, apply to -N lines above."
                          company-nxml
                          company-css
                          (company-dabbrev-code
-                          company-gtags
-                          company-etags
                           company-keywords)))
 
 ;; Used to only enable certain backends in a buffer to avoid possibly
