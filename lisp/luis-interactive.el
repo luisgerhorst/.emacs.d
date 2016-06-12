@@ -2,6 +2,9 @@
 
 (setq ido-use-filename-at-point nil)
 (setq ido-enable-flex-matching t)
+;; Disable automatic switich to different directory if no matches are
+;; found.
+(setq ido-auto-merge-work-directories-length -1)
 
 (ido-mode 1)
 (ido-everywhere 1)
