@@ -150,5 +150,13 @@ Position the cursor at it's beginning, according to the current mode."
 ;; Always insert matching brackets.
 (electric-pair-mode t)
 
+(setq-default fill-column 80)
+(defun luis/resize-window-to-fill-column ()
+  (interactive)
+  (window-resize (selected-window)
+                 (- fill-column (window-total-width))
+                 t))
+(global-set-key (kbd "C-c m") 'luis/resize-window-to-fill-column)
+
 
 (provide 'luis-editing)
