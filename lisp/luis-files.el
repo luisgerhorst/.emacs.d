@@ -94,12 +94,5 @@
 
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
 
-;;; Auto saving
-
-(require-package 'super-save)
-(require 'super-save)
-(super-save-mode 1)
-(setq auto-save-default nil)
-
 
 (provide 'luis-files)
