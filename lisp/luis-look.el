@@ -22,7 +22,7 @@
 ;; Highlight matching parenthesis.
 (show-paren-mode t)
 
-(setq default-indicate-empty-lines t)
+(setq-default indicate-empty-lines t)
 
 
 (provide 'luis-look)
