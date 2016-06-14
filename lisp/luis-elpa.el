@@ -16,8 +16,7 @@
   "Install given PACKAGE, optionally requiring MIN-VERSION.
 If NO-REFRESH is non-nil, the available package lists will not be
 re-downloaded in order to locate PACKAGE."
-  (if (package-installed-p package min-version)
-      t
+  (if (package-installed-p package min-version) t
     (if (or (assoc package package-archive-contents) no-refresh)
         (package-install package)
       (progn
@@ -35,6 +34,9 @@ locate PACKAGE."
     (error
      (message "Couldn't install package `%s': %S" package err)
      nil)))
+
+(make-obsolete 'require-package 'use-package "16-06-14")
+(make-obsolete 'maybe-require-package 'use-package "16-06-14")
 
 
 (provide 'luis-elpa)

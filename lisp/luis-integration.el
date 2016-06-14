@@ -1,7 +1,8 @@
 ;; Work nice together with other apps / Mac OS X.
 
 ;; These settings relate to how emacs interacts with your operating system
-(setq ;; makes killing/yanking interact with the clipboard
+(setq
+ ;; makes killing/yanking interact with the clipboard
  x-select-enable-clipboard t
 
  ;; I'm actually not sure what this does but it's recommended?
@@ -19,14 +20,16 @@
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
 ;;----------------------------------------------------------------------------
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+(use-package server
+  :config
+  (unless (server-running-p)
+    (server-start)))
 
 ;; Sets up exec-path-from-shell
 ;; https://github.com/purcell/exec-path-from-shell
-(when (memq window-system '(mac ns))
-  (require-package 'exec-path-from-shell)
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :config
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs '("PATH")))
 

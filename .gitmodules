@@ -7,3 +7,6 @@
 [submodule "jdee-server"]
 	path = jdee-server
 	url = git@github.com:jdee-emacs/jdee-server.git
+[submodule "use-package"]
+	path = site-lisp/use-package
+	url = git@github.com:jwiegley/use-package.git

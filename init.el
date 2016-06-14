@@ -1,14 +1,17 @@
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "lisp/lib" user-emacs-directory))
-
-(setq custom-file (expand-file-name "lisp/luis-custom.el" user-emacs-directory))
+(push (expand-file-name "lisp" user-emacs-directory) load-path)
+(push (expand-file-name "lisp/lib" user-emacs-directory) load-path)
 
 ;; General Settings required by other specific configuration subsets.
 (require 'luis-elpa)
 (require 'luis-site-lisp)
 
+(setq custom-file (expand-file-name "lisp/luis-custom.el"
+                                    user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
+
+(require 'luis-use-package)
+
 
 ;; Feature specific settings.
 (require 'luis-integration)

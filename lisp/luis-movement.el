@@ -4,7 +4,7 @@
 (global-auto-highlight-symbol-mode t)
 (define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
 (customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
-(ahs-set-idle-interval 9999999999) ;; 'Disable' automatic highlighting
+(ahs-set-idle-interval most-positive-fixnum) ;; 'Disable' automatic highlighting
 (global-set-key (kbd "M-n") (lambda ()
                               (interactive)
                               (ahs-highlight-now)
