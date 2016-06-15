@@ -10,69 +10,70 @@
 
 ;;; Reading Mail.
 
-(require 'mu4e)
+(use-package mu4e
+  :ensure nil
+  :defer 10
+  :commands (mu4e)
+  :config
 
-;; emacs allows you to select an e-mail program as the default program
-;; it uses when you press C-x m (compose-mail), call report-emacs-bug
-;; and so on.
-(setq mail-user-agent 'mu4e-user-agent)
+  ;; Emacs allows you to select an e-mail program as the default program
+  ;; it uses when you press C-x m (compose-mail), call report-emacs-bug
+  ;; and so on.
+  (setq mail-user-agent 'mu4e-user-agent)
 
-;; Start mu4e in background when opening Emacs (to receive notifications
-;; about new mail).
-(add-hook 'after-init-hook (lambda () (mu4e 1)))
+  (setq mu4e-get-mail-command "offlineimap")
+  (setq mu4e-update-interval (* 5 60))
+  (setq mu4e-hide-index-messages t)
 
-(setq mu4e-get-mail-command "offlineimap")
-(setq mu4e-update-interval (* 5 60))
-(setq mu4e-hide-index-messages t)
+  ;; First one is the default fallback context.
+  (setq mu4e-context-policy 'pick-first)
+  (setq mu4e-compose-context-policy 'pick-first)
 
-(defun luis-kill-mu4e-update-process-without-query (run-in-background)
-  ;; Name from mu4e-utils.el function mu4e~update-mail-and-index-real.
-  (set-process-query-on-exit-flag (get-process "mu4e-update") nil))
+  (defun luis-kill-mu4e-update-process-without-query (run-in-background)
+    ;; Name from mu4e-utils.el function mu4e~update-mail-and-index-real.
+    (set-process-query-on-exit-flag (get-process "mu4e-update") nil))
 
-(advice-add 'mu4e~update-mail-and-index-real :after
-            #'luis-kill-mu4e-update-process-without-query)
+  (advice-add 'mu4e~update-mail-and-index-real :after
+              #'luis-kill-mu4e-update-process-without-query)
 
-;; First one is the default fallback context.
-(setq mu4e-context-policy 'pick-first)
-(setq mu4e-compose-context-policy 'pick-first)
+  (setq mu4e-show-images t)
+  (when (fboundp 'imagemagick-register-types)
+    (imagemagick-register-types))
 
-(setq mu4e-show-images t)
-(when (fboundp 'imagemagick-register-types)
-  (imagemagick-register-types))
+  ;; add option to view html message in a browser
+  ;; `aV` in view to activate
+  (add-to-list 'mu4e-view-actions
+               '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
-;; add option to view html message in a browser
-;; `aV` in view to activate
-(add-to-list 'mu4e-view-actions
-             '("ViewInBrowser" . mu4e-action-view-in-browser) t)
+  (use-package visual-fill-column
+    :commands (my/mu4e-compose-mode-hook)
+    :config
+    (defun my/mu4e-compose-mode-hookp ()
+      "My settings for message composition."
+      (visual-line-mode 1)
+      (auto-fill-mode -1)
+      (visual-fill-column-mode 1)))
 
-(require-package 'visual-fill-column)
-(require 'visual-fill-column)
+  (add-hook 'mu4e-compose-mode-hook 'my/mu4e-compose-mode-hook)
 
-(defun my/mu4e-compose-mode-hook ()
-  "My settings for message composition."
-  (visual-line-mode 1)
-  (auto-fill-mode -1)
-  (visual-fill-column-mode 1))
+  ;; To protect yourself from sending messages too hastily, add a
+  ;; final confirmation.
+  (add-hook 'message-send-hook
+            (lambda ()
+              (unless (yes-or-no-p "Sure you want to send this?")
+                (signal 'quit nil))))
 
-(add-hook 'mu4e-compose-mode-hook 'my/mu4e-compose-mode-hook)
+  ;;; Get notified when new mails arrive.
+  (require 'mu4e-alert)
+  (mu4e-alert-set-default-style 'notifier)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
+  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
 
-;; To protect yourself from sending messages too hastily, add a
-;; final confirmation.
-(add-hook 'message-send-hook
-          (lambda ()
-            (unless (yes-or-no-p "Sure you want to send this?")
-              (signal 'quit nil))))
+  ;; Load account specific configuration.
+  (require 'luis-mail-private)
 
-;;; Load account specific configuration.
-
-(require 'luis-mail-private)
-
-;;; Get notified when new mails arrive.
-
-(require 'mu4e-alert)
-(mu4e-alert-set-default-style 'notifier)
-(add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
-(add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
+  ;; Start mu4e in background.
+  (mu4e t))
 
 
 (provide 'luis-mail)
