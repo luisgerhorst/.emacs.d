@@ -5,7 +5,8 @@
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(require-package 'solarized-theme)
+(use-package solarized-theme
+  :defer t)
 
 ;; See customize group Solarized for options.
 (load-theme 'solarized-dark t)

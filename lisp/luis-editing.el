@@ -64,99 +64,81 @@ With negative prefix, apply to -N lines above."
 
 
 ;; Auto-delete trailing whitespaces from modified lines.
-(require-package 'ws-butler)
-(require 'ws-butler)
-(add-hook 'prog-mode-hook 'ws-butler-mode)
+(use-package ws-butler
+  :config
+  (add-hook 'prog-mode-hook 'ws-butler-mode))
 
 ;; Manually delete all trailing whitespaces.
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
 
-(require-package 'auto-complete)
-(require 'auto-complete)
-(add-hook 'auto-complete-mode-hook
-          (lambda ()
-            ;; Use M-n and M-p to select next/previous completion and
-            ;; use these for moving by line.
-            (define-key ac-menu-map (kbd "C-n") nil)
-            (define-key ac-menu-map (kbd "C-p") nil)))
+(use-package auto-complete
+  :config
+  (add-hook 'auto-complete-mode-hook
+            (lambda ()
+              ;; Use M-n and M-p to select next/previous completion and
+              ;; use these for moving by line.
+              (define-key ac-menu-map (kbd "C-n") nil)
+              (define-key ac-menu-map (kbd "C-p") nil))))
 
-;;; Company Completion
-(require-package 'company)
-(global-set-key (kbd "<tab>") 'company-complete)
-(setq company-idle-delay 0)
-(setq company-minimum-prefix-length 1)
-(setq company-backends '(company-elisp
-                         company-nxml
-                         company-css
-                         (company-dabbrev-code
-                          company-keywords)))
-
-;; Used to only enable certain backends in a buffer to avoid possibly
-;; annoying completions while for example writing comments.
-(defun luis/setq-local-company-backends (local-company-backends)
-  (if (company-safe-backends-p local-company-backends)
-      (setq-local company-backends local-company-backends)
-    (progn
-      (message (concat "Warning: '%S did not fullfill "
-                       "company-safe-backends-p predicate. "
-                       "Automatic completion was disabled in this buffer.")
-               local-company-backends)
-      ;; Disable automatic completion if cursor is idle locally.
-      (setq-local company-idle-delay nil))))
+(use-package company
+  :commands (luis/setq-local-company-backends)
+  :bind ("<tab>" . company-complete)
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 1)
+  (setq company-backends '(company-elisp
+                           company-nxml
+                           company-css
+                           (company-dabbrev-code
+                            company-keywords)))
+  ;; Used to only enable certain backends in a buffer to avoid possibly
+  ;; annoying completions while for example writing comments.
+  (defun luis/setq-local-company-backends (local-company-backends)
+    (if (company-safe-backends-p local-company-backends)
+        (setq-local company-backends local-company-backends)
+      (progn
+        (message (concat "Warning: '%S did not fullfill "
+                         "company-safe-backends-p predicate. "
+                         "Automatic completion was disabled in this buffer.")
+                 local-company-backends)
+        ;; Disable automatic completion if cursor is idle locally.
+        (setq-local company-idle-delay nil)))))
 
 ;;; Paredit
-(require-package 'paredit)
-(require 'paredit)
+(use-package paredit
+  :commands (enable-paredit-mode))
+
+(defun luis/backwards-kill-sexp (&optional argument)
+  (interactive "P")
+  (kill-sexp (- (or argument 1))))
 
 ;; More handy then C-M-k with negative argument.
-(global-set-key (kbd "<C-M-backspace>")
-                (lambda (&optional argument)
-                  (interactive "P")
-                  (kill-sexp (- (or argument 1)))))
-
-;; Use this when you want to enable paredit in a non-lisp.
-(defun my/disable-paredit-spaces-before-paren ()
-  ;; Function which always returns nil -> never insert a space when
-  ;; insert a parentheses.
-  (defun my/erlang-paredit-space-for-delimiter-p (endp delimiter) nil)
-  ;; Set this function locally as only predicate to check when
-  ;; determining if a space should be inserted before a newly created
-  ;; pair of parentheses.
-  (setq-local paredit-space-for-delimiter-predicates '(my/erlang-paredit-space-for-delimiter-p)))
+(global-set-key (kbd "<C-M-backspace>") #'luis/backwards-kill-sexp)
 
 ;; Especially C-w is handy for killing whole lines.
-(require-package 'whole-line-or-region)
-(whole-line-or-region-mode 1)
+(use-package whole-line-or-region
+  :config
+  (whole-line-or-region-mode 1))
 
 ;; Use to show invisible chars.
-(require-package 'leerzeichen)
-(require 'leerzeichen)
-
-;; Open line above.
-(defun redux/smart-open-line-above ()
-  "Insert an empty line above the current line.
-Position the cursor at it's beginning, according to the current mode."
-  (interactive)
-  (move-beginning-of-line nil)
-  (newline-and-indent)
-  (forward-line -1)
-  (indent-according-to-mode))
-
-(global-set-key (kbd "H-o") 'redux/smart-open-line-above)
+(use-package leerzeichen
+  :commands (leerzeichen-mode))
 
 ;; Join lines. M-^ does not work on my Mac.
-(global-set-key (kbd "C-^") 'delete-indentation)
+(global-set-key (kbd "C-^") #'delete-indentation)
 
 ;; Always insert matching brackets.
 (electric-pair-mode t)
 
 (setq-default fill-column 80)
+
 (defun luis/resize-window-to-fill-column ()
   (interactive)
   (window-resize (selected-window)
                  (- fill-column (window-total-width))
                  t))
-(global-set-key (kbd "C-c m") 'luis/resize-window-to-fill-column)
+
+(global-set-key (kbd "C-c m") #'luis/resize-window-to-fill-column)
 
 
 (provide 'luis-editing)
