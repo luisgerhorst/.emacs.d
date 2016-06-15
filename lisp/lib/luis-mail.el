@@ -13,7 +13,7 @@
 (use-package mu4e
   :ensure nil
   :defer 10
-  :commands (mu4e)
+  :commands (mu4e mu4e-compose-new)
   :config
 
   ;; Emacs allows you to select an e-mail program as the default program
