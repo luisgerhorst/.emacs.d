@@ -5,12 +5,13 @@
 (require 'luis-elpa)
 (require 'luis-site-lisp)
 
-(setq custom-file (expand-file-name "lisp/luis-custom.el"
-                                    user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
+(progn
+  (setq custom-file
+        (expand-file-name "lisp/luis-custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file)))
 
-(require 'luis-use-package)
+(require 'use-package)
 
 
 ;; Feature specific settings.

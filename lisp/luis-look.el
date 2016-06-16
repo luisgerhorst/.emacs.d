@@ -6,6 +6,7 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (use-package solarized-theme
+  :ensure t
   :defer t)
 
 ;; See customize group Solarized for options.

@@ -1,5 +1,6 @@
 ;; Auto Highligh Symbol
 (use-package auto-highlight-symbol
+  :ensure t
   :bind (("M-n" . ahs-highlight-now-and-forward)
          ("M-p" . ahs-highlight-now-and-backward))
   :config
@@ -18,6 +19,7 @@
     (ahs-backward)))
 
 (use-package avy
+  :ensure t
   :bind ("C-:" . avy-goto-char))
 
 ;; When you visit a file, point goes to the last place where it
@@ -32,6 +34,7 @@
   :demand)
 
 (use-package paredit
+  :ensure t
   :bind (;; These also work in strings.
          ("C-M-u" . paredit-backward-up)
          ("C-M-d" . paredit-forward-down)
@@ -39,23 +42,23 @@
          ("C-M-p" . paredit-backward-down)
          ("C-M-n" . paredit-forward-up)))
 
-;;; Scroll relative to current window size.
+;; Scroll relative to current window size.
+(progn
+  (setq relative-scroll-ratio 0.5)
 
-(setq relative-scroll-ratio 0.5)
+  (defun relative-scroll-lines ()
+    (max 1 (round (* relative-scroll-ratio (window-total-height)))))
 
-(defun relative-scroll-lines ()
-  (max 1 (round (* relative-scroll-ratio (window-total-height)))))
+  (defun relative-scroll-up-command (&optional argument)
+    (interactive "^P")
+    (scroll-up-command (or argument (relative-scroll-lines))))
 
-(defun relative-scroll-up-command (&optional argument)
-  (interactive "^P")
-  (scroll-up-command (or argument (relative-scroll-lines))))
+  (defun relative-scroll-down-command (&optional argument)
+    (interactive "^P")
+    (scroll-down-command (or argument (relative-scroll-lines))))
 
-(defun relative-scroll-down-command (&optional argument)
-  (interactive "^P")
-  (scroll-down-command (or argument (relative-scroll-lines))))
-
-(global-set-key [remap scroll-up-command] 'relative-scroll-up-command)
-(global-set-key [remap scroll-down-command] 'relative-scroll-down-command)
+  (global-set-key [remap scroll-up-command] 'relative-scroll-up-command)
+  (global-set-key [remap scroll-down-command] 'relative-scroll-down-command))
 
 
 (provide 'luis-movement)

@@ -1,9 +1,10 @@
 ;; Standalone features / tools installation and keybindings.
 
-(require 'luis-keybindings)
+;; Prefix key for launching apps.
+(define-prefix-command 'launcher-map)
+(global-set-key (kbd "H-s") 'launcher-map)
 
-;; Git interface.
-
+;; Git interface
 (use-package magit
   :ensure t
   :init
@@ -11,7 +12,7 @@
   :bind (:map launcher-map
               ("g" . magit-status)))
 
-;; Fancier list-packages.
+;; Fancier list-packages
 (use-package paradox
   :ensure t
   :bind (:map launcher-map
@@ -21,9 +22,10 @@
 
 ;; Because proced does not work on OS X.
 (use-package vkill
+  :ensure t
   :commands (vkill list-unix-processes))
 
-;; Mail.
+;; Mail
 (require 'luis-mail)
 (define-key launcher-map (kbd "m") #'mu4e)
 

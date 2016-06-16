@@ -1,14 +1,13 @@
 ;;;; Settings for interacting with the file system
 
-;;; Tramp
+;; Tramp
 
 ;; For some reason my Emacs 24.5.1 installed via Homebrew --with-cocoa
 ;; throws function not defined errors for tramp-tramp-file-p.
 ;; - 2016-02-13 ~Luis
 (require 'tramp)
 
-;;; Files created by Emacs
-
+;; Files created by Emacs
 (setq
  ;; Emacs can automatically create backup files. This tells Emacs to put all
  ;; backups in ~/.emacs.d/backups. More info:
@@ -22,7 +21,7 @@
  ;; No need for ~ files when editing.
  create-lockfiles nil)
 
-;;; Easy actions on current file.
+;; Easy actions on current file.
 
 (defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
@@ -57,20 +56,19 @@
 (global-set-key (kbd "C-c f d") 'delete-current-buffer-file)
 (global-set-key (kbd "C-c f r") 'rename-current-buffer-file)
 
-;;; Dired
+;; Dired config
+(progn
+  ;; Cleaner dired.
+  (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
 
-;; Cleaner dired.
-(add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
-
-(setq
- ;; Don't ask when deleting directory.
- dired-recursive-deletes 'always
- ;; Use ls from GNU coreutils for dired.
- insert-directory-program (executable-find "gls"))
-
-;;; IDO recentf
+  (setq
+   ;; Don't ask when deleting directory.
+   dired-recursive-deletes 'always
+   ;; Use ls from GNU coreutils for dired.
+   insert-directory-program (executable-find "gls")))
 
 (use-package recentf
+  :ensure t
   :demand
   :bind ("C-x f" . recentf-ido-find-file)
   :config
