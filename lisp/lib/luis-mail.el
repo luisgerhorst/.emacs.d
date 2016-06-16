@@ -11,9 +11,8 @@
 ;;; Reading Mail.
 
 (use-package mu4e
+  :demand
   :ensure nil
-  :defer 10
-  :commands (mu4e mu4e-compose-new)
   :config
 
   ;; Emacs allows you to select an e-mail program as the default program
