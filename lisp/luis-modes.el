@@ -1,8 +1,5 @@
 (require 'luis-elisp)
-(require 'luis-erlang)
-(require 'luis-haskell)
 (require 'luis-markdown)
-(require 'luis-rst)
 (require 'luis-latex)
 (require 'luis-shell)
 (require 'luis-css)
