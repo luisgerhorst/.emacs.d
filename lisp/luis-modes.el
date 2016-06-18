@@ -7,10 +7,10 @@
 (require 'luis-apache)
 (require 'luis-python)
 (require 'luis-nxc)
-(require 'luis-objc)
 (require 'luis-c)
 (require 'luis-org)
 (require 'luis-java)
 (require 'luis-asm)
+(require 'luis-lua)
 
 (provide 'luis-modes)

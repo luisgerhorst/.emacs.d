@@ -1,9 +1,9 @@
-(defun my/nxc-mode ()
+(defun luis-nxc-mode ()
   (c-mode)
   (setq-local c-basic-offset tab-width)
-  (my/comment-auto-fill))
+  (luis-comment-auto-fill))
 
-(add-to-list 'auto-mode-alist '("\\.nxc\\'" . my/nxc-mode))
+(add-to-list 'auto-mode-alist '("\\.nxc\\'" . luis-nxc-mode))
 
 
 (provide 'luis-nxc)

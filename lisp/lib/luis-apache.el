@@ -1,6 +1,7 @@
-(require-package 'apache-mode)
-
-(add-to-list 'auto-mode-alist '("/apache2\.conf\\'" . apache-mode))
+(use-package apache-mode
+  :ensure t
+  :mode "/apache2\.conf\\'"
+  :commands (apache-mode))
 
 
 (provide 'luis-apache)

@@ -1,13 +1,11 @@
-(require 'org)
+(add-hook 'org-mode-hook #'visual-line-mode)
+(add-hook 'org-mode-hook #'auto-fill-mode)
 
-(defun my/org-mode-hook ()
-  ;; Proper line wrapping for text.
-  (visual-line-mode 1)
-  (auto-fill-mode 1))
+(use-package org-mode
+  :defer t
+  :config
+  (message "org-mode configured")
+  (add-to-list 'org-latex-packages-alist '("ngerman" "babel" t)))
 
-(add-hook 'org-mode-hook 'my/org-mode-hook)
-
-(add-to-list 'org-latex-packages-alist
-             '("ngerman" "babel" t))
 
 (provide 'luis-org)

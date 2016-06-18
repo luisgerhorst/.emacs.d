@@ -1,7 +1,7 @@
-(require-package 'nasm-mode)
-(require 'nasm-mode)
-
-(add-to-list 'auto-mode-alist '("\\.\\(asm\\|s\\)$" . nasm-mode))
+(use-package nasm-mode
+  :ensure t
+  :mode "\\.\\(asm\\|s\\)$"
+  :commands (nasm-mode))
 
 
 (provide 'luis-asm)

@@ -1,16 +1,14 @@
-(require 'python)
+(use-package company-jedi
+  :ensure t
+  :commands (company-jedi)
+  :init
+  (add-to-list 'company-backends #'company-jedi))
 
-(require-package 'company)
-(require 'company)
-(require-package 'company-jedi)
-(require 'company-jedi)
-(add-to-list 'company-backends 'company-jedi)
-
-(add-hook 'python-mode-hook 'my/python-mode-hook)
-(defun my/python-mode-hook ()
-  (company-mode-on)
-  (my/comment-auto-fill)
+(defun luis-python-mode-hook ()
   (electric-indent-just-newline nil))
 
+(add-hook 'python-mode-hook #'luis-python-mode-hook)
+(add-hook 'python-mode-hook #'luis-comment-auto-fill)
+(add-hook 'python-mode-hook #'company-mode-on)
 
 (provide 'luis-python)

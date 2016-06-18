@@ -4,9 +4,8 @@
 
 (use-package aggressive-indent
   :ensure t
+  :commands (aggressive-indent-mode)
   :config
-  (global-aggressive-indent-mode 1)
-
   (add-to-list
    'aggressive-indent-dont-indent-if
    ;; Don't indent in Java and C files when line does not contain a
