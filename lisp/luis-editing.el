@@ -38,7 +38,8 @@
 
 (use-package company
   :ensure t
-  :commands (luis/setq-local-company-backends)
+  :commands (luis/setq-local-company-backends
+             company-mode-on)
   :bind ("<tab>" . company-complete)
   :config
   (setq company-idle-delay 0)
@@ -68,7 +69,7 @@
 (defun luis/resize-window-to-fill-column ()
   (interactive)
   (window-resize (selected-window)
-                 (- fill-column (window-total-width))
+                 (+ (- fill-column (window-total-width)) 2)
                  t))
 
 (global-set-key (kbd "C-c m") #'luis/resize-window-to-fill-column)
@@ -77,6 +78,14 @@
 (defun my/comment-auto-fill ()
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode 1))
+
+(add-hook 'prog-mode-hook #'my/comment-auto-fill)
+
+(use-package fillcode
+  :ensure t
+  :commands (fillcode-mode))
+
+(add-hook 'prog-mode-hook #'fillcode-mode)
 
 ;;; Commenting
 

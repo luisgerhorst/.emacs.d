@@ -3,6 +3,7 @@
 
 (defun luis/java-mode-hook ()
   (aggressive-indent-mode -1))
+
 (add-hook 'jdee-mode-hook 'luis/java-mode-hook)
 
 (require-package 'company)

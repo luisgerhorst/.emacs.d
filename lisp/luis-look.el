@@ -13,7 +13,7 @@
 (load-theme 'solarized-dark t)
 
 ;; Highlight current line
-(global-hl-line-mode t)
+;; (global-hl-line-mode t)
 
 ;; No cursor blinking, it's distracting
 (blink-cursor-mode 0)
