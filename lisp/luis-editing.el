@@ -52,11 +52,11 @@
   :ensure t
   :commands (luis-set-local-company-backends
              company-mode-on)
-  :bind ("<tab>" . company-complete)
+  :bind ("TAB" . company-complete)
   :config
-  (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 1)
-  (setq company-backends '(company-elisp
+  (setq company-idle-delay 0
+        company-minimum-prefix-length 1
+        company-backends '(company-elisp
                            company-nxml
                            company-css
                            (company-dabbrev-code
