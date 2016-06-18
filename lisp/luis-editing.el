@@ -27,7 +27,11 @@
   :config
   (setq yas-snippet-dirs
         `(,(expand-file-name "snippets" user-emacs-directory)))
-  (yas-global-mode 1))
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  (define-key yas-minor-mode-map (kbd "C-i") nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  (define-key yas-minor-mode-map (kbd "H-i") #'yas-expand))
 
 (use-package auto-complete
   :ensure t
