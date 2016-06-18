@@ -3,13 +3,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ac-auto-show-menu 0.8)
- '(ac-auto-start 3)
- '(ac-use-fuzzy t)
- '(ac-use-menu-map t)
- '(ahs-case-fold-search nil)
- '(ahs-default-range (quote ahs-range-whole-buffer))
- '(ahs-idle-interval 9999999999)
  '(auto-coding-alist
    (quote
     (("\\.\\(arc\\|zip\\|lzh\\|lha\\|zoo\\|[jew]ar\\|xpi\\|rar\\|7z\\|ARC\\|ZIP\\|LZH\\|LHA\\|ZOO\\|[JEW]AR\\|XPI\\|RAR\\|7Z\\)\\'" . no-conversion-multibyte)
@@ -178,7 +171,6 @@
       (("urldate")
        ("date")
        ("author" nil nil))))))
- '(blink-cursor-mode nil)
  '(coffee-tab-width 2)
  '(comment-multi-line t)
  '(company-etags-use-main-table-list nil)
@@ -187,12 +179,8 @@
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
- '(electric-indent-mode t)
  '(frame-background-mode (quote dark))
  '(frame-resize-pixelwise t)
- '(global-discover-mode t)
- '(global-subword-mode t)
- '(indent-tabs-mode nil)
  '(ispell-dictionary "de_DE")
  '(jedi:environment-root "3.5.0")
  '(load-prefer-newer t)
@@ -212,10 +200,7 @@
  '(projectile-global-mode t)
  '(python-environment-directory "~/.pyenv/versions")
  '(python-shell-interpreter "/usr/local/bin/python3")
- '(show-trailing-whitespace nil)
- '(solarized-use-more-italic t)
- '(tab-width 4)
- '(winner-mode t))
+ '(solarized-use-more-italic t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

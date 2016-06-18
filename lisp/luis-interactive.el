@@ -59,7 +59,8 @@
   (discover-add-context-menu
    ;; See discover.el for key.
    :context-menu (assq 'rectangles discover-context-menus)
-   :bind "H-r"))
+   :bind "H-r")
+  (global-discover-mode 1))
 
 (use-package discover-my-major
   :ensure t

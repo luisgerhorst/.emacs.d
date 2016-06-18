@@ -5,8 +5,11 @@ My `.emacs.d` for Mac OS X. Originally derived from
 
 ## Installation
 
-First do `git clone https://github.com/luisgerhorst/.emacs.d.git
-~/.emacs.d`. Then read the following, you may skip some steps if you don't want to use this feature.
+First clone the repository including submodules:
+
+```git clone --recursive git@github.com:luisgerhorst/.emacs.d.git ~/.emacs.d```
+
+Then read the following, you may skip some steps if you don't want to use this feature.
 
 -   __Local Config__
 
@@ -33,10 +36,6 @@ First do `git clone https://github.com/luisgerhorst/.emacs.d.git
     install coreutils`. If you want to use the default `ls` change
     `insert-directory-program` (is set in
     `lisp/luis-files.el`).
-
--   __Erlang__
-
-    `erl` has to be in your `$PATH`. Do `brew install erlang`.
 
 -   __Java__
 

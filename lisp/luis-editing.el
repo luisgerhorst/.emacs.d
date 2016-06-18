@@ -2,6 +2,11 @@
 
 ;;; Indentation
 
+(electric-indent-mode 1)
+
+(setq-default indent-tabs-mode nil
+              tab-width 4)
+
 (use-package aggressive-indent
   :ensure t
   :commands (aggressive-indent-mode)
@@ -22,11 +27,15 @@
   :config
   (setq yas-snippet-dirs
         `(,(expand-file-name "snippets" user-emacs-directory)))
-
   (yas-global-mode 1))
 
 (use-package auto-complete
   :ensure t
+  :init
+  (setq ac-auto-show-menu 0.8
+        ac-auto-start 3
+        ac-use-fuzzy t
+        ac-use-menu-map t)
   :config
   (add-hook 'auto-complete-mode-hook
             (lambda ()
@@ -117,29 +126,35 @@ With negative prefix, apply to -N lines above."
 ;; Fancier manipulate whitespace function:
 ;; M-SPC does not work on my Mac, is used for opening Spotlight. If you
 ;; don't have such problems you may remove the first line.
-(global-set-key (kbd "H-SPC") 'just-one-space)
-(global-set-key [remap just-one-space] 'cycle-spacing)
+(global-set-key (kbd "H-SPC") #'just-one-space)
+(global-set-key [remap just-one-space] #'cycle-spacing)
+
+(defun luis-show-trailing-whitespace ()
+  (setq-local show-trailing-whitespace t))
+
+(add-hook 'prog-mode-hook #'luis-show-trailing-whitespace)
 
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
-  :ensure t)
+  :ensure t
+  :commands (ws-butler-mode))
 
-(add-hook 'prog-mode-hook 'ws-butler-mode)
+(add-hook 'prog-mode-hook #'ws-butler-mode)
 
 ;; Manually delete all trailing whitespaces.
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
 
 ;;; Sexp
 
-(defun luis/backwards-kill-sexp (&optional argument)
+(defun luis-backwards-kill-sexp (&optional argument)
   (interactive "P")
   (kill-sexp (- (or argument 1))))
 
 ;; More handy then C-M-k with negative argument.
-(global-set-key (kbd "<C-M-backspace>") #'luis/backwards-kill-sexp)
+(global-set-key (kbd "<C-M-backspace>") #'luis-backwards-kill-sexp)
 
 ;; Always insert matching brackets.
-(electric-pair-mode t)
+(electric-pair-mode 1)
 
 ;;; Misc
 

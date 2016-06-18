@@ -12,11 +12,8 @@
 ;; See customize group Solarized for options.
 (load-theme 'solarized-dark t)
 
-;; Highlight current line
-;; (global-hl-line-mode t)
-
 ;; No cursor blinking, it's distracting
-(blink-cursor-mode 0)
+(blink-cursor-mode -1)
 
 ;; No bell.
 (setq ring-bell-function 'ignore)

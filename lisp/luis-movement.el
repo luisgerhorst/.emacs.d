@@ -1,3 +1,5 @@
+(global-subword-mode 1)
+
 ;; Auto Highligh Symbol
 (use-package auto-highlight-symbol
   :ensure t
@@ -60,6 +62,8 @@
 
   (global-set-key [remap scroll-up-command] 'relative-scroll-up-command)
   (global-set-key [remap scroll-down-command] 'relative-scroll-down-command))
+
+
 
 
 (provide 'luis-movement)

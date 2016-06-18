@@ -44,16 +44,13 @@
   (add-to-list 'mu4e-view-actions
                '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
-  (use-package visual-fill-column
-    :commands (my/mu4e-compose-mode-hook)
-    :config
-    (defun my/mu4e-compose-mode-hookp ()
-      "My settings for message composition."
-      (visual-line-mode 1)
-      (auto-fill-mode -1)
-      (visual-fill-column-mode 1)))
+  (defun luis-mu4e-compose-mode-hook ()
+    "My settings for message composition."
+    (visual-line-mode 1)
+    (auto-fill-mode -1))
 
-  (add-hook 'mu4e-compose-mode-hook 'my/mu4e-compose-mode-hook)
+  (add-hook 'mu4e-compose-mode-hook #'luis-mu4e-compose-mode-hook)
+  (add-hook 'mu4e-compose-mode-hook #'visual-fill-column-mode)
 
   ;; To protect yourself from sending messages too hastily, add a
   ;; final confirmation.
@@ -62,17 +59,19 @@
               (unless (yes-or-no-p "Sure you want to send this?")
                 (signal 'quit nil))))
 
-  ;;; Get notified when new mails arrive.
-  (require 'mu4e-alert)
-  (mu4e-alert-set-default-style 'notifier)
-  (add-hook 'after-init-hook #'mu4e-alert-enable-mode-line-display)
-  (add-hook 'after-init-hook #'mu4e-alert-enable-notifications)
-
   ;; Load account specific configuration.
   (require 'luis-mail-private)
 
   ;; Start mu4e in background.
   (mu4e t))
+
+(use-package mu4e-alert
+  :ensure t
+  :after mu4e
+  :config
+  (mu4e-alert-set-default-style 'notifier)
+  (mu4e-alert-enable-mode-line-display)
+  (mu4e-alert-enable-notifications))
 
 
 (provide 'luis-mail)
