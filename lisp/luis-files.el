@@ -59,7 +59,7 @@
 ;; Dired config
 (progn
   ;; Cleaner dired.
-  (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
   (setq
    ;; Don't ask when deleting directory.

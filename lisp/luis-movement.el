@@ -2,7 +2,8 @@
 (use-package auto-highlight-symbol
   :ensure t
   :bind (("M-n" . ahs-highlight-now-and-forward)
-         ("M-p" . ahs-highlight-now-and-backward))
+         ("M-p" . ahs-highlight-now-and-backward)
+         ("C-x C-a" . ahs-edit-mode))
   :config
   (global-auto-highlight-symbol-mode t)
   (define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
@@ -26,12 +27,12 @@
 ;; was when you previously visited the same file.
 ;; http://www.emacswiki.org/emacs/SavePlace
 (use-package saveplace
+  :demand
   :ensure nil
   :init
   (setq-default save-place t)
   ;; Keep track of saved places in ~/.emacs.d/places
-  (setq save-place-file (expand-file-name "places" user-emacs-directory))
-  :demand)
+  (setq save-place-file (expand-file-name "places" user-emacs-directory)))
 
 (use-package paredit
   :ensure t

@@ -38,7 +38,7 @@
 
 (use-package company
   :ensure t
-  :commands (luis/setq-local-company-backends
+  :commands (luis-set-local-company-backends
              company-mode-on)
   :bind ("<tab>" . company-complete)
   :config
@@ -51,7 +51,7 @@
                             company-keywords)))
   ;; Used to only enable certain backends in a buffer to avoid possibly
   ;; annoying completions while for example writing comments.
-  (defun luis/setq-local-company-backends (local-company-backends)
+  (defun luis-set-local-company-backends (local-company-backends)
     (if (company-safe-backends-p local-company-backends)
         (setq-local company-backends local-company-backends)
       (progn
@@ -66,25 +66,28 @@
 
 (setq-default fill-column 80)
 
-(defun luis/resize-window-to-fill-column ()
+(defun luis-resize-window-to-fill-column ()
   (interactive)
   (window-resize (selected-window)
                  (+ (- fill-column (window-total-width)) 2)
                  t))
 
-(global-set-key (kbd "C-c m") #'luis/resize-window-to-fill-column)
+(global-set-key (kbd "C-c m") #'luis-resize-window-to-fill-column)
+
+(use-package visual-fill-column
+  :ensure t
+  :commands (visual-fill-column-mode))
 
 ;; Auto Fill for comments, enable per major mode in languages/*.el
-(defun my/comment-auto-fill ()
+(defun luis-comment-auto-fill ()
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode 1))
-
-(add-hook 'prog-mode-hook #'my/comment-auto-fill)
 
 (use-package fillcode
   :ensure t
   :commands (fillcode-mode))
 
+(add-hook 'prog-mode-hook #'luis-comment-auto-fill)
 (add-hook 'prog-mode-hook #'fillcode-mode)
 
 ;;; Commenting
@@ -120,18 +123,14 @@ With negative prefix, apply to -N lines above."
 
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
-  :ensure t
-  :config
-  (add-hook 'prog-mode-hook 'ws-butler-mode))
+  :ensure t)
+
+(add-hook 'prog-mode-hook 'ws-butler-mode)
 
 ;; Manually delete all trailing whitespaces.
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
 
 ;;; Sexp
-
-(use-package paredit
-  :ensure t
-  :commands (enable-paredit-mode))
 
 (defun luis/backwards-kill-sexp (&optional argument)
   (interactive "P")
