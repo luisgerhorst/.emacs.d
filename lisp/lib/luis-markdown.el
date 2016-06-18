@@ -1,8 +1,9 @@
-;;; Markdown
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'"
+         "\\.markdown\\'"))
 
-(require-package 'markdown-mode)
-
-(defun my/markdown-mode-hook ()
+(defun luis-markdown-mode-hook ()
   ;; Can be enabled in files with unfilled lines.
   (setq-local buffer-face-mode-face '(:family "Input Serif"))
   (buffer-face-mode -1)
@@ -12,18 +13,11 @@
   (show-paren-mode -1)
   (subword-mode -1)
 
-  ;; Prper line wrapping for text.
+  ;; Proper line wrapping for text.
   (visual-line-mode 1)
-  (require-package 'visual-fill-column)
-  (require 'visual-fill-column)
   (visual-fill-column-mode 1))
 
-(add-hook 'markdown-mode-hook 'my/markdown-mode-hook)
-
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-hook 'markdown-mode-hook #'luis-markdown-mode-hook)
 
 
 (provide 'luis-markdown)
