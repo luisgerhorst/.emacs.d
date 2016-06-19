@@ -60,6 +60,10 @@ Then read the following:
 
 -   __Sending Mail__
 
+    Here's the
+    [turorial](http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html)
+    that helped me when I set it up.
+
     For connecting to a SMTP server that requires authentication
     `gnutls` is required, install it with
 
@@ -74,7 +78,8 @@ Then read the following:
     chmod 600 ~/.authinfo
     ```
 
-    to create it and set it's permissions properly. Then insert the credentials in the following format:
+    to create it and set it's permissions properly. Then insert the credentials
+    in the following format:
 
     ```
     machine YOUR_SMTP_SERVER port YOUR_SMTP_SERVER_PORT login YOUR_SERVER_LOGIN password YOUR_PASSWORD
@@ -84,9 +89,11 @@ Then read the following:
     E-Mail adress. Now make sure you edit `lisp/lib/luis-mail-private.el` to
     contain all variables required for sending mails.
 
-    Source: http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
-
 -   __Receiving Mail__
+
+    First, here's the
+    [turorial](http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/)
+    I used.
 
     We'll use `offlineimap` to fetch mail from the server, install it with
 
@@ -95,7 +102,7 @@ Then read the following:
     ```
 
     Now configure it, you can find my config in my
-[dotfiles](https://github.com/luisgerhorst/dotfiles/blob/master/.offlineimaprc).
+    [dotfiles](https://github.com/luisgerhorst/dotfiles/blob/master/.offlineimaprc).
 
     Read the
     [`offlineimap` docs](http://docs.offlineimap.org/en/latest/nametrans.html)
@@ -119,12 +126,8 @@ Then read the following:
 
     Then configure `mu4e` according to your mail provider and machine. The files
     `lisp/lib/luis-mail-private.el.template` and
-    `lisp/luis-machine-local.el.template`, already contain the options you need,
-    just modify them.
-
-    Here's a tutorial that may also help you:
-http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/
-
+    `lisp/luis-machine-local.el.template`, already contain the options you need.
+    
     Finally install `terminal-notifier` using `brew install terminal-notifier`
     for desktop notifications by
     [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
