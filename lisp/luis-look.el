@@ -19,7 +19,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; Highlight matching parenthesis.
-(show-paren-mode t)
+(show-paren-mode 1)
 
 (setq-default indicate-empty-lines t)
 
