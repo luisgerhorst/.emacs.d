@@ -126,7 +126,7 @@ Then read the following:
 
     Then configure `mu4e` according to your mail provider and machine. The files
     `lisp/lib/luis-mail-private.el.template` and
-    `lisp/luis-machine-local.el.template`, already contain the options you need.
+    `lisp/luis-machine-local.el.template` already contain the options you need.
     
     Finally install `terminal-notifier` using `brew install terminal-notifier`
     for desktop notifications by
