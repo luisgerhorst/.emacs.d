@@ -13,7 +13,7 @@
  ;; Specify the location of your Maildir and the purpose of the folders
  ;; it contains. The following config is for a directory structure that
  ;; looks like this:
- 
+
  ;; ~/.maildir/fastmail
  ;; ├── Inbox
  ;; ├── Archive
