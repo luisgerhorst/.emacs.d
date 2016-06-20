@@ -1,3 +1,16 @@
+;;; Scrolling
+
+(setq scroll-preserve-screen-position t
+      scroll-conservatively 50
+      scroll-margin 2
+      ;; Scroll in smaller steps when mouse is used.
+      mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+
+(global-set-key (kbd "<prior>") #'scroll-down-line)
+(global-set-key (kbd "<next>") #'scroll-up-line)
+
+;;; Misc
+
 (global-subword-mode 1)
 
 ;; Auto Highligh Symbol
@@ -44,26 +57,5 @@
          ;; I need these more often then forward/backward-list.
          ("C-M-p" . paredit-backward-down)
          ("C-M-n" . paredit-forward-up)))
-
-;; Scroll relative to current window size.
-(progn
-  (setq relative-scroll-ratio 0.5)
-
-  (defun relative-scroll-lines ()
-    (max 1 (round (* relative-scroll-ratio (window-total-height)))))
-
-  (defun relative-scroll-up-command (&optional argument)
-    (interactive "^P")
-    (scroll-up-command (or argument (relative-scroll-lines))))
-
-  (defun relative-scroll-down-command (&optional argument)
-    (interactive "^P")
-    (scroll-down-command (or argument (relative-scroll-lines))))
-
-  (global-set-key [remap scroll-up-command] 'relative-scroll-up-command)
-  (global-set-key [remap scroll-down-command] 'relative-scroll-down-command))
-
-
-
 
 (provide 'luis-movement)
