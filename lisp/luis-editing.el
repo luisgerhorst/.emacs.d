@@ -48,6 +48,12 @@
               (define-key ac-menu-map (kbd "C-n") nil)
               (define-key ac-menu-map (kbd "C-p") nil))))
 
+(use-package company-quickhelp
+  :ensure t
+  :commands (company-quickhelp-mode)
+  :config
+  (setq company-quickhelp-delay 1.5))
+
 (use-package company
   :ensure t
   :commands (luis-set-local-company-backends
@@ -61,6 +67,7 @@
                            company-css
                            (company-dabbrev-code
                             company-keywords)))
+
   ;; Used to only enable certain backends in a buffer to avoid possibly
   ;; annoying completions while for example writing comments.
   (defun luis-set-local-company-backends (local-company-backends)
@@ -72,7 +79,10 @@
                          "Automatic completion was disabled in this buffer.")
                  local-company-backends)
         ;; Disable automatic completion if cursor is idle locally.
-        (setq-local company-idle-delay nil)))))
+        (setq-local company-idle-delay nil))))
+
+  (company-quickhelp-mode 1)
+  (define-key company-active-map (kbd "M-h") #'company-quickhelp-manual-begin))
 
 ;;; Filling
 
