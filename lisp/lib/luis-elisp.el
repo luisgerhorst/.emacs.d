@@ -9,7 +9,8 @@
   (add-hook 'lisp-interaction-mode-hook #'paredit-mode)
   (add-hook 'scheme-mode-hook #'paredit-mode)
   :config
-  (define-key paredit-mode-map (kbd "M-r") nil))
+  (define-key paredit-mode-map (kbd "M-r") nil)
+  (define-key paredit-mode-map (kbd "M-q") nil))
 
 ;; eldoc-mode shows documentation in the minibuffer when writing code
 ;; http://www.emacswiki.org/emacs/ElDoc
