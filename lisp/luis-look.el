@@ -1,7 +1,6 @@
 ;;;; For things concerning the way it looks and what is highlighted.
 
 ;; Diable menu, tool and scroll bar.
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
