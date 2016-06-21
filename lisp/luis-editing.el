@@ -111,22 +111,6 @@
 (add-hook 'prog-mode-hook #'luis-comment-auto-fill)
 (add-hook 'prog-mode-hook #'fillcode-mode)
 
-;;; Wrapping
-
-;; Prefix wrapped lines like filling does but don't change the buffer. Does not
-;; work with tabs.
-(use-package adaptive-wrap
-  :ensure t
-  :commands (adaptive-wrap-prefix-mode)
-  :init
-  (add-hook 'prog-mode-hook #'adaptive-wrap-prefix-mode)
-  :config
-  (setq-default adaptive-wrap-extra-indent 2)
-  (add-hook 'adaptive-wrap-prefix-mode-hook
-            (lambda ()
-              (setq-local word-wrap t)
-              (setq-local line-move-visual nil))))
-
 ;;; Commenting
 
 ;; comment-line if region is inactive, comment-box otherwise.
