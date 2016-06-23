@@ -7,14 +7,14 @@
 (use-package adaptive-wrap
   :ensure t
   :commands (adaptive-wrap-prefix-mode)
-  :init
-  (add-hook 'prog-mode-hook #'adaptive-wrap-prefix-mode)
   :config
   (setq-default adaptive-wrap-extra-indent 2)
-  (add-hook 'adaptive-wrap-prefix-mode-hook
-            (lambda ()
-              (setq-local word-wrap t)
-              (setq-local line-move-visual nil))))
+  (add-hook 'adaptive-wrap-prefix-mode-hook #'visual-line-mode))
+
+;; Enable in buffer with unfilled lines (that you can't edit).
+(global-set-key (kbd "C-c w") #'adaptive-wrap-prefix-mode)
+
+(setq-default truncate-lines t)
 
 ;;; Theme
 
