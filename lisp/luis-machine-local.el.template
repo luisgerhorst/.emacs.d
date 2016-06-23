@@ -1,6 +1,6 @@
 ;;; Initial frame size.
 ;; (add-to-list 'default-frame-alist '(height . 86))
-;; (add-to-list 'default-frame-alist '(width . 157))
+;; (add-to-list 'default-frame-alist '(width . (+ 80 2))
 
 ;; Start Emacs in Fullscreen
 ;; (set-frame-parameter nil 'fullscreen 'fullboth)
@@ -9,7 +9,7 @@
 ;; should be correct if mu was installed with homebrew).
 ;; (setq mu4e-mu-binary "/usr/local/bin/mu")
 
-;; Follow these instructions first:
+;; For Java Development, follow these instructions first:
 ;; https://github.com/jdee-emacs/jdee-server#building
 ;; jdee-server source should already be located in ~/.emacs.d/jdee-server
 ;; (setq jdee-server-dir (expand-file-name
