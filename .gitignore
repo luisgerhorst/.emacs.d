@@ -2,7 +2,6 @@
 *.elc
 
 /.cask/
-/.smex-items
 /.tutor/
 /.sx/
 /recentf
@@ -19,9 +18,10 @@
 /url/
 /bookmarks
 /eshell/
+/abbrev_defs
+/semanticdb/
+/smex
 
 /lisp/luis-private.el
 /lisp/lib/luis-mail-private.el
 /lisp/luis-machine-local.el
-/abbrev_defs
-/semanticdb/

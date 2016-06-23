@@ -1,6 +1,6 @@
 ;;; Interactively do things
 
-;; Standard IDO
+;; Configure Standard IDO
 (progn
   (setq ido-use-filename-at-point nil)
   (setq ido-enable-flex-matching t)
@@ -28,7 +28,7 @@
 (use-package smex
   :ensure t
   :init
-  (setq smex-save-file (concat user-emacs-directory ".smex-items"))
+  (setq smex-save-file (concat user-emacs-directory "smex"))
   :bind ("M-x" . smex))
 
 ;;; Buffers
