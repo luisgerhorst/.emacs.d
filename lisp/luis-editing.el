@@ -29,7 +29,7 @@
         `(,(expand-file-name "snippets" user-emacs-directory)))
   (yas-global-mode 1)
   (define-key yas-minor-mode-map (kbd "C-i") nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  (define-key yas-minor-mode-map (kbd "<tab>") nil)
   (define-key yas-minor-mode-map (kbd "H-i") #'yas-expand))
 
 (use-package auto-complete
@@ -57,7 +57,7 @@
   :ensure t
   :commands (luis-set-local-company-backends
              company-mode-on)
-  :bind ("TAB" . company-complete)
+  :bind ("<tab>" . company-complete)
   :config
   (setq company-idle-delay 0
         company-minimum-prefix-length 1
