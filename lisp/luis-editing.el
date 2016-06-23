@@ -142,11 +142,6 @@ With negative prefix, apply to -N lines above."
 (global-set-key (kbd "H-SPC") #'just-one-space)
 (global-set-key [remap just-one-space] #'cycle-spacing)
 
-(defun luis-show-trailing-whitespace ()
-  (setq-local show-trailing-whitespace t))
-
-(add-hook 'prog-mode-hook #'luis-show-trailing-whitespace)
-
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
   :ensure t
