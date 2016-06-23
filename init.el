@@ -17,7 +17,7 @@
 (require 'luis-integration)
 (require 'luis-interactive)
 (require 'luis-files)
-(require 'luis-editing)
+(require 'luis-modification)
 (require 'luis-movement)
 (require 'luis-misc)
 

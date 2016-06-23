@@ -180,4 +180,4 @@ With negative prefix, apply to -N lines above."
 (global-set-key (kbd "C-^") #'delete-indentation)
 
 
-(provide 'luis-editing)
+(provide 'luis-modification)
