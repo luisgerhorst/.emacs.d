@@ -57,7 +57,7 @@
   :ensure t
   :commands (luis-set-local-company-backends
              company-mode-on)
-  :bind ("C-i" . company-complete)
+  :bind ("<f18>" . company-complete)
   :config
   (setq company-idle-delay 0
         company-minimum-prefix-length 1
