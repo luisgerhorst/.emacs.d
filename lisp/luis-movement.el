@@ -16,11 +16,11 @@
 ;; Auto Highligh Symbol
 (use-package auto-highlight-symbol
   :ensure t
+  :demand
   :bind (("M-n" . ahs-highlight-now-and-forward)
-         ("M-p" . ahs-highlight-now-and-backward)
-         ("C-x C-a" . ahs-edit-mode))
+         ("M-p" . ahs-highlight-now-and-backward))
   :config
-  (global-auto-highlight-symbol-mode t)
+  (global-auto-highlight-symbol-mode 1)
   (define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
   (customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
   ;; 'Disable' automatic highlighting
