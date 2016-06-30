@@ -10,7 +10,7 @@
 (setq TeX-newline-function #'newline-and-indent)
 
 (add-hook 'LaTeX-mode-hook #'luis-latex-mode-hook)
-(add-hook 'LaTeX-mode-hook #'company-mode-on)
+(add-hook 'LaTeX-mode-hook #'luis-company-configure-automatic-completion)
 
 (defun luis-latex-mode-hook ()
   ;; Proper line wrapping for text.

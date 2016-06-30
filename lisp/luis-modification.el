@@ -53,19 +53,40 @@
   :config
   (setq company-quickhelp-delay 1.5))
 
+(use-package company-ngram
+  :ensure t
+  :demand
+  :config
+  (setq company-ngram-data-dir (expand-file-name "ngram" user-emacs-directory))
+  (company-ngram-init)
+  (run-with-idle-timer 3600 t (lambda ()
+                                (company-ngram-command "save_cache"))))
+
 (use-package company
   :ensure t
-  :commands (luis-set-local-company-backends
-             company-mode-on)
+  :demand
   :bind ("<f18>" . company-complete)
   :config
-  (setq company-idle-delay 0
-        company-minimum-prefix-length 1
-        company-backends '(company-elisp
+  (setq-default company-idle-delay nil
+                company-minimum-prefix-length 2)
+  (setq company-backends '(company-elisp
                            company-nxml
                            company-css
                            (company-dabbrev-code
                             company-keywords)))
+
+  (company-quickhelp-mode 1)
+  (define-key company-active-map (kbd "M-h") #'company-quickhelp-manual-begin)
+
+  (global-company-mode 1)
+
+  (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
+    (setq-local company-idle-delay idle-delay)
+    (setq-local company-minimum-prefix-length minimum-prefix-length))
+
+  (defun luis-company-configure-automatic-completion ()
+    (interactive)
+    (luis-company-configure-completion 0 0))
 
   ;; Used to only enable certain backends in a buffer to avoid possibly
   ;; annoying completions while for example writing comments.
@@ -77,11 +98,8 @@
                          "company-safe-backends-p predicate. "
                          "Automatic completion was disabled in this buffer.")
                  local-company-backends)
-        ;; Disable automatic completion if cursor is idle locally.
-        (setq-local company-idle-delay nil))))
-
-  (company-quickhelp-mode 1)
-  (define-key company-active-map (kbd "M-h") #'company-quickhelp-manual-begin))
+        ;; Disable automatic completion locally.
+        (setq-local company-idle-delay nil)))))
 
 ;;; Filling
 

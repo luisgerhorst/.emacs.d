@@ -1,5 +1,6 @@
 (setq c-basic-offset tab-width)
-(add-hook 'c-mode-hook #'company-mode-on)
+(add-hook 'c-mode-hook
+          #'luis-company-configure-automatic-completion)
 
 
 (provide 'luis-c)

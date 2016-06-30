@@ -21,6 +21,8 @@
 /abbrev_defs
 /semanticdb/
 /smex
+/ensime/
+/ido.last~
 
 /lisp/luis-private.el
 /lisp/lib/luis-mail-private.el

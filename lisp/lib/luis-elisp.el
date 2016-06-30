@@ -18,7 +18,7 @@
 (add-hook 'lisp-interaction-mode-hook #'eldoc-mode)
 (add-hook 'ielm-mode-hook #'eldoc-mode)
 
-(add-hook 'emacs-lisp-mode-hook #'company-mode)
+(add-hook 'emacs-lisp-mode-hook #'luis-company-configure-automatic-completion)
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()

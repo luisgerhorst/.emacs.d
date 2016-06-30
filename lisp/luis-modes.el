@@ -12,5 +12,6 @@
 (require 'luis-java)
 (require 'luis-asm)
 (require 'luis-lua)
+(require 'luis-scala)
 
 (provide 'luis-modes)

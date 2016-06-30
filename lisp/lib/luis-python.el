@@ -9,6 +9,7 @@
 
 (add-hook 'python-mode-hook #'luis-python-mode-hook)
 (add-hook 'python-mode-hook #'luis-comment-auto-fill)
-(add-hook 'python-mode-hook #'company-mode-on)
+(add-hook 'python-mode-hook #'luis-company-configure-automatic-completion)
+
 
 (provide 'luis-python)
