@@ -10,6 +10,7 @@
 /backups/
 /edts/
 /ido.last
+/ido.last~
 /places
 /projectile-bookmarks.eld
 /projectile.cache
@@ -22,7 +23,7 @@
 /semanticdb/
 /smex
 /ensime/
-/ido.last~
+/ngram/
 
 /lisp/luis-private.el
 /lisp/lib/luis-mail-private.el
