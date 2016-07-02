@@ -7,9 +7,6 @@
     (buffer-face-mode -1)
     (local-set-key (kbd "C-c f") 'buffer-face-mode)
 
-    (turn-on-company-ngram)
-    (luis-company-configure-completion 0.2 2)
-
     (subword-mode -1)
 
     ;; Together with visual-fill-column-mode:

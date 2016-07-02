@@ -30,7 +30,7 @@
   (yas-global-mode 1)
   (define-key yas-minor-mode-map [(tab)] nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map (kbd "H-i") #'yas-expand))
+  (define-key yas-minor-mode-map (kbd "M-i") #'yas-expand))
 
 (use-package auto-complete
   :ensure t
@@ -53,19 +53,10 @@
   :config
   (setq company-quickhelp-delay 1.5))
 
-(use-package company-ngram
-  :ensure t
-  :demand
-  :config
-  (setq company-ngram-data-dir (expand-file-name "ngram" user-emacs-directory))
-  (company-ngram-init)
-  (run-with-idle-timer 3600 t (lambda ()
-                                (company-ngram-command "save_cache"))))
-
 (use-package company
   :ensure t
   :demand
-  :bind ("<f18>" . company-complete)
+  :bind ("H-i" . company-complete)
   :config
   (setq-default company-idle-delay nil
                 company-minimum-prefix-length 2)
@@ -76,8 +67,6 @@
                             company-keywords)))
 
   (company-quickhelp-mode 1)
-  (define-key company-active-map (kbd "M-h") #'company-quickhelp-manual-begin)
-
   (global-company-mode 1)
 
   (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
