@@ -49,6 +49,7 @@
 
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :config
   (which-key-setup-side-window-right-bottom)
   (which-key-mode))

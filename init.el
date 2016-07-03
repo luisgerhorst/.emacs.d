@@ -6,10 +6,15 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;;; General
+;;; Load Path
 
 (require 'luis-packages)
+
+;;; Libraries
+
 (require 'use-package)
+(use-package diminish
+  :ensure t)
 
 ;;; Features
 

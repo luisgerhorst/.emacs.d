@@ -12,11 +12,13 @@
 ;;; Misc
 
 (global-subword-mode 1)
+(diminish 'subword-mode)
 
 ;; Auto Highligh Symbol
 (use-package auto-highlight-symbol
   :ensure t
   :demand
+  :diminish auto-highlight-symbol-mode
   :bind (("M-n" . ahs-highlight-now-and-forward)
          ("M-p" . ahs-highlight-now-and-backward))
   :config

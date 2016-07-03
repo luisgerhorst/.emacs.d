@@ -2,7 +2,9 @@
 
 ;;; Wrapping
 
-(setq-default truncate-lines t)
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (luis-toggle-wrapping 0)))
 
 ;; Prefix wrapped lines like filling does but don't change the buffer. Does not
 ;; work with tabs.
@@ -12,16 +14,19 @@
   :config
   (setq-default adaptive-wrap-extra-indent 2))
 
-(defun luis-toggle-wrapping ()
-  (interactive)
-  (if truncate-lines
+(defun luis-toggle-wrapping (&optional prefix)
+  "Enable nice line wrapping if prefix argument is > 0, disable it otherwise.
+Toggle nice line wrapping if prefix argument is not set."
+  (interactive "P")
+  (if (or (and (not prefix) truncate-lines)
+          (> prefix 0))
       (progn
         (adaptive-wrap-prefix-mode 1)
         ;; This also disables truncate-lines:
         (visual-line-mode 1))
     (adaptive-wrap-prefix-mode -1)
     (visual-line-mode -1)
-    (kill-local-variable 'truncate-lines)))
+    (setq-local truncate-lines t)))
 
 ;; Enable in buffer with unfilled lines (that you can't edit).
 (global-set-key (kbd "C-c w") #'luis-toggle-wrapping)
@@ -47,6 +52,9 @@
 (blink-cursor-mode -1)
 (show-paren-mode 1)
 (setq ring-bell-function 'ignore)
+
+;; Display column number in mode line.
+(column-number-mode 1)
 
 
 (provide 'luis-look)

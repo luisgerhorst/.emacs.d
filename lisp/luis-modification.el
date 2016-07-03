@@ -9,6 +9,7 @@
 
 (use-package aggressive-indent
   :ensure t
+  :diminish aggressive-indent-mode " AggressiveIndent"
   :commands (aggressive-indent-mode)
   :config
   (add-to-list
@@ -24,6 +25,7 @@
 
 (use-package yasnippet
   :ensure t
+  :diminish yas-minor-mode
   :config
   (setq yas-snippet-dirs
         `(,(expand-file-name "snippets" user-emacs-directory)))
@@ -56,6 +58,7 @@
 (use-package company
   :ensure t
   :demand
+  :diminish company-mode
   :bind ("H-i" . company-complete)
   :config
   (setq-default company-idle-delay nil
@@ -106,13 +109,16 @@
   :ensure t
   :commands (visual-fill-column-mode))
 
-;; Auto Fill for comments, enable per major mode in languages/*.el
+(diminish 'auto-fill-function)
+
+;; Auto Fill for comments, enable per major mode.
 (defun luis-comment-auto-fill ()
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode 1))
 
 (use-package fillcode
   :ensure t
+  :diminish fillcode-mode
   :commands (fillcode-mode))
 
 (add-hook 'prog-mode-hook #'luis-comment-auto-fill)
@@ -152,6 +158,7 @@ With negative prefix, apply to -N lines above."
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
   :ensure t
+  :diminish ws-butler-mode
   :commands (ws-butler-mode))
 
 (add-hook 'prog-mode-hook #'ws-butler-mode)
@@ -180,6 +187,7 @@ With negative prefix, apply to -N lines above."
 ;; Especially C-w is handy for killing whole lines.
 (use-package whole-line-or-region
   :ensure t
+  :diminish whole-line-or-region-mode
   :config
   (whole-line-or-region-mode 1))
 
