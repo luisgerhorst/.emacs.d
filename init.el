@@ -1,8 +1,7 @@
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "lisp/lib" user-emacs-directory))
+(add-to-list 'load-path (locate-user-emacs-file "lisp"))
+(add-to-list 'load-path (locate-user-emacs-file "lisp/lib"))
 
-(setq custom-file
-      (expand-file-name "lisp/luis-custom.el" user-emacs-directory))
+(setq custom-file (locate-user-emacs-file "lisp/luis-custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file))
 

@@ -13,7 +13,7 @@
  ;; backups in ~/.emacs.d/backups. More info:
  ;; http://www.gnu.org/software/emacs/manual/html_node/elisp/Backup-Files.html
  backup-directory-alist
- `(("." . ,(concat user-emacs-directory "backups")))
+ `(("." . ,(locate-user-emacs-file "backups")))
 
  ;; Prevent asking to recover changed file when changes were discarded.
  auto-save-default nil

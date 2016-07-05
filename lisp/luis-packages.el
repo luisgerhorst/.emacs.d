@@ -27,7 +27,7 @@ re-downloaded in order to locate PACKAGE."
 
 ;;; Site-Lisp
 
-(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
+(add-to-list 'load-path (locate-user-emacs-file "site-lisp"))
 
 (require 'cl)
 (defun sanityinc/add-subdirs-to-load-path (parent-dir)
@@ -41,8 +41,7 @@ re-downloaded in order to locate PACKAGE."
               (directory-files (expand-file-name parent-dir) t "^[^\\.]"))
              load-path)))))
 
-(sanityinc/add-subdirs-to-load-path
- (expand-file-name "site-lisp/" user-emacs-directory))
+(sanityinc/add-subdirs-to-load-path (locate-user-emacs-file "site-lisp/"))
 
 
 (provide 'luis-packages)

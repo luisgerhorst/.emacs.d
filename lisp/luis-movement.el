@@ -49,7 +49,7 @@
   :init
   (setq-default save-place t)
   ;; Keep track of saved places in ~/.emacs.d/places
-  (setq save-place-file (expand-file-name "places" user-emacs-directory)))
+  (setq save-place-file (locate-user-emacs-file "places")))
 
 (use-package paredit
   :ensure t

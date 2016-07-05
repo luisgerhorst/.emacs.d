@@ -28,7 +28,7 @@
   :diminish yas-minor-mode
   :config
   (setq yas-snippet-dirs
-        `(,(expand-file-name "snippets" user-emacs-directory)))
+        `(,(locate-user-emacs-file "snippets")))
   (yas-global-mode 1)
   (define-key yas-minor-mode-map [(tab)] nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
