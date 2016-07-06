@@ -2,10 +2,6 @@
 
 ;;; Wrapping
 
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (luis-toggle-wrapping 0)))
-
 ;; Prefix wrapped lines like filling does but don't change the buffer. Does not
 ;; work with tabs.
 (use-package adaptive-wrap
@@ -27,6 +23,10 @@ Toggle nice line wrapping if prefix argument is not set."
     (adaptive-wrap-prefix-mode -1)
     (visual-line-mode -1)
     (setq-local truncate-lines t)))
+
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (luis-toggle-wrapping 0)))
 
 ;; Enable in buffer with unfilled lines (that you can't edit).
 (global-set-key (kbd "C-c w") #'luis-toggle-wrapping)
