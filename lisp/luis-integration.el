@@ -75,6 +75,11 @@ end tell
   (interactive)
   (open-directory-in-iterm (file-name-directory (buffer-file-name))))
 
+(use-package dash-at-point
+  :ensure t
+  :bind (("C-c l" . dash-at-point-with-docset)
+         ("C-c s" . dash-at-point)))
+
 (when (eq system-type 'darwin)
   (global-set-key [remap suspend-frame] 'ns-do-hide-emacs))
 
