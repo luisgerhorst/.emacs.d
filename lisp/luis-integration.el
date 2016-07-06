@@ -77,8 +77,10 @@ end tell
 
 (use-package dash-at-point
   :ensure t
-  :bind (("C-c l" . dash-at-point-with-docset)
-         ("C-c s" . dash-at-point)))
+  :bind (("C-c s" . dash-at-point)
+         ;; Unused:
+         ;; ("C-c l" . dash-at-point-with-docset)
+         ))
 
 (when (eq system-type 'darwin)
   (global-set-key [remap suspend-frame] 'ns-do-hide-emacs))
