@@ -1,5 +1,6 @@
 (use-package ensime
-  :ensure t)
+  :ensure t
+  :pin melpa-stable)
 
 (use-package scala-mode
   :interpreter
