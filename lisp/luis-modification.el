@@ -109,8 +109,6 @@
   :ensure t
   :commands (visual-fill-column-mode))
 
-(diminish 'auto-fill-function)
-
 ;; Auto Fill for comments, enable per major mode.
 (defun luis-comment-auto-fill ()
   (setq-local comment-auto-fill-only-comments t)
