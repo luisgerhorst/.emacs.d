@@ -2,7 +2,8 @@
 
 ;;; Wrapping
 
-;; Prefix wrapped lines like filling does but don't change the buffer. Does not work with tabs.
+;; Prefix wrapped lines like filling does but don't change the buffer. Does not
+;; work with tabs.
 (use-package adaptive-wrap
   :ensure t
   :commands (adaptive-wrap-prefix-mode)
@@ -13,7 +14,7 @@
 (setq-default word-wrap t)
 (setq line-move-visual nil)
 
-;; Enable in files with long lines that can not be modiefied.
+;; Enable in files with long lines that can not be modified.
 (use-package luis-code-wrap
   :bind ("C-c w" . luis-code-wrap-mode))
 
