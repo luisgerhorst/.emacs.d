@@ -15,9 +15,8 @@
   :ensure nil
   :config
 
-  ;; Emacs allows you to select an e-mail program as the default program
-  ;; it uses when you press C-x m (compose-mail), call report-emacs-bug
-  ;; and so on.
+  ;; Emacs allows you to select an e-mail program as the default program it uses
+  ;; when you press C-x m (compose-mail), call report-emacs-bug and so on.
   (setq mail-user-agent 'mu4e-user-agent)
 
   (setq mu4e-get-mail-command "offlineimap")
@@ -29,7 +28,9 @@
   (setq mu4e-compose-context-policy 'pick-first)
 
   (defun luis-kill-mu4e-update-process-without-query (run-in-background)
-    ;; Name from mu4e-utils.el function mu4e~update-mail-and-index-real.
+    ;; Name from mu4e-utils.el function mu4e~update-mail-and-index-real. This
+    ;; prevents Emacs from asking you if it is ok to kill offlineimap when Emacs
+    ;; quits and mu4e is currently updating.
     (set-process-query-on-exit-flag (get-process "mu4e-update") nil))
 
   (advice-add 'mu4e~update-mail-and-index-real :after
@@ -44,13 +45,8 @@
   (add-to-list 'mu4e-view-actions
                '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
-  (defun luis-mu4e-compose-mode-hook ()
-    "My settings for message composition."
-    (visual-line-mode 1)
-    (auto-fill-mode -1))
-
-  (add-hook 'mu4e-compose-mode-hook #'luis-mu4e-compose-mode-hook)
-  (add-hook 'mu4e-compose-mode-hook #'visual-fill-column-mode)
+  (add-hook 'mu4e-compose-mode-hook #'turn-off-auto-fill)
+  (add-hook 'mu4e-compose-mode-hook #'luis-text-wrap-mode)
 
   ;; To protect yourself from sending messages too hastily, add a
   ;; final confirmation.
