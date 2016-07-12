@@ -11,8 +11,12 @@
 
 ;;; Misc
 
-(global-subword-mode 1)
-(diminish 'subword-mode)
+(use-package subword
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook #'subword-mode)
+  :config
+  (diminish 'subword-mode))
 
 ;; Auto Highligh Symbol
 (use-package auto-highlight-symbol
