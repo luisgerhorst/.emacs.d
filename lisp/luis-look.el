@@ -2,34 +2,23 @@
 
 ;;; Wrapping
 
-;; Prefix wrapped lines like filling does but don't change the buffer. Does not
-;; work with tabs.
+;; Prefix wrapped lines like filling does but don't change the buffer. Does not work with tabs.
 (use-package adaptive-wrap
   :ensure t
   :commands (adaptive-wrap-prefix-mode)
   :config
-  (setq-default adaptive-wrap-extra-indent 2))
+  (setq-default adaptive-wrap-extra-indent 0))
 
-(defun luis-toggle-wrapping (&optional prefix)
-  "Enable nice line wrapping if prefix argument is > 0, disable it otherwise.
-Toggle nice line wrapping if prefix argument is not set."
-  (interactive "P")
-  (if (or (and (not prefix) truncate-lines)
-          (> prefix 0))
-      (progn
-        (adaptive-wrap-prefix-mode 1)
-        ;; This also disables truncate-lines:
-        (visual-line-mode 1))
-    (adaptive-wrap-prefix-mode -1)
-    (visual-line-mode -1)
-    (setq-local truncate-lines t)))
+(setq-default truncate-lines t)
+(setq-default word-wrap t)
+(setq line-move-visual nil)
 
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (luis-toggle-wrapping 0)))
+;; Enable in files with long lines that can not be modiefied.
+(use-package luis-code-wrap
+  :bind ("C-c w" . luis-code-wrap-mode))
 
-;; Enable in buffer with unfilled lines (that you can't edit).
-(global-set-key (kbd "C-c w") #'luis-toggle-wrapping)
+(use-package luis-text-wrap
+  :commands luis-text-wrap-mode)
 
 ;;; Theme
 
