@@ -25,7 +25,9 @@
 
 (use-package solarized-theme
   :ensure t
-  :defer t)
+  :defer t
+  :init
+  (setq solarized-high-contrast-mode-line t))
 
 ;; See customize group Solarized for options.
 (load-theme 'solarized-dark t)
