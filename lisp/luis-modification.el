@@ -110,16 +110,16 @@
   :commands (visual-fill-column-mode))
 
 ;; Auto Fill for comments, enable per major mode.
-(defun luis-comment-auto-fill ()
-  (setq-local comment-auto-fill-only-comments t)
-  (auto-fill-mode 1))
+(use-package luis-comment-auto-fill
+  :commands luis-comment-auto-fill-mode
+  :diminish luis-comment-auto-fill-mode)
 
 (use-package fillcode
   :ensure t
   :diminish fillcode-mode
   :commands (fillcode-mode))
 
-(add-hook 'prog-mode-hook #'luis-comment-auto-fill)
+(add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode)
 (add-hook 'prog-mode-hook #'fillcode-mode)
 
 ;;; Commenting
