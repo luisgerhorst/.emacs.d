@@ -30,6 +30,16 @@
 ;; See customize group Solarized for options.
 (load-theme 'solarized-dark t)
 
+;;; Mode Line
+
+(use-package powerline
+  :ensure t
+  :config
+  (setq powerline-default-separator 'utf-8)
+  (powerline-default-theme)
+  (set-face-underline 'mode-line nil)
+  (set-face-underline 'mode-line-inactive nil))
+
 ;;; Whitespaces
 
 (setq-default indicate-empty-lines t)
