@@ -27,6 +27,7 @@
   :ensure t
   :defer t
   :init
+  ;; Looks much better when using Powerline.
   (setq solarized-high-contrast-mode-line t))
 
 ;; See customize group Solarized for options.
