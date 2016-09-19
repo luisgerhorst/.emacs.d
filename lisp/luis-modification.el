@@ -130,20 +130,7 @@
                   (interactive "p")
                   (if (use-region-p)
                       (comment-box (region-beginning) (region-end) (or n 0))
-                    (endless/comment-line (or n 1)))))
-
-;; `comment-line` function will be built in in Emacs 25.1
-;; http://endlessparentheses.com/new-in-emacs-25-1-comment-line.html
-(defun endless/comment-line (n)
-  "Comment or uncomment current line and leave point after it.
-With positive prefix, apply to N lines including current one.
-With negative prefix, apply to -N lines above."
-  (interactive "p")
-  (comment-or-uncomment-region
-   (line-beginning-position)
-   (goto-char (line-end-position n)))
-  (forward-line 1)
-  (back-to-indentation))
+                    (comment-line (or n 1)))))
 
 ;;; Whitespaces
 
@@ -174,7 +161,7 @@ With negative prefix, apply to -N lines above."
 (global-set-key (kbd "<C-M-backspace>") #'luis-backwards-kill-sexp)
 
 ;; Always insert matching brackets.
-(electric-pair-mode 1)
+(add-hook 'prog-mode-hook #'electric-pair-local-mode)
 
 ;;; Misc
 
