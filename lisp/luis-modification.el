@@ -55,6 +55,28 @@
   :config
   (setq company-quickhelp-delay 1.5))
 
+
+(defun luis-company-configure-completion (idle-delay minimum-prefix-length)
+  (setq-local company-idle-delay idle-delay)
+  (setq-local company-minimum-prefix-length minimum-prefix-length))
+
+(defun luis-company-configure-automatic-completion ()
+  (interactive)
+  (luis-company-configure-completion 0 0))
+
+;; Used to only enable certain backends in a buffer to avoid possibly
+;; annoying completions while for example writing comments.
+(defun luis-set-local-company-backends (local-company-backends)
+  (if (company-safe-backends-p local-company-backends)
+      (setq-local company-backends local-company-backends)
+    (progn
+      (message (concat "Warning: '%S did not fullfill "
+                       "company-safe-backends-p predicate. "
+                       "Automatic completion was disabled in this buffer.")
+               local-company-backends)
+      ;; Disable automatic completion locally.
+      (setq-local company-idle-delay nil))))
+
 (use-package company
   :ensure t
   :demand
@@ -70,28 +92,7 @@
                             company-keywords)))
 
   (company-quickhelp-mode 1)
-  (global-company-mode 1)
-
-  (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
-    (setq-local company-idle-delay idle-delay)
-    (setq-local company-minimum-prefix-length minimum-prefix-length))
-
-  (defun luis-company-configure-automatic-completion ()
-    (interactive)
-    (luis-company-configure-completion 0 0))
-
-  ;; Used to only enable certain backends in a buffer to avoid possibly
-  ;; annoying completions while for example writing comments.
-  (defun luis-set-local-company-backends (local-company-backends)
-    (if (company-safe-backends-p local-company-backends)
-        (setq-local company-backends local-company-backends)
-      (progn
-        (message (concat "Warning: '%S did not fullfill "
-                         "company-safe-backends-p predicate. "
-                         "Automatic completion was disabled in this buffer.")
-                 local-company-backends)
-        ;; Disable automatic completion locally.
-        (setq-local company-idle-delay nil)))))
+  (global-company-mode 1))
 
 ;;; Filling
 
