@@ -41,7 +41,9 @@
   (setq powerline-default-separator 'utf-8)
   (powerline-default-theme)
   (set-face-underline 'mode-line nil)
-  (set-face-underline 'mode-line-inactive nil))
+  (set-face-underline 'mode-line-inactive nil)
+  ;; Causes incorrect display of active mode line when Emacs is not focused.
+  (remove-hook 'focus-out-hook 'powerline-unset-selected-window))
 
 ;;; Whitespaces
 
