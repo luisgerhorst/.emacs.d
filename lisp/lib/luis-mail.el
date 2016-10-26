@@ -64,7 +64,6 @@
        (or (not mu4e-view-prefer-html) (not html)))))
 
   (defun luis-mu4e-enable-text-wrap-mode-when-plain-text ()
-    (message "text-wrap condition running")
     (if (luis-mu4e-message-body-txt-will-show (mu4e-message-at-point))
         (luis-text-wrap-mode 1)
       (luis-text-wrap-mode -1)))
