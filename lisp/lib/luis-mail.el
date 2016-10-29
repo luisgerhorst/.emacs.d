@@ -48,6 +48,9 @@
   (add-hook 'mu4e-compose-mode-hook #'luis-text-wrap-mode)
   (remove-hook 'mu4e-view-mode-hook #'luis-text-wrap-mode)
 
+  ;; Commit 739013d of mu: Setting this to nil makes a lot of mails look bad.
+  (setq mu4e-view-prefer-html t)
+
   (defun luis-mu4e-message-body-txt-will-show (msg)
     (let* ((txt (mu4e-message-field msg :body-txt))
            (html (mu4e-message-field msg :body-html)))
