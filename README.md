@@ -82,13 +82,12 @@ Then read the following:
 
     Now run `offlineimap` once from the terminal to fill your Maildir with messages.
 
-    When done, install `mu4e` using
+    When done, install `mu4e` (commit [`739013d`](https://github.com/djcb/mu/tree/739013d031e13f2106dfbb52c716aa04da00a0d3)) and index your maildir using the following commands:
 
     ```sh
-    EMACS=$(which emacs) brew install mu --with-emacs --HEAD
+    EMACS=$(which emacs) brew install mu --with-emacs --739013d031e13f2106dfbb52c716aa04da00a0d3
+    mu index --maildir=~/.maildir
     ```
-
-    Then `mu index --maildir=~/.maildir` to index you Maildir.
 
     Then configure `mu4e` according to your mail provider and machine. The files `lisp/lib/luis-mail-private.el.template` and `lisp/luis-machine-local.el.template` already contain the options you need.
     
