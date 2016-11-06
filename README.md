@@ -82,10 +82,10 @@ Then read the following:
 
     Now run `offlineimap` once from the terminal to fill your Maildir with messages.
 
-    When done, install `mu4e` (commit [`739013d`](https://github.com/djcb/mu/tree/739013d031e13f2106dfbb52c716aa04da00a0d3), if `mu` is already installed reinstall it since `EMACS` has to be set) and index your maildir using the following commands:.
+    When done, install `mu4e` (if `mu` is already installed reinstall it since `EMACS` has to be set, make sure `brew` is not wrapped by `brew-file` or something) and index your maildir using the following commands:.
 
     ```sh
-    EMACS=$(which emacs) brew install mu --with-emacs --739013d031e13f2106dfbb52c716aa04da00a0d3
+    EMACS=$(which emacs) brew install mu --with-emacs --build-from-source --HEAD
     mu index --maildir=~/.maildir
     ```
 
