@@ -66,21 +66,15 @@ Then read the following:
 
 -   __Receiving Mail__
 
-    First, here's the
-    [turorial](http://www.kirang.in/2014/11/13/emacs-as-email-client-with-offlineimap-and-mu4e-on-osx/)
-    I used.
-
-    We'll use `offlineimap` to fetch mail from the server, install it with
+    We'll use `mbsync` to fetch mail from the server, install it with
 
     ```sh
-    brew install offlineimap
+    brew install isync
     ```
 
-    Now configure it, you can find my config in my [dotfiles](https://github.com/luisgerhorst/dotfiles/blob/master/.offlineimaprc).
+    Now __configure it__, you can find my config in my [dotfiles](https://github.com/luisgerhorst/dotfiles/blob/master/.mbsyncrc). Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html).
 
-    Read the [`offlineimap` docs](http://docs.offlineimap.org/en/latest/nametrans.html) to set up nametrans properly. You can ommit this if you don't want nice folder names. Do not configure it to run indefinitely, automatically syncing your mail periodically (with `autorefresh`). Also do not make your OS start it as a deamon on login (e.g. by copying some plists to `~/Library/LaunchAgents` as the homebrew formula suggests). `mu4e` will take care of everything.
-
-    Now run `offlineimap` once from the terminal to fill your Maildir with messages.
+    Now run `mbsync -a` once from the terminal to fill your maildir with messages.
 
     When done, install `mu4e` (if `mu` is already installed reinstall it since `EMACS` has to be set, make sure `brew` is not wrapped by `brew-file` or something) and index your maildir using the following commands:.
 

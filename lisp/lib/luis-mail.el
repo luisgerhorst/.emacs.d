@@ -19,7 +19,9 @@
   ;; when you press C-x m (compose-mail), call report-emacs-bug and so on.
   (setq mail-user-agent 'mu4e-user-agent)
 
-  (setq mu4e-get-mail-command "offlineimap")
+  (setq mu4e-get-mail-command "mbsync -a")
+  ;; Required when using mbsync (otherwise duplicate UID errors occur):
+  (setq mu4e-change-filenames-when-moving t)
   (setq mu4e-update-interval (* 5 60))
   (setq mu4e-hide-index-messages t)
 
@@ -51,7 +53,7 @@
   ;; Commit 739013d of mu: Setting this to nil makes a lot of mails look bad.
   (setq mu4e-view-prefer-html t)
 
-  (defun luis-mu4e-message-body-txt-will-show (msg)
+  (defun luis-mu4e-message-txt-body-will-show (msg)
     (let* ((txt (mu4e-message-field msg :body-txt))
            (html (mu4e-message-field msg :body-html)))
       ;; From `mu4e-message-body-text' definiting in mu4e-message.el
@@ -67,7 +69,7 @@
        (or (not mu4e-view-prefer-html) (not html)))))
 
   (defun luis-mu4e-enable-text-wrap-mode-when-plain-text ()
-    (if (luis-mu4e-message-body-txt-will-show (mu4e-message-at-point))
+    (if (luis-mu4e-message-txt-body-will-show (mu4e-message-at-point))
         (luis-text-wrap-mode 1)
       (luis-text-wrap-mode -1)))
 
