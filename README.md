@@ -52,8 +52,8 @@ Then read the following:
     The credentials for the server are stored in `~/.authinfo`, run
 
     ```sh
-    touch ~/.authinfo
-    chmod 600 ~/.authinfo
+    touch ~/.netrc
+    chmod 600 ~/.netrc
     ```
 
     to create it and set it's permissions properly. Then insert the credentials in the following format:
