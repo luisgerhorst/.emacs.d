@@ -47,34 +47,6 @@
   (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
     (ido-find-file-in-dir finder-dir)))
 
-;; TODO: Make cd silent.
-(defun open-directory-in-iterm (directory)
-  "Switch to iTerm and cd to directory."
-  (do-applescript (concat  "
-tell application \"iTerm\"
-    activate
-
-    try
-        set _session to current session of current terminal
-    on error
-        set _term to (make new terminal)
-        tell _term
-            launch session \"Default\"
-            set _session to current session
-        end tell
-    end try
-
-    tell _session
-        write text \"cd '" directory "'\"
-    end tell
-end tell
-")))
-
-(defun open-current-directory-in-iterm ()
-  "Open active buffer's directory in iTerm."
-  (interactive)
-  (open-directory-in-iterm (file-name-directory (buffer-file-name))))
-
 (use-package dash-at-point
   :ensure t
   :bind (("C-c s" . dash-at-point)
