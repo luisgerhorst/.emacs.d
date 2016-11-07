@@ -15,7 +15,7 @@ Then read the following:
 -   __Local Config__
 
     The following files contain user or machine-spcific options that will not be included in your git repository, remove the `.template` extension and edit them to contain all desired values.
-    
+
     ```
     lisp/luis-machine-local.el.template
     lisp/luis-private.el.template
@@ -32,6 +32,10 @@ Then read the following:
 -   __Java__
 
     Install the [JDK](http://www.oracle.com/technetwork/java/index.html), then [build jdee-server](https://github.com/jdee-emacs/jdee-server#building). Now you can set `jdee-server-dir` (template in `luis-machine-local.el.template`).
+
+-   __TeX__
+
+    Can be installed using the latest version of [MacTeX](http://www.tug.org/mactex/index.html).
 
 -   __Interactive Spell on Mac OS X__
 
@@ -84,7 +88,7 @@ Then read the following:
     ```
 
     Then configure `mu4e` according to your mail provider and machine. The files `lisp/lib/luis-mail-private.el.template` and `lisp/luis-machine-local.el.template` already contain the options you need.
-    
+
     Finally install `terminal-notifier` using `brew install terminal-notifier` for desktop notifications by [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
 
 Now open Emacs, all required packages will be installed automatically which may take a while.
