@@ -18,28 +18,6 @@
   :config
   (diminish 'subword-mode))
 
-;; Auto Highligh Symbol
-(use-package auto-highlight-symbol
-  :ensure t
-  :demand
-  :diminish auto-highlight-symbol-mode
-  :bind (("M-n" . ahs-highlight-now-and-forward)
-         ("M-p" . ahs-highlight-now-and-backward))
-  :config
-  (global-auto-highlight-symbol-mode 1)
-  (define-key auto-highlight-symbol-mode-map (kbd "M--") nil)
-  (customize-set-variable 'ahs-default-range 'ahs-range-whole-buffer)
-  ;; 'Disable' automatic highlighting
-  (ahs-set-idle-interval most-positive-fixnum)
-  (defun ahs-highlight-now-and-forward ()
-    (interactive)
-    (ahs-highlight-now)
-    (ahs-forward))
-  (defun ahs-highlight-now-and-backward ()
-    (interactive)
-    (ahs-highlight-now)
-    (ahs-backward)))
-
 (use-package avy
   :ensure t
   :bind ("C-:" . avy-goto-char))

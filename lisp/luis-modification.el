@@ -152,6 +152,12 @@
 ;; Manually delete all trailing whitespaces.
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
 
+;;; Refactoring
+
+(use-package iedit
+  :ensure t
+  :bind (("H-e" . iedit-mode)))
+
 ;;; Sexp
 
 (defun luis-backwards-kill-sexp (&optional argument)

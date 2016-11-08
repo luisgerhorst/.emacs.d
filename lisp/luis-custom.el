@@ -197,7 +197,7 @@
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
-    (powerline auctex ws-butler whole-line-or-region which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode jdee ido-ubiquitous fillcode expand-region exec-path-from-shell ensime discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-jedi company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
+    (iedit powerline auctex ws-butler whole-line-or-region which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode jdee ido-ubiquitous fillcode expand-region exec-path-from-shell ensime discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-jedi company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(projectile-global-mode t)
  '(python-environment-directory "~/.pyenv/versions")
