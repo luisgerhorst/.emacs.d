@@ -176,19 +176,12 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-(use-package expand-region
-  :ensure t
-  :bind ("H-e" . er/expand-region))
-
 ;; Especially C-w is handy for killing whole lines.
 (use-package whole-line-or-region
   :ensure t
   :diminish whole-line-or-region-mode
   :config
   (whole-line-or-region-mode 1))
-
-;; Join lines. M-^ does not work on my Mac.
-(global-set-key (kbd "C-^") #'delete-indentation)
 
 
 (provide 'luis-modification)
