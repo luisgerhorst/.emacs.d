@@ -9,9 +9,9 @@
 (require 'luis-nxc)
 (require 'luis-c)
 (require 'luis-org)
-(require 'luis-java)
 (require 'luis-asm)
 (require 'luis-lua)
+(require 'luis-java)
 (require 'luis-scala)
 
 (provide 'luis-modes)
