@@ -18,12 +18,10 @@
 (add-hook 'lisp-interaction-mode-hook #'eldoc-mode)
 (add-hook 'ielm-mode-hook #'eldoc-mode)
 
+;; Emacs Lisp Mode
 (add-hook 'emacs-lisp-mode-hook #'luis-company-configure-automatic-completion)
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (local-set-key (kbd "C-c e") 'eval-buffer)))
-
+(define-key emacs-lisp-mode-map (kbd "C-c e") 'eval-buffer)
 (add-to-list 'auto-mode-alist '("\\.el.template\\'" . emacs-lisp-mode))
 
 (defun test-emacs-config ()
