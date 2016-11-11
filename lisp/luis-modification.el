@@ -62,7 +62,7 @@
 
 (defun luis-company-configure-automatic-completion ()
   (interactive)
-  (luis-company-configure-completion 0 0))
+  (luis-company-configure-completion 0 1))
 
 ;; Used to only enable certain backends in a buffer to avoid possibly
 ;; annoying completions while for example writing comments.
@@ -84,13 +84,12 @@
   :bind ("H-i" . company-complete)
   :config
   (setq-default company-idle-delay nil
-                company-minimum-prefix-length 2)
+                company-minimum-prefix-length 1)
   (setq company-backends '(company-elisp
                            company-nxml
                            company-css
                            (company-dabbrev-code
                             company-keywords)))
-
   (company-quickhelp-mode 1)
   (global-company-mode 1))
 
