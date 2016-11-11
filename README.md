@@ -31,7 +31,11 @@ Then read the following:
 
 -   __Java__
 
-    Install the [JDK](http://www.oracle.com/technetwork/java/index.html), then [build jdee-server](https://github.com/jdee-emacs/jdee-server#building). Now you can set `jdee-server-dir` (template in `luis-machine-local.el.template`).
+    Install the [JDK](http://www.oracle.com/technetwork/java/index.html), then [build jdee-server](https://github.com/jdee-emacs/jdee-server#building). Now you can set `jdee-server-dir` (template in `luis-machine-local.el.template`). Install [SBT](http://www.scala-sbt.org) with `brew install sbt` (yes, it also works for Java). See `lib/luis-java.el` for keybindings to run `sbt` commands.
+
+-   __Scala__
+
+    Make sure you have the JDK and `sbt` installed (see Java section). Make sure [sbt is configured for use with ensime](http://ensime.github.io/build_tools/sbt/). When in a project [generate the `.ensime` file](http://ensime.github.io/build_tools/sbt/#core-commands) and [start ensime](http://ensime.github.io/editors/emacs/install/#starting) to get syntax checking, auto-completion etc.. When you experience problems you may [try updating ensime](http://ensime.github.io/editors/emacs/install/#updating).
 
 -   __TeX__
 
