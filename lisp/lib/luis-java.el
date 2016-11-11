@@ -7,7 +7,7 @@
   :bind (:map jdee-mode-map
               ("C-c i" . jdee-complete)
               ("C-c c" . luis-sbt-compile)
-              ("C-c e" . luis-sbt-run)
+              ("C-c r" . luis-sbt-run)
               ("C-c t" . luis-sbt-test))
   :config
   (add-hook 'jdee-mode-hook
