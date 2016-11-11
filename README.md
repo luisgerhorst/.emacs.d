@@ -35,7 +35,7 @@ Then read the following:
 
 -   __Scala__
 
-    Make sure you have the JDK and `sbt` installed (see Java section). Make sure [sbt is configured for use with ensime](http://ensime.github.io/build_tools/sbt/). When in a project [generate the `.ensime` file](http://ensime.github.io/build_tools/sbt/#core-commands) and [start ensime](http://ensime.github.io/editors/emacs/install/#starting) to get syntax checking, auto-completion etc.. When you experience problems you may [try updating ensime](http://ensime.github.io/editors/emacs/install/#updating).
+    Make sure you have the JDK and `sbt` installed (see Java section). Make sure [sbt is configured for use with ensime](http://ensime.github.io/build_tools/sbt/). When in a project generate the `.ensime` file using [`M-x sbt-command ensimeConfig`](http://ensime.github.io/build_tools/sbt/#core-commands) and start ensime with [`M-x ensime`](http://ensime.github.io/editors/emacs/install/#starting) to get syntax checking, autocompletion etc.. When you experience problems you may try [`M-x ensime-server-update`](http://ensime.github.io/editors/emacs/install/#updating).
 
 -   __TeX__
 
