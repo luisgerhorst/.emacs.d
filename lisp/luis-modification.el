@@ -32,7 +32,7 @@
   (yas-global-mode 1)
   (define-key yas-minor-mode-map [(tab)] nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map (kbd "M-i") #'yas-expand))
+  (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand))
 
 (use-package auto-complete
   :ensure t
@@ -81,7 +81,7 @@
   :ensure t
   :demand
   :diminish company-mode
-  :bind ("H-i" . company-complete)
+  :bind ("M-i" . company-complete)
   :config
   (setq-default company-idle-delay nil
                 company-minimum-prefix-length 1)
@@ -103,8 +103,6 @@
                  (+ (- fill-column (window-total-width)) 2)
                  t))
 
-(global-set-key (kbd "C-c m") #'luis-resize-window-to-fill-column)
-
 (use-package visual-fill-column
   :ensure t
   :commands (visual-fill-column-mode))
@@ -121,16 +119,6 @@
 
 (add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode)
 (add-hook 'prog-mode-hook #'fillcode-mode)
-
-;;; Commenting
-
-;; comment-line if region is inactive, comment-box otherwise.
-(global-set-key (kbd "C-;")
-                (lambda (n)
-                  (interactive "p")
-                  (if (use-region-p)
-                      (comment-box (region-beginning) (region-end) (or n 0))
-                    (comment-line (or n 1)))))
 
 ;;; Whitespaces
 
@@ -155,7 +143,7 @@
 
 (use-package iedit
   :ensure t
-  :bind (("H-e" . iedit-mode)))
+  :bind (("C-c r" . iedit-mode)))
 
 ;;; Sexp
 
