@@ -9,7 +9,10 @@
   (setq ido-auto-merge-work-directories-length -1)
 
   (ido-mode 1)
-  (ido-everywhere 1))
+  (ido-everywhere 1)
+
+  ;; Allow typing filesnames containing spaces.
+  (define-key ido-common-completion-map (kbd "SPC") nil))
 
 (use-package ido-ubiquitous
   :ensure t
