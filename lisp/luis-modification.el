@@ -49,12 +49,6 @@
               (define-key ac-menu-map (kbd "C-n") nil)
               (define-key ac-menu-map (kbd "C-p") nil))))
 
-(use-package company-quickhelp
-  :ensure t
-  :commands (company-quickhelp-mode)
-  :config
-  (setq company-quickhelp-delay 1.5))
-
 
 (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
   (setq-local company-idle-delay idle-delay)
@@ -90,7 +84,6 @@
                            company-css
                            (company-dabbrev-code
                             company-keywords)))
-  (company-quickhelp-mode 1)
   (global-company-mode 1))
 
 ;;; Filling
