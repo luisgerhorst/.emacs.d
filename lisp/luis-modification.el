@@ -143,7 +143,7 @@
 
 (use-package iedit
   :ensure t
-  :bind (("C-c r" . iedit-mode)))
+  :bind (("C-," . iedit-mode)))
 
 ;;; Sexp
 
@@ -158,6 +158,9 @@
 (add-hook 'prog-mode-hook #'electric-pair-local-mode)
 
 ;;; Misc
+
+(global-set-key (kbd "C-;") #'comment-line)
+(setq comment-style 'extra-line)
 
 ;; Enable upcase / downcase region.
 (put 'downcase-region 'disabled nil)
