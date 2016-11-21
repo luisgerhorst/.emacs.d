@@ -136,7 +136,7 @@
 
 (use-package iedit
   :ensure t
-  :bind (("C-," . iedit-mode)))
+  :bind ("C-." . iedit-mode))
 
 ;;; Sexp
 
@@ -158,6 +158,9 @@
 ;; Enable upcase / downcase region.
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+
+;; Delete marked text on typing.
+(delete-selection-mode t)
 
 ;; Especially C-w is handy for killing whole lines.
 (use-package whole-line-or-region

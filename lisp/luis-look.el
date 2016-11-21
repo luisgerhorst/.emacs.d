@@ -33,6 +33,14 @@
 ;; See customize group Solarized for options.
 (load-theme 'solarized-dark t)
 
+;;; Syntax Checking
+
+(use-package flycheck
+  :ensure t
+  :bind ("H-s f" . flycheck-mode)
+  :init
+  (setq flycheck-keymap-prefix (kbd "H-f")))
+
 ;;; Mode Line
 
 (use-package powerline
@@ -49,13 +57,16 @@
 
 (setq-default indicate-empty-lines t)
 
+;;; Cursor
+
+(blink-cursor-mode -1)
+(show-paren-mode 1)
+
 ;;; Misc
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(blink-cursor-mode -1)
-(show-paren-mode 1)
 (setq ring-bell-function 'ignore)
 
 ;; Does not look good and sometimes causes display issues on my Mac.
@@ -66,3 +77,4 @@
 
 
 (provide 'luis-look)
+;;; luis-look.el ends here

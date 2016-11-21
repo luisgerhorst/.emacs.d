@@ -19,7 +19,10 @@
  auto-save-default nil
 
  ;; No need for ~ files when editing.
- create-lockfiles nil)
+ create-lockfiles nil
+
+ ;; Use system trashcan.
+ delete-by-moving-to-trash t)
 
 ;; Easy actions on current file.
 
@@ -92,6 +95,13 @@
                  nil t)))
       (when file
         (find-file file)))))
+
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-keymap-prefix (kbd "C-,"))
+  :config
+  (projectile-global-mode))
 
 
 (provide 'luis-files)

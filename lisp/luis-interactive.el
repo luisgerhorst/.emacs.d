@@ -11,7 +11,7 @@
   (ido-mode 1)
   (ido-everywhere 1)
 
-  ;; Allow typing filesnames containing spaces.
+  ;; Allow typing filesnames that contain spaces.
   (define-key ido-common-completion-map (kbd "SPC") nil))
 
 (use-package ido-ubiquitous

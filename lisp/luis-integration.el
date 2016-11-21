@@ -47,13 +47,6 @@
   (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
     (ido-find-file-in-dir finder-dir)))
 
-(use-package dash-at-point
-  :ensure t
-  :bind (("C-c s" . dash-at-point)
-         ;; Unused:
-         ;; ("C-c l" . dash-at-point-with-docset)
-         ))
-
 (when (eq system-type 'darwin)
   (global-set-key [remap suspend-frame] 'ns-do-hide-emacs))
 

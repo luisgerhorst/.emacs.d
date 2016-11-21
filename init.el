@@ -1,5 +1,4 @@
-
-;; Is being called in luis-packages.
+;; Is called in luis-packages.
 ;; (package-initialize)
 
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
