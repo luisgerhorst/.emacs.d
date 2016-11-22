@@ -13,4 +13,5 @@
   (add-hook 'jdee-mode-hook
             #'luis-company-configure-automatic-completion))
 
+
 (provide 'luis-java)

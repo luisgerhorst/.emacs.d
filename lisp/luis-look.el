@@ -38,8 +38,9 @@
 (use-package flycheck
   :ensure t
   :bind ("H-s f" . flycheck-mode)
-  :init
-  (setq flycheck-keymap-prefix (kbd "H-f")))
+  :bind-keymap ("H-f" . flycheck-command-map)
+  :config
+  (setq-default flycheck-disabled-checkers '(jdee-flycheck-javac-checker)))
 
 ;;; Mode Line
 
