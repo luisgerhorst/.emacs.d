@@ -150,10 +150,13 @@
 ;; Always insert matching brackets.
 (add-hook 'prog-mode-hook #'electric-pair-local-mode)
 
-;;; Misc
+;;; Commenting
 
 (global-set-key (kbd "C-;") #'comment-line)
 (setq comment-style 'extra-line)
+(setq-default comment-column 0)
+
+;;; Misc
 
 ;; Enable upcase / downcase region.
 (put 'downcase-region 'disabled nil)
