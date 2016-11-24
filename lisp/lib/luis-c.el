@@ -7,7 +7,12 @@
   ;; https://www.emacswiki.org/emacs/IndentingC#toc2
   (unless (listp c-default-style)
     (setq c-default-style nil))
-  (add-to-list 'c-default-style '(other . "k&r")))
+  (add-to-list 'c-default-style '(other . "k&r"))
+
+  ;; Use // for comments instead of /* and */.
+  (setq-mode-local c-mode
+                   comment-start "//"
+                   comment-end ""))
 
 (use-package company-c-headers
   :ensure t
