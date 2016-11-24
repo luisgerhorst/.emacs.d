@@ -6,5 +6,7 @@
 
 (setq load-prefer-newer t)
 
+(setq debug-on-error t)
+
 
 (provide 'luis-misc)
