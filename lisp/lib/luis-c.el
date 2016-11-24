@@ -1,7 +1,6 @@
 (use-package cc-mode
   :config
   (setq c-basic-offset tab-width)
-  (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
 
   ;; Set default indentation style to K&R instead of weird GNU style. See
   ;; https://www.emacswiki.org/emacs/IndentingC#toc2
@@ -10,9 +9,12 @@
   (add-to-list 'c-default-style '(other . "k&r"))
 
   ;; Use // for comments instead of /* and */.
-  (setq-mode-local c-mode
-                   comment-start "//"
-                   comment-end ""))
+  (defun luis-c-configure-comments ()
+    (setq-local comment-start "//")
+    (setq-local comment-end ""))
+
+  (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
+  (add-hook 'c-mode-hook #'luis-c-configure-comments))
 
 (use-package company-c-headers
   :ensure t
