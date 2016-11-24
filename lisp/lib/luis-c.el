@@ -14,7 +14,8 @@
     (setq-local comment-end ""))
 
   (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
-  (add-hook 'c-mode-hook #'luis-c-configure-comments))
+  (add-hook 'c-mode-hook #'luis-c-configure-comments)
+  (add-hook 'c-mode-hook #'semantic-mode))
 
 (use-package company-c-headers
   :ensure t

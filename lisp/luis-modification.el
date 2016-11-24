@@ -80,11 +80,18 @@
   :config
   (setq-default company-idle-delay nil
                 company-minimum-prefix-length 1)
+
   (setq company-backends '(company-elisp
                            company-nxml
                            company-css
+                           company-semantic
                            (company-dabbrev-code
                             company-keywords)))
+
+  ;; Semantic Backend
+  (require 'semantic)
+  (global-semantic-idle-scheduler-mode 1)
+
   (global-company-mode 1))
 
 ;;; Filling
