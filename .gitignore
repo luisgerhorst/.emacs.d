@@ -1,5 +1,6 @@
 .DS_Store
 *.elc
+TAGS
 
 /.cask/
 /.tutor/
@@ -24,6 +25,10 @@
 /smex
 /ensime/
 /ngram/
+/.emacs.desktop
+/.emacs.desktop.lock
+/irony/
+
 
 /lisp/luis-private.el
 /lisp/lib/luis-mail-private.el

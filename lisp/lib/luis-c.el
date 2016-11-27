@@ -15,7 +15,21 @@
 
   (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'c-mode-hook #'luis-c-configure-comments)
-  (add-hook 'c-mode-hook #'semantic-mode))
+  (add-hook 'c-mode-hook #'flycheck-mode))
+
+(use-package irony
+  :ensure t
+  :commands (irony-mode)
+  :init
+  (add-hook 'c-mode-hook #'irony-mode))
+
+(use-package company-irony
+  :ensure t
+  :after (company)
+  :commands (company-irony)
+  :init
+  (add-to-list 'company-backends #'company-irony)
+  (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands))
 
 (use-package company-c-headers
   :ensure t

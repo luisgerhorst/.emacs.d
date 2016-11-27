@@ -76,7 +76,7 @@
   :ensure t
   :demand
   :diminish company-mode
-  :bind ("M-i" . company-complete)
+  :bind ("C-M-i" . company-complete)
   :config
   (setq-default company-idle-delay nil
                 company-minimum-prefix-length 1)
@@ -84,13 +84,8 @@
   (setq company-backends '(company-elisp
                            company-nxml
                            company-css
-                           company-semantic
                            (company-dabbrev-code
                             company-keywords)))
-
-  ;; Semantic Backend
-  (require 'semantic)
-  (global-semantic-idle-scheduler-mode 1)
 
   (global-company-mode 1))
 
@@ -111,15 +106,16 @@
 ;; Auto Fill for comments, enable per major mode.
 (use-package luis-comment-auto-fill
   :commands luis-comment-auto-fill-mode
-  :diminish luis-comment-auto-fill-mode)
+  :diminish luis-comment-auto-fill-mode
+  :init
+  (add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode))
 
 (use-package fillcode
   :ensure t
   :diminish fillcode-mode
-  :commands (fillcode-mode))
-
-(add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode)
-(add-hook 'prog-mode-hook #'fillcode-mode)
+  :commands (fillcode-mode)
+  :init
+  (add-hook 'prog-mode-hook #'fillcode-mode))
 
 ;;; Whitespaces
 

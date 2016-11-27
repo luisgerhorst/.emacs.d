@@ -42,4 +42,13 @@
          ("C-M-p" . paredit-backward-down)
          ("C-M-n" . paredit-forward-up)))
 
+(use-package dumb-jump
+  :ensure
+  :pin "melpa"
+  :bind (("H-d M-." . dumb-jump-go)
+         ;; Use xref-pop-marker-stack to go back after jumping to definition
+         ;; (bound to M-,).
+         ))
+
+
 (provide 'luis-movement)
