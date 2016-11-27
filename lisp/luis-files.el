@@ -99,10 +99,7 @@
 
 (use-package projectile
   :ensure t
-  :init
-  (setq projectile-keymap-prefix (kbd "C-,"))
-  :config
-  (projectile-global-mode))
+  :commands (projectile-mode))
 
 
 (provide 'luis-files)
