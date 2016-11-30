@@ -5,7 +5,18 @@
 (setq compilation-ask-about-save nil)
 (global-set-key (kbd "C-c c") #'compile)
 
-;;; Misc
+;;; Shell
+
+;; Sets up exec-path-from-shell
+;; https://github.com/purcell/exec-path-from-shell
+(use-package exec-path-from-shell
+  :ensure t
+  :if (memq window-system '(mac ns))
+  :config
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs '("PATH")))
+
+;;; Mac
 
 ;; These settings relate to how emacs interacts with your operating system
 (setq
@@ -28,15 +39,6 @@
   :config
   (unless (server-running-p)
     (server-start)))
-
-;; Sets up exec-path-from-shell
-;; https://github.com/purcell/exec-path-from-shell
-(use-package exec-path-from-shell
-  :ensure t
-  :if (memq window-system '(mac ns))
-  :config
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs '("PATH")))
 
 ;; Fix weird OS X kill error.
 (defun ns-get-pasteboard ()

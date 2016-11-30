@@ -76,10 +76,10 @@
   :ensure t
   :demand
   :diminish company-mode
-  :bind ("C-M-i" . company-complete)
+  :bind ("M-i" . company-complete)
   :config
   (setq-default company-idle-delay nil
-                company-minimum-prefix-length 1)
+                company-minimum-prefix-length 0)
 
   (setq company-backends '((company-elisp :with company-dabbrev-code)
                            company-nxml
