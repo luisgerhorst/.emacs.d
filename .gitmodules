@@ -1,12 +1,3 @@
-[submodule "mu4e-alert"]
-	path = site-lisp/mu4e-alert
-	url = git@github.com:iqbalansari/mu4e-alert.git
 [submodule "yasnippet-snippets"]
 	path = snippets
 	url = git@github.com:AndreaCrotti/yasnippet-snippets.git
-[submodule "jdee-server"]
-	path = jdee-server
-	url = git@github.com:jdee-emacs/jdee-server.git
-[submodule "use-package"]
-	path = site-lisp/use-package
-	url = git@github.com:jwiegley/use-package.git
