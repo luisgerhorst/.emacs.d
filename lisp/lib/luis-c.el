@@ -18,14 +18,12 @@
   (add-hook 'c-mode-hook #'flycheck-mode))
 
 (use-package irony
-  :ensure t
   :commands (irony-mode)
   :init
   (add-hook 'c-mode-hook #'irony-mode))
 
 (use-package company-irony
-  :ensure t
-  :after (company)
+  :after company
   :commands (company-irony)
   :init
   (add-to-list 'company-backends
@@ -35,7 +33,6 @@
   (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands))
 
 (use-package company-c-headers
-  :ensure t
   :after (company)
   :commands (company-c-headers)
   :init

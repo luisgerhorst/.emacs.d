@@ -10,7 +10,6 @@
 ;; Sets up exec-path-from-shell
 ;; https://github.com/purcell/exec-path-from-shell
 (use-package exec-path-from-shell
-  :ensure t
   :if (memq window-system '(mac ns))
   :config
   (exec-path-from-shell-initialize)

@@ -1,5 +1,4 @@
 (use-package paredit
-  :ensure t
   :commands (paredit-mode)
   :init
   (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
@@ -41,7 +40,6 @@
         (search-backward "ERROR!")))))
 
 (use-package auto-compile
-  :ensure t
   :config
   (auto-compile-on-save-mode))
 

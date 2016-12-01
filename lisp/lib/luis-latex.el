@@ -1,5 +1,4 @@
 (use-package tex-site ;; AUCTeX overrides LaTeX
-  :ensure auctex
   :mode ("\\.tex\\'" . LaTeX-mode)
   :config
   (setq TeX-auto-save t
@@ -12,7 +11,6 @@
   (add-hook 'LaTeX-mode-hook #'flycheck-mode))
 
 (use-package company-auctex
-  :ensure t
   :config
   (company-auctex-init))
 

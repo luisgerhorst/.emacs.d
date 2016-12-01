@@ -5,7 +5,6 @@
 ;; Prefix wrapped lines like filling does but don't change the buffer. Does not
 ;; work with tabs.
 (use-package adaptive-wrap
-  :ensure t
   :commands (adaptive-wrap-prefix-mode)
   :config
   (setq-default adaptive-wrap-extra-indent 0))
@@ -24,7 +23,6 @@
 ;;; Theme
 
 (use-package solarized-theme
-  :ensure t
   :defer t
   :init
   ;; Looks much better when using Powerline.
@@ -35,8 +33,10 @@
 
 ;;; Syntax Checking
 
+(setq flymake-gui-warnings-enabled nil
+      flymake-log-level 0)
+
 (use-package flycheck
-  :ensure t
   :bind ("H-s f" . flycheck-mode)
   :bind-keymap ("H-f" . flycheck-command-map)
   :config
@@ -45,7 +45,6 @@
 ;;; Mode Line
 
 (use-package powerline
-  :ensure t
   :config
   (setq powerline-default-separator 'utf-8)
   (powerline-default-theme)

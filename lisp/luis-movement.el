@@ -19,7 +19,6 @@
   (diminish 'subword-mode))
 
 (use-package avy
-  :ensure t
   :bind ("C-:" . avy-goto-char))
 
 ;; When you visit a file, point goes to the last place where it
@@ -27,14 +26,12 @@
 ;; http://www.emacswiki.org/emacs/SavePlace
 (use-package saveplace
   :demand
-  :ensure nil
   :init
   (setq-default save-place t)
   ;; Keep track of saved places in ~/.emacs.d/places
   (setq save-place-file (locate-user-emacs-file "places")))
 
 (use-package paredit
-  :ensure t
   :bind (;; These also work in strings.
          ("C-M-u" . paredit-backward-up)
          ("C-M-d" . paredit-forward-down)
@@ -43,8 +40,6 @@
          ("C-M-n" . paredit-forward-up)))
 
 (use-package dumb-jump
-  :ensure
-  :pin "melpa"
   :bind (("H-d M-." . dumb-jump-go)
          ;; Use xref-pop-marker-stack to go back after jumping to definition
          ;; (bound to M-,).

@@ -1,5 +1,4 @@
 (use-package markdown-mode
-  :ensure t
   :init
   (defun luis-markdown-mode-hook ()
     ;; Can be enabled in files with unfilled lines.

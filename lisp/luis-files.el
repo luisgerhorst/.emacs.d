@@ -72,7 +72,6 @@
    insert-directory-program (executable-find "gls")))
 
 (use-package recentf
-  :ensure t
   :demand
   :bind ("C-x f" . recentf-ido-find-file)
   :config
@@ -98,7 +97,6 @@
         (find-file file)))))
 
 (use-package projectile
-  :ensure t
   :commands (projectile-mode))
 
 

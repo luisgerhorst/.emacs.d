@@ -8,7 +8,6 @@
               tab-width 4)
 
 (use-package aggressive-indent
-  :ensure t
   :diminish aggressive-indent-mode " AggressiveIndent"
   :commands (aggressive-indent-mode)
   :config
@@ -24,7 +23,6 @@
 ;;; Completion
 
 (use-package yasnippet
-  :ensure t
   :diminish yas-minor-mode
   :config
   (setq yas-snippet-dirs
@@ -36,7 +34,6 @@
 
 
 (use-package auto-complete
-  :ensure t
   :init
   (setq ac-auto-show-menu 0.8
         ac-auto-start 3
@@ -73,7 +70,6 @@
       (setq-local company-idle-delay nil))))
 
 (use-package company
-  :ensure t
   :demand
   :diminish company-mode
   :bind ("M-i" . company-complete)
@@ -100,7 +96,6 @@
                  t))
 
 (use-package visual-fill-column
-  :ensure t
   :commands (visual-fill-column-mode))
 
 ;; Auto Fill for comments, enable per major mode.
@@ -111,7 +106,6 @@
   (add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode))
 
 (use-package fillcode
-  :ensure t
   :diminish fillcode-mode
   :commands (fillcode-mode)
   :init
@@ -127,7 +121,6 @@
 
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
-  :ensure t
   :diminish ws-butler-mode
   :commands (ws-butler-mode))
 
@@ -139,7 +132,6 @@
 ;;; Refactoring
 
 (use-package iedit
-  :ensure t
   :bind ("C-." . iedit-mode))
 
 ;;; Sexp
@@ -171,7 +163,6 @@
 
 ;; Especially C-w is handy for killing whole lines.
 (use-package whole-line-or-region
-  :ensure t
   :diminish whole-line-or-region-mode
   :config
   (whole-line-or-region-mode 1))

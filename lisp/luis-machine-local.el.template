@@ -1,4 +1,4 @@
-;;; Initial frame size.
+;; Initial frame size.
 ;; (add-to-list 'default-frame-alist '(height . 86))
 ;; (add-to-list 'default-frame-alist '(width . (+ 80 2))
 
@@ -9,11 +9,11 @@
 ;; should be correct if mu was installed with homebrew).
 ;; (setq mu4e-mu-binary "/usr/local/bin/mu")
 
-;; For Java Development, follow these instructions first:
-;; https://github.com/jdee-emacs/jdee-server#building
-;; jdee-server source should already be located in ~/.emacs.d/jdee-server
-;; (setq jdee-server-dir (locate-user-emacs-file
-;;                        "jdee-server/target"))
-
+;; For Java Development, see Java section in README.
+;; Should be correct if Eclipse was installed using
+;; brew cask install eclipse-java
+;; (setq eclim-eclipse-dirs '("/Applications/Eclipse.app/Contents/Eclipse/")
+;;       eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
+;; (setq eclimd-default-workspace "~/Documents/Eclipse Workspace/")
 
 (provide 'luis-machine-local)

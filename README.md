@@ -31,7 +31,11 @@ Then read the following:
 
 -   __Java__
 
-    Install the [JDK](http://www.oracle.com/technetwork/java/index.html), then [build jdee-server](https://github.com/jdee-emacs/jdee-server#building). Now you can set `jdee-server-dir` (template in `luis-machine-local.el.template`). Install [SBT](http://www.scala-sbt.org) with `brew install sbt` (yes, it also works for Java). See `lib/luis-java.el` for keybindings to run `sbt` commands.
+    Install the [JDK](http://www.oracle.com/technetwork/java/index.html).
+    
+    Install [emacs-eclim](https://github.com/emacs-eclim/emacs-eclim#installation). The configuration is located in `lisp/lib/luis-java.el`. When opening a project for the first time do `M-x eclim-project-create`, `eclimd` is started automatically the first time a Java file is opened.
+
+    Install [SBT](http://www.scala-sbt.org) with `brew install sbt` to build Java code. See `lisp/lib/luis-java.el` for keybindings to run `sbt` commands.
 
 -   __Scala__
 

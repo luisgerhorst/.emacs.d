@@ -12,7 +12,6 @@
 
 (use-package mu4e
   :demand
-  :ensure nil
   :config
 
   ;; Emacs allows you to select an e-mail program as the default program it uses
@@ -90,7 +89,6 @@
   (mu4e t))
 
 (use-package mu4e-alert
-  :ensure t
   :after mu4e
   :config
   (mu4e-alert-set-default-style 'notifier)

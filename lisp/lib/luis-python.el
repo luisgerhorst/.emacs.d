@@ -1,5 +1,4 @@
 (use-package company-jedi
-  :ensure t
   :commands (company-jedi)
   :init
   (add-to-list 'company-backends #'company-jedi))

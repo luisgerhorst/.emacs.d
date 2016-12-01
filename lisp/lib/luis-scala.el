@@ -1,8 +1,6 @@
 (require 'luis-sbt)
 
-(use-package ensime
-  :ensure t
-  :pin melpa-stable)
+(use-package ensime)
 
 (use-package scala-mode
   :interpreter
