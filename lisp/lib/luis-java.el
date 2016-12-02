@@ -1,3 +1,8 @@
+(use-package cc-mode
+  :defer
+  :config
+  (add-hook 'java-mode-hook #'luis-company-configure-automatic-completion))
+
 ;; meghanada completion is very fast but does not work always, it is enabled
 ;; automatically when you are typing (meghanada sets `company-backends'
 ;; locally). To invoke the slow but very powerfull eclim completion use
@@ -16,25 +21,42 @@
 
 (use-package company-emacs-eclim
   :after company
-  :commands company-emacs-eclim-setup)
+  :commands (company-emacs-eclim
+             company-emacs-eclim-setup
+             luis-force-company-emacs-eclim)
+  :config
+  (defun luis-force-company-emacs-eclim ()
+    "Stop active backend before starting `company-emacs-eclim'"
+    (interactive)
+    (call-interactively #'company-abort)
+    (call-interactively #'company-emacs-eclim)))
 
 (use-package eclimd
-  :commands start-eclimd
-  :config
-  (setq eclimd-wait-for-process nil))
+  :commands (start-eclimd))
 
-;; Run `eclim-project-create' when opening a Java file you want to edit for
-;; the first time.
+;; Run `eclim-project-create' when you edit a Java file for the first time to
+;; create a Eclipse project. Otherwise many eclim features will not be available
+;; (e.g. completion).
 (use-package eclim
   :bind (:map eclim-mode-map
-              ("C-M-i" . company-emacs-eclim))
-  :config
-  (global-eclim-mode)
-  (add-hook 'java-mode-hook #'eclim-mode)
-  ;; Start eclimd the first time eclim-mode is enabled:
-  (add-hook 'eclim-mode-hook
-            (lambda () (start-eclimd eclimd-default-workspace)))
-  (add-hook 'eclim-mode-hook #'luis-company-configure-automatic-completion))
+              ("C-M-i" . luis-force-company-emacs-eclim))
+  :commands (eclim-mode
+             global-eclim-mode))
+
+(progn
+  (defun luis-eclimd-start ()
+    "Start eclimd and disable asking for confimation to kill it
+when Emacs exits. Automatically enable eclim-mode in buffers that
+visit Eclipse projects."
+    (require 'eclimd)
+    (when (not eclimd-process)
+      (start-eclimd eclimd-default-workspace)
+      ;; This requires eclimd to be running, thus `eclimd-wait-for-process' must
+      ;; not be nil:
+      (global-eclim-mode)
+      (add-hook 'kill-emacs-hook #'stop-eclimd)))
+
+  (add-hook 'java-mode-hook #'luis-eclimd-start))
 
 
 (provide 'luis-java)

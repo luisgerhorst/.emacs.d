@@ -35,8 +35,6 @@ Then read the following:
     
     Install [emacs-eclim](https://github.com/emacs-eclim/emacs-eclim#installation). The configuration is located in `lisp/lib/luis-java.el`. When opening a project for the first time do `M-x eclim-project-create`, `eclimd` is started automatically the first time a Java file is opened.
 
-    Install [SBT](http://www.scala-sbt.org) with `brew install sbt` to build Java code. See `lisp/lib/luis-java.el` for keybindings to run `sbt` commands.
-
 -   __Scala__
 
     Make sure you have the JDK and `sbt` installed (see Java section). Make sure [sbt is configured for use with ensime](http://ensime.github.io/build_tools/sbt/). When in a project generate the `.ensime` file using [`M-x sbt-command ensimeConfig`](http://ensime.github.io/build_tools/sbt/#core-commands) and start ensime with [`M-x ensime`](http://ensime.github.io/editors/emacs/install/#starting) to get syntax checking, autocompletion etc.. When you experience problems you may try [`M-x ensime-server-update`](http://ensime.github.io/editors/emacs/install/#updating).
