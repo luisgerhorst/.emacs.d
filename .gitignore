@@ -28,6 +28,7 @@ TAGS
 /.emacs.desktop
 /.emacs.desktop.lock
 /irony/
+/meghanada/
 
 
 /lisp/luis-private.el

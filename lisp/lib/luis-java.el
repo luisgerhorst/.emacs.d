@@ -1,10 +1,18 @@
-(require 'luis-sbt)
+;; meghanada completion is very fast but does not work always, it is enabled
+;; automatically when you are typing (meghanada sets `company-backends'
+;; locally). To invoke the slow but very powerfull eclim completion use
+;; `company-emacs-eclim'.
 
-(use-package cc-mode
-  :bind (:map java-mode-map
-              ("C-c c" . luis-sbt-compile)
-              ("C-c r" . luis-sbt-run)
-              ("C-c t" . luis-sbt-test)))
+;;; Meghanada
+
+(use-package meghanada
+  :commands (meghanada-mode)
+  :init
+  (add-hook 'java-mode-hook #'meghanada-mode)
+  :config
+  (add-hook 'meghanada-mode-hook #'flycheck-mode))
+
+;;; Eclim
 
 (use-package company-emacs-eclim
   :after company
@@ -23,7 +31,7 @@
   :config
   (global-eclim-mode)
   (add-hook 'java-mode-hook #'eclim-mode)
-  ;; Start eclimd the first time a Java file is opened:
+  ;; Start eclimd the first time eclim-mode is enabled:
   (add-hook 'eclim-mode-hook
             (lambda () (start-eclimd eclimd-default-workspace)))
   (add-hook 'eclim-mode-hook #'luis-company-configure-automatic-completion))
