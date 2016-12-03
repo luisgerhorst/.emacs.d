@@ -1,14 +1,10 @@
 (use-package markdown-mode
-  :init
-  (defun luis-markdown-mode-hook ()
-    ;; Can be enabled in files with unfilled lines.
-    (setq-local buffer-face-mode-face '(:family "Input Serif"))
-    (buffer-face-mode -1)
-    (local-set-key (kbd "C-c f") 'buffer-face-mode))
-  (add-hook 'markdown-mode-hook #'luis-markdown-mode-hook)
-  (add-hook 'markdown-mode-hook #'luis-text-wrap-mode)
-  :mode ("\\.md\\'"
-         "\\.markdown\\'"))
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :config
+  (add-hook 'markdown-mode-hook #'luis-text-wrap-mode))
 
 
 (provide 'luis-markdown)

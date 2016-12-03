@@ -25,8 +25,21 @@ default.")
   ;; Clean up.
   (kill-local-variable 'luis-text-wrap--saved-mode-enabled-states))
 
+(defvar luis-text-wrap-fill-paragraph-require-confirmation t
+  "Ask for confirmation before `fill-paragraph'.")
+
+(defun luis-text-wrap-fill-paragraph-after-confirmation ()
+  "Ask the first time a paragraph is filled in a buffer.
+Confirmation is always skipped if
+`luis-text-wrap-fill-paragraph-require-confirmation' is nil."
+  (interactive)
+  (when (not (when luis-text-wrap-fill-paragraph-require-confirmation
+               (not (y-or-n-p "Really fill paragraph in visually wrapped buffer? "))))
+    (setq-local luis-text-wrap-fill-paragraph-require-confirmation nil)
+    (call-interactively #'fill-paragraph)))
+
 (define-minor-mode luis-text-wrap-mode
-  "Nice line wrapping for text files."
+  "Visually wrap lines between wrap prefix and `fill-column'."
   :lighter " TextWrap"
   (if luis-text-wrap-mode
       (progn
@@ -34,9 +47,13 @@ default.")
         (visual-line-mode 1)
         (diminish 'visual-line-mode)
         (adaptive-wrap-prefix-mode 1)
-        (visual-fill-column-mode 1))
+        (visual-fill-column-mode 1)
+        (local-set-key [remap fill-paragraph]
+                       #'luis-text-wrap-fill-paragraph-after-confirmation))
     (luis-text-wrap--restore-state)
-    (diminish-undo 'visual-line-mode)))
+    (diminish-undo 'visual-line-mode)
+    (local-set-key [remap fill-paragraph] nil)
+    (kill-local-variable 'luis-text-wrap-fill-paragraph-require-confirmation)))
 
 
 (provide 'luis-text-wrap)
