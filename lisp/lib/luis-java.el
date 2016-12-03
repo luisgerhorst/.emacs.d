@@ -51,10 +51,11 @@ visit Eclipse projects."
     (require 'eclimd)
     (when (not eclimd-process)
       (start-eclimd eclimd-default-workspace)
+      (set-process-query-on-exit-flag eclimd-process nil)
+      (add-hook 'kill-emacs-hook #'stop-eclimd)
       ;; This requires eclimd to be running, thus `eclimd-wait-for-process' must
       ;; not be nil:
-      (global-eclim-mode)
-      (add-hook 'kill-emacs-hook #'stop-eclimd)))
+      (global-eclim-mode)))
 
   (add-hook 'java-mode-hook #'luis-eclimd-start))
 
