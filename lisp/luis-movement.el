@@ -11,6 +11,8 @@
 
 ;;; Misc
 
+(windmove-default-keybindings)
+
 (use-package subword
   :defer t
   :init
