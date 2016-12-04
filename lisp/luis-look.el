@@ -15,7 +15,9 @@
 
 ;; Enable in files with long lines that can not be modified.
 (use-package luis-code-wrap
-  :bind ("C-c w" . luis-code-wrap-mode))
+  :commands (luis-code-wrap-mode)
+  :init
+  (add-hook 'compilation-mode-hook #'luis-code-wrap-mode))
 
 (use-package luis-text-wrap
   :commands luis-text-wrap-mode)
