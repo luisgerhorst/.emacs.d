@@ -158,6 +158,8 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
+(put 'narrow-to-region 'disabled nil)
+
 ;; Delete marked text on typing.
 (delete-selection-mode t)
 

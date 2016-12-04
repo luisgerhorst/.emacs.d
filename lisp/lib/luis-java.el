@@ -41,10 +41,12 @@
   :bind (:map eclim-mode-map
               ("C-M-i" . luis-force-company-emacs-eclim))
   :commands (eclim-mode
-             global-eclim-mode))
-
-(progn
-  (defun luis-eclimd-start ()
+             global-eclim-mode
+             luis-eclim-start)
+  :init
+  (add-hook 'java-mode-hook #'luis-eclim-start)
+  :config
+  (defun luis-eclim-start ()
     "Start eclimd and disable asking for confimation to kill it
 when Emacs exits. Automatically enable eclim-mode in buffers that
 visit Eclipse projects."
@@ -55,9 +57,7 @@ visit Eclipse projects."
       (add-hook 'kill-emacs-hook #'stop-eclimd)
       ;; This requires eclimd to be running, thus `eclimd-wait-for-process' must
       ;; not be nil:
-      (global-eclim-mode)))
-
-  (add-hook 'java-mode-hook #'luis-eclimd-start))
+      (global-eclim-mode))))
 
 
 (provide 'luis-java)
