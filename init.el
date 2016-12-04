@@ -35,3 +35,4 @@
 
 (require 'luis-machine-local)
 (require 'luis-private)
+(put 'narrow-to-region 'disabled nil)
