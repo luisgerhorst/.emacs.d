@@ -9,7 +9,7 @@ default.")
 (defun luis-code-wrap--save-state ()
   (set (make-local-variable 'luis-code-wrap--saved-variable-states) nil)
   (set (make-local-variable 'luis-code-wrap--saved-mode-enabled-states) nil)
-  ;; Save the local values of some variables, to be restored if
+  ;; Save the local values of some variables, to be restored when
   ;; luis-code-wrap-mode is turned off.
   (dolist (var '(line-move-visual
                  truncate-lines
@@ -39,12 +39,12 @@ default.")
   (kill-local-variable 'luis-code-wrap--saved-mode-enabled-states))
 
 (define-minor-mode luis-code-wrap-mode
-  "Nice line wrapping for code."
+  "Visually wrap code between wrap prefix and screen border."
   :lighter " CodeWrap"
   (if luis-code-wrap-mode
       (progn
         (luis-code-wrap--save-state)
-        (set (make-local-variable 'line-move-visual) nil)
+        (set (make-local-variable 'line-move-visual) t)
         (setq truncate-lines nil
               word-wrap t)
         (adaptive-wrap-prefix-mode 1))
