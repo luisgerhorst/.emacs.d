@@ -31,6 +31,10 @@
   (setq smex-save-file (concat user-emacs-directory "smex"))
   :bind ("M-x" . smex))
 
+(use-package ido-vertical-mode
+  :config
+  (ido-vertical-mode 1))
+
 ;;; Buffers
 
 ;; "When several buffers visit identically-named files,
