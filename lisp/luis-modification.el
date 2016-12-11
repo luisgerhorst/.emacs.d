@@ -16,6 +16,7 @@
    ;; Don't indent in Java and C files when line does not contain a
    ;; semicolon or code block bracket.
    '(and (or (derived-mode-p 'jdee-mode)
+             (derived-mode-p 'cc-mode)
              (derived-mode-p 'c-mode))
          (not (string-match "[;{}]"
                             (thing-at-point 'line))))))
@@ -34,17 +35,17 @@
 
 
 (use-package auto-complete
-  :init
-  (setq ac-auto-show-menu 0.8
-        ac-auto-start 3
-        ac-use-fuzzy t
-        ac-use-menu-map t)
   :commands (auto-complete-mode)
   :bind (:map ac-menu-map
               ;; Use M-n and M-p to select next/previous completion and use
               ;; these for moving by line.
               ("C-n" . nil)
-              ("C-p" . nil)))
+              ("C-p" . nil))
+  :init
+  (setq ac-auto-show-menu 0.8
+        ac-auto-start 3
+        ac-use-fuzzy t
+        ac-use-menu-map t))
 
 (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
   (setq-local company-idle-delay idle-delay)
@@ -59,13 +60,12 @@
 (defun luis-set-local-company-backends (local-company-backends)
   (if (company-safe-backends-p local-company-backends)
       (setq-local company-backends local-company-backends)
-    (progn
-      (message (concat "Warning: '%S did not fullfill "
-                       "company-safe-backends-p predicate. "
-                       "Automatic completion was disabled in this buffer.")
-               local-company-backends)
-      ;; Disable automatic completion locally.
-      (setq-local company-idle-delay nil))))
+    (message (concat "Warning: '%S did not fullfill "
+                     "company-safe-backends-p predicate. "
+                     "Automatic completion was disabled in this buffer.")
+             local-company-backends)
+    ;; Disable automatic completion locally.
+    (setq-local company-idle-delay nil)))
 
 (use-package company
   :demand
@@ -118,9 +118,9 @@
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
   :diminish ws-butler-mode
-  :commands (ws-butler-mode))
-
-(add-hook 'prog-mode-hook #'ws-butler-mode)
+  :commands (ws-butler-mode)
+  :init
+  (add-hook 'prog-mode-hook #'ws-butler-mode))
 
 ;; Manually delete all trailing whitespaces.
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
@@ -158,12 +158,6 @@
 
 ;; Delete marked text on typing.
 (delete-selection-mode t)
-
-;; Especially C-w is handy for killing whole lines.
-(use-package whole-line-or-region
-  :diminish whole-line-or-region-mode
-  :config
-  (whole-line-or-region-mode 1))
 
 
 (provide 'luis-modification)

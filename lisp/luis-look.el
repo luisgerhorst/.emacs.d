@@ -11,7 +11,6 @@
 
 (setq-default truncate-lines t)
 (setq-default word-wrap t)
-(setq line-move-visual nil)
 
 ;; Enable in files with long lines that can not be modified.
 (use-package luis-code-wrap
@@ -40,9 +39,7 @@
 
 (use-package flycheck
   :bind ("H-s f" . flycheck-mode)
-  :bind-keymap ("H-f" . flycheck-command-map)
-  :config
-  (setq-default flycheck-disabled-checkers '(jdee-flycheck-javac-checker)))
+  :bind-keymap ("H-f" . flycheck-command-map))
 
 ;;; Mode Line
 
