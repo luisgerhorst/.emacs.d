@@ -39,14 +39,12 @@
         ac-auto-start 3
         ac-use-fuzzy t
         ac-use-menu-map t)
-  :config
-  (add-hook 'auto-complete-mode-hook
-            (lambda ()
-              ;; Use M-n and M-p to select next/previous completion and
-              ;; use these for moving by line.
-              (define-key ac-menu-map (kbd "C-n") nil)
-              (define-key ac-menu-map (kbd "C-p") nil))))
-
+  :commands (auto-complete-mode)
+  :bind (:map ac-menu-map
+              ;; Use M-n and M-p to select next/previous completion and use
+              ;; these for moving by line.
+              ("C-n" . nil)
+              ("C-p" . nil)))
 
 (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
   (setq-local company-idle-delay idle-delay)
@@ -76,13 +74,11 @@
   :config
   (setq-default company-idle-delay nil
                 company-minimum-prefix-length 0)
-
   (setq company-backends '((company-elisp :with company-dabbrev-code)
                            company-nxml
                            company-css
                            (company-dabbrev-code
                             company-keywords)))
-
   (global-company-mode 1))
 
 ;;; Filling
