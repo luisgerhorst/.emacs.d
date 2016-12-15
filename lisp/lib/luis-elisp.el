@@ -21,7 +21,7 @@
 (add-hook 'emacs-lisp-mode-hook #'luis-company-configure-automatic-completion)
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 (define-key emacs-lisp-mode-map (kbd "C-c e") 'eval-buffer)
-(add-to-list 'auto-mode-alist '("\\.el.template\\'" . emacs-lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.el\\.template\\'" . emacs-lisp-mode))
 
 (defun test-emacs-config ()
   "Start shell Emacs in background to test config."
