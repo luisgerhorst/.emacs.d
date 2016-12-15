@@ -3,20 +3,6 @@
   :config
   (add-hook 'java-mode-hook #'luis-company-configure-automatic-completion))
 
-;; meghanada completion is very fast but does not work always, it is enabled
-;; automatically when you are typing (meghanada sets `company-backends'
-;; locally). To invoke the slow but very powerfull eclim completion use
-;; `company-emacs-eclim'.
-
-;;; Meghanada
-
-(use-package meghanada
-  :commands (meghanada-mode)
-  :init
-  (add-hook 'java-mode-hook #'meghanada-mode)
-  :config
-  (add-hook 'meghanada-mode-hook #'flycheck-mode))
-
 ;;; Eclim
 
 (use-package company-emacs-eclim
@@ -41,23 +27,15 @@
   :bind (:map eclim-mode-map
               ("C-M-i" . luis-force-company-emacs-eclim))
   :commands (eclim-mode
-             global-eclim-mode
-             luis-eclim-start)
+             global-eclim-mode)
   :init
-  (add-hook 'java-mode-hook #'luis-eclim-start)
-  :config
-  (defun luis-eclim-start ()
-    "Start eclimd and disable asking for confimation to kill it
-when Emacs exits. Automatically enable eclim-mode in buffers that
-visit Eclipse projects."
-    (require 'eclimd)
-    (when (not eclimd-process)
-      (start-eclimd eclimd-default-workspace)
-      (set-process-query-on-exit-flag eclimd-process nil)
-      (add-hook 'kill-emacs-hook #'stop-eclimd)
-      ;; This requires eclimd to be running, thus `eclimd-wait-for-process' must
-      ;; not be nil:
-      (global-eclim-mode))))
+  (add-hook 'java-mode-hook #'eclim-mode))
+
+(progn
+  ;; Displays eclim problems under point.
+  (setq help-at-pt-display-when-idle t)
+  (setq help-at-pt-timer-delay 0.9)
+  (help-at-pt-set-timer))
 
 
 (provide 'luis-java)
