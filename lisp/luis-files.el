@@ -99,7 +99,9 @@
         (find-file file)))))
 
 (use-package projectile
-  :commands (projectile-mode))
+  :commands (projectile-mode)
+  :init
+  (projectile-mode))
 
 
 (provide 'luis-files)
