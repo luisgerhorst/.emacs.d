@@ -82,9 +82,11 @@
   (recentf-mode 1)
 
   ;; Add files to be excluded to the list passed to regexp-opt.
-  (add-to-list 'recentf-exclude
-               (regexp-opt '("/Users/luis/.emacs.d/bookmarks"
-                             "/Users/luis/.emacs.d/ido.last")))
+  (setq recentf-exclude
+        (append `(,(regexp-opt '("/Users/luis/.emacs.d/bookmarks"
+                                 "/Users/luis/.emacs.d/ido.last"))
+                  "/TAGS\\'")
+                recentf-exclude))
 
   (defun recentf-ido-find-file ()
     "Find a recent file using Ido."
