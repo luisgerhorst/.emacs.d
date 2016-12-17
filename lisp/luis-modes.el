@@ -13,5 +13,6 @@
 (require 'luis-lua)
 (require 'luis-java)
 (require 'luis-scala)
+(require 'luis-make)
 
 (provide 'luis-modes)
