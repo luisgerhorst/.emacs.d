@@ -74,6 +74,11 @@
 ;; Display column number in mode line.
 (column-number-mode 1)
 
+(use-package fic-mode
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook #'fic-mode))
+
 
 (provide 'luis-look)
 ;;; luis-look.el ends here
