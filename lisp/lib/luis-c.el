@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t -*-
+
 (use-package cc-mode
   :config
   (setq c-basic-offset tab-width)
@@ -15,7 +17,7 @@
 
   (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'c-mode-hook #'luis-c-configure-comments)
-  (add-hook 'c-mode-hook #'flycheck-mode))
+  (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote))
 
 (use-package irony
   :commands (irony-mode)

@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 ;;;; For things concerning the way it looks and what is highlighted.
 
 ;;; Wrapping
@@ -38,8 +39,15 @@
       flymake-log-level 0)
 
 (use-package flycheck
-  :bind ("H-s f" . flycheck-mode)
-  :bind-keymap ("H-f" . flycheck-command-map))
+  :commands (flycheck-mode
+             luis-flycheck-unless-file-remote)
+  :bind-keymap ("H-f" . flycheck-command-map)
+  :config
+  (defun luis-flycheck-unless-file-remote ()
+    (let ((current-file (buffer-file-name (current-buffer))))
+      (unless (and current-file
+                   (file-remote-p current-file))
+        (flycheck-mode 1)))))
 
 ;;; Mode Line
 
@@ -74,10 +82,7 @@
 ;; Display column number in mode line.
 (column-number-mode 1)
 
-(use-package fic-mode
-  :defer t
-  :init
-  (add-hook 'prog-mode-hook #'fic-mode))
+(add-hook 'prog-mode-hook #'fic-mode)
 
 
 (provide 'luis-look)
