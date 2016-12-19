@@ -1,11 +1,11 @@
 ;;;; Settings for interacting with the file system
 
-;; Tramp
-
 ;; For some reason my Emacs 24.5.1 installed via Homebrew --with-cocoa
 ;; throws function not defined errors for tramp-tramp-file-p.
 ;; - 2016-02-13 ~Luis
 (require 'tramp)
+
+(global-auto-revert-mode)
 
 ;; Files created by Emacs
 (setq
@@ -23,6 +23,17 @@
 
  ;; Use system trashcan.
  delete-by-moving-to-trash t)
+
+;; Dired config
+(progn
+  ;; Cleaner dired.
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+
+  (setq
+   ;; Don't ask when deleting directory.
+   dired-recursive-deletes 'always
+   ;; Use ls from GNU coreutils for dired.
+   insert-directory-program (executable-find "gls")))
 
 ;; Easy actions on current file.
 
@@ -60,23 +71,11 @@
 (global-set-key (kbd "C-c f d") 'delete-current-buffer-file)
 (global-set-key (kbd "C-c f r") 'rename-current-buffer-file)
 
-;; Dired config
-(progn
-  ;; Cleaner dired.
-  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
-
-  (setq
-   ;; Don't ask when deleting directory.
-   dired-recursive-deletes 'always
-   ;; Use ls from GNU coreutils for dired.
-   insert-directory-program (executable-find "gls")))
-
 (use-package recentf
   :demand
   :bind ("C-x f" . recentf-ido-find-file)
   :config
-  (setq recentf-auto-cleanup 'never
-        recentf-max-menu-items 100
+  (setq recentf-max-menu-items 100
         recentf-max-saved-items 100)
 
   (recentf-mode 1)
@@ -99,8 +98,9 @@
         (find-file file)))))
 
 (use-package projectile
+  :demand
   :commands (projectile-mode)
-  :init
+  :config
   (projectile-mode))
 
 
