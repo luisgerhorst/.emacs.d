@@ -159,5 +159,10 @@
 ;; Delete marked text on typing.
 (delete-selection-mode t)
 
+(use-package whole-line-or-region
+  :diminish ""
+  :init
+  (whole-line-or-region-mode 1))
+
 
 (provide 'luis-modification)
