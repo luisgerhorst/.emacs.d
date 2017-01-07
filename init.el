@@ -7,8 +7,13 @@
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
 (add-to-list 'load-path (locate-user-emacs-file "lisp/lib"))
 
+;;; Variables
+
 (setq custom-file (locate-user-emacs-file "lisp/luis-custom.el"))
 (when (file-exists-p custom-file) (load custom-file))
+
+(require 'luis-machine-local)
+(require 'luis-private)
 
 ;;; Load Path
 
@@ -30,8 +35,3 @@
 
 (require 'luis-modes)
 (require 'luis-apps)
-
-;; Private
-
-(require 'luis-machine-local)
-(require 'luis-private)
