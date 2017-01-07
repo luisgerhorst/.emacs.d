@@ -197,9 +197,17 @@
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
-    (fic-mode yaml-mode eclim projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode ido-ubiquitous fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-jedi company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
+    (git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode ido-ubiquitous fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-jedi company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(projectile-global-mode t)
+ '(projectile-mode-line
+   (quote
+    (:eval
+     (if
+         (file-remote-p default-directory)
+         " Projectile"
+       (format " Project[%s]"
+               (projectile-project-name))))))
  '(python-environment-directory "~/.pyenv/versions")
  '(python-shell-interpreter "/usr/local/bin/python3")
  '(solarized-use-more-italic t))

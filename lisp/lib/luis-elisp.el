@@ -1,27 +1,25 @@
 (use-package paredit
-  :commands (paredit-mode)
+  :diminish (paredit-mode . "")
+  :bind (:map
+         paredit-mode-map
+         ("M-r" . nil)
+         ("M-q" . nil))
   :init
   (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
   (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
   (add-hook 'ielm-mode-hook #'paredit-mode)
   (add-hook 'lisp-mode-hook #'paredit-mode)
   (add-hook 'lisp-interaction-mode-hook #'paredit-mode)
-  (add-hook 'scheme-mode-hook #'paredit-mode)
+  (add-hook 'scheme-mode-hook #'paredit-mode))
+
+(use-package elisp-mode
+  :mode ("\\.el\\.template\\'" . emacs-lisp-mode)
+  :bind (:map
+         emacs-lisp-mode-map
+         ("C-c e" . eval-buffer))
   :config
-  (define-key paredit-mode-map (kbd "M-r") nil)
-  (define-key paredit-mode-map (kbd "M-q") nil))
-
-;; eldoc-mode shows documentation in the minibuffer when writing code
-;; http://www.emacswiki.org/emacs/ElDoc
-(add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
-(add-hook 'lisp-interaction-mode-hook #'eldoc-mode)
-(add-hook 'ielm-mode-hook #'eldoc-mode)
-
-;; Emacs Lisp Mode
-(add-hook 'emacs-lisp-mode-hook #'luis-company-configure-automatic-completion)
-(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-(define-key emacs-lisp-mode-map (kbd "C-c e") 'eval-buffer)
-(add-to-list 'auto-mode-alist '("\\.el\\.template\\'" . emacs-lisp-mode))
+  (add-hook 'emacs-lisp-mode-hook #'luis-company-configure-automatic-completion)
+  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode))
 
 (defun test-emacs-config ()
   "Start shell Emacs in background to test config."

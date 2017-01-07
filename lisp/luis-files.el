@@ -5,7 +5,11 @@
 ;; - 2016-02-13 ~Luis
 (require 'tramp)
 
-(global-auto-revert-mode)
+(use-package autorevert
+  :demand
+  :diminish (auto-revert-mode . "")
+  :config
+  (global-auto-revert-mode))
 
 ;; Files created by Emacs
 (setq
@@ -72,8 +76,7 @@
 (global-set-key (kbd "C-c f r") 'rename-current-buffer-file)
 
 (use-package recentf
-  :demand
-  :bind ("C-x f" . recentf-ido-find-file)
+  :bind ("C-c f l" . recentf-ido-find-file)
   :config
   (setq recentf-max-menu-items 100
         recentf-max-saved-items 100)
@@ -98,8 +101,6 @@
         (find-file file)))))
 
 (use-package projectile
-  :demand
-  :commands (projectile-mode)
   :config
   (projectile-mode))
 

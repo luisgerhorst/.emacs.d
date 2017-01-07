@@ -8,7 +8,7 @@
               tab-width 4)
 
 (use-package aggressive-indent
-  :diminish aggressive-indent-mode " AggressiveIndent"
+  :diminish ""
   :commands (aggressive-indent-mode)
   :config
   (add-to-list
@@ -24,23 +24,25 @@
 ;;; Completion
 
 (use-package yasnippet
+  :demand
   :diminish yas-minor-mode
+  :bind ("C-c y" . yas-expand)
   :config
   (setq yas-snippet-dirs
-        `(,(locate-user-emacs-file "snippets")))
+        (list (locate-user-emacs-file "snippets")))
   (yas-global-mode 1)
   (define-key yas-minor-mode-map [(tab)] nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand))
+  (define-key yas-minor-mode-map (kbd "TAB") nil))
 
 
 (use-package auto-complete
   :commands (auto-complete-mode)
-  :bind (:map ac-menu-map
-              ;; Use M-n and M-p to select next/previous completion and use
-              ;; these for moving by line.
-              ("C-n" . nil)
-              ("C-p" . nil))
+  :bind (:map
+         ac-menu-map
+         ;; Use M-n and M-p to select next/previous completion and use
+         ;; these for moving by line.
+         ("C-n" . nil)
+         ("C-p" . nil))
   :init
   (setq ac-auto-show-menu 0.8
         ac-auto-start 3
@@ -96,8 +98,8 @@
 
 ;; Auto Fill for comments, enable per major mode.
 (use-package luis-comment-auto-fill
-  :commands luis-comment-auto-fill-mode
   :diminish luis-comment-auto-fill-mode
+  :commands (luis-comment-auto-fill-mode)
   :init
   (add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode))
 

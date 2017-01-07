@@ -17,19 +17,16 @@
     (call-interactively #'company-abort)
     (call-interactively #'company-emacs-eclim)))
 
-(use-package eclimd
-  :commands (start-eclimd))
-
-;; Run `eclim-project-create' when you edit a Java file for the first time to
-;; create a Eclipse project. Otherwise many eclim features will not be available
-;; (e.g. completion).
 (use-package eclim
   :bind (:map eclim-mode-map
               ("C-M-i" . luis-force-company-emacs-eclim))
   :commands (eclim-mode
              global-eclim-mode)
   :init
-  (add-hook 'java-mode-hook #'eclim-mode))
+  (add-hook 'java-mode-hook #'eclim-mode)
+  :config
+  (setq eclimd-autostart t
+        eclimd-autostart-with-default-workspace t))
 
 (progn
   ;; Displays eclim problems under point.
