@@ -59,7 +59,7 @@ Then read the following:
     brew install gnutls
     ```
 
-    The credentials for the server are stored in `~/.authinfo`, run
+    The credentials for the server are stored in `~/.netrc`, run
 
     ```sh
     touch ~/.netrc
