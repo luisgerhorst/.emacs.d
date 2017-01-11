@@ -16,7 +16,7 @@
   :mode ("\\.el\\.template\\'" . emacs-lisp-mode)
   :bind (:map
          emacs-lisp-mode-map
-         ("C-c e" . eval-buffer))
+         ("C-c r" . eval-buffer))
   :config
   (add-hook 'emacs-lisp-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode))
