@@ -1,5 +1,10 @@
 ;; -*- lexical-binding: t -*-
 
+;; Use // for comments instead of /* and */.
+(defun luis-c-configure-comments ()
+  (setq-local comment-start "//")
+  (setq-local comment-end ""))
+
 (use-package cc-mode
   :config
   (setq c-basic-offset tab-width)
@@ -9,11 +14,6 @@
   (unless (listp c-default-style)
     (setq c-default-style nil))
   (add-to-list 'c-default-style '(other . "k&r"))
-
-  ;; Use // for comments instead of /* and */.
-  (defun luis-c-configure-comments ()
-    (setq-local comment-start "//")
-    (setq-local comment-end ""))
 
   (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'c-mode-hook #'luis-c-configure-comments)
@@ -37,7 +37,7 @@
   (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands))
 
 (use-package company-c-headers
-  :after (company)
+  :after company
   :commands (company-c-headers)
   :init
   (add-to-list 'company-backends #'company-c-headers))

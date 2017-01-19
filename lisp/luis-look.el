@@ -37,15 +37,14 @@
       flymake-log-level 0)
 
 (use-package flycheck
-  :commands (flycheck-mode
-             luis-flycheck-unless-file-remote)
-  :bind-keymap ("H-f" . flycheck-command-map)
-  :config
-  (defun luis-flycheck-unless-file-remote ()
-    (let ((current-file (buffer-file-name (current-buffer))))
-      (unless (and current-file
-                   (file-remote-p current-file))
-        (flycheck-mode 1)))))
+  :commands (flycheck-mode)
+  :bind-keymap ("H-f" . flycheck-command-map))
+
+(defun luis-flycheck-unless-file-remote ()
+  (let ((current-file (buffer-file-name (current-buffer))))
+    (unless (and current-file
+                 (file-remote-p current-file))
+      (flycheck-mode 1))))
 
 ;;; Mode Line
 
@@ -80,6 +79,7 @@
 ;; Display column number in mode line.
 (column-number-mode 1)
 
+;; Highlight FIXME/TODO in comments.
 (add-hook 'prog-mode-hook #'fic-mode)
 
 
