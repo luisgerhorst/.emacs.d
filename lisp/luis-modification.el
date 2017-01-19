@@ -77,7 +77,6 @@
   (setq-default company-idle-delay nil
                 company-minimum-prefix-length 0)
   (setq company-backends '((company-elisp :with company-dabbrev-code)
-                           company-nxml
                            company-css
                            (company-dabbrev-code
                             company-keywords)))
