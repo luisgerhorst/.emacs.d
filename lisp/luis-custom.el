@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(Man-notify-method (quote pushy))
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(auto-coding-alist
    (quote
