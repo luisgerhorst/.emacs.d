@@ -76,6 +76,7 @@
 (global-set-key (kbd "C-c f r") 'rename-current-buffer-file)
 
 (use-package recentf
+  :demand
   :bind ("C-c e" . recentf-ido-find-file)
   :config
   (setq recentf-max-menu-items 100
