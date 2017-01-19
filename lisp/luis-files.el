@@ -102,6 +102,7 @@
         (find-file file)))))
 
 (use-package projectile
+  :demand
   :config
   (projectile-mode))
 
