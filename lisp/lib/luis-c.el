@@ -5,6 +5,12 @@
   (setq-local comment-start "//")
   (setq-local comment-end ""))
 
+(defun luis-c-comment-box ()
+  (interactive)
+  (let ((comment-start "/*")
+        (comment-end "*/"))
+    (call-interactively #'comment-box)))
+
 (use-package cc-mode
   :config
   (setq c-basic-offset tab-width)
