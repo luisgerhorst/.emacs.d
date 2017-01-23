@@ -37,9 +37,7 @@
   :commands (company-irony)
   :init
   (add-to-list 'company-backends
-               '(:separate
-                 company-irony
-                 :with company-dabbrev-code company-keywords))
+               '(:separate company-irony :with company-dabbrev-code))
   (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands))
 
 (use-package company-c-headers

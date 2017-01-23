@@ -42,8 +42,7 @@
 
 (defun luis-flycheck-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))
-    (unless (and current-file
-                 (file-remote-p current-file))
+    (unless (and current-file (file-remote-p current-file))
       (flycheck-mode 1))))
 
 ;;; Mode Line

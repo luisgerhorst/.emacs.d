@@ -1,5 +1,6 @@
 (use-package paredit
   :diminish (paredit-mode . "")
+  :commands (paredit-mode)
   :bind (:map
          paredit-mode-map
          ("M-r" . nil)
