@@ -1,4 +1,4 @@
-;; Standalone features / tools installation and keybindings.
+;; Standalone features / tools installation and keybindings.  -*- lexical-binding: t; -*-
 
 ;; Git interface
 (use-package magit
@@ -17,6 +17,17 @@
 ;; Mail
 (require 'luis-mail)
 (global-set-key (kbd "H-s m") #'mu4e)
+
+;; Eshell
+(defun luis-eshell-basename-prompt ()
+  (concat (file-name-nondirectory (eshell/pwd))
+          (if (= (user-uid) 0) " # " " $ ")))
+
+(use-package eshell
+  :bind ("H-s s" . eshell)
+  :config
+  (setq eshell-prompt-function #'luis-eshell-basename-prompt)
+  (setq eshell-prompt-regexp "^[^#$\n]* [#$] "))
 
 
 (provide 'luis-apps)
