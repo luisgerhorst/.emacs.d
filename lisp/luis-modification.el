@@ -55,7 +55,7 @@
 
 (defun luis-company-configure-automatic-completion ()
   (interactive)
-  (luis-company-configure-completion 0 1))
+  (luis-company-configure-completion 0.5 2))
 
 ;; Used to only enable certain backends in a buffer to avoid possibly
 ;; annoying completions while for example writing comments.
@@ -72,27 +72,16 @@
 (use-package company
   :demand
   :diminish company-mode
-  :bind (("M-i" . company-complete)
-         :map
-         company-active-map
-         ;; Since company by default already defines a binding for [tab] you can
-         ;; still use the tab key (or if your Emacs doesn't support this M-i) to
-         ;; `company-complete-common'.
-         ("S-C-i" . company-complete-selection))
+  :bind (("H-i" . company-complete))
   :config
-  ;; This makes completion less intrusive.
-  (define-key company-active-map [return] nil)
-  (define-key company-active-map (kbd "RET") nil)
-  (setq-default company-idle-delay nil
-                company-minimum-prefix-length 0)
+  (setq company-idle-delay nil)
   (setq company-frontends '(company-preview-common-frontend
                             company-pseudo-tooltip-unless-just-one-frontend
                             company-preview-if-just-one-frontend
                             company-echo-metadata-frontend))
   (setq company-backends '((company-elisp :with company-dabbrev-code)
                            company-css
-                           (company-dabbrev-code
-                            company-keywords)))
+                           (company-dabbrev-code company-keywords)))
   (global-company-mode 1))
 
 ;;; Filling
