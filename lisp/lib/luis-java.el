@@ -28,11 +28,5 @@
   (setq eclimd-autostart t
         eclimd-autostart-with-default-workspace t))
 
-(progn
-  ;; Displays eclim problems under point.
-  (setq help-at-pt-display-when-idle t)
-  (setq help-at-pt-timer-delay 0.9)
-  (help-at-pt-set-timer))
-
 
 (provide 'luis-java)
