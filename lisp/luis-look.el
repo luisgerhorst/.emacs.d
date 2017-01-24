@@ -18,18 +18,49 @@
   :commands (luis-code-wrap-mode))
 
 (use-package luis-text-wrap
-  :commands luis-text-wrap-mode)
+  :commands (luis-text-wrap-mode))
 
-;;; Theme
+;;; Mode Line and Theme
+
+(use-package powerline
+  :config
+  (set-face-underline 'mode-line nil)
+  (set-face-underline 'mode-line-inactive nil)
+  ;; Causes incorrect display of active mode line when Emacs is not focused.
+  (remove-hook 'focus-out-hook 'powerline-unset-selected-window))
 
 (use-package solarized-theme
-  :defer t
   :init
   ;; Looks much better when using Powerline.
   (setq solarized-high-contrast-mode-line t))
 
-;; See customize group Solarized for options.
-(load-theme 'solarized-dark t)
+(defun luis-theme-set (new background-mode powerline-seperator)
+  (setq powerline-default-separator powerline-seperator)
+  (powerline-default-theme)
+  (mapc #'disable-theme custom-enabled-themes)
+  (load-theme new t)
+  (setq frame-background-mode background-mode)
+  (frame-set-background-mode (selected-frame)))
+
+(defun luis-theme-dark ()
+  (luis-theme-set 'solarized-dark 'dark 'utf-8))
+
+(defun luis-theme-light ()
+  (luis-theme-set 'leuven 'light nil))
+
+(defun luis-theme-toggle ()
+  (interactive)
+  (if (custom-theme-enabled-p 'solarized-dark)
+      (luis-theme-dark)
+    (luis-theme-light)))
+
+(defun luis-theme-detect (&rest _)
+  (if (memq (frame-parameter nil 'fullscreen) '(fullscreen fullboth))
+      (luis-theme-dark)
+    (luis-theme-light)))
+
+(advice-add 'toggle-frame-fullscreen :after #'luis-theme-detect)
+(luis-theme-detect)
 
 ;;; Syntax Checking
 
@@ -44,17 +75,6 @@
   (let ((current-file (buffer-file-name (current-buffer))))
     (unless (and current-file (file-remote-p current-file))
       (flycheck-mode 1))))
-
-;;; Mode Line
-
-(use-package powerline
-  :config
-  (setq powerline-default-separator 'utf-8)
-  (powerline-default-theme)
-  (set-face-underline 'mode-line nil)
-  (set-face-underline 'mode-line-inactive nil)
-  ;; Causes incorrect display of active mode line when Emacs is not focused.
-  (remove-hook 'focus-out-hook 'powerline-unset-selected-window))
 
 ;;; Whitespaces
 

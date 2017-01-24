@@ -183,7 +183,6 @@
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
  '(flycheck-display-errors-delay 60)
  '(flycheck-mode-line (quote (:eval "FlyC")))
- '(frame-background-mode (quote dark))
  '(ispell-dictionary "de_DE")
  '(jedi:environment-root "3.5.0")
  '(magit-completing-read-function (quote magit-ido-completing-read))

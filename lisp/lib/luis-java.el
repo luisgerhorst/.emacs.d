@@ -8,18 +8,18 @@
 (use-package company-emacs-eclim
   :after company
   :commands (company-emacs-eclim
-             company-emacs-eclim-setup
-             luis-force-company-emacs-eclim)
-  :config
-  (defun luis-force-company-emacs-eclim ()
-    "Stop active backend before starting `company-emacs-eclim'"
-    (interactive)
-    (call-interactively #'company-abort)
-    (call-interactively #'company-emacs-eclim)))
+             company-emacs-eclim-setup))
+
+(defun luis-force-company-emacs-eclim ()
+  "Stop active backend before starting `company-emacs-eclim'"
+  (interactive)
+  (call-interactively #'company-abort)
+  (call-interactively #'company-emacs-eclim))
 
 (use-package eclim
-  :bind (:map eclim-mode-map
-              ("C-M-i" . luis-force-company-emacs-eclim))
+  :bind (:map
+         eclim-mode-map
+         ("C-M-i" . luis-force-company-emacs-eclim))
   :commands (eclim-mode
              global-eclim-mode)
   :init

@@ -26,13 +26,17 @@
 (use-package yasnippet
   :demand
   :diminish yas-minor-mode
-  :bind ("C-c y" . yas-expand)
+  :bind (("C-c y y" . yas-expand)
+         :map
+         yas-keymap
+         ("C-c y i" . yas-next-field-or-maybe-expand))
   :config
-  (setq yas-snippet-dirs
-        (list (locate-user-emacs-file "snippets")))
+  (setq yas-snippet-dirs (list (locate-user-emacs-file "snippets")))
   (yas-global-mode 1)
   (define-key yas-minor-mode-map [(tab)] nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil))
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  (define-key yas-keymap [(tab)] nil)
+  (define-key yas-keymap (kbd "TAB") nil))
 
 
 (use-package auto-complete
