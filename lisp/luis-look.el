@@ -51,8 +51,8 @@
 (defun luis-theme-toggle ()
   (interactive)
   (if (custom-theme-enabled-p 'solarized-dark)
-      (luis-theme-dark)
-    (luis-theme-light)))
+      (luis-theme-light)
+    (luis-theme-dark)))
 
 (defun luis-theme-detect (&rest _)
   (if (memq (frame-parameter nil 'fullscreen) '(fullscreen fullboth))
