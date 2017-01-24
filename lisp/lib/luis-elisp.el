@@ -38,9 +38,5 @@
         (insert output)
         (search-backward "ERROR!")))))
 
-(use-package auto-compile
-  :config
-  (auto-compile-on-save-mode))
-
 
 (provide 'luis-elisp)

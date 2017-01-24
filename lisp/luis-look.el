@@ -37,30 +37,24 @@
 (defun luis-theme-set (new background-mode powerline-seperator)
   (setq powerline-default-separator powerline-seperator)
   (powerline-default-theme)
+
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme new t)
+
   (setq frame-background-mode background-mode)
   (frame-set-background-mode (selected-frame)))
 
-(defun luis-theme-dark ()
+(defun luis-theme-solarized ()
   (luis-theme-set 'solarized-dark 'dark 'utf-8))
 
-(defun luis-theme-light ()
+(defun luis-theme-leuven ()
   (luis-theme-set 'leuven 'light nil))
 
 (defun luis-theme-toggle ()
   (interactive)
   (if (custom-theme-enabled-p 'solarized-dark)
-      (luis-theme-light)
-    (luis-theme-dark)))
-
-(defun luis-theme-detect (&rest _)
-  (if (memq (frame-parameter nil 'fullscreen) '(fullscreen fullboth))
-      (luis-theme-dark)
-    (luis-theme-light)))
-
-(advice-add 'toggle-frame-fullscreen :after #'luis-theme-detect)
-(luis-theme-detect)
+      (luis-theme-leuven)
+    (luis-theme-solarized)))
 
 ;;; Whitespaces
 

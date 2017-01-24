@@ -41,11 +41,11 @@
          ("C-M-p" . paredit-backward-down)
          ("C-M-n" . paredit-forward-up)))
 
-(use-package dumb-jump
-  :bind (("H-d M-." . dumb-jump-go)
-         ;; Use xref-pop-marker-stack to go back after jumping to definition
-         ;; (bound to M-,).
-         ))
+(defun luis-dumb-jump-save-and-go ()
+  (interactive)
+  (save-buffer)
+  (dumb-jump-go))
 
+(global-set-key (kbd "H-d M-.") #'luis-dumb-jump-save-and-go)
 
 (provide 'luis-movement)

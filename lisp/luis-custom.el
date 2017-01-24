@@ -5,6 +5,8 @@
  ;; If there is more than one, they won't work right.
  '(Man-notify-method (quote pushy))
  '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(auto-coding-alist
    (quote
     (("\\.\\(arc\\|zip\\|lzh\\|lha\\|zoo\\|[jew]ar\\|xpi\\|rar\\|7z\\|ARC\\|ZIP\\|LZH\\|LHA\\|ZOO\\|[JEW]AR\\|XPI\\|RAR\\|7Z\\)\\'" . no-conversion-multibyte)
@@ -223,4 +225,5 @@
  '(helm-ff-dotted-symlink-directory ((t (:foreground "#586e75"))))
  '(helm-selection ((t (:background "#839496" :foreground "#002b36" :underline nil))))
  '(helm-source-header ((t (:background "#268bd2" :foreground "#002b36" :underline nil))))
+ '(iedit-occurrence ((t (:inherit lazy-highlight))))
  '(leerzeichen ((t (:foreground "#475B62")))))
