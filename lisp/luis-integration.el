@@ -7,8 +7,6 @@
 
 ;;; Shell
 
-;; Sets up exec-path-from-shell
-;; https://github.com/purcell/exec-path-from-shell
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
   :config
@@ -17,34 +15,14 @@
 
 ;;; Mac
 
-;; These settings relate to how emacs interacts with your operating system
-(setq
- ;; makes killing/yanking interact with the clipboard
- select-enable-clipboard t
-
- ;; I'm actually not sure what this does but it's recommended?
- select-enable-primary t
-
- ;; Save clipboard strings into kill ring before replacing them.
- ;; When one selects something in another program to paste it into Emacs,
- ;; but kills something in Emacs before actually pasting it,
- ;; this selection is gone unless this variable is non-nil
- save-interprogram-paste-before-kill t
-
- ;; Mouse yank commands yank at point instead of at click.
- mouse-yank-at-point t)
+(setq select-enable-clipboard t
+      save-interprogram-paste-before-kill t
+      mouse-yank-at-point t)
 
 (use-package server
   :config
   (unless (server-running-p)
     (server-start)))
-
-;; Fix weird OS X kill error.
-(defun ns-get-pasteboard ()
-  "Returns the value of the pasteboard, or nil for unsupported formats."
-  (condition-case nil
-      (ns-get-selection-internal 'CLIPBOARD)
-    (quit nil)))
 
 (defun ido-find-file-in-finder-dir ()
   "ido-find-file-in-dir but start in directory currently open in Finder"
