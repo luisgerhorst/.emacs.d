@@ -62,20 +62,6 @@
 (advice-add 'toggle-frame-fullscreen :after #'luis-theme-detect)
 (luis-theme-detect)
 
-;;; Syntax Checking
-
-(setq flymake-gui-warnings-enabled nil
-      flymake-log-level 0)
-
-(use-package flycheck
-  :commands (flycheck-mode)
-  :bind-keymap ("H-f" . flycheck-command-map))
-
-(defun luis-flycheck-unless-file-remote ()
-  (let ((current-file (buffer-file-name (current-buffer))))
-    (unless (and current-file (file-remote-p current-file))
-      (flycheck-mode 1))))
-
 ;;; Whitespaces
 
 (setq-default indicate-empty-lines t)

@@ -1,10 +1,5 @@
 ;;;; Work nice together with other apps / Mac OS X.
 
-;;; Compilation
-
-(setq compilation-ask-about-save nil)
-(global-set-key (kbd "C-c c") #'compile)
-
 ;;; Shell
 
 (use-package exec-path-from-shell

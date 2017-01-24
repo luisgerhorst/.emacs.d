@@ -4,7 +4,5 @@
 		(bookmark-bmenu-list)
         (get-buffer "*Bookmark List*")))
 
-(setq load-prefer-newer t)
-
 
 (provide 'luis-misc)

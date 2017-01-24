@@ -28,6 +28,7 @@
 (require 'luis-interactive)
 (require 'luis-modification)
 (require 'luis-movement)
+(require 'luis-compile)
 (require 'luis-misc)
 
 (require 'luis-user-interaction)
