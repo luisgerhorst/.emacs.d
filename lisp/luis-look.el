@@ -56,6 +56,8 @@
       (luis-theme-leuven)
     (luis-theme-solarized)))
 
+(luis-theme-solarized)
+
 ;;; Whitespaces
 
 (setq-default indicate-empty-lines t)
