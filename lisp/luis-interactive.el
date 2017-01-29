@@ -33,7 +33,26 @@
 
 (use-package ido-vertical-mode
   :config
+  (setcar (nthcdr 4 ido-vertical-decorations) "")
+  (setcar (nthcdr 5 ido-vertical-decorations) "")
   (ido-vertical-mode 1))
+
+(defun luis-propertize-ido-common-match-string (&rest _)
+  (when ido-common-match-string
+    (setq ido-common-match-string
+          (propertize ido-common-match-string
+                      'face 'completions-common-part))))
+
+(defun luis-unpropertize-ido-common-match-string (&rest _)
+  (when ido-common-match-string
+    (setq ido-common-match-string
+          (propertize ido-common-match-string
+                      'face nil))))
+
+(advice-add 'ido-completions :before
+            #'luis-propertize-ido-common-match-string)
+(advice-add 'ido-completions :after
+            #'luis-unpropertize-ido-common-match-string)
 
 ;;; Buffers
 
