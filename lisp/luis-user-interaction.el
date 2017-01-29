@@ -16,8 +16,5 @@
 ;; Better shortcut for switching buffers (normally C-x o).
 (global-set-key (kbd "H-w") 'other-window)
 
-;; Changes all yes/no questions to y/n type
-(fset 'yes-or-no-p 'y-or-n-p)
-
 
 (provide 'luis-user-interaction)
