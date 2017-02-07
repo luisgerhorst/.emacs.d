@@ -32,19 +32,31 @@
   (add-hook 'c++-mode-hook #'irony-mode)
   (add-hook 'objc-mode-hook #'irony-mode))
 
+;;; Completion
+
 (use-package company-irony
   :after company
-  :commands (company-irony)
+  :commands (company-irony
+             company-irony-setup-begin-commands)
   :init
-  (add-to-list 'company-backends
-               '(:separate company-irony :with company-dabbrev-code))
+  (add-to-list 'company-backends #'company-irony)
   (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands))
 
 (use-package company-c-headers
   :after company
   :commands (company-c-headers)
   :init
+  ;; Ensure this is executed after `company-irony' is added to
+  ;; `company-backends', it must appear in the list first.
   (add-to-list 'company-backends #'company-c-headers))
+
+;;; Syntax Checking
+
+(use-package flycheck-irony
+  :after flycheck
+  :commands (flycheck-irony-setup)
+  :init
+  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 
 (provide 'luis-c)

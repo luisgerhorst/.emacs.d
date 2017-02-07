@@ -206,7 +206,7 @@
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
-    (company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode ido-ubiquitous fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-jedi company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
+    (flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode ido-ubiquitous fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-jedi company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(projectile-global-mode t)
