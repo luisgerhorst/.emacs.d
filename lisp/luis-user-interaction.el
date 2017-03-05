@@ -13,8 +13,5 @@
 ;;                  [triple-mouse-5]))
 ;;   (global-unset-key mouse))
 
-;; Better shortcut for switching buffers (normally C-x o).
-(global-set-key (kbd "H-w") 'other-window)
-
 
 (provide 'luis-user-interaction)

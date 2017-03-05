@@ -10,7 +10,7 @@
 
 (use-package flycheck
   :commands (flycheck-mode)
-  :bind-keymap ("H-f" . flycheck-command-map))
+  :bind-keymap ("C-c !" . flycheck-command-map))
 
 (defun luis-flycheck-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))

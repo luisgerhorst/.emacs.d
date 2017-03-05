@@ -4,8 +4,7 @@
 (progn
   (setq ido-use-filename-at-point nil)
   (setq ido-enable-flex-matching t)
-  ;; Disable automatic switich to different directory if no matches are
-  ;; found.
+  ;; Disable automatic switch to different directory when no matches are found.
   (setq ido-auto-merge-work-directories-length -1)
 
   (ido-mode 1)
@@ -33,8 +32,10 @@
 
 (use-package ido-vertical-mode
   :config
+  ;; Remove brackets around completions common part.
   (setcar (nthcdr 4 ido-vertical-decorations) "")
   (setcar (nthcdr 5 ido-vertical-decorations) "")
+
   (ido-vertical-mode 1))
 
 (defun luis-propertize-ido-common-match-string (&rest _)
@@ -77,10 +78,6 @@
 
 (use-package discover
   :config
-  (discover-add-context-menu
-   ;; See discover.el for key.
-   :context-menu (assq 'rectangles discover-context-menus)
-   :bind "H-r")
   (global-discover-mode 1))
 
 (use-package discover-my-major

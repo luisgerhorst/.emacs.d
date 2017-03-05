@@ -76,7 +76,7 @@
 (use-package company
   :demand
   :diminish company-mode
-  :bind (("H-i" . company-complete))
+  :bind (("C-M-i" . company-complete))
   :config
   (setq company-idle-delay nil)
   (setq company-frontends '(company-preview-common-frontend
@@ -119,7 +119,7 @@
 ;; Fancier manipulate whitespace function:
 ;; M-SPC does not work on my Mac, is used for opening Spotlight. If you
 ;; don't have such problems you may remove the first line.
-(global-set-key (kbd "H-SPC") #'just-one-space)
+(global-set-key (kbd "M-S-SPC") #'just-one-space)
 (global-set-key [remap just-one-space] #'cycle-spacing)
 
 ;; Auto-delete trailing whitespaces from modified lines.

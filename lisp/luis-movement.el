@@ -46,6 +46,6 @@
   (save-buffer)
   (dumb-jump-go))
 
-(global-set-key (kbd "H-d M-.") #'luis-dumb-jump-save-and-go)
+(global-set-key (kbd "M-…") #'luis-dumb-jump-save-and-go)
 
 (provide 'luis-movement)
