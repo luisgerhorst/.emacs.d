@@ -6,6 +6,7 @@
 (defun luis-python-mode-hook ()
   (electric-indent-just-newline nil))
 
+(add-hook 'python-mode-hook #'flycheck-mode)
 (add-hook 'python-mode-hook #'luis-python-mode-hook)
 (add-hook 'python-mode-hook #'luis-comment-auto-fill-mode)
 (add-hook 'python-mode-hook #'luis-company-configure-automatic-completion)
