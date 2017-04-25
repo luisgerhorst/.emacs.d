@@ -7,7 +7,7 @@
   (electric-indent-just-newline nil))
 
 (add-hook 'python-mode-hook #'luis-python-mode-hook)
-(add-hook 'python-mode-hook #'luis-comment-auto-fill)
+(add-hook 'python-mode-hook #'luis-comment-auto-fill-mode)
 (add-hook 'python-mode-hook #'luis-company-configure-automatic-completion)
 
 

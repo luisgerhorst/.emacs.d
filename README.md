@@ -23,7 +23,9 @@ Then read the following:
 
 -   __Python Autocompletion__
 
-    The config is using the environments from `pyenv` (usually located in `~/.pyenv/versions`). See customizeable variable `jedi:environment-root` for current version used. Run `pyenv install VERSION` to install a specific version (preferably the one `jedi:environment-root` is set to) before opening any Python files.
+    The config is using the environments from [`pyenv`](https://github.com/pyenv/pyenv) (usually located in `~/.pyenv/versions`). Install pyenv on macOS using [`brew install pyenv`](https://github.com/pyenv/pyenv#homebrew-on-mac-os-x).
+
+    See customizeable variable `jedi:environment-root` for current version used. Run `pyenv install VERSION` to install a specific version (preferably the one `jedi:environment-root` is set to) before opening any Python files.
 
 -   __Dired__
 
@@ -32,7 +34,7 @@ Then read the following:
 -   __Java__
 
     Install the [JDK](http://www.oracle.com/technetwork/java/index.html).
-    
+
     Install [emacs-eclim](https://github.com/emacs-eclim/emacs-eclim#installation). The configuration is located in `lisp/lib/luis-java.el`. When opening a project for the first time do `M-x eclim-project-create`, `eclimd` is started automatically the first time a Java file is opened.
 
 -   __Scala__
