@@ -1,3 +1,5 @@
+(setenv "PYTHONIOENCODING" "utf8")
+
 (use-package company-jedi
   :commands (company-jedi)
   :init
