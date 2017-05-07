@@ -127,7 +127,8 @@
   :diminish ws-butler-mode
   :commands (ws-butler-mode)
   :init
-  (add-hook 'prog-mode-hook #'ws-butler-mode))
+  (add-hook 'prog-mode-hook #'ws-butler-mode)
+  (add-hook 'text-mode-hook #'ws-butler-mode))
 
 ;; Manually delete all trailing whitespaces.
 (global-set-key (kbd "C-c d") #'delete-trailing-whitespace)
