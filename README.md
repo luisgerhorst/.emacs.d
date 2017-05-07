@@ -90,10 +90,10 @@ Then read the following:
 
     Now run `mbsync -a` once from the terminal to fill your maildir with messages.
 
-    When done, install `mu4e` (if `mu` is already installed reinstall it since `EMACS` has to be set, make sure `brew` is not wrapped by `brew-file` or something) and index your maildir using the following commands:.
+    When done, install `mu4e` (if `mu` is already installed reinstall it since `EMACS` has to be set, make sure `brew` is not wrapped by `brew-file` or something, you can do so by e.g. temporarily switching to `bash` if you use `zsh`) and index your maildir using the following commands:
 
     ```sh
-    EMACS=$(which emacs) brew install mu --with-emacs --build-from-source --HEAD
+    EMACS=$(which emacs) brew install mu --with-emacs
     mu index --maildir=~/.maildir
     ```
 
