@@ -8,6 +8,8 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs '("PATH")))
 
+(setenv "LC_ALL" "en_US.UTF-8")
+
 ;;; Mac
 
 (setq select-enable-clipboard t
