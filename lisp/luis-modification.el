@@ -116,9 +116,9 @@
 
 ;;; Whitespaces
 
-;; Fancier manipulate whitespace function:
-;; M-SPC does not work on my Mac, is used for opening Spotlight. If you
-;; don't have such problems you may remove the first line.
+;; Fancier manipulate whitespace function: M-SPC does not work on my Mac, is
+;; used for opening Spotlight. If you don't have such problems you may remove
+;; the first line.
 (global-set-key (kbd "M-S-SPC") #'just-one-space)
 (global-set-key [remap just-one-space] #'cycle-spacing)
 
@@ -163,9 +163,6 @@
 (put 'upcase-region 'disabled nil)
 
 (put 'narrow-to-region 'disabled nil)
-
-;; Delete marked text on typing.
-(delete-selection-mode t)
 
 (use-package whole-line-or-region
   :diminish ""

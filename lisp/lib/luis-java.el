@@ -1,5 +1,5 @@
 (use-package cc-mode
-  :defer
+  :defer t
   :config
   (add-hook 'java-mode-hook #'luis-company-configure-automatic-completion))
 

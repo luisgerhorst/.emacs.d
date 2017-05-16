@@ -76,8 +76,8 @@
 (use-package recentf
   :demand
   :config
-  (setq recentf-max-menu-items 100
-        recentf-max-saved-items 100)
+  (setq recentf-max-menu-items 200
+        recentf-max-saved-items 200)
   (recentf-mode 1)
   (setq recentf-exclude
         (append (list (regexp-opt '("/Users/luis/.emacs.d/bookmarks"

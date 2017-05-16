@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (setenv "PYTHONIOENCODING" "utf8")
 
 (use-package company-jedi
@@ -10,8 +12,6 @@
 
 (add-hook 'python-mode-hook #'flycheck-mode)
 (add-hook 'python-mode-hook #'luis-python-mode-hook)
-(add-hook 'python-mode-hook #'luis-comment-auto-fill-mode)
 (add-hook 'python-mode-hook #'luis-company-configure-automatic-completion)
-
 
 (provide 'luis-python)

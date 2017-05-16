@@ -10,8 +10,8 @@
   (add-hook 'LaTeX-mode-hook #'flycheck-mode))
 
 (use-package company-auctex
-  :config
-  (company-auctex-init))
-
+  :commands (company-auctex-init)
+  :init
+  (add-hook 'LaTeX-mode-hook #'company-auctex-init))
 
 (provide 'luis-latex)

@@ -12,6 +12,8 @@
     (call-interactively #'comment-box)))
 
 (use-package cc-mode
+  ;; The needed autoloads already exist by default.
+  :defer t
   :config
   (setq c-basic-offset tab-width)
 

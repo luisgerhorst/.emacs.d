@@ -5,5 +5,4 @@
 
 (add-to-list 'auto-mode-alist '("\\.nxc\\'" . luis-nxc-mode))
 
-
 (provide 'luis-nxc)

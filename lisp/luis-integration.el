@@ -2,6 +2,7 @@
 
 ;;; Shell
 
+;; This part is very slow, nearly half a second.
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
   :config

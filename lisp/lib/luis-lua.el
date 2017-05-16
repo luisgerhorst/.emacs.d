@@ -2,5 +2,4 @@
   :mode "\\.lua\\'"
   :commands (lua-mode))
 
-
 (provide 'luis-lua)

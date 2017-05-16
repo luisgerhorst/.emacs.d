@@ -24,11 +24,7 @@
         '((eclim . "melpa")
           (company-emacs-eclim . "melpa")
           (ensime . "melpa-stable")
-          (dumb-jump . "melpa")
-          ;; Because I wanted
-          ;; https://github.com/company-mode/company-mode/pull/618, can be
-          ;; removed when included in stable version.
-          (company . "melpa")))
+          (dumb-jump . "melpa")))
 
   (package-initialize)
 

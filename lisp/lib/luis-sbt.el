@@ -20,5 +20,4 @@
   (interactive)
   (sbt-command "test"))
 
-
 (provide 'luis-sbt)
