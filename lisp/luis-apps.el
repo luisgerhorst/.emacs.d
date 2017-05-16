@@ -29,5 +29,8 @@
   (setq eshell-prompt-function #'luis-eshell-basename-prompt)
   (setq eshell-prompt-regexp "^[^#$\n]* [#$] "))
 
+(use-package dsvn
+  :after vc-svn
+  :bind (("C-c s v" . svn-status)))
 
 (provide 'luis-apps)
