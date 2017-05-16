@@ -3,9 +3,10 @@
 (setenv "PYTHONIOENCODING" "utf8")
 
 (use-package company-jedi
-  :commands (company-jedi)
+  :defer t
   :init
-  (add-to-list 'company-backends #'company-jedi))
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends #'company-jedi)))
 
 (defun luis-python-mode-hook ()
   (electric-indent-just-newline nil))

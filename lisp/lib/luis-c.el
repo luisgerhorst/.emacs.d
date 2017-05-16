@@ -12,7 +12,6 @@
     (call-interactively #'comment-box)))
 
 (use-package cc-mode
-  ;; The needed autoloads already exist by default.
   :defer t
   :config
   (setq c-basic-offset tab-width)
@@ -28,7 +27,7 @@
   (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote))
 
 (use-package irony
-  :commands (irony-mode)
+  :defer t
   :init
   (add-hook 'c-mode-hook #'irony-mode)
   (add-hook 'c++-mode-hook #'irony-mode)
@@ -37,28 +36,28 @@
 ;;; Completion
 
 (use-package company-irony
-  :after company
-  :commands (company-irony
-             company-irony-setup-begin-commands)
+  :defer t
   :init
-  (add-to-list 'company-backends #'company-irony)
-  (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands))
+  (with-eval-after-load 'irony
+    (require 'company)
+    (add-to-list 'company-backends #'company-irony)
+    (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands)))
 
 (use-package company-c-headers
-  :after company
-  :commands (company-c-headers)
+  :defer t
   :init
-  ;; Ensure this is executed after `company-irony' is added to
-  ;; `company-backends', it must appear in the list first.
-  (add-to-list 'company-backends #'company-c-headers))
+  (with-eval-after-load 'company-irony
+    ;; Ensure this is executed after `company-irony' is added to
+    ;; `company-backends', it must appear in the list first.
+    (add-to-list 'company-backends #'company-c-headers)))
 
 ;;; Syntax Checking
 
 (use-package flycheck-irony
-  :after flycheck
-  :commands (flycheck-irony-setup)
+  :defer t
   :init
-  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
 
 (provide 'luis-c)

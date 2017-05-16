@@ -95,5 +95,4 @@
   (mu4e-alert-enable-mode-line-display)
   (mu4e-alert-enable-notifications))
 
-
 (provide 'luis-mail)

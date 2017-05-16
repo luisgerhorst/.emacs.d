@@ -1,10 +1,5 @@
 ;;;; Settings for interacting with the file system
 
-;; For some reason my Emacs 24.5.1 installed via Homebrew --with-cocoa
-;; throws function not defined errors for tramp-tramp-file-p.
-;; - 2016-02-13 ~Luis
-(require 'tramp)
-
 (use-package autorevert
   :demand
   :diminish (auto-revert-mode . "")

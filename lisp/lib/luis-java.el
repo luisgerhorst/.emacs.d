@@ -5,23 +5,18 @@
 
 ;;; Eclim
 
-(use-package company-emacs-eclim
-  :after company
-  :commands (company-emacs-eclim
-             company-emacs-eclim-setup))
-
 (defun luis-force-company-emacs-eclim ()
   "Stop active backend before starting `company-emacs-eclim'"
   (interactive)
   (call-interactively #'company-abort)
+  ;; Autoloaded:
   (call-interactively #'company-emacs-eclim))
 
 (use-package eclim
+  :defer t
   :bind (:map
          eclim-mode-map
          ("C-M-i" . luis-force-company-emacs-eclim))
-  :commands (eclim-mode
-             global-eclim-mode)
   :init
   (add-hook 'java-mode-hook #'eclim-mode)
   :config
