@@ -28,5 +28,10 @@
   (setq eclimd-autostart t
         eclimd-autostart-with-default-workspace t))
 
+(use-package gradle-mode
+  :diminish gradle-mode
+  :bind-keymap ("C-c C-g" . gradle-mode-map)
+  :config
+  (gradle-mode 1))
 
 (provide 'luis-java)
