@@ -37,7 +37,7 @@ Then read the following:
 
     Install the [JDK](http://www.oracle.com/technetwork/java/index.html).
 
-    Install [emacs-eclim](https://github.com/emacs-eclim/emacs-eclim#installation). The configuration is located in `lisp/lib/luis-java.el`. When opening a project for the first time do `M-x eclim-project-create`, `eclimd` is started automatically the first time a Java file is opened.
+    Install Eclipse with `brew cask install eclipse-java` and [emacs-eclim](https://github.com/emacs-eclim/emacs-eclim#installation). The configuration is located in `lisp/lib/luis-java.el`. When opening a project for the first time do `M-x eclim-project-create`, `eclimd` is started automatically the first time a Java file is opened.
 
 -   __Scala__
 
