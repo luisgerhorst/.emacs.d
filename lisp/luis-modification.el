@@ -26,9 +26,9 @@
 (use-package yasnippet
   :demand
   :diminish yas-minor-mode
-  :bind (("C-c y y" . yas-expand)
-         :map
+  :bind (:map
          yas-keymap
+         ("C-c y y" . yas-expand)
          ("C-c y i" . yas-next-field-or-maybe-expand))
   :config
   (setq yas-snippet-dirs (list (locate-user-emacs-file "snippets")))

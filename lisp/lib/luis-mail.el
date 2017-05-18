@@ -11,7 +11,10 @@
 ;;; Reading Mail.
 
 (use-package mu4e
-  :demand
+  :defer 30
+  ;; Since mu4e is not installed via elpa we have to define the autoloads
+  ;; manually.
+  :commands (mu4e)
   :config
 
   ;; Emacs allows you to select an e-mail program as the default program it uses
@@ -79,7 +82,7 @@
   ;; final confirmation.
   (add-hook 'message-send-hook
             (lambda ()
-              (unless (yes-or-no-p "Sure you want to send this?")
+              (unless (y-or-n-p "Sure you want to send this?")
                 (signal 'quit nil))))
 
   ;; Load account specific configuration.
