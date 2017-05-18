@@ -27,7 +27,7 @@ Then read the following:
 
     See customizeable variable `jedi:environment-root` for current version used. Run `pyenv install VERSION` to install a specific version (preferably the one `jedi:environment-root` is set to) before opening any Python files.
 
-    For detailed syntax checking with [Flycheck's `python-flake8` checker](http://www.flycheck.org/en/latest/languages.html#syntax-checker-python-flake8) install [flake8](https://flake8.readthedocs.io/en/latest/#installation).
+    For detailed syntax checking with [Flycheck's `python-pylint` checker](http://www.flycheck.org/en/latest/languages.html#syntax-checker-python-pylint) install [pylint](https://pylint.org/#install).
 
 -   __Dired__
 
