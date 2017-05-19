@@ -27,8 +27,10 @@
   :demand
   :diminish yas-minor-mode
   :bind (:map
-         yas-keymap
+         yas-minor-mode-map
          ("C-c y y" . yas-expand)
+         :map
+         yas-keymap
          ("C-c y i" . yas-next-field-or-maybe-expand))
   :config
   (setq yas-snippet-dirs (list (locate-user-emacs-file "snippets")))
