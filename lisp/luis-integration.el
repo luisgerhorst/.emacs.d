@@ -6,6 +6,11 @@
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
   :config
+  ;; Do not load .zshrc since this may take some time. PATH should be set in
+  ;; .zshenv anyway.
+  (setq exec-path-from-shell-shell-name "zsh")
+  (setq exec-path-from-shell-arguments '("--no-rcs"))
+
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-envs '("PATH")))
 
