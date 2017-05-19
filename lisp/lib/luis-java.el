@@ -5,23 +5,11 @@
 
 ;;; Eclim
 
-(defun luis-force-company-emacs-eclim ()
-  "Stop active backend before starting `company-emacs-eclim'"
-  (interactive)
-  (call-interactively #'company-abort)
-  ;; Autoloaded:
-  (call-interactively #'company-emacs-eclim))
-
-(use-package eclim
+(use-package meghanada
   :defer t
-  :bind (:map
-         eclim-mode-map
-         ("C-M-i" . luis-force-company-emacs-eclim))
   :init
-  (add-hook 'java-mode-hook #'eclim-mode)
-  :config
-  (setq eclimd-autostart t
-        eclimd-autostart-with-default-workspace t))
+  (add-hook 'java-mode-hook #'meghanada-mode)
+  (add-hook 'java-mode-hook #'flycheck-mode))
 
 (use-package gradle-mode
   :diminish gradle-mode
