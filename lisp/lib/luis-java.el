@@ -1,7 +1,10 @@
 (use-package cc-mode
   :defer t
   :config
-  (add-hook 'java-mode-hook #'luis-company-configure-automatic-completion))
+  (add-hook 'java-mode-hook
+            #'luis-company-configure-automatic-completion)
+  (add-hook 'java-mode-hook
+            (lambda () (setq-local c-basic-offset 2))))
 
 ;;; Eclim
 
