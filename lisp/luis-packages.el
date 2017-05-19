@@ -24,7 +24,9 @@
         '((eclim . "melpa")
           (company-emacs-eclim . "melpa")
           (ensime . "melpa-stable")
-          (dumb-jump . "melpa")))
+          (dumb-jump . "melpa")
+          ;; Because I wanted to customize `exec-path-from-shell-shell-name':
+          (exec-path-from-shell . "melpa")))
 
   (package-initialize)
 
