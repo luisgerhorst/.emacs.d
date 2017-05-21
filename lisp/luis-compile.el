@@ -21,5 +21,4 @@
 
 (setq load-prefer-newer t)
 
-
 (provide 'luis-compile)
