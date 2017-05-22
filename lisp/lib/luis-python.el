@@ -15,8 +15,10 @@
          ;; Use company completion powered by jedi since they look better.
          ("C-M-i" . nil)
          ("M-," . anaconda-mode-go-back)
-         ;; Equals M-Option-. on Mac
-         ("M-…" . anaconda-mode-find-assignments))
+         ;; As far as I can see this behaves like find-definition for functions
+         ;; and since find-definition does not seem to work on variables anyway
+         ;; we can also just always use this.
+         ("M-." . anaconda-mode-find-assignments))
   :init
   (add-hook 'python-mode-hook 'anaconda-mode)
   ;; The eldoc function by anaconda mode almost never works, thus we leave it
