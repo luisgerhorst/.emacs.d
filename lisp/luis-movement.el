@@ -9,6 +9,18 @@
 (global-set-key (kbd "<prior>") #'scroll-down-line)
 (global-set-key (kbd "<next>") #'scroll-up-line)
 
+
+;;; Jump to definition
+
+(defun luis-dumb-jump-save-and-go ()
+  (interactive)
+  (save-buffer)
+  (dumb-jump-go))
+
+;; This shortcut equals M-Option-. on Mac
+(global-set-key (kbd "M-…") #'luis-dumb-jump-save-and-go)
+
+
 ;;; Misc
 
 ;; Switch windows with Shift-Up/Down/Right/Left-Arrow
@@ -42,12 +54,6 @@
          ("C-M-p" . paredit-backward-down)
          ("C-M-n" . paredit-forward-up)))
 
-(defun luis-dumb-jump-save-and-go ()
-  (interactive)
-  (save-buffer)
-  (dumb-jump-go))
 
-;; This shortcut equals M-Option-. on Mac
-(global-set-key (kbd "M-…") #'luis-dumb-jump-save-and-go)
 
 (provide 'luis-movement)
