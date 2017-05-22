@@ -29,7 +29,10 @@ TAGS
 /.emacs.desktop.lock
 /irony/
 /meghanada/
-
+/anaconda-mode/
+/history
+/jdee-server/
+/frame-restore-parameters
 
 /lisp/luis-private.el
 /lisp/lib/luis-mail-private.el

@@ -12,7 +12,7 @@
   :defer t
   :bind (:map
          anaconda-mode-map
-         ;; Use company completion powered by jedi since its better.
+         ;; Use company completion powered by jedi since they look better.
          ("C-M-i" . nil)
          ("M-," . anaconda-mode-go-back)
          ;; Equals M-Option-. on Mac
