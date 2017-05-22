@@ -4,12 +4,10 @@
 		(bookmark-bmenu-list)
         (get-buffer "*Bookmark List*")))
 
-(setq desktop-buffers-not-to-save ".*"
-      desktop-files-not-to-save ".*"
-      desktop-globals-to-save nil
-      desktop-load-locked-desktop t
-      desktop-save t
-      desktop-auto-save-timeout nil)
-(desktop-save-mode 1)
+;; We use the obsolete frame-restore sice the newer desktop-save does save a
+;; wrong mouse-color on macOS so the mouse looks weird in Emacs. Description
+;; here
+;; https://emacs.stackexchange.com/questions/29124/how-do-i-keep-emacs-from-saving-the-mouse-color-in-the-desktop-file
+(frame-restore)
 
 (provide 'luis-misc)
