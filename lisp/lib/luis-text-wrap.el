@@ -49,10 +49,13 @@ Confirmation is always skipped if
         (adaptive-wrap-prefix-mode 1)
         (visual-fill-column-mode 1)
         (local-set-key [remap fill-paragraph]
+                       #'luis-text-wrap-fill-paragraph-after-confirmation)
+        (local-set-key [remap mu4e-fill-paragraph]
                        #'luis-text-wrap-fill-paragraph-after-confirmation))
     (luis-text-wrap--restore-state)
     (diminish-undo 'visual-line-mode)
     (local-set-key [remap fill-paragraph] nil)
+    (local-set-key [remap mu4e-fill-paragraph] nil)
     (kill-local-variable 'luis-text-wrap-fill-paragraph-require-confirmation)))
 
 
