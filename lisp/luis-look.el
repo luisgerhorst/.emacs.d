@@ -74,8 +74,10 @@
 
 (setq ring-bell-function 'ignore)
 
-;; Does not look good and sometimes causes display issues on my Mac.
-(setq overflow-newline-into-fringe nil)
+;; Does not look good and sometimes causes display issues on my Mac but
+;; otherwise eshell always scrolls to the right when a process (like homebrew)
+;; shows a progress bar.
+(setq overflow-newline-into-fringe t)
 
 ;; Display column number in mode line.
 (column-number-mode 1)
