@@ -187,6 +187,9 @@
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(directory-abbrev-alist
+   (quote
+    (("^/cip" . "/ssh:un65esoq@faui00l.informatik.uni-erlangen.de:"))))
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
  '(eshell-cp-interactive-query t)
  '(eshell-hist-ignoredups t)
@@ -237,7 +240,7 @@
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
-    (gnuplot-mode company-jedi anaconda-mode frame-restore meghanada osx-trash gradle-mode dsvn groovy-mode company-emacs-eclim eclim flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode ido-ubiquitous fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
+    (company-jedi anaconda-mode frame-restore meghanada osx-trash gradle-mode dsvn groovy-mode company-emacs-eclim eclim flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode ido-ubiquitous fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(pos-tip-background-color "#073642")

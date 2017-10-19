@@ -27,9 +27,10 @@
   (setq mu4e-update-interval (* 5 60))
   (setq mu4e-hide-index-messages t)
 
-  ;; First one is the default fallback context.
+  ;; On startup, use the first context.
   (setq mu4e-context-policy 'pick-first)
-  (setq mu4e-compose-context-policy 'pick-first)
+  ;; When composing a blank new message, keep the current context.
+  (setq mu4e-compose-context-policy nil)
 
   (defun luis-kill-mu4e-update-process-without-query (run-in-background)
     ;; Name from mu4e-utils.el function mu4e~update-mail-and-index-real. This
