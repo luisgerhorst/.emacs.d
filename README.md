@@ -97,6 +97,12 @@ Then read the following:
     mu index --maildir=~/.maildir
     ```
 
+    Ensure `mu4e` (contained in `mu`) is loaded when Emacs starts. You can check for it using `M-x mu4e`. If Emacs was installed using Cask, symlink `mu4e` to `.emacs.d/site-lisp`
+
+    ```sh
+    ln -s /usr/local/share/emacs/site-lisp/mu/mu4e ~/.emacs.d/site-lisp/mu4e
+    ```
+
     Then configure `mu4e` according to your mail provider and machine. The files `lisp/lib/luis-mail-private.el.template` and `lisp/luis-machine-local.el.template` already contain the options you need.
 
     Finally install `terminal-notifier` using `brew install terminal-notifier` for desktop notifications by [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
