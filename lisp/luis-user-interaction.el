@@ -1,6 +1,9 @@
 ;; Scroll in smaller steps.
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
+;; Always just ask for y/n, even when yes/no would be required.
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Disable Mouse
 ;; (dolist (mouse '([mouse-1] [down-mouse-1] [drag-mouse-1]
 ;;                  [double-mouse-1] [triple-mouse-1] [mouse-2]
