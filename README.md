@@ -107,4 +107,11 @@ Then read the following:
 
     Finally install `terminal-notifier` using `brew install terminal-notifier` for desktop notifications by [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
 
+-   __Benchmark Init__
+
+    ```sh
+    cd site-lisp/benchmark-init
+    make
+    ```
+
 Now open Emacs, all required packages will be installed automatically which may take a while.
