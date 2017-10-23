@@ -92,11 +92,4 @@
   ;; Start mu4e in background.
   (mu4e t))
 
-(use-package mu4e-alert
-  :after mu4e
-  :config
-  (mu4e-alert-set-default-style 'notifier)
-  (mu4e-alert-enable-mode-line-display)
-  (mu4e-alert-enable-notifications))
-
 (provide 'luis-mail)
