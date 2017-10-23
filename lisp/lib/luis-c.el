@@ -14,6 +14,7 @@
 (use-package cc-mode
   :defer t
   :config
+  ;; C
   (setq c-basic-offset tab-width)
 
   ;; Set default indentation style to K&R instead of weird GNU style. See
@@ -24,7 +25,10 @@
 
   (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'c-mode-hook #'luis-c-configure-comments)
-  (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote))
+  (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote)
+
+  ;; C++
+  (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion))
 
 (use-package irony
   :defer t
