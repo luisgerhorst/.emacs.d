@@ -15,5 +15,6 @@
 (require 'luis-scala)
 (require 'luis-make)
 (require 'luis-xml)
+(require 'luis-terminal)
 
 (provide 'luis-modes)

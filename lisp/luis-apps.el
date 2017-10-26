@@ -18,16 +18,7 @@
 (require 'luis-mail)
 (global-set-key (kbd "C-c s m") #'mu4e)
 
-;; Eshell
-(defun luis-eshell-basename-prompt ()
-  (concat (file-name-nondirectory (eshell/pwd))
-          (if (= (user-uid) 0) " # " " $ ")))
-
-(use-package eshell
-  :bind ("C-c s s" . eshell)
-  :config
-  (setq eshell-prompt-function #'luis-eshell-basename-prompt)
-  (setq eshell-prompt-regexp "^[^#$\n]* [#$] "))
+;; Terminal: see lib/luis-terminal.el
 
 (use-package dsvn
   :after vc-svn
