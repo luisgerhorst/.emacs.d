@@ -30,12 +30,17 @@
   ;; C++
   (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion))
 
+(defun luis-irony-unless-file-remote ()
+  (let ((current-file (buffer-file-name (current-buffer))))
+    (unless (and current-file (file-remote-p current-file))
+      (irony-mode 1))))
+
 (use-package irony
   :defer t
   :init
-  (add-hook 'c-mode-hook #'irony-mode)
-  (add-hook 'c++-mode-hook #'irony-mode)
-  (add-hook 'objc-mode-hook #'irony-mode))
+  (add-hook 'c-mode-hook #'luis-irony-unless-file-remote)
+  (add-hook 'c++-mode-hook #'luis-irony-unless-file-remote)
+  (add-hook 'objc-mode-hook #'luis-irony-unless-file-remote))
 
 ;;; Completion
 
