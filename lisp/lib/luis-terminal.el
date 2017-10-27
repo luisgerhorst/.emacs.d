@@ -12,7 +12,7 @@
 
 ;; Term
 
-(defun luis-no-scroll-margin ()
+(defun luis-term-mode-hook ()
   (setq-local scroll-margin 0))
 
 (defun luis-instant-ansi-term ()
@@ -25,7 +25,7 @@
        (getenv "SHELL")
        "/bin/sh")))
 
-(defun oleh-term-exec-hook ()
+(defun luis-close-term-buffer-after-exit ()
   "Close term buffer after exit.
 
 After you close the terminal, you get a useless buffer with no
@@ -43,9 +43,12 @@ buffer automatically"
 (use-package term
   :bind (("C-c s s" . luis-instant-ansi-term)
          :map term-raw-map
+         ;; Otherwise C-y is sent to the shell (terminal yank).
          ("C-y" . term-paste))
   :config
-  (add-hook 'term-mode-hook #'luis-no-scroll-margin))
+  (setq explicit-shell-file-name "/bin/bash")
+  (add-hook 'term-mode-hook #'luis-term-mode-hook)
+  (add-hook 'term-exec-hook #'luis-close-term-buffer-after-exit))
 
 
 (provide 'luis-terminal)
