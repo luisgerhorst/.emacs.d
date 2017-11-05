@@ -5,7 +5,7 @@
           (if (= (user-uid) 0) " # " " $ ")))
 
 (use-package eshell
-  :bind ("C-c s e" . eshell)
+  :bind ("C-c s s" . eshell)
   :config
   (setq eshell-prompt-function #'luis-eshell-basename-prompt)
   (setq eshell-prompt-regexp "^[^#$\n]* [#$] "))
@@ -41,7 +41,7 @@ buffer automatically"
             (kill-buffer ,buff))))))
 
 (use-package term
-  :bind (("C-c s s" . luis-instant-ansi-term)
+  :bind (("C-c s t" . luis-instant-ansi-term)
          :map term-raw-map
          ;; Otherwise C-y is sent to the shell (terminal yank).
          ("C-y" . term-paste))
