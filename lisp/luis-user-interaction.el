@@ -16,5 +16,6 @@
 ;;                  [triple-mouse-5]))
 ;;   (global-unset-key mouse))
 
+(global-set-key (kbd "C-x C-b") #'ido-switch-buffer)
 
 (provide 'luis-user-interaction)
