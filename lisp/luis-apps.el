@@ -24,4 +24,9 @@
   :after vc-svn
   :bind (("C-c s v" . svn-status)))
 
+;; TODO: function to prefix cip_ if file on CIP
+
+(use-package man
+  :bind (("C-c s m" . man)))
+
 (provide 'luis-apps)
