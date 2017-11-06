@@ -24,9 +24,18 @@
   :after vc-svn
   :bind (("C-c s v" . svn-status)))
 
-;; TODO: function to prefix cip_ if file on CIP
+;; Man
+(defun prefixed-man (prefix manargs)
+  "Used to quickly access manpages that were copied from a remote host and prefixed with a string to distinguish them from local ones."
+  (interactive (list
+                (if (and default-directory (file-remote-p default-directory))
+                    "cip_"
+                  "")
+                ;; The first item of man's interactive form.
+                (eval (nth 1 (nth 1 (interactive-form 'man))))))
+  (man (concat prefix manargs)))
 
 (use-package man
-  :bind (("C-c s m" . man)))
+  :bind (("C-c s m" . prefixed-man)))
 
 (provide 'luis-apps)
