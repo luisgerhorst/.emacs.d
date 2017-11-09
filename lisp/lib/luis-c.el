@@ -27,6 +27,15 @@
   (add-hook 'c-mode-hook #'luis-c-configure-comments)
   (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote)
 
+  ;; cscope
+  (add-hook 'c-mode-hook #'helm-cscope-mode)
+  (add-hook 'helm-cscope-mode-hook
+            (lambda ()
+              (local-set-key (kbd "M-.") 'helm-cscope-find-global-definition)
+              ;; (local-set-key (kbd "M-@") 'helm-cscope-find-calling-this-function)
+              ;; (local-set-key (kbd "M-s") 'helm-cscope-find-this-symbol)
+              (local-set-key (kbd "M-,") 'helm-cscope-pop-mark))))
+
   ;; C++
   (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion))
 
