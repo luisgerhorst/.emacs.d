@@ -1,6 +1,7 @@
 ;;; Helm
 
 (use-package helm
+  :diminish ""
   :demand
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-mini)
