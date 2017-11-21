@@ -30,6 +30,17 @@
   ;; C++
   (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion))
 
+(use-package xcscope
+  :defer t
+  :init
+  (setq cscope-keymap-prefix (kbd "C-c o"))
+  (add-hook 'c-mode-hook #'cscope-minor-mode)
+  (add-hook 'dired-mode-hook #'cscope-minor-mode)
+  (add-hook 'cscope-minor-mode-hook
+            (lambda ()
+              (local-set-key (kbd "M-.") #'cscope-find-global-definition)
+              (local-set-key (kbd "M-,") #'cscope-pop-mark))))
+
 (defun luis-irony-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))
     (unless (and current-file (file-remote-p current-file))
