@@ -21,10 +21,20 @@
 (global-set-key (kbd "M-…") #'luis-dumb-jump-save-and-go)
 
 
-;;; Misc
+;;; Windows
 
 ;; Switch windows with Shift-Up/Down/Right/Left-Arrow
 (windmove-default-keybindings)
+
+(use-package winner
+  :bind (("M-_" . winner-undo)
+         ;; On Mac: Meta-Alt-Shift--
+         ("M-—" . winner-redo))
+  :config
+  (winner-mode 1))
+
+
+;;; Misc
 
 (use-package subword
   :defer t
