@@ -1,4 +1,19 @@
-;;; Interactively do things
+;;; Helm
+
+(use-package helm
+  :demand
+  :bind (("M-x" . helm-M-x)
+         ("C-x b" . helm-mini)
+         ;; Because I regulary mistype C-x b.
+         ("C-x C-b" . helm-mini)
+         ("C-x C-f" . helm-find-files)
+         ("C-h f" . helm-apropos)
+         ("C-c e" . helm-recentf)
+         ("C-x r l" . helm-filtered-bookmarks))
+  :init
+  (helm-mode 1))
+
+;;; IDO as fallback for Helm
 
 ;; Configure Standard IDO
 (progn
@@ -21,14 +36,6 @@
 (use-package crm-custom
   :config
   (crm-custom-mode 1))
-
-;; Enhances M-x to allow easier execution of commands. Provides
-;; a filterable list of possible commands in the minibuffer
-;; http://www.emacswiki.org/emacs/Smex
-(use-package smex
-  :init
-  (setq smex-save-file (concat user-emacs-directory "smex"))
-  :bind ("M-x" . smex))
 
 (use-package ido-vertical-mode
   :config
