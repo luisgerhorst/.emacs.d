@@ -25,17 +25,21 @@
   :bind (("C-c s v" . svn-status)))
 
 ;; Man
-(defun prefixed-man (prefix manargs)
+(defcustom luis-man-prefixed-completions
+  '("" "cip_")
+  "Known prefixes `luis-man-prefixed' offers as completions when called.")
+
+(defun luis-man-prefixed (prefix manargs)
   "Used to quickly access manpages that were copied from a remote host and prefixed with a string to distinguish them from local ones."
-  (interactive (list
-                (if (and default-directory (file-remote-p default-directory))
-                    "cip_"
-                  "")
-                ;; The first item of man's interactive form.
-                (eval (nth 1 (nth 1 (interactive-form 'man))))))
-  (man (concat prefix manargs)))
+  (interactive (list (ido-completing-read "Prefix: " luis-man-prefixed-completions)
+                     (eval (nth 1 (nth 1 (interactive-form 'man))))))
+  (let ((manargs-list (split-string manargs)))
+    (man (mapconcat #'identity
+                    (append (butlast manargs-list)
+                            (list (concat prefix (car (last manargs-list)))))
+                    " "))))
 
 (use-package man
-  :bind (("C-c s m" . prefixed-man)))
+  :bind (("C-c s m" . luis-man-prefixed)))
 
 (provide 'luis-apps)
