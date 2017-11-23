@@ -35,11 +35,7 @@
   :init
   (setq cscope-keymap-prefix (kbd "C-c o"))
   (add-hook 'c-mode-hook #'cscope-minor-mode)
-  (add-hook 'dired-mode-hook #'cscope-minor-mode)
-  (add-hook 'cscope-minor-mode-hook
-            (lambda ()
-              (local-set-key (kbd "M-.") #'cscope-find-global-definition)
-              (local-set-key (kbd "M-,") #'cscope-pop-mark))))
+  (add-hook 'dired-mode-hook #'cscope-minor-mode))
 
 (defun luis-irony-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))
