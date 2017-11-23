@@ -10,7 +10,9 @@
          ("C-x C-f" . helm-find-files)
          ("C-h f" . helm-apropos)
          ("C-c e" . helm-recentf)
-         ("C-x r l" . helm-filtered-bookmarks))
+         ;; TODO: Bind properly.
+         ;; ("C-x r l" . helm-filtered-bookmarks)
+         )
   :init
   (helm-mode 1))
 
