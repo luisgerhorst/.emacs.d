@@ -4,7 +4,7 @@
       scroll-conservatively 50
       scroll-margin 2
       ;; Scroll in smaller steps when mouse is used.
-      mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+      mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 (global-set-key (kbd "<prior>") #'scroll-down-line)
 (global-set-key (kbd "<next>") #'scroll-up-line)
@@ -17,18 +17,22 @@
   (save-buffer)
   (dumb-jump-go))
 
-;; This shortcut equals M-Option-. on Mac
+;; This shortcut equals Meta-Option-. on Mac
 (global-set-key (kbd "M-…") #'luis-dumb-jump-save-and-go)
 
 
 ;;; Windows
 
-;; Switch windows with Shift-Up/Down/Right/Left-Arrow
-(windmove-default-keybindings)
+(use-package windmove
+  :bind (;; On Mac: Control-Option-h/j/k/l
+         ("<C-268632072>" . windmove-left)
+         ("<C-268632074>" . windmove-down)
+         ("<C-268632075>" . windmove-up)
+         ("<C-268632076>" . windmove-right)))
 
 (use-package winner
   :bind (("M-_" . winner-undo)
-         ;; On Mac: Meta-Alt-Shift--
+         ;; On Mac: Meta-Option-_
          ("M-—" . winner-redo))
   :config
   (winner-mode 1))
