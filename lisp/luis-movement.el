@@ -6,8 +6,9 @@
       ;; Scroll in smaller steps when mouse is used.
       mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
-(global-set-key (kbd "<prior>") #'scroll-down-line)
-(global-set-key (kbd "<next>") #'scroll-up-line)
+;; On Mac: Meta-Option-n/p
+(global-set-key (kbd "M-~") #'scroll-up-line)
+(global-set-key (kbd "M-π") #'scroll-down-line)
 
 
 ;;; Jump to definition
@@ -17,7 +18,7 @@
   (save-buffer)
   (dumb-jump-go))
 
-;; This shortcut equals Meta-Option-. on Mac
+;; On Mac: Meta-Option-.
 (global-set-key (kbd "M-…") #'luis-dumb-jump-save-and-go)
 
 
