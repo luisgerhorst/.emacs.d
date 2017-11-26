@@ -1,22 +1,4 @@
-;;; Helm
-
-(use-package helm
-  :diminish ""
-  :demand
-  :bind (("M-x" . helm-M-x)
-         ("C-x b" . helm-mini)
-         ;; Because I regulary mistype C-x b.
-         ("C-x C-b" . helm-mini)
-         ("C-x C-f" . helm-find-files)
-         ("C-h f" . helm-apropos)
-         ("C-c e" . helm-recentf)
-         ;; TODO: Bind properly.
-         ;; ("C-x r l" . helm-filtered-bookmarks)
-         )
-  :init
-  (helm-mode 1))
-
-;;; IDO as fallback for Helm
+;;; IDO
 
 ;; Configure Standard IDO
 (progn
@@ -31,7 +13,7 @@
   ;; Allow typing filesnames that contain spaces.
   (define-key ido-common-completion-map (kbd "SPC") nil))
 
-(use-package ido-ubiquitous
+(use-package ido-completing-read+
   :config
   (ido-ubiquitous-mode 1))
 
@@ -48,22 +30,34 @@
 
   (ido-vertical-mode 1))
 
-(defun luis-propertize-ido-common-match-string (&rest _)
-  (when ido-common-match-string
-    (setq ido-common-match-string
-          (propertize ido-common-match-string
-                      'face 'completions-common-part))))
+(progn
+  ;; Highligh the common part of ido completions using a special face and not
+  ;; using brackets. See previous block for code to remote brackets.
 
-(defun luis-unpropertize-ido-common-match-string (&rest _)
-  (when ido-common-match-string
-    (setq ido-common-match-string
-          (propertize ido-common-match-string
-                      'face nil))))
+  (defun luis-propertize-ido-common-match-string (&rest _)
+    (when ido-common-match-string
+      (setq ido-common-match-string
+            (propertize ido-common-match-string
+                        'face 'completions-common-part))))
 
-(advice-add 'ido-completions :before
-            #'luis-propertize-ido-common-match-string)
-(advice-add 'ido-completions :after
-            #'luis-unpropertize-ido-common-match-string)
+  (defun luis-unpropertize-ido-common-match-string (&rest _)
+    (when ido-common-match-string
+      (setq ido-common-match-string
+            (propertize ido-common-match-string
+                        'face nil))))
+
+  (advice-add 'ido-completions :before
+              #'luis-propertize-ido-common-match-string)
+  (advice-add 'ido-completions :after
+              #'luis-unpropertize-ido-common-match-string))
+
+
+;; For any case where ido cannot be used, there is another older mode called
+;; icomplete-mode that integrates with standard emacs completion and adds some
+;; ido-like behavior.
+(use-package icomplete
+  :config
+  (icomplete-mode 1))
 
 ;;; Buffers
 

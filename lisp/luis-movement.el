@@ -24,12 +24,10 @@
 
 ;;; Windows
 
-(use-package windmove
-  :bind (;; On Mac: Control-Option-h/j/k/l
-         ("<C-268632072>" . windmove-left)
-         ("<C-268632074>" . windmove-down)
-         ("<C-268632075>" . windmove-up)
-         ("<C-268632076>" . windmove-right)))
+(use-package ace-window
+  :bind ("C-x o" . ace-window)
+  :init
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package winner
   :bind (("M-_" . winner-undo)
