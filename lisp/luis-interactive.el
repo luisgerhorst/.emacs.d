@@ -59,6 +59,11 @@
   :config
   (icomplete-mode 1))
 
+;; More sophisticated alternative to `ido-enable-flex-matching'.
+(use-package flx-ido
+  :config
+  (flx-ido-mode 1))
+
 ;;; Buffers
 
 ;; "When several buffers visit identically-named files,
