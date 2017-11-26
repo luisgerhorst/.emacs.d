@@ -32,7 +32,7 @@
 
 (progn
   ;; Highligh the common part of ido completions using a special face and not
-  ;; using brackets. See previous block for code to remote brackets.
+  ;; using brackets. See previous block for code to remove brackets.
 
   (defun luis-propertize-ido-common-match-string (&rest _)
     (when ido-common-match-string
