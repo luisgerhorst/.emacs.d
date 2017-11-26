@@ -20,18 +20,6 @@
       ;; Use ls from GNU coreutils for dired.
       insert-directory-program (executable-find "gls"))
 
-;; To speed moving to trash up on macOS, you can do
-;; $ brew install trash
-;; - otherwise AppleScript is used.
-(use-package osx-trash
-  :if (eq system-type 'darwin)
-  :commands (osx-trash-move-file-to-trash)
-  :init
-  ;; Don't use provided `osx-trash-setup' since it does not allow autoloading the
-  ;; function.
-  (defalias 'system-move-file-to-trash
-    'osx-trash-move-file-to-trash))
-
 ;; End Dired config
 
 (defun delete-current-buffer-file ()
