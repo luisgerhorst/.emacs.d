@@ -30,6 +30,7 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package winner
+  :demand
   :bind (("M-_" . winner-undo)
          ;; On Mac: Meta-Option-_
          ("M-—" . winner-redo))
