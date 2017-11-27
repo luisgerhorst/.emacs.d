@@ -30,14 +30,10 @@
     (ido-find-file-in-dir finder-dir)))
 
 (when (eq system-type 'darwin)
-  (global-set-key [remap suspend-frame] 'ns-do-hide-emacs))
+  (global-set-key [remap suspend-frame] #'luis-macos-like-close-window))
 
 ;; Directly copied from frame.el but now hide Emacs instead of killing
 ;; it when last frame will be closed.
-;; TODO: Replace ns-do-hide-emacs with a function that does everything
-;; that would also happen if Emacs is closed and reopened, aka
-;; save-some-buffers, revert all unsaved buffers, reset the frame to the
-;; default configuration and finally ns-do-hide-emacs.
 (defun handle-delete-frame-without-kill-emacs (event)
   "Handle delete-frame events from the X server."
   (interactive "e")
@@ -52,7 +48,21 @@
     (if (> i 0)
         (delete-frame frame t)
       ;; Not (save-buffers-kill-emacs) but instead:
-      (ns-do-hide-emacs))))
+      (luis-macos-like-close-window))))
+
+(defun luis-macos-like-close-window ()
+  (interactive)
+  (save-some-buffers)
+  (delete-other-windows)
+  (switch-to-buffer "*Bookmark List*")
+  (ns-do-hide-emacs))
+
+(add-to-list 'save-some-buffers-action-alist
+             `(?r
+               ,(lambda (buf)
+                  (with-current-buffer buf
+                    (revert-buffer nil t nil)))
+               ,(purecopy "Discard Changes")))
 
 (when (eq system-type 'darwin)
   (advice-add 'handle-delete-frame :override
