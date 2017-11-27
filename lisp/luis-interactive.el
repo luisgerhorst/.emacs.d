@@ -51,14 +51,6 @@
   (advice-add 'ido-completions :after
               #'luis-unpropertize-ido-common-match-string))
 
-
-;; For any case where ido cannot be used, there is another older mode called
-;; icomplete-mode that integrates with standard emacs completion and adds some
-;; ido-like behavior.
-(use-package icomplete
-  :config
-  (icomplete-mode 1))
-
 ;; More sophisticated alternative to `ido-enable-flex-matching'.
 (use-package flx-ido
   :config
