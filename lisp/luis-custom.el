@@ -246,7 +246,7 @@
  '(paradox-execute-asynchronously t)
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
- '(projectile-completion-system (quote helm))
+ '(projectile-completion-system (quote ido))
  '(projectile-global-mode t)
  '(projectile-mode-line
    (quote
