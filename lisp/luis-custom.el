@@ -192,6 +192,7 @@
    (quote
     (("^/cip" . "/ssh:un65esoq@faui00l.informatik.uni-erlangen.de:"))))
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
+ '(enable-remote-dir-locals t)
  '(eshell-cp-interactive-query t)
  '(eshell-hist-ignoredups t)
  '(eshell-mv-interactive-query t)
