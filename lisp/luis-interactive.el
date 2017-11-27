@@ -3,7 +3,6 @@
 ;; Configure Standard IDO
 (progn
   (setq ido-use-filename-at-point nil)
-  (setq ido-enable-flex-matching t)
   ;; Disable automatic switch to different directory when no matches are found.
   (setq ido-auto-merge-work-directories-length -1)
 
@@ -16,6 +15,10 @@
 (use-package ido-completing-read+
   :config
   (ido-ubiquitous-mode 1))
+
+(use-package smex
+  :bind (("M-x" . smex)
+         ("M-X" . smex-major-mode-commands)))
 
 ;; https://github.com/DarwinAwardWinner/ido-ubiquitous/tree/4cc53187bf37fedabbc5b6dea41e041c80982552#ido-for-describe-face-and-certain-other-commands
 (use-package crm-custom
@@ -31,7 +34,7 @@
   (ido-vertical-mode 1))
 
 (progn
-  ;; Highligh the common part of ido completions using a special face and not
+  ;; Highlight the common part of ido completions using a special face and not
   ;; using brackets. See previous block for code to remove brackets.
 
   (defun luis-propertize-ido-common-match-string (&rest _)
@@ -54,7 +57,11 @@
 ;; More sophisticated alternative to `ido-enable-flex-matching'.
 (use-package flx-ido
   :config
-  (flx-ido-mode 1))
+  (flx-ido-mode 1)
+  (setq ido-enable-flex-matching t)
+  ;; Removes highlighting of the selected candidate to show highlights of
+  ;; matching substrings.
+  (setq ido-use-faces nil))
 
 ;;; Buffers
 
