@@ -12,7 +12,8 @@
 
 (setenv "LC_ALL" "en_US.UTF-8")
 
-;;; Mac
+
+;;; General
 
 (setq select-enable-clipboard t
       save-interprogram-paste-before-kill t
@@ -23,14 +24,20 @@
   (unless (server-running-p)
     (server-start)))
 
+
+;;; Finder
+
 (defun ido-find-file-in-finder-dir ()
   "ido-find-file-in-dir but start in directory currently open in Finder"
   (interactive)
   (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
     (ido-find-file-in-dir finder-dir)))
 
-(when (eq system-type 'darwin)
-  (global-set-key [remap suspend-frame] #'luis-macos-like-close-window))
+(use-package reveal-in-osx-finder
+  :bind ("C-c z" . reveal-in-osx-finder))
+
+
+;;; Keep Emacs running when the last window is closed.
 
 ;; Directly copied from frame.el but now hide Emacs instead of killing
 ;; it when last frame will be closed.
@@ -57,14 +64,8 @@
   (switch-to-buffer "*Bookmark List*")
   (ns-do-hide-emacs))
 
-(add-to-list 'save-some-buffers-action-alist
-             `(?r
-               ,(lambda (buf)
-                  (with-current-buffer buf
-                    (revert-buffer nil t nil)))
-               ,(purecopy "Discard Changes")))
-
 (when (eq system-type 'darwin)
+  (global-set-key [remap suspend-frame] #'luis-macos-like-close-window)
   (advice-add 'handle-delete-frame :override
               #'handle-delete-frame-without-kill-emacs))
 

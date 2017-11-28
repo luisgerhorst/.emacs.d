@@ -85,5 +85,13 @@
   :config
   (projectile-mode))
 
+;; Offer `revert-buffer' when asking to save changes.
+(add-to-list 'save-some-buffers-action-alist
+             `(?r
+               ,(lambda (buf)
+                  (with-current-buffer buf
+                    (revert-buffer nil t nil)))
+               ,(purecopy "Discard Changes")))
+
 
 (provide 'luis-files)
