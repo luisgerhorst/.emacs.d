@@ -16,9 +16,11 @@
 (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
 (setq dired-recursive-deletes 'always
-      delete-by-moving-to-trash t
-      ;; Use ls from GNU coreutils for dired.
-      insert-directory-program (executable-find "gls"))
+      delete-by-moving-to-trash t)
+
+(when (string-equal system-type "darwin")
+  ;; Use ls from GNU coreutils for dired.
+  (setq insert-directory-program (executable-find "gls")))
 
 ;; End Dired config
 
