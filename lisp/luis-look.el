@@ -86,6 +86,9 @@
 ;; Highlight FIXME/TODO in comments.
 (add-hook 'prog-mode-hook #'fic-mode)
 
+(when (not window-system)
+  (menu-bar-mode -1))
+
 
 (provide 'luis-look)
 ;;; luis-look.el ends here
