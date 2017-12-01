@@ -84,10 +84,6 @@
   (which-key-setup-side-window-right-bottom)
   (which-key-mode))
 
-(use-package discover
-  :config
-  (global-discover-mode 1))
-
 (use-package discover-my-major
   :after discover
   :bind ("C-h C-m" . discover-my-major))
