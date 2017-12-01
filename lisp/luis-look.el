@@ -22,41 +22,42 @@
 
 ;;; Mode Line and Theme
 
-(use-package powerline
-  :config
-  (set-face-underline 'mode-line nil)
-  (set-face-underline 'mode-line-inactive nil)
-  ;; Causes incorrect display of active mode line when Emacs is not focused.
-  (remove-hook 'focus-out-hook 'powerline-unset-selected-window))
+(when window-system
+  (use-package powerline
+    :config
+    (set-face-underline 'mode-line nil)
+    (set-face-underline 'mode-line-inactive nil)
+    ;; Causes incorrect display of active mode line when Emacs is not focused.
+    (remove-hook 'focus-out-hook 'powerline-unset-selected-window))
 
-(use-package solarized-theme
-  :init
-  ;; Looks much better when using Powerline.
-  (setq solarized-high-contrast-mode-line t))
+  (use-package solarized-theme
+    :init
+    ;; Looks much better when using Powerline.
+    (setq solarized-high-contrast-mode-line t))
 
-(defun luis-theme-set (new background-mode powerline-seperator)
-  (setq powerline-default-separator powerline-seperator)
-  (powerline-default-theme)
+  (defun luis-theme-set (new background-mode powerline-seperator)
+    (setq powerline-default-separator powerline-seperator)
+    (powerline-default-theme)
 
-  (mapc #'disable-theme custom-enabled-themes)
-  (load-theme new t)
+    (mapc #'disable-theme custom-enabled-themes)
+    (load-theme new t)
 
-  (setq frame-background-mode background-mode)
-  (frame-set-background-mode (selected-frame)))
+    (setq frame-background-mode background-mode)
+    (frame-set-background-mode (selected-frame)))
 
-(defun luis-theme-solarized ()
-  (luis-theme-set 'solarized-dark 'dark 'utf-8))
+  (defun luis-theme-solarized ()
+    (luis-theme-set 'solarized-dark 'dark 'utf-8))
 
-(defun luis-theme-leuven ()
-  (luis-theme-set 'leuven 'light nil))
+  (defun luis-theme-leuven ()
+    (luis-theme-set 'leuven 'light nil))
 
-(defun luis-theme-toggle ()
-  (interactive)
-  (if (custom-theme-enabled-p 'solarized-dark)
-      (luis-theme-leuven)
-    (luis-theme-solarized)))
+  (defun luis-theme-toggle ()
+    (interactive)
+    (if (custom-theme-enabled-p 'solarized-dark)
+        (luis-theme-leuven)
+      (luis-theme-solarized)))
 
-(luis-theme-solarized)
+  (luis-theme-solarized))
 
 ;;; Whitespaces
 
