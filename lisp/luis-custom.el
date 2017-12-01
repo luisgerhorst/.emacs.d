@@ -236,9 +236,9 @@
  '(ns-alternate-modifier (quote none))
  '(ns-antialias-text t)
  '(ns-auto-hide-menu-bar nil)
- '(ns-command-modifier (quote meta))
+ '(ns-command-modifier (quote super))
  '(ns-control-modifier (quote control))
- '(ns-function-modifier (quote hyper))
+ '(ns-function-modifier (quote meta))
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
