@@ -40,7 +40,8 @@
     ;; packages may not be considered. Packages installed by the user
     ;; (e.g. using `package-install') will be added automatically to
     ;; `package-selected-packages' which is stored in `custom-file'.
-    (package-install-selected-packages)))
+    (when (version<= "25.1" emacs-version)
+      (package-install-selected-packages))))
 
 ;;; Site-Lisp
 
