@@ -150,7 +150,10 @@
 (global-set-key (kbd "<C-M-backspace>") #'luis-backwards-kill-sexp)
 
 ;; Always insert matching brackets.
-(add-hook 'prog-mode-hook #'electric-pair-local-mode)
+(if (version< emacs-version "25.1")
+    (electric-pair-mode 1)
+  (add-hook 'prog-mode-hook #'electric-pair-local-mode))
+
 
 ;;; Commenting
 
