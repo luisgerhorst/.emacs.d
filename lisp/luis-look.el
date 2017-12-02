@@ -42,15 +42,15 @@
   (frame-set-background-mode (selected-frame)))
 
 (defun luis-theme-zenburn ()
-  (luis-theme-set 'zenburn 'dark 'utf-8))
+  (luis-theme-set 'zenburn 'dark nil))
 
-(defun luis-theme-leuven ()
-  (luis-theme-set 'leuven 'light nil))
+(defun luis-theme-adwaita ()
+  (luis-theme-set 'adwaita  'light nil))
 
 (defun luis-theme-toggle ()
   (interactive)
   (if (custom-theme-enabled-p 'zenburn)
-      (luis-theme-leuven)
+      (luis-theme-adwaita)
     (luis-theme-zenburn)))
 
 (luis-theme-zenburn)
