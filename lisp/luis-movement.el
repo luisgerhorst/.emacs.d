@@ -7,8 +7,8 @@
       mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; On Mac: Meta-Option-n/p
-(global-set-key (kbd "M-~") #'scroll-up-line)
-(global-set-key (kbd "M-π") #'scroll-down-line)
+(global-set-key (kbd "M-N") #'scroll-up-line)
+(global-set-key (kbd "M-P") #'scroll-down-line)
 
 
 ;;; Jump to definition
@@ -19,7 +19,7 @@
   (dumb-jump-go))
 
 ;; On Mac: Meta-Option-.
-(global-set-key (kbd "M-…") #'luis-dumb-jump-save-and-go)
+(global-set-key (kbd "M-'") #'luis-dumb-jump-save-and-go)
 
 
 ;;; Windows
@@ -32,8 +32,7 @@
 (use-package winner
   :demand
   :bind (("M-_" . winner-undo)
-         ;; On Mac: Meta-Option-_
-         ("M-—" . winner-redo))
+         ("M-Ö" . winner-redo))
   :config
   (winner-mode 1))
 
