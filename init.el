@@ -4,7 +4,7 @@
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
 
-(when (string-equal system-type "darwin")
+(when (eq system-type 'darwin)
   ;; You can access the stats using `benchmark-init/show-durations-tree' and
   ;; `benchmark-init/show-durations-tabulated'.
   (add-to-list 'load-path (locate-user-emacs-file "site-lisp/benchmark-init"))

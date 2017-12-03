@@ -64,7 +64,7 @@
   (switch-to-buffer "*Bookmark List*")
   (ns-do-hide-emacs))
 
-(when (eq system-type 'darwin)
+(when  (and (eq system-type 'darwin) window-system)
   (global-set-key [remap suspend-frame] #'luis-macos-like-close-window)
   (advice-add 'handle-delete-frame :override
               #'handle-delete-frame-without-kill-emacs))
