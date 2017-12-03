@@ -41,19 +41,23 @@
   (setq frame-background-mode background-mode)
   (frame-set-background-mode (selected-frame)))
 
-(defun luis-theme-zenburn ()
-  (luis-theme-set 'zenburn 'dark nil))
+(defun luis-theme-dark ()
+  (luis-theme-set 'base16-default-dark 'dark nil))
 
-(defun luis-theme-adwaita ()
+(defun luis-theme-light ()
   (luis-theme-set 'adwaita  'light nil))
+
+(defvar luis-theme-toggle-state t)
 
 (defun luis-theme-toggle ()
   (interactive)
-  (if (custom-theme-enabled-p 'zenburn)
-      (luis-theme-adwaita)
-    (luis-theme-zenburn)))
+  (if luis-theme-toggle-state
+      (luis-theme-light)
+    (luis-theme-dark))
+  (setq luis-theme-toggle-state (not luis-theme-toggle-state)))
 
-(luis-theme-zenburn)
+
+(luis-theme-dark)
 
 
 ;;; Whitespaces

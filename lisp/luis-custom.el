@@ -187,7 +187,7 @@
  '(cursor-in-non-selected-windows t)
  '(custom-safe-themes
    (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+    ("2a998a3b66a0a6068bcb8b53cd3b519d230dd1527b07232e54c8b9d84061d48d" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(directory-abbrev-alist
    (quote
     (("^/cip" . "/ssh:un65esoq@faui00l.informatik.uni-erlangen.de:"))))
@@ -233,6 +233,9 @@
  '(magit-use-overlays nil)
  '(neo-hidden-regexp-list (quote ("\\.pyc$" "~$" "^#.*#$" "\\.elc$")))
  '(neo-theme (quote nerd))
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(ns-alternate-modifier (quote none))
  '(ns-antialias-text t)
  '(ns-auto-hide-menu-bar nil)
@@ -245,6 +248,7 @@
     (reveal-in-osx-finder flx-ido ido-completing-read+ helm ace-window xcscope suggest ssh-agency company-jedi anaconda-mode frame-restore meghanada osx-trash gradle-mode dsvn groovy-mode company-emacs-eclim eclim flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
+ '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(projectile-completion-system (quote ido))
