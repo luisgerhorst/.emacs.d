@@ -4,7 +4,7 @@
 
 ;; This part is very slow, nearly half a second.
 (use-package exec-path-from-shell
-  :if (memq window-system '(mac ns))
+  :if (and (display-graphic-p) (eq system-type 'darwin))
   :config
   ;; Otherwise -i is included by default which causes .zshrc to be loaded.
   (setq exec-path-from-shell-arguments '("-l"))
@@ -64,7 +64,7 @@
   (switch-to-buffer "*Bookmark List*")
   (ns-do-hide-emacs))
 
-(when  (and (eq system-type 'darwin) window-system)
+(when  (and (display-graphic-p) (eq system-type 'darwin))
   (global-set-key [remap suspend-frame] #'luis-macos-like-close-window)
   (advice-add 'handle-delete-frame :override
               #'handle-delete-frame-without-kill-emacs))
