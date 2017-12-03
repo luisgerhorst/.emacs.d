@@ -43,3 +43,5 @@
 
 (require 'luis-modes)
 (require 'luis-apps)
+
+(require 'luis-iterm)
