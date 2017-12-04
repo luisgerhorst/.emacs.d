@@ -38,43 +38,45 @@
   (add-hook 'c++-mode-hook #'cscope-minor-mode)
   (add-hook 'dired-mode-hook #'cscope-minor-mode))
 
-(defun luis-irony-unless-file-remote ()
-  (let ((current-file (buffer-file-name (current-buffer))))
-    (unless (and current-file (file-remote-p current-file))
-      (irony-mode 1))))
+(when (eq system-type 'darwin)
+  
+  (defun luis-irony-unless-file-remote ()
+    (let ((current-file (buffer-file-name (current-buffer))))
+      (unless (and current-file (file-remote-p current-file))
+        (irony-mode 1))))
 
-(use-package irony
-  :defer t
-  :init
-  (add-hook 'c-mode-hook #'luis-irony-unless-file-remote)
-  (add-hook 'c++-mode-hook #'luis-irony-unless-file-remote)
-  (add-hook 'objc-mode-hook #'luis-irony-unless-file-remote))
+  (use-package irony
+    :defer t
+    :init
+    (add-hook 'c-mode-hook #'luis-irony-unless-file-remote)
+    (add-hook 'c++-mode-hook #'luis-irony-unless-file-remote)
+    (add-hook 'objc-mode-hook #'luis-irony-unless-file-remote))
 
 ;;; Completion
 
-(use-package company-irony
-  :defer t
-  :init
-  (with-eval-after-load 'irony
-    (require 'company)
-    (add-to-list 'company-backends #'company-irony)
-    (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands)))
+  (use-package company-irony
+    :defer t
+    :init
+    (with-eval-after-load 'irony
+      (require 'company)
+      (add-to-list 'company-backends #'company-irony)
+      (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands)))
 
-(use-package company-c-headers
-  :defer t
-  :init
-  (with-eval-after-load 'company-irony
-    ;; Ensure this is executed after `company-irony' is added to
-    ;; `company-backends', it must appear in the list first.
-    (add-to-list 'company-backends #'company-c-headers)))
+  (use-package company-c-headers
+    :defer t
+    :init
+    (with-eval-after-load 'company-irony
+      ;; Ensure this is executed after `company-irony' is added to
+      ;; `company-backends', it must appear in the list first.
+      (add-to-list 'company-backends #'company-c-headers)))
 
 ;;; Syntax Checking
 
-(use-package flycheck-irony
-  :defer t
-  :init
-  (with-eval-after-load 'flycheck
-    (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+  (use-package flycheck-irony
+    :defer t
+    :init
+    (with-eval-after-load 'flycheck
+      (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))))
 
 
 (provide 'luis-c)
