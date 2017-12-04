@@ -27,7 +27,8 @@
 (use-package ace-window
   :bind ("C-x o" . ace-window)
   :init
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+        aw-scope 'frame))
 
 (use-package winner
   :demand
