@@ -35,6 +35,7 @@
   :init
   (setq cscope-keymap-prefix (kbd "C-c o"))
   (add-hook 'c-mode-hook #'cscope-minor-mode)
+  (add-hook 'c++-mode-hook #'cscope-minor-mode)
   (add-hook 'dired-mode-hook #'cscope-minor-mode))
 
 (defun luis-irony-unless-file-remote ()
