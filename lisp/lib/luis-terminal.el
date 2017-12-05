@@ -46,7 +46,6 @@ buffer automatically"
          ;; Otherwise C-y is sent to the shell (terminal yank).
          ("C-y" . term-paste))
   :config
-  (setq explicit-shell-file-name "/usr/local/bin/zsh")
   (add-hook 'term-mode-hook #'luis-term-mode-hook)
   (add-hook 'term-exec-hook #'luis-close-term-buffer-after-exit))
 
