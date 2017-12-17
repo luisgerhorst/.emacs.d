@@ -19,11 +19,10 @@
       save-interprogram-paste-before-kill t
       mouse-yank-at-point t)
 
-(use-package server
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
+;; We don't start the server here. When using emacsclient we instead use
+;; --alternate-editor="", this will start Emacs as a deamon and then start the
+;; server in that instance. This way we always connect to the Emacs deamon when
+;; using emacsclient and not some random instance started in a terminal.
 
 ;;; Finder
 
