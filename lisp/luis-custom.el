@@ -249,7 +249,7 @@
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
-    (winum base16-theme reveal-in-osx-finder flx-ido ido-completing-read+ helm xcscope suggest ssh-agency company-jedi anaconda-mode frame-restore meghanada osx-trash gradle-mode dsvn groovy-mode company-emacs-eclim eclim flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
+    (winum base16-theme reveal-in-osx-finder flx-ido ido-completing-read+ helm ace-window xcscope suggest ssh-agency company-jedi anaconda-mode frame-restore meghanada osx-trash gradle-mode dsvn groovy-mode company-emacs-eclim eclim flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode fillcode expand-region exec-path-from-shell discover-my-major discover diminish dash-at-point crm-custom company-quickhelp company-c-headers company-auctex avy auto-highlight-symbol auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
@@ -297,8 +297,7 @@
  '(warning-minimum-level :error)
  '(weechat-color-list
    (quote
-    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83")))
- '(winum-scope (quote frame-local)))
+    (unspecified "#002b36" "#073642" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#839496" "#657b83"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
