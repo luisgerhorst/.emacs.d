@@ -121,7 +121,7 @@
 ;; Fancier manipulate whitespace function: M-SPC does not work on my Mac, is
 ;; used for opening Spotlight. If you don't have such problems you may remove
 ;; the first line.
-(global-set-key (kbd "M-S-SPC") #'just-one-space)
+(global-set-key (kbd "M-#") #'just-one-space)
 (global-set-key [remap just-one-space] #'cycle-spacing)
 
 ;; Auto-delete trailing whitespaces from modified lines.
