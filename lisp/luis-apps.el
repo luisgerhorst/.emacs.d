@@ -24,4 +24,6 @@
   :after vc-svn
   :bind (("C-c s v" . svn-status)))
 
+(global-set-key (kbd "C-c m") #'man)
+
 (provide 'luis-apps)
