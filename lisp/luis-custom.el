@@ -269,6 +269,7 @@
  '(python-shell-interpreter "/usr/local/bin/python3")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#839496" 0.2))
  '(solarized-use-more-italic t)
+ '(split-height-threshold 160)
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(vc-annotate-background nil)
