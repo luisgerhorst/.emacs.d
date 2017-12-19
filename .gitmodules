@@ -1,7 +1,9 @@
 [submodule "yasnippet-snippets"]
 	path = snippets
 	url = git@github.com:AndreaCrotti/yasnippet-snippets.git
-
 [submodule "benchmark-init-el"]
-    path = site-lisp/benchmark-init
+	path = site-lisp/benchmark-init-el
     url = git@github.com:dholm/benchmark-init-el.git
+[submodule "site-lisp/solarized-emacs"]
+	path = site-lisp/solarized-emacs
+	url = git@github.com:luisgerhorst/solarized-emacs.git
