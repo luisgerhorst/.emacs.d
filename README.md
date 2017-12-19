@@ -14,12 +14,7 @@ Then read the following:
 
 -   __Local Config__
 
-    The following files contain user or machine-spcific options that will not be included in your git repository, remove the `.template` extension and edit them to contain all desired values.
-
-    ```
-    lisp/luis-machine-local.el.template
-    lisp/luis-private.el.template
-    ```
+    Some files contain user or machine-spcific options that will not be included in your git repository, remove the `.template` extension and edit them to contain all desired values.
 
 -   __Python Autocompletion & Syntax Checking__
 
@@ -110,7 +105,7 @@ Then read the following:
 -   __Benchmark Init__
 
     ```sh
-    cd site-lisp/benchmark-init
+    cd site-lisp/benchmark-init/el
     make
     ```
 
