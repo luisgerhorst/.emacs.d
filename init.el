@@ -4,12 +4,11 @@
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
 
-(when (eq system-type 'darwin)
-  ;; You can access the stats using `benchmark-init/show-durations-tree' and
-  ;; `benchmark-init/show-durations-tabulated'.
-  (add-to-list 'load-path (locate-user-emacs-file "site-lisp/benchmark-init-el"))
-  (require 'benchmark-init-loaddefs)
-  (benchmark-init/activate))
+;; You can access the stats using `benchmark-init/show-durations-tree' and
+;; `benchmark-init/show-durations-tabulated'.
+(add-to-list 'load-path (locate-user-emacs-file "site-lisp/benchmark-init-el"))
+(require 'benchmark-init-loaddefs)
+(benchmark-init/activate)
 
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
 (add-to-list 'load-path (locate-user-emacs-file "lisp/lib"))
