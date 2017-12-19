@@ -33,7 +33,6 @@
     ;; We do this since the patched fonts for powerline don't always work. In
     ;; iTerm e.g. they may be vertically off as described at
     ;; https://github.com/powerline/fonts/issues/31
-    (message "powerline terminal")
     (setq powerline-utf-8-separator-left (string-to-char " ")
           powerline-utf-8-separator-right (string-to-char " ")
           ;; The following is default anyway in terminals.
