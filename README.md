@@ -105,7 +105,7 @@ Then read the following:
 -   __Benchmark Init__
 
     ```sh
-    cd site-lisp/benchmark-init/el
+    cd site-lisp/benchmark-init-el
     make
     ```
 
