@@ -4,7 +4,7 @@
 (use-package magit
   :init
   (setq magit-last-seen-setup-instructions "1.4.0")
-  :bind ("C-c s g" . magit-status))
+  :bind ("C-c g" . magit-status))
 
 ;; Fancier list-packages
 (use-package paradox
