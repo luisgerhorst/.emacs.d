@@ -1,3 +1,7 @@
+;;; CAUTION: Do not enable until
+;;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=29789 is fixed. Also described
+;;; here https://github.com/joostkremers/visual-fill-column/issues/1
+
 (require 'adaptive-wrap)
 (require 'visual-fill-column)
 (require 'diminish)
