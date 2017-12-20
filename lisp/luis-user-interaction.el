@@ -16,6 +16,7 @@
 ;;                  [triple-mouse-5]))
 ;;   (global-unset-key mouse))
 
+;; Because I regulary mistype C-x b as C-x C-b.
 (global-set-key (kbd "C-x C-b") #'ido-switch-buffer)
 
 (provide 'luis-user-interaction)

@@ -19,7 +19,7 @@
       delete-by-moving-to-trash t)
 
 (when (eq system-type 'darwin)
-  ;; Use ls from GNU coreutils for dired.
+  ;; Use ls from GNU coreutils for dired when on macOS. Install them via brew.
   (setq insert-directory-program (executable-find "gls")))
 
 ;; End Dired config
@@ -93,7 +93,7 @@
                ,(lambda (buf)
                   (with-current-buffer buf
                     (revert-buffer nil t nil)))
-               ,(purecopy "Discard Changes")))
+               ,(purecopy "Revert Buffer")))
 
 
 (provide 'luis-files)

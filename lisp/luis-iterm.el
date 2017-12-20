@@ -1,4 +1,4 @@
-;; The bindings listed here are not sent to Emacs by iTerm by default. I uses
+;; The bindings listed here are not sent to Emacs by iTerm by default. I use
 ;; iTerm -> Preferences -> Keys -> Key Mappings, Send Escape Sequence to
 ;; redirect them here.
 (when (not (display-graphic-p))

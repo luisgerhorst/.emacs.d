@@ -54,9 +54,9 @@
     (if (> i 0)
         (delete-frame frame t)
       ;; Not (save-buffers-kill-emacs) but instead:
-      (luis-macos-like-close-window))))
+      (luis-ns-close-window))))
 
-(defun luis-macos-like-close-window ()
+(defun luis-ns-close-window ()
   (interactive)
   (save-some-buffers)
   (delete-other-windows)
@@ -64,7 +64,7 @@
   (ns-do-hide-emacs))
 
 (when  (and (display-graphic-p) (eq system-type 'darwin))
-  (global-set-key [remap suspend-frame] #'luis-macos-like-close-window)
+  (global-set-key [remap suspend-frame] #'luis-ns-close-window)
   (advice-add 'handle-delete-frame :override
               #'handle-delete-frame-without-kill-emacs))
 
