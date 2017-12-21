@@ -50,8 +50,8 @@
                '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
   (add-hook 'mu4e-compose-mode-hook #'turn-off-auto-fill)
-  (add-hook 'mu4e-compose-mode-hook #'luis-text-wrap-mode)
-  (remove-hook 'mu4e-view-mode-hook #'luis-text-wrap-mode)
+  ;; (add-hook 'mu4e-compose-mode-hook #'luis-text-wrap-mode)
+  ;; (remove-hook 'mu4e-view-mode-hook #'luis-text-wrap-mode)
 
   ;; Commit 739013d of mu: Setting this to nil makes a lot of mails look bad.
   (setq mu4e-view-prefer-html t)
@@ -71,13 +71,12 @@
        ;; use html if it's prefered, unless there is no html
        (or (not mu4e-view-prefer-html) (not html)))))
 
-  (defun luis-mu4e-enable-text-wrap-mode-when-plain-text ()
-    (if (luis-mu4e-message-txt-body-will-show (mu4e-message-at-point))
-        (luis-text-wrap-mode 1)
-      (luis-text-wrap-mode -1)))
-
-  (add-hook 'mu4e-view-mode-hook
-            #'luis-mu4e-enable-text-wrap-mode-when-plain-text)
+  ;; (defun luis-mu4e-enable-text-wrap-mode-when-plain-text ()
+  ;;   (if (luis-mu4e-message-txt-body-will-show (mu4e-message-at-point))
+  ;;       (luis-text-wrap-mode 1)
+  ;;     (luis-text-wrap-mode -1)))
+  ;; (add-hook 'mu4e-view-mode-hook
+  ;;           #'luis-mu4e-enable-text-wrap-mode-when-plain-text)
 
   ;; To protect yourself from sending messages too hastily, add a
   ;; final confirmation.

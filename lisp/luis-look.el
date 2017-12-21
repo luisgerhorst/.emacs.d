@@ -17,8 +17,8 @@
 (use-package luis-code-wrap
   :commands (luis-code-wrap-mode))
 
-(use-package luis-text-wrap
-  :commands (luis-text-wrap-mode))
+;; (use-package luis-text-wrap
+;; :commands (luis-text-wrap-mode))
 
 ;;; Mode Line and Theme
 

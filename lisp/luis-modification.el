@@ -97,8 +97,9 @@
                  (+ (- fill-column (window-total-width)) 2)
                  t))
 
-(use-package visual-fill-column
-  :commands (visual-fill-column-mode))
+;; Disabled because of http://debbugs.gnu.org/cgi/bugreport.cgi?bug=29789
+;; (use-package visual-fill-column
+;; :commands (visual-fill-column-mode))
 
 ;; Auto Fill for comments, enable per major mode.
 (use-package luis-comment-auto-fill
