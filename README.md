@@ -1,6 +1,6 @@
 # .emacs.d
 
-My `.emacs.d` for Mac OS X. Originally derived from [flyingmachine/emacs-for-clojure](https://github.com/flyingmachine/emacs-for-clojure).
+My `.emacs.d` for macOS, Debian and Ubuntu. Originally derived from [flyingmachine/emacs-for-clojure](https://github.com/flyingmachine/emacs-for-clojure).
 
 ## Installation
 
