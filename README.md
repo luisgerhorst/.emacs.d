@@ -61,11 +61,11 @@ Then read the following:
     Install GNUPG to encrypt the file in which we'll store our login credentials and generate a key if you don't already have one.
 
     ```sh
-    brew install gpg
+    brew install gnupg pinentry-mac
     gpg --full-gen-key
     ```
 
-    You can also import an existing key using `gpg --import private.asc`.
+    You can also import an existing key using `gpg --import private.asc`. `pinentry-mac` or a similar program is required.
 
     The credentials for the server are stored in `~/.authinfo.gpg`, run
 
