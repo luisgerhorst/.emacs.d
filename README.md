@@ -26,7 +26,7 @@ Then read the following:
 
 -   __Dired__
 
-    `gls` (GNU-Version of `ls`) has to be in your `$PATH`. Do `brew install coreutils`. If you want to use the default `ls` change `insert-directory-program` (is set in `lisp/luis-files.el`).
+    On macOS `gls` (GNU-Version of `ls`) has to be in your `$PATH`. Do `brew install coreutils`. If you want to use the default `ls` change `insert-directory-program` (is set in `lisp/luis-files.el`).
 
 -   __Java__
 
