@@ -58,14 +58,23 @@ Then read the following:
     brew install gnutls
     ```
 
-    The credentials for the server are stored in `~/.netrc`, run
+    Install GNUPG to encrypt the file in which we'll store our login credentials and generate a key if you don't already have one.
 
     ```sh
-    touch ~/.netrc
-    chmod 600 ~/.netrc
+    brew install gpg
+    gpg --full-gen-key
     ```
 
-    to create it and set it's permissions properly. Then insert the credentials in the following format:
+    You can also import an existing key using `gpg --import private.asc`.
+
+    The credentials for the server are stored in `~/.authinfo.gpg`, run
+
+    ```sh
+    touch ~/.authinfo.gpg
+    chmod 600 ~/.authinfo.gpg
+    ```
+
+    to create it and set it's permissions properly. Open it in an editor that allows automatic encryption of `.gpg` files (e.g. Emacs). Then insert the credentials in the following format:
 
     ```
     machine YOUR_SMTP_SERVER port YOUR_SMTP_SERVER_PORT login YOUR_SERVER_LOGIN password YOUR_PASSWORD
