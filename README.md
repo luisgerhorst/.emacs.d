@@ -90,7 +90,7 @@ Then read the following:
     brew install isync
     ```
 
-    Now __configure it__, you can find my config in my [dotfiles](https://github.com/luisgerhorst/dotfiles/blob/master/.mbsyncrc). Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html).
+    Now __configure it__, you can find my config in my dotfiles. Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html).
 
     Now run `mbsync -a` once from the terminal to fill your maildir with messages.
 
@@ -109,7 +109,7 @@ Then read the following:
 
     Then configure `mu4e` according to your mail provider and machine. The files `lisp/lib/luis-mail-private.el.template` and `lisp/luis-machine-local.el.template` already contain the options you need.
 
-    Finally install `terminal-notifier` using `brew install terminal-notifier` for desktop notifications by [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
+    Optionally install `terminal-notifier` using `brew install terminal-notifier` for desktop notifications by [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
 
 -   __Benchmark Init__
 
