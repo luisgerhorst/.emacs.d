@@ -10,6 +10,19 @@
   (setq eshell-prompt-function #'luis-eshell-basename-prompt)
   (setq eshell-prompt-regexp "^[^#$\n]* [#$] "))
 
+(use-package company-eshell-autosuggest
+  :config
+  (add-hook 'eshell-mode-hook #'company-eshell-autosuggest-mode)
+  :init
+  (setq company-eshell-autosuggest-active-map
+        (let ((keymap (make-sparse-keymap)))
+          ;; As in ZSH:
+          (define-key keymap (kbd "C-e") 'company-complete-selection)
+          (define-key keymap (kbd "M-f") 'company-eshell-autosuggest-complete-word)
+          keymap))
+  (add-hook 'company-eshell-autosuggest-mode-hook
+            (lambda () (luis-company-configure-completion 0.0 1))))
+
 ;; Term
 
 (defun luis-term-mode-hook ()
