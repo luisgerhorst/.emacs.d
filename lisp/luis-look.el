@@ -52,9 +52,10 @@
 (defun luis-style-dark ()
   (require 'solarized)
   (luis-style-set 'solarized-dark 'dark 'utf-8)
-  (when (not (display-graphic-p))
-    (custom-set-faces
-     '(vertical-border ((t (:background "brightgreen" :foreground "brightgreen")))))))
+  (when solarized-iterm
+    (set-face-attribute 'vertical-border nil
+                        :background "brightgreen"
+                        :foreground "brightgreen")))
 
 (defun luis-style-light ()
   (luis-style-set 'adwaita 'light nil))
