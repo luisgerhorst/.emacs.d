@@ -5,7 +5,9 @@
           (if (= (user-uid) 0) " # " " $ ")))
 
 (use-package eshell
-  :bind ("C-c s s" . eshell)
+  :bind (("C-c s s" . eshell)
+         :map eshell-mode-map
+         ("M-m" . eshell-bol))
   :config
   (setq eshell-prompt-function #'luis-eshell-basename-prompt)
   (setq eshell-prompt-regexp "^[^#$\n]* [#$] "))
