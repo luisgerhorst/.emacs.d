@@ -19,6 +19,21 @@
       save-interprogram-paste-before-kill t
       mouse-yank-at-point t)
 
+;; Integrate with the macOS pasteboard even when running in a terminal by using
+;; external commands.
+(when (and (eq system-type 'darwin) (not (display-graphic-p)))
+  (defun luis-copy-from-macos ()
+    (shell-command-to-string "pbpaste"))
+
+  (defun luis-paste-to-macos (text &optional push)
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+
+  (setq interprogram-cut-function 'luis-paste-to-macos)
+  (setq interprogram-paste-function 'luis-copy-from-macos))
+
 ;; We don't start the server here. When using emacsclient we instead use
 ;; --alternate-editor="", this will start Emacs as a deamon and then start the
 ;; server in that instance. This way we always connect to the Emacs deamon when
