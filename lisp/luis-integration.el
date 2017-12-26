@@ -53,32 +53,32 @@
 
 ;;; Keep Emacs running when the last window is closed.
 
-;; Directly copied from frame.el but now hide Emacs instead of killing
-;; it when last frame will be closed.
-(defun handle-delete-frame-without-kill-emacs (event)
-  "Handle delete-frame events from the X server."
-  (interactive "e")
-  (let ((frame (posn-window (event-start event)))
-        (i 0)
-        (tail (frame-list)))
-    (while tail
-      (and (frame-visible-p (car tail))
-           (not (eq (car tail) frame))
-           (setq i (1+ i)))
-      (setq tail (cdr tail)))
-    (if (> i 0)
-        (delete-frame frame t)
-      ;; Not (save-buffers-kill-emacs) but instead:
-      (luis-ns-close-window))))
+(when (and (display-graphic-p) (eq system-type 'darwin))
+  ;; Directly copied from frame.el but now hide Emacs instead of killing
+  ;; it when last frame will be closed.
+  (defun handle-delete-frame-without-kill-emacs (event)
+    "Handle delete-frame events from the X server."
+    (interactive "e")
+    (let ((frame (posn-window (event-start event)))
+          (i 0)
+          (tail (frame-list)))
+      (while tail
+        (and (frame-visible-p (car tail))
+             (not (eq (car tail) frame))
+             (setq i (1+ i)))
+        (setq tail (cdr tail)))
+      (if (> i 0)
+          (delete-frame frame t)
+        ;; Not (save-buffers-kill-emacs) but instead:
+        (luis-ns-close-window))))
 
-(defun luis-ns-close-window ()
-  (interactive)
-  (save-some-buffers)
-  (delete-other-windows)
-  (switch-to-buffer "*Bookmark List*")
-  (ns-do-hide-emacs))
+  (defun luis-ns-close-window ()
+    (interactive)
+    (save-some-buffers)
+    (delete-other-windows)
+    (switch-to-buffer "*Bookmark List*")
+    (ns-do-hide-emacs))
 
-(when  (and (display-graphic-p) (eq system-type 'darwin))
   (global-set-key [remap suspend-frame] #'luis-ns-close-window)
   (advice-add 'handle-delete-frame :override
               #'handle-delete-frame-without-kill-emacs))
