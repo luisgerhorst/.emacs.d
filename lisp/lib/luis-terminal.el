@@ -5,12 +5,17 @@
           (if (= (user-uid) 0) " # " " $ ")))
 
 (use-package eshell
-  :bind (("C-c s s" . eshell)
-         :map eshell-mode-map
-         ("M-m" . eshell-bol))
+  :bind (("C-c s s" . eshell))
   :config
   (setq eshell-prompt-function #'luis-eshell-basename-prompt)
-  (setq eshell-prompt-regexp "^[^#$\n]* [#$] "))
+  (setq eshell-prompt-regexp "^[^#$\n]* [#$] ")
+
+  ;; We need the following since eshell-mode-map only is non-nil locally in
+  ;; Eshell buffers.
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (define-key eshell-mode-map (kbd "M-m") #'eshell-bol)
+              (define-key eshell-mode-map (kbd "C-a") nil))))
 
 (use-package company-eshell-autosuggest
   :config
