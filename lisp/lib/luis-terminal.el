@@ -45,29 +45,13 @@
        (getenv "SHELL")
        "/bin/sh")))
 
-(defun luis-close-term-buffer-after-exit ()
-  "Close term buffer after exit.
-
-After you close the terminal, you get a useless buffer with no
-process. It's probably left there for you to have a history of
-what you did. I find it not useful, so here's a way to kill that
-buffer automatically"
-  (let* ((buff (current-buffer))
-         (proc (get-buffer-process buff)))
-    (set-process-sentinel
-     proc
-     `(lambda (process event)
-        (if (string= event "finished\n")
-            (kill-buffer ,buff))))))
-
 (use-package term
   :bind (("C-c s t" . luis-instant-ansi-term)
          :map term-raw-map
          ;; Otherwise C-y is sent to the shell (terminal yank).
          ("C-y" . term-paste))
   :config
-  (add-hook 'term-mode-hook #'luis-term-mode-hook)
-  (add-hook 'term-exec-hook #'luis-close-term-buffer-after-exit))
+  (add-hook 'term-mode-hook #'luis-term-mode-hook))
 
 
 (provide 'luis-terminal)
