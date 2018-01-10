@@ -1,6 +1,6 @@
 # .emacs.d
 
-My `.emacs.d` for Mac OS X. Originally derived from [flyingmachine/emacs-for-clojure](https://github.com/flyingmachine/emacs-for-clojure).
+My `.emacs.d` for macOS, Debian and Ubuntu. Originally derived from [flyingmachine/emacs-for-clojure](https://github.com/flyingmachine/emacs-for-clojure).
 
 ## Installation
 
@@ -26,7 +26,7 @@ Then read the following:
 
 -   __Dired__
 
-    `gls` (GNU-Version of `ls`) has to be in your `$PATH`. Do `brew install coreutils`. If you want to use the default `ls` change `insert-directory-program` (is set in `lisp/luis-files.el`).
+    On macOS `gls` (GNU-Version of `ls`) has to be in your `$PATH`. Do `brew install coreutils`. If you want to use the default `ls` change `insert-directory-program` (is set in `lisp/luis-files.el`).
 
 -   __Java__
 
@@ -46,7 +46,7 @@ Then read the following:
 
     Install `aspell` with `brew install aspell`. Then download the dictionaries for the languages you need from `ftp://ftp.gnu.org/gnu/aspell/dict/0index.html` (see README in downloaded folder for install instruction, you may need `sudo` when doing `make install`).
 
-    Then `customize` the variable `ispell-dictionary`, set it to the dictionary you want to use (e.g. `de_DE` for German, run `ispell-change-dictionary` to see a list of available dictionaries and change the used on temporarily).
+    Then `customize` the variable `ispell-dictionary`, set it to the dictionary you want to use (e.g. `de_DE` for German, run `ispell-change-dictionary` to see a list of available dictionaries and change the used one temporarily).
 
 -   __Sending Mail__
 
@@ -61,11 +61,11 @@ Then read the following:
     Install GNUPG to encrypt the file in which we'll store our login credentials and generate a key if you don't already have one.
 
     ```sh
-    brew install gpg
+    brew install gnupg pinentry-mac
     gpg --full-gen-key
     ```
 
-    You can also import an existing key using `gpg --import private.asc`.
+    You can also import an existing key using `gpg --import private.asc`. `pinentry-mac` or a similar program is required.
 
     The credentials for the server are stored in `~/.authinfo.gpg`, run
 
@@ -90,7 +90,7 @@ Then read the following:
     brew install isync
     ```
 
-    Now __configure it__, you can find my config in my [dotfiles](https://github.com/luisgerhorst/dotfiles/blob/master/.mbsyncrc). Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html).
+    Now __configure it__, you can find my config in my dotfiles. Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html).
 
     Now run `mbsync -a` once from the terminal to fill your maildir with messages.
 
@@ -109,7 +109,7 @@ Then read the following:
 
     Then configure `mu4e` according to your mail provider and machine. The files `lisp/lib/luis-mail-private.el.template` and `lisp/luis-machine-local.el.template` already contain the options you need.
 
-    Finally install `terminal-notifier` using `brew install terminal-notifier` for desktop notifications by [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
+    Optionally install `terminal-notifier` using `brew install terminal-notifier` for desktop notifications by [`mu4e-alert`](https://github.com/iqbalansari/mu4e-alert).
 
 -   __Benchmark Init__
 

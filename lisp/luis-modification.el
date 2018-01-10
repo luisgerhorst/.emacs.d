@@ -146,7 +146,6 @@
 
 ;; More handy then C-M-k with negative argument.
 (global-set-key (kbd "<C-M-backspace>") #'luis-backwards-kill-sexp)
-(global-set-key (kbd "M-µ µ c m d") #'luis-backwards-kill-sexp)
 
 ;; Always insert matching brackets.
 (if (version< emacs-version "25.1")
