@@ -28,7 +28,15 @@
   (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote)
 
   ;; C++
-  (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion))
+  (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion)
+
+  ;; Linux Kernel
+  (c-add-style
+   "linux-tabs-only"
+   '("linux" (c-offsets-alist
+              (arglist-cont-nonempty
+               c-lineup-gcc-asm-reg
+               c-lineup-arglist-tabs-only)))))
 
 (use-package xcscope
   :defer t
