@@ -46,17 +46,23 @@
   (add-hook 'c++-mode-hook #'cscope-minor-mode)
   (add-hook 'dired-mode-hook #'cscope-minor-mode))
 
-(defun luis-irony-unless-file-remote ()
+(defun luis-irony-if-installed-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))
-    (unless (and current-file (file-remote-p current-file))
+    (when (and
+           ;; File remote?
+           (not (and current-file (file-remote-p current-file)))
+           ;; Memoized: Installed?
+           (condition-case nil
+               (irony--find-server-executable)
+             (irony-server-error nil)))
       (irony-mode 1))))
 
 (use-package irony
   :defer t
   :init
-  (add-hook 'c-mode-hook #'luis-irony-unless-file-remote)
-  (add-hook 'c++-mode-hook #'luis-irony-unless-file-remote)
-  (add-hook 'objc-mode-hook #'luis-irony-unless-file-remote))
+  (add-hook 'c-mode-hook #'luis-irony-if-installed-unless-file-remote)
+  (add-hook 'c++-mode-hook #'luis-irony-if-installed-unless-file-remote)
+  (add-hook 'objc-mode-hook #'luis-irony-if-installed-unless-file-remote))
 
 
 ;;; Completion
