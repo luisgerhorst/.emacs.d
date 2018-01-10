@@ -17,17 +17,17 @@
               (define-key eshell-mode-map (kbd "M-m") #'eshell-bol)
               (define-key eshell-mode-map (kbd "C-a") nil))))
 
-(use-package company-eshell-autosuggest
+(use-package esh-autosuggest
   :config
-  (add-hook 'eshell-mode-hook #'company-eshell-autosuggest-mode)
+  (add-hook 'eshell-mode-hook #'esh-autosuggest-mode)
   :init
-  (setq company-eshell-autosuggest-active-map
+  (setq esh-autosuggest-active-map
         (let ((keymap (make-sparse-keymap)))
           ;; As in ZSH:
           (define-key keymap (kbd "C-e") 'company-complete-selection)
-          (define-key keymap (kbd "M-f") 'company-eshell-autosuggest-complete-word)
+          (define-key keymap (kbd "M-f") 'esh-autosuggest-complete-word)
           keymap))
-  (add-hook 'company-eshell-autosuggest-mode-hook
+  (add-hook 'esh-autosuggest-mode-hook
             (lambda () (luis-company-configure-completion 0.0 1))))
 
 ;; Term
