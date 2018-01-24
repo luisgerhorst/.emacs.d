@@ -65,8 +65,8 @@
         recentf-max-saved-items 200)
   (recentf-mode 1)
   (setq recentf-exclude
-        (append (list (regexp-opt '("/Users/luis/.emacs.d/bookmarks"
-                                    "/Users/luis/.emacs.d/ido.last"))
+        (append (list "/.emacs.d/bookmarks\\'"
+                      "/.emacs.d/ido.last\\'"
                       "/TAGS\\'")
                 recentf-exclude)))
 
