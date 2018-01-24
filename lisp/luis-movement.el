@@ -42,10 +42,9 @@
 
 (use-package subword
   :defer t
+  :delight
   :init
-  (add-hook 'prog-mode-hook #'subword-mode)
-  :config
-  (diminish 'subword-mode))
+  (add-hook 'prog-mode-hook #'subword-mode))
 
 (use-package avy
   :bind (("C-:" . avy-goto-char)))
