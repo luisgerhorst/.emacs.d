@@ -16,7 +16,7 @@
   (gradle-execute "run"))
 
 (use-package gradle-mode
-  :diminish gradle-mode
+  :delight gradle-mode
   :bind (:map
          gradle-mode-map
          ("C-c C-g e" . luis-gradle-run))
