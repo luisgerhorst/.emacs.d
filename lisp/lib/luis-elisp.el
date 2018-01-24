@@ -1,5 +1,5 @@
 (use-package paredit
-  :delight
+  :diminish (paredit-mode . "")
   :commands (paredit-mode)
   :bind (:map
          paredit-mode-map

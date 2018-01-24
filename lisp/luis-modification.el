@@ -8,7 +8,7 @@
               tab-width 4)
 
 (use-package aggressive-indent
-  :delight
+  :diminish ""
   :commands (aggressive-indent-mode)
   :config
   (add-to-list
@@ -24,7 +24,7 @@
 ;;; Completion
 
 (use-package yasnippet
-  :delight yas-minor-mode
+  :diminish yas-minor-mode
   :bind (:map
          yas-minor-mode-map
          ("C-c y y" . yas-expand)
@@ -74,7 +74,7 @@
 
 (use-package company
   :demand
-  :delight
+  :diminish company-mode
   :bind (("C-M-i" . company-complete))
   :config
   (setq company-idle-delay nil)
@@ -103,13 +103,13 @@
 
 ;; Auto Fill for comments, enable per major mode.
 (use-package luis-comment-auto-fill
-  :delight
+  :diminish luis-comment-auto-fill-mode
   :commands (luis-comment-auto-fill-mode)
   :init
   (add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode))
 
 (use-package fillcode
-  :delight
+  :diminish fillcode-mode
   :commands (fillcode-mode)
   :init
   (add-hook 'prog-mode-hook #'fillcode-mode))
@@ -124,7 +124,7 @@
 
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
-  :delight
+  :diminish ws-butler-mode
   :commands (ws-butler-mode)
   :init
   (add-hook 'prog-mode-hook #'ws-butler-mode)

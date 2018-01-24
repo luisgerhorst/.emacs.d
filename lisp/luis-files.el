@@ -2,7 +2,7 @@
 
 (use-package autorevert
   :demand
-  :delight auto-revert-mode
+  :diminish (auto-revert-mode . "")
   :config
   (global-auto-revert-mode))
 

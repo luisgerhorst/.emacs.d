@@ -79,7 +79,7 @@
 ;;; Discover Emacs commands and shortcuts with popup buffers.
 
 (use-package which-key
-  :delight which-key-mode
+  :diminish which-key-mode
   :config
   (which-key-setup-side-window-right-bottom)
   (which-key-mode))
