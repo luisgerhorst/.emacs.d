@@ -187,9 +187,11 @@ If region is active, apply to active region instead."
 (put 'narrow-to-region 'disabled nil)
 
 (use-package whole-line-or-region
-  :diminish ""
+  :delight
+  (whole-line-or-region-global-mode "")
+  (whole-line-or-region-local-mode "")
   :init
-  (whole-line-or-region-mode 1))
+  (whole-line-or-region-global-mode 1))
 
 
 (provide 'luis-modification)
