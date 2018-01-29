@@ -58,7 +58,7 @@
   :bind ("C-c z" . reveal-in-osx-finder))
 
 
-;;; Keep Emacs running when the last window is closed.
+;;; macOS: Keep Emacs.app running when the last window is closed.
 
 (when (and (display-graphic-p) (eq system-type 'darwin))
   ;; Directly copied from frame.el but now hide Emacs instead of killing
