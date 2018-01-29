@@ -34,6 +34,13 @@
   (setq interprogram-cut-function 'luis-paste-to-macos)
   (setq interprogram-paste-function 'luis-copy-from-macos))
 
+(when (not (display-graphic-p))
+  (xterm-mouse-mode 1)
+  (global-set-key [mouse-4]
+                  (lambda () (interactive) (scroll-down 2)))
+  (global-set-key [mouse-5]
+                  (lambda () (interactive) (scroll-up 2))))
+
 ;; We don't start the server here. When using emacsclient we instead use
 ;; --alternate-editor="", this will start Emacs as a deamon and then start the
 ;; server in that instance. This way we always connect to the Emacs deamon when
