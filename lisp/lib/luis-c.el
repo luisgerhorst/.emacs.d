@@ -1,16 +1,5 @@
 ;; -*- lexical-binding: t -*-
 
-;; Use // for comments instead of /* and */.
-(defun luis-c-configure-comments ()
-  (setq-local comment-start "//")
-  (setq-local comment-end ""))
-
-(defun luis-c-comment-box ()
-  (interactive)
-  (let ((comment-start "/*")
-        (comment-end "*/"))
-    (call-interactively #'comment-box)))
-
 (use-package cc-mode
   :defer t
   :config
@@ -24,7 +13,6 @@
   (add-to-list 'c-default-style '(other . "k&r"))
 
   (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
-  (add-hook 'c-mode-hook #'luis-c-configure-comments)
   (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote)
 
   ;; C++
