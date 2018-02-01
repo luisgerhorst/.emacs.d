@@ -39,7 +39,7 @@
     (when (and
            ;; File remote?
            (not (and current-file (file-remote-p current-file)))
-           ;; Memoized: Installed?
+           ;; Installed?
            (condition-case nil
                (irony--find-server-executable)
              (irony-server-error nil)))
