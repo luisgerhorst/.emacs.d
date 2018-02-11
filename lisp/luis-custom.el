@@ -240,12 +240,12 @@
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
- '(ns-alternate-modifier (quote none))
+ '(ns-alternate-modifier (quote meta))
  '(ns-antialias-text t)
  '(ns-auto-hide-menu-bar nil)
  '(ns-command-modifier (quote super))
  '(ns-control-modifier (quote control))
- '(ns-function-modifier (quote meta))
+ '(ns-function-modifier (quote none))
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
