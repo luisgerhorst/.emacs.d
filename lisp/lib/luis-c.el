@@ -135,16 +135,7 @@
                  (ef (file-relative-name rn1 default-directory))) ; relative to source
             (setf (flycheck-error-filename err) ef))))
       errors)
-    :modes (c-mode))
-
-  (defun luis-flycheck-linux-setup ()
-    "Flycheck mode hook."
-    (make-variable-buffer-local 'luis-flycheck-linux-makefile)
-    (setq luis-flycheck-linux-makefile (luis-flycheck-linux-search-makefile))
-    (if luis-flycheck-linux-makefile
-        (flycheck-select-checker 'luis-flycheck-linux)))
-
-  (add-hook 'flycheck-mode-hook 'luis-flycheck-linux-setup))
+    :modes (c-mode)))
 
 
 (provide 'luis-c)
