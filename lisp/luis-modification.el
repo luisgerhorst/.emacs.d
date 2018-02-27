@@ -87,6 +87,9 @@
                            (company-dabbrev-code company-keywords)))
   (global-company-mode 1))
 
+(use-package abbrev
+  :diminish abbrev-mode)
+
 ;;; Filling
 
 (setq-default fill-column 80)
