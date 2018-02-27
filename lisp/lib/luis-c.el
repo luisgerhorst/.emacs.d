@@ -74,75 +74,77 @@
 
 ;;; Syntax Checking
 
-(require 'flycheck)
-
-(defun utils/flycheck-search-linux-makefile ()
-  "Search for linux top `Makefile' "
-  (labels
-      ((find-makefile-file-r (path)
-                             (let* ((parent (file-name-directory path))
-                                    (file (concat parent "Makefile")))
-                               (cond
-                                ((file-exists-p file)
-                                 (progn
-                                   (with-temp-buffer
-                                     (insert-file-contents file)
-                                     (if (string-match "VERSION = [0-9]+[[:space:]]*PATCHLEVEL" (buffer-string))
-                                         (throw 'found-it parent)
-                                       (find-makefile-file-r (directory-file-name parent))
-                                       ))))
-                                ((equal path parent) (throw 'found-it nil))
-                                (t (find-makefile-file-r (directory-file-name parent)))))))
-    (if (buffer-file-name)
-        (catch 'found-it
-          (find-makefile-file-r (buffer-file-name)))
-      (error "buffer is not visiting a file"))))
-
-(flycheck-define-checker utils/flycheck-linux-makefile-checker
-  "Linux source checker"
-  :command
-  ("make" "C=1" "-C" (eval (utils/flycheck-search-linux-makefile))
-   (eval (concat (file-name-sans-extension (file-relative-name
-                                            buffer-file-name (utils/flycheck-search-linux-makefile))) ".o")))
-  :error-patterns
-  ((error line-start
-          (message "In file included from") " " (file-name) ":" line ":"
-          column ":"
-          line-end)
-   (info line-start (file-name) ":" line ":" column
-         ": note: " (message) line-end)
-   (warning line-start (file-name) ":" line ":" column
-            ": warning: " (message) line-end)
-   (error line-start (file-name) ":" line ":" column
-          ": " (or "fatal error" "error") ": " (message) line-end))
-  :error-filter
-  (lambda (errors)
-    (let ((errors (flycheck-sanitize-errors errors)))
-      (dolist (err errors)
-        (let* ((fn (flycheck-error-filename err))
-               (rn0 (file-relative-name fn default-directory)) ; flycheck-fix-error-filename converted to absolute, revert
-               (rn1 (expand-file-name rn0 (utils/flycheck-search-linux-makefile))) ; make absolute relative to "make -C dir"
-               (ef (file-relative-name rn1 default-directory)) ; relative to source
-               )
-          (setf (flycheck-error-filename err) ef)
-          )))
-    errors)
-  :modes (c-mode c++-mode))
-
-(defun utils/flycheck-mode-hook ()
-  "Flycheck mode hook."
-  (make-variable-buffer-local 'flycheck-linux-makefile)
-  (setq flycheck-linux-makefile (utils/flycheck-search-linux-makefile))
-  (if flycheck-linux-makefile
-      (flycheck-select-checker 'utils/flycheck-linux-makefile-checker)))
-
-(add-hook 'flycheck-mode-hook 'utils/flycheck-mode-hook)
-
 (use-package flycheck-irony
   :defer t
   :init
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+
+;;; Linux
+
+;; The following makes flycheck work in C files located in the Linux Kernel
+;; source tree. Found at
+;; https://stackoverflow.com/questions/29709967/using-flycheck-flymake-on-kernel-source-tree
+;; Does not work for modules located outside the kernel tree.
+(with-eval-after-load 'flycheck
+  (defun luis-flycheck-linux-search-makefile ()
+    "Search for linux top `Makefile' "
+    (cl-labels
+        ((find-makefile-file-r (path)
+                               (let* ((parent (file-name-directory path))
+                                      (file (concat parent "Makefile")))
+                                 (cond
+                                  ((file-exists-p file)
+                                   (progn
+                                     (with-temp-buffer
+                                       (insert-file-contents file)
+                                       (if (string-match "VERSION = [0-9]+[[:space:]]*PATCHLEVEL" (buffer-string))
+                                           (throw 'found-it parent)
+                                         (find-makefile-file-r (directory-file-name parent))))))
+                                  ((equal path parent) (throw 'found-it nil))
+                                  (t (find-makefile-file-r (directory-file-name parent)))))))
+      (if (buffer-file-name)
+          (catch 'found-it
+            (find-makefile-file-r (buffer-file-name)))
+        (error "buffer is not visiting a file"))))
+
+  (flycheck-define-checker luis-flycheck-linux
+    "Linux source checker"
+    :command
+    ("make" "C=1" "-C" (eval (luis-flycheck-linux-search-makefile))
+     (eval (concat (file-name-sans-extension (file-relative-name
+                                              buffer-file-name (luis-flycheck-linux-search-makefile))) ".o")))
+    :error-patterns
+    ((error line-start
+            (message "In file included from") " " (file-name) ":" line ":"
+            column ":"
+            line-end)
+     (info line-start (file-name) ":" line ":" column
+           ": note: " (message) line-end)
+     (warning line-start (file-name) ":" line ":" column
+              ": warning: " (message) line-end)
+     (error line-start (file-name) ":" line ":" column
+            ": " (or "fatal error" "error") ": " (message) line-end))
+    :error-filter
+    (lambda (errors)
+      (let ((errors (flycheck-sanitize-errors errors)))
+        (dolist (err errors)
+          (let* ((fn (flycheck-error-filename err))
+                 (rn0 (file-relative-name fn default-directory)) ; flycheck-fix-error-filename converted to absolute, revert
+                 (rn1 (expand-file-name rn0 (luis-flycheck-linux-search-makefile))) ; make absolute relative to "make -C dir"
+                 (ef (file-relative-name rn1 default-directory))) ; relative to source
+            (setf (flycheck-error-filename err) ef))))
+      errors)
+    :modes (c-mode))
+
+  (defun luis-flycheck-linux-setup ()
+    "Flycheck mode hook."
+    (make-variable-buffer-local 'luis-flycheck-linux-makefile)
+    (setq luis-flycheck-linux-makefile (luis-flycheck-linux-search-makefile))
+    (if luis-flycheck-linux-makefile
+        (flycheck-select-checker 'luis-flycheck-linux)))
+
+  (add-hook 'flycheck-mode-hook 'luis-flycheck-linux-setup))
 
 
 (provide 'luis-c)
