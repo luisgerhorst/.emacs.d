@@ -22,9 +22,9 @@
   (c-add-style
    "linux-tabs-only"
    '("linux" (c-offsets-alist
-              (arglist-cont-nonempty
-               c-lineup-gcc-asm-reg
-               c-lineup-arglist-tabs-only)))))
+              ((arglist-cont-nonempty . 8)
+               (c-lineup-gcc-asm-reg . 8)
+               (c-lineup-arglist-tabs-only . 8))))))
 
 (use-package xcscope
   :defer t
