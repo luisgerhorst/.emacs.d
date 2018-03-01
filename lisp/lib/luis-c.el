@@ -16,15 +16,7 @@
   (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote)
 
   ;; C++
-  (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion)
-
-  ;; Linux Kernel
-  (c-add-style
-   "linux-tabs-only"
-   '("linux" (c-offsets-alist
-              ((arglist-cont-nonempty . 8)
-               (c-lineup-gcc-asm-reg . 8)
-               (c-lineup-arglist-tabs-only . 8))))))
+  (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion))
 
 (use-package xcscope
   :defer t
@@ -108,7 +100,7 @@
             (find-makefile-file-r (buffer-file-name)))
         (error "buffer is not visiting a file"))))
 
-  (flycheck-define-checker luis-flycheck-linux
+  (flycheck-define-checker luis-linux
     "Linux source checker"
     :command
     ("make" "C=1" "-C" (eval (luis-flycheck-linux-search-makefile))
@@ -136,6 +128,29 @@
             (setf (flycheck-error-filename err) ef))))
       errors)
     :modes (c-mode)))
+
+(defun luis-add-mode-dir-local-variables (mode-vars)
+  (let ((mode (nth 0 mode-vars))
+        (assignments (nthcdr 1 mode-vars)))
+    (mapc (lambda (assignment)
+            (let ((variable (car assignment))
+                  (value (cdr assignment)))
+              (add-dir-local-variable mode variable value)))
+          assignments)))
+
+(defun luis-add-dir-local-variables (vars)
+  "Calls `add-dir-local-variable' for every assignment in the structure"
+  (mapc #'luis-add-mode-dir-local-variables vars))
+
+(defun luis-add-linux-dir-local-variables ()
+  (interactive)
+  (luis-add-dir-local-variables
+   '((c-mode
+      (indent-tabs-mode . t)
+      (c-basic-offset . 8)
+      (tab-width . 8)
+      (c-file-style . "linux")
+      (flycheck-checker . luis-linux)))))
 
 
 (provide 'luis-c)
