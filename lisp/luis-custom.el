@@ -269,7 +269,8 @@
  '(python-shell-interpreter "/usr/local/bin/python3")
  '(safe-local-variable-values
    (quote
-    ((flycheck-checker . luis-linux-kmod)
+    ((flycheck-checker . luis-c/c++-gcc-make)
+     (flycheck-checker . luis-linux-kmod)
      (flycheck-checker . luis-linux)
      (flycheck-checker
       (quote luis-linux))

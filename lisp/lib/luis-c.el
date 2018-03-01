@@ -72,6 +72,30 @@
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
+(with-eval-after-load 'flycheck
+  (flycheck-define-checker luis-c/c++-gcc-make
+    "Behave just like c/c++-gcc but invokes gcc using make instead of calling it directly"
+    :command
+    ("make")
+    :standard-input t
+    :error-patterns
+    ((error line-start
+            (message "In file included from") " " (or "<stdin>" (file-name))
+            ":" line ":" column ":" line-end)
+     (info line-start (or "<stdin>" (file-name)) ":" line ":" column
+           ": note: " (message) line-end)
+     (warning line-start (or "<stdin>" (file-name)) ":" line ":" column
+              ": warning: " (message (one-or-more (not (any "\n["))))
+              (optional "[" (id (one-or-more not-newline)) "]") line-end)
+     (error line-start (or "<stdin>" (file-name)) ":" line ":" column
+            ": " (or "fatal error" "error") ": " (message) line-end))
+    :error-filter
+    (lambda (errors)
+      (flycheck-fold-include-levels (flycheck-sanitize-errors errors)
+                                    "In file included from"))
+    :modes (c-mode c++-mode)
+    :next-checkers ((warning . c/c++-cppcheck))))
+
 ;;; Linux
 
 
@@ -132,29 +156,6 @@
             (setf (flycheck-error-filename err) ef))))
       errors)
     :modes (c-mode)
-    :next-checkers ((warning . c/c++-cppcheck)))
-
-  (flycheck-define-checker luis-linux-kmod
-    "Linux kernel module source checker"
-    :command
-    ("make" "ko")
-    ;; Copied from c/c++-gcc:
-    :error-patterns
-    ((error line-start
-            (message "In file included from") " " (or "<stdin>" (file-name))
-            ":" line ":" column ":" line-end)
-     (info line-start (or "<stdin>" (file-name)) ":" line ":" column
-           ": note: " (message) line-end)
-     (warning line-start (or "<stdin>" (file-name)) ":" line ":" column
-              ": warning: " (message (one-or-more (not (any "\n["))))
-              (optional "[" (id (one-or-more not-newline)) "]") line-end)
-     (error line-start (or "<stdin>" (file-name)) ":" line ":" column
-            ": " (or "fatal error" "error") ": " (message) line-end))
-    :error-filter
-    (lambda (errors)
-      (flycheck-fold-include-levels (flycheck-sanitize-errors errors)
-                                    "In file included from"))
-    :modes (c-mode c++-mode)
     :next-checkers ((warning . c/c++-cppcheck))))
 
 (defun luis-add-mode-dir-local-variables (mode-vars)
@@ -186,7 +187,7 @@
 (defun luis-add-linux-kmod-dir-local-variables ()
   (interactive)
   (luis-add-linux-style-dir-local-variables)
-  (add-dir-local-variable 'c-mode 'flycheck-checker 'luis-linux-kmod))
+  (add-dir-local-variable 'c-mode 'flycheck-checker 'luis-c/c++-gcc-make))
 
 
 (provide 'luis-c)
