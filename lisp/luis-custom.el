@@ -267,6 +267,14 @@
                (projectile-project-name))))))
  '(python-environment-directory "~/.pyenv/versions")
  '(python-shell-interpreter "/usr/local/bin/python3")
+ '(safe-local-variable-values
+   (quote
+    ((flycheck-checker . luis-linux-kmod)
+     (flycheck-checker . luis-linux)
+     (flycheck-checker
+      (quote luis-linux))
+     (flycheck-checker luis-linux)
+     (flycheck-checker luis-flycheck-linux))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#839496" 0.2))
  '(solarized-high-contrast-mode-line t)
  '(solarized-use-more-italic t)

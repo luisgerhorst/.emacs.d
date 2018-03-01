@@ -74,11 +74,14 @@
 
 ;;; Linux
 
-;; The following makes flycheck work in C files located in the Linux Kernel
-;; source tree. Found at
-;; https://stackoverflow.com/questions/29709967/using-flycheck-flymake-on-kernel-source-tree
-;; Does not work for modules located outside the kernel tree.
+
 (with-eval-after-load 'flycheck
+
+  ;; The following makes flycheck work in C files located in the Linux Kernel
+  ;; source tree. Found at
+  ;; https://stackoverflow.com/questions/29709967/using-flycheck-flymake-on-kernel-source-tree
+  ;; Does not work for modules located outside the kernel tree.
+
   (defun luis-flycheck-linux-search-makefile ()
     "Search for linux top `Makefile' "
     (cl-labels
@@ -106,6 +109,7 @@
     ("make" "C=1" "-C" (eval (luis-flycheck-linux-search-makefile))
      (eval (concat (file-name-sans-extension (file-relative-name
                                               buffer-file-name (luis-flycheck-linux-search-makefile))) ".o")))
+    ;; Copied from c/c++-gcc:
     :error-patterns
     ((error line-start
             (message "In file included from") " " (file-name) ":" line ":"
@@ -127,7 +131,31 @@
                  (ef (file-relative-name rn1 default-directory))) ; relative to source
             (setf (flycheck-error-filename err) ef))))
       errors)
-    :modes (c-mode)))
+    :modes (c-mode)
+    :next-checkers ((warning . c/c++-cppcheck)))
+
+  (flycheck-define-checker luis-linux-kmod
+    "Linux kernel module source checker"
+    :command
+    ("make" "ko")
+    ;; Copied from c/c++-gcc:
+    :error-patterns
+    ((error line-start
+            (message "In file included from") " " (or "<stdin>" (file-name))
+            ":" line ":" column ":" line-end)
+     (info line-start (or "<stdin>" (file-name)) ":" line ":" column
+           ": note: " (message) line-end)
+     (warning line-start (or "<stdin>" (file-name)) ":" line ":" column
+              ": warning: " (message (one-or-more (not (any "\n["))))
+              (optional "[" (id (one-or-more not-newline)) "]") line-end)
+     (error line-start (or "<stdin>" (file-name)) ":" line ":" column
+            ": " (or "fatal error" "error") ": " (message) line-end))
+    :error-filter
+    (lambda (errors)
+      (flycheck-fold-include-levels (flycheck-sanitize-errors errors)
+                                    "In file included from"))
+    :modes (c-mode c++-mode)
+    :next-checkers ((warning . c/c++-cppcheck))))
 
 (defun luis-add-mode-dir-local-variables (mode-vars)
   (let ((mode (nth 0 mode-vars))
@@ -142,15 +170,23 @@
   "Calls `add-dir-local-variable' for every assignment in the structure"
   (mapc #'luis-add-mode-dir-local-variables vars))
 
-(defun luis-add-linux-dir-local-variables ()
-  (interactive)
+(defun luis-add-linux-style-dir-local-variables ()
   (luis-add-dir-local-variables
    '((c-mode
       (indent-tabs-mode . t)
       (c-basic-offset . 8)
       (tab-width . 8)
-      (c-file-style . "linux")
-      (flycheck-checker . luis-linux)))))
+      (c-file-style . "linux")))))
+
+(defun luis-add-linux-dir-local-variables ()
+  (interactive)
+  (luis-add-linux-style-dir-local-variables)
+  (add-dir-local-variable 'c-mode 'flycheck-checker 'luis-linux))
+
+(defun luis-add-linux-kmod-dir-local-variables ()
+  (interactive)
+  (luis-add-linux-style-dir-local-variables)
+  (add-dir-local-variable 'c-mode 'flycheck-checker 'luis-linux-kmod))
 
 
 (provide 'luis-c)
