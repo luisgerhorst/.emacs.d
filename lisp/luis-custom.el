@@ -191,6 +191,7 @@
  '(directory-abbrev-alist
    (quote
     (("^/cip" . "/ssh:un65esoq@faui00l.informatik.uni-erlangen.de:"))))
+ '(dired-listing-switches "-alh")
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
  '(enable-remote-dir-locals t)
  '(eshell-cp-interactive-query t)
