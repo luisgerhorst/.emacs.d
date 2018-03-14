@@ -13,8 +13,6 @@
 
 ;; Dired config
 
-(add-hook 'dired-mode-hook #'dired-hide-details-mode)
-
 (setq dired-recursive-deletes 'always
       delete-by-moving-to-trash t)
 
