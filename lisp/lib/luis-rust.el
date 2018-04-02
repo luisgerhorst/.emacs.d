@@ -10,6 +10,10 @@
          ("C-c c" . cargo-process-build)
          ("C-c r" . cargo-process-run)))
 
+(defun luis-add-cargo-dir-local-variables ()
+  (interactive)
+  (add-dir-local-variable 'rust-mode 'mode 'cargo-minor-mode))
+
 (use-package company-race
   :defer t
   :init
