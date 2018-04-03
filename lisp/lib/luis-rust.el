@@ -12,7 +12,7 @@
 
 (defun luis-add-cargo-dir-local-variables ()
   (interactive)
-  (add-dir-local-variable 'rust-mode 'mode 'cargo-minor-mode))
+  (add-dir-local-variable 'rust-mode 'mode 'cargo-minor))
 
 (use-package company-race
   :defer t
