@@ -17,7 +17,8 @@
   ;; Non-printable bindings, prefixed with an additional µ and using a character
   ;; that fits their function.
   (global-set-key (kbd "M-µ µ c d") (luis-bound-command (kbd "<C-S-backspace>")))
-  (global-set-key (kbd "M-µ µ c m d") (luis-bound-command (kbd "<C-M-backspace>"))))
+  (global-set-key (kbd "M-µ µ c m d") (luis-bound-command (kbd "<C-M-backspace>")))
+  (global-set-key (kbd "M-µ µ c s") (luis-bound-command (kbd "C-SPC"))))
 
 
 (provide 'luis-iterm)
