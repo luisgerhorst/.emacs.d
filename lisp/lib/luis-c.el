@@ -21,10 +21,14 @@
 (use-package xcscope
   :defer t
   :init
-  (setq cscope-keymap-prefix (kbd "C-c o"))
   (add-hook 'c-mode-hook #'cscope-minor-mode)
   (add-hook 'c++-mode-hook #'cscope-minor-mode)
-  (add-hook 'dired-mode-hook #'cscope-minor-mode))
+  (add-hook 'dired-mode-hook #'cscope-minor-mode)
+  :config
+  (define-key cscope-minor-mode-keymap cscope-keymap-prefix nil)
+  (setq cscope-keymap-prefix (kbd "C-c o"))
+  (define-key cscope-minor-mode-keymap cscope-keymap-prefix
+    cscope-command-map))
 
 (defun luis-irony-if-installed-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))
@@ -72,11 +76,17 @@
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
+(defvar luis-flycheck-c/c++-gcc-make-args "")
+(defvar luis-flycheck-c/c++-gcc-make-jobs 4)
+
 (with-eval-after-load 'flycheck
   (flycheck-define-checker luis-c/c++-gcc-make
     "Behave just like c/c++-gcc but invokes gcc using make instead of calling it directly"
     :command
-    ("make")
+    ("make"
+     "-k"
+     "-j" (eval luis-flycheck-c/c++-gcc-make-jobs)
+     (eval luis-flycheck-c/c++-gcc-make-args))
     :standard-input t
     :error-patterns
     ((error line-start
@@ -89,15 +99,15 @@
               (optional "[" (id (one-or-more not-newline)) "]") line-end)
      (error line-start (or "<stdin>" (file-name)) ":" line ":" column
             ": " (or "fatal error" "error") ": " (message) line-end))
-    :error-filter
-    (lambda (errors)
-      (flycheck-fold-include-levels (flycheck-sanitize-errors errors)
-                                    "In file included from"))
+    ;; For some reason the following causes an error when working on the linux kernel:
+    ;; :error-filter
+    ;; '(lambda (errors)
+    ;;    (flycheck-fold-include-levels (flycheck-sanitize-errors errors)
+    ;;                                  "In file included from"))
     :modes (c-mode c++-mode)
     :next-checkers ((warning . c/c++-cppcheck))))
 
 ;;; Linux
-
 
 (with-eval-after-load 'flycheck
 
@@ -130,7 +140,9 @@
   (flycheck-define-checker luis-linux
     "Linux source checker"
     :command
-    ("make" "C=1" "-C" (eval (luis-flycheck-linux-search-makefile))
+    ("make"
+     "C=1"
+     "-C" (eval (luis-flycheck-linux-search-makefile))
      (eval (concat (file-name-sans-extension (file-relative-name
                                               buffer-file-name (luis-flycheck-linux-search-makefile))) ".o")))
     ;; Copied from c/c++-gcc:
@@ -183,6 +195,16 @@
   (interactive)
   (luis-add-linux-style-dir-local-variables)
   (add-dir-local-variable 'c-mode 'flycheck-checker 'luis-linux))
+
+(defun luis-add-linux-arm-dir-local-variables ()
+  (interactive)
+  (luis-add-linux-dir-local-variables)
+  (add-dir-local-variable 'c-mode 'eval
+                          (progn
+                            (make-local-variable 'process-environment)
+                            (setq process-environment (copy-sequence process-environment))
+            (setenv "ARCH" "arm")
+            (setenv "CROSS_COMPILE" "/usr/bin/arm-linux-gnueabi-"))))
 
 (defun luis-add-linux-kmod-dir-local-variables ()
   (interactive)

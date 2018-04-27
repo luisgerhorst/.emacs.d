@@ -270,7 +270,18 @@
  '(python-shell-interpreter "/usr/local/bin/python3")
  '(safe-local-variable-values
    (quote
-    ((flycheck-checker . luis-c/c++-gcc-make)
+    ((eval progn
+           (make-local-variable
+            (quote process-environment))
+           (setq process-environment
+                 (copy-sequence process-environment))
+           (setenv "ARCH" "arm")
+           (setenv "CROSS_COMPILE" "/usr/bin/arm-linux-gnueabi-"))
+     (luis-flycheck-linux-cross-compile . "/usr/bin/arm-linux-gnueabi-")
+     (luis-flycheck-linux-arch . "arm")
+     (luis-flycheck-linux-args . "ARCH=arm")
+     (luis-flycheck-linux-args . "ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabi-")
+     (flycheck-checker . luis-c/c++-gcc-make)
      (flycheck-checker . luis-linux-kmod)
      (flycheck-checker . luis-linux)
      (flycheck-checker
