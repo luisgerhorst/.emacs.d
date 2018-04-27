@@ -139,7 +139,7 @@
 ;;; Refactoring
 
 (use-package iedit
-  :bind ("C-c ." . iedit-mode))
+  :bind ("C-c i" . iedit-mode))
 
 ;;; Sexp
 
