@@ -139,7 +139,7 @@
 ;;; Refactoring
 
 (use-package iedit
-  :bind ("C-." . iedit-mode))
+  :bind ("C-c ." . iedit-mode))
 
 ;;; Sexp
 
@@ -177,7 +177,7 @@ If region is active, apply to active region instead."
       (forward-line 1)
       (back-to-indentation))))
 
-(global-set-key (kbd "C-;") #'comment-line)
+(global-set-key (kbd "C-\\") #'comment-line)
 (setq comment-style 'extra-line)
 (setq-default comment-column 0)
 
