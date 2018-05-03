@@ -76,36 +76,46 @@
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
-(defvar luis-flycheck-c/c++-gcc-make-args "")
-(defvar luis-flycheck-c/c++-gcc-make-jobs 4)
+(defun luis-current-buffer-has-c-extension ()
+    (string= "c" (file-name-extension (buffer-file-name (current-buffer)))))
+
+(defvar luis-flycheck-c-gcc-make-args "")
+(defvar luis-flycheck-c-gcc-make-jobs 4)
 
 (with-eval-after-load 'flycheck
-  (flycheck-define-checker luis-c/c++-gcc-make
+
+  (flycheck-define-command-checker 'luis-c-gcc-make
     "Behave just like c/c++-gcc but invokes gcc using make instead of calling it directly"
     :command
-    ("make"
-     "-k"
-     "-j" (eval luis-flycheck-c/c++-gcc-make-jobs)
-     (eval luis-flycheck-c/c++-gcc-make-args))
+    '("make"
+      "-k"
+      "-j" (eval luis-flycheck-c-gcc-make-jobs)
+      (eval luis-flycheck-c-gcc-make-args))
     :standard-input t
     :error-patterns
-    ((error line-start
-            (message "In file included from") " " (or "<stdin>" (file-name))
-            ":" line ":" column ":" line-end)
-     (info line-start (or "<stdin>" (file-name)) ":" line ":" column
-           ": note: " (message) line-end)
-     (warning line-start (or "<stdin>" (file-name)) ":" line ":" column
-              ": warning: " (message (one-or-more (not (any "\n["))))
-              (optional "[" (id (one-or-more not-newline)) "]") line-end)
-     (error line-start (or "<stdin>" (file-name)) ":" line ":" column
-            ": " (or "fatal error" "error") ": " (message) line-end))
+    '((error line-start
+             (message "In file included from") " " (or "<stdin>" (file-name))
+             ":" line ":" column ":" line-end)
+      (info line-start (or "<stdin>" (file-name)) ":" line ":" column
+            ": note: " (message) line-end)
+      (warning line-start (or "<stdin>" (file-name)) ":" line ":" column
+               ": warning: " (message (one-or-more (not (any "\n["))))
+               (optional "[" (id (one-or-more not-newline)) "]") line-end)
+      (error line-start (or "<stdin>" (file-name)) ":" line ":" column
+             ": " (or "fatal error" "error") ": " (message) line-end))
     ;; For some reason the following causes an error when working on the linux kernel:
-    ;; :error-filter
-    ;; '(lambda (errors)
-    ;;    (flycheck-fold-include-levels (flycheck-sanitize-errors errors)
-    ;;                                  "In file included from"))
-    :modes (c-mode c++-mode)
-    :next-checkers ((warning . c/c++-cppcheck))))
+    :error-filter
+    (lambda (errors)
+      (flycheck-fold-include-levels (flycheck-sanitize-errors errors)
+                                    "In file included from"))
+    :modes '(c-mode)
+    :next-checkers '((warning . c/c++-cppcheck)))
+
+  (defun luis-disable-flycheck-c-gcc-make-for-headers ()
+    (when (not (luis-current-buffer-has-c-extension))
+      (add-to-list 'flycheck-disabled-checkers 'luis-c-gcc-make)))
+
+  (add-hook 'c-mode-hook #'luis-disable-flycheck-c-gcc-make-for-headers))
 
 ;;; Linux
 
@@ -137,26 +147,26 @@
             (find-makefile-file-r (buffer-file-name)))
         (error "buffer is not visiting a file"))))
 
-  (flycheck-define-checker luis-linux
+  (flycheck-define-command-checker 'luis-linux
     "Linux source checker"
     :command
-    ("make"
-     "C=1"
-     "-C" (eval (luis-flycheck-linux-search-makefile))
-     (eval (concat (file-name-sans-extension (file-relative-name
-                                              buffer-file-name (luis-flycheck-linux-search-makefile))) ".o")))
+    '("make"
+      "C=1"
+      "-C" (eval (luis-flycheck-linux-search-makefile))
+      (eval (concat (file-name-sans-extension (file-relative-name
+                                               buffer-file-name (luis-flycheck-linux-search-makefile))) ".o")))
     ;; Copied from c/c++-gcc:
     :error-patterns
-    ((error line-start
-            (message "In file included from") " " (file-name) ":" line ":"
-            column ":"
-            line-end)
-     (info line-start (file-name) ":" line ":" column
-           ": note: " (message) line-end)
-     (warning line-start (file-name) ":" line ":" column
-              ": warning: " (message) line-end)
-     (error line-start (file-name) ":" line ":" column
-            ": " (or "fatal error" "error") ": " (message) line-end))
+    '((error line-start
+             (message "In file included from") " " (file-name) ":" line ":"
+             column ":"
+             line-end)
+      (info line-start (file-name) ":" line ":" column
+            ": note: " (message) line-end)
+      (warning line-start (file-name) ":" line ":" column
+               ": warning: " (message) line-end)
+      (error line-start (file-name) ":" line ":" column
+             ": " (or "fatal error" "error") ": " (message) line-end))
     :error-filter
     (lambda (errors)
       (let ((errors (flycheck-sanitize-errors errors)))
@@ -167,8 +177,14 @@
                  (ef (file-relative-name rn1 default-directory))) ; relative to source
             (setf (flycheck-error-filename err) ef))))
       errors)
-    :modes (c-mode)
-    :next-checkers ((warning . c/c++-cppcheck))))
+    :modes '(c-mode)
+    :next-checkers '((warning . c/c++-cppcheck)))
+
+  (defun luis-disable-flycheck-linux-for-headers ()
+    (when (not (luis-current-buffer-has-c-extension))
+      (add-to-list 'flycheck-disabled-checkers #'luis-linux)))
+
+  (add-hook 'c-mode-hook #'luis-disable-flycheck-linux-for-headers))
 
 (defun luis-add-mode-dir-local-variables (mode-vars)
   (let ((mode (nth 0 mode-vars))
