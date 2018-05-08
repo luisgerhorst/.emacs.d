@@ -1,7 +1,30 @@
 ;; -*- lexical-binding: t -*-
 
+;;; Systemprogrammierung
+
+(defun luis-sp-comment (&optional arg)
+  "Create new C /*K ... */ comment, for Systemprogrammierung correction."
+  (interactive "p")
+  (kmacro-exec-ring-item
+   (quote (";jjK " 0 "%d"))
+   arg))
+
+(defun luis-c-kill-comment (&optional arg)
+  "Delete C comment starting with /* and ending with */."
+  (interactive "p")
+  (kmacro-exec-ring-item
+   (quote ([19 42 47 13 27 181 181 99 115 18 47 42 13 16 5 23] 0 "%d"))
+   arg))
+
+
+;;; C
+
 (use-package cc-mode
   :defer t
+  :bind (:map
+         c-mode-map
+         ("C-c ;" . luis-sp-comment)
+         ("C-c :" . luis-c-kill-comment))
   :config
   ;; C
   (setq c-basic-offset tab-width)
