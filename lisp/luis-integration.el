@@ -15,25 +15,6 @@
 
 ;;; General
 
-(setq select-enable-clipboard t
-      save-interprogram-paste-before-kill t
-      mouse-yank-at-point t)
-
-;; Integrate with the macOS pasteboard even when running in a terminal by using
-;; external commands.
-(when (and (eq system-type 'darwin) (not (display-graphic-p)))
-  (defun luis-copy-from-macos ()
-    (shell-command-to-string "pbpaste"))
-
-  (defun luis-paste-to-macos (text &optional push)
-    (let ((process-connection-type nil))
-      (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-        (process-send-string proc text)
-        (process-send-eof proc))))
-
-  (setq interprogram-cut-function 'luis-paste-to-macos)
-  (setq interprogram-paste-function 'luis-copy-from-macos))
-
 (when (not (display-graphic-p))
   (xterm-mouse-mode 1)
   (global-set-key [mouse-4]
@@ -90,5 +71,42 @@
   (advice-add 'handle-delete-frame :override
               #'handle-delete-frame-without-kill-emacs))
 
+;;; Copy/Paste in Terminal Emacs
+
+(setq select-enable-clipboard t
+      save-interprogram-paste-before-kill t
+      mouse-yank-at-point t)
+
+;; Uses the clipboard-copy/paste executables to access the system clipboard from
+;; within terminal Emacs.
+(when (not (display-graphic-p))
+  (defun luis-paste-from-terminal ()
+    "Get the current clipboard contents."
+    (shell-command-to-string "clipboard-paste"))
+
+  (defun luis-copy-to-terminal (text &optional push)
+    "Store the given text into the clipboard."
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "clipboard-copy" "*Messages*" "clipboard-copy")))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+
+  (setq interprogram-cut-function 'luis-copy-to-terminal)
+  (setq interprogram-paste-function 'luis-paste-from-terminal))
+
+(defun luis-insert-clipboard ()
+  "Pastes the current clipboard contents into Emacs.
+
+This function is called from within tmux-smart-paste and
+evaluated by emacs server."
+  (if (display-graphic-p)
+      (error "Trying to paste into GUI emacs.")
+    (let ((paste-data (s-trim (shell-command-to-string "clipboard-paste"))))
+      ;; When running via emacsclient, paste into the current buffer.  Without
+      ;; this, we would paste into the server buffer.
+      (with-current-buffer (window-buffer)
+        (insert paste-data))
+      ;; Add to kill-ring
+      (kill-new paste-data))))
 
 (provide 'luis-integration)
