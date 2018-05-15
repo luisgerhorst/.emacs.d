@@ -24,7 +24,9 @@
   :bind (:map
          c-mode-map
          ("C-c ;" . luis-sp-comment)
-         ("C-c :" . luis-c-kill-comment))
+         ;; TODO: Fix.
+         ;; ("C-c :" . luis-c-kill-comment)
+         )
   :config
   ;; C
   (setq c-basic-offset tab-width)
