@@ -84,7 +84,7 @@
     "Get the current clipboard contents."
     (shell-command-to-string "clipboard-paste"))
 
-  (defun luis-copy-to-terminal (text &optional push)
+  (defun luis-copy-to-terminal (text)
     "Store the given text into the clipboard."
     (let ((process-connection-type nil))
       (let ((proc (start-process "clipboard-copy" "*Messages*" "clipboard-copy")))
