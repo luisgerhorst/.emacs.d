@@ -102,8 +102,8 @@
 (defun luis-current-buffer-has-c-extension ()
     (string= "c" (file-name-extension (buffer-file-name (current-buffer)))))
 
-(defvar luis-flycheck-c-gcc-make-args "")
-(defvar luis-flycheck-c-gcc-make-jobs 4)
+(defvar luis-flycheck-c-gcc-make-args "-k")
+(defvar luis-flycheck-c-gcc-make-jobs "4")
 
 (with-eval-after-load 'flycheck
 
@@ -111,7 +111,6 @@
     "Behave just like c/c++-gcc but invokes gcc using make instead of calling it directly"
     :command
     '("make"
-      "-k"
       "-j" (eval luis-flycheck-c-gcc-make-jobs)
       (eval luis-flycheck-c-gcc-make-args))
     :standard-input t
