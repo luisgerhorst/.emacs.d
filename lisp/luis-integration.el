@@ -92,7 +92,9 @@
         (process-send-eof proc))))
 
   (setq interprogram-cut-function 'luis-copy-to-terminal)
-  (setq interprogram-paste-function 'luis-paste-from-terminal))
+  ;; TODO: Correctly implement interprogram-paste-function, see help.
+  ;; (setq interprogram-paste-function 'luis-paste-from-terminal)
+  )
 
 (defun luis-insert-clipboard ()
   "Pastes the current clipboard contents into Emacs.
