@@ -229,14 +229,12 @@
 (defun luis-add-linux-arm-dir-local-variables ()
   (interactive)
   (luis-add-linux-dir-local-variables)
-  ;; This doesn't work, bug reported.
-  ;; (add-dir-local-variable 'c-mode 'eval
-  ;;                         '(progn
-  ;;                            (make-local-variable 'process-environment)
-  ;;                            (setq process-environment (copy-sequence process-environment))
-  ;;                            (setenv "ARCH" "arm")
-  ;;                            (setenv "CROSS_COMPILE" "/usr/bin/arm-linux-gnueabi-")))
-  )
+  (add-dir-local-variable 'c-mode 'eval
+                          '(progn
+                             (make-local-variable 'process-environment)
+                             (setq process-environment (copy-sequence process-environment))
+                             (setenv "ARCH" "arm")
+                             (setenv "CROSS_COMPILE" "/usr/bin/arm-linux-gnueabi-"))))
 
 (defun luis-add-linux-kmod-dir-local-variables ()
   (interactive)
