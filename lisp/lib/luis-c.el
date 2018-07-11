@@ -9,13 +9,6 @@
    (quote (";jjK " 0 "%d"))
    arg))
 
-(defun luis-c-kill-comment (&optional arg)
-  "Delete C comment starting with /* and ending with */."
-  (interactive "p")
-  (kmacro-exec-ring-item
-   (quote ([19 42 47 13 27 181 181 99 115 18 47 42 13 16 5 23] 0 "%d"))
-   arg))
-
 
 ;;; C
 
@@ -23,10 +16,7 @@
   :defer t
   :bind (:map
          c-mode-map
-         ("C-c ;" . luis-sp-comment)
-         ;; TODO: Fix.
-         ;; ("C-c :" . luis-c-kill-comment)
-         )
+         ("C-c ;" . luis-sp-comment))
   :config
   ;; C
   (setq c-basic-offset tab-width)
