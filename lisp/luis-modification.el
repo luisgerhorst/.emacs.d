@@ -37,21 +37,6 @@
   (define-key yas-keymap [(tab)] nil)
   (define-key yas-keymap (kbd "TAB") nil))
 
-
-(use-package auto-complete
-  :commands (auto-complete-mode)
-  :bind (:map
-         ac-menu-map
-         ;; Use M-n and M-p to select next/previous completion and use
-         ;; these for moving by line.
-         ("C-n" . nil)
-         ("C-p" . nil))
-  :init
-  (setq ac-auto-show-menu 0.8
-        ac-auto-start 3
-        ac-use-fuzzy t
-        ac-use-menu-map t))
-
 (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
   (setq-local company-idle-delay idle-delay)
   (setq-local company-minimum-prefix-length minimum-prefix-length))
