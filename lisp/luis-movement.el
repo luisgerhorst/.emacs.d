@@ -18,14 +18,6 @@
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
         aw-scope 'frame))
 
-(use-package winner
-  :demand
-  :bind (("M-_" . winner-undo)
-         ("M-Ö" . winner-redo))
-  :config
-  (winner-mode 1))
-
-
 ;;; Misc
 
 (use-package subword
