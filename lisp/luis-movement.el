@@ -10,18 +10,6 @@
 (global-set-key (kbd "M-N") #'scroll-up-line)
 (global-set-key (kbd "M-P") #'scroll-down-line)
 
-
-;;; Jump to definition
-
-(defun luis-dumb-jump-save-and-go ()
-  (interactive)
-  (save-buffer)
-  (dumb-jump-go))
-
-;; On Mac: Meta-Option-.
-(global-set-key (kbd "M-'") #'luis-dumb-jump-save-and-go)
-
-
 ;;; Windows
 
 (use-package ace-window
