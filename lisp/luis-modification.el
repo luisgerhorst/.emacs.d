@@ -94,22 +94,9 @@
 
 (setq-default fill-column 80)
 
-(defun luis-resize-window-to-fill-column ()
-  (interactive)
-  (window-resize (selected-window)
-                 (+ (- fill-column (window-total-width)) 2)
-                 t))
-
 ;; Disabled because of http://debbugs.gnu.org/cgi/bugreport.cgi?bug=29789
 ;; (use-package visual-fill-column
 ;; :commands (visual-fill-column-mode))
-
-;; Auto Fill for comments, enable per major mode.
-(use-package luis-comment-auto-fill
-  :diminish luis-comment-auto-fill-mode
-  :commands (luis-comment-auto-fill-mode)
-  :init
-  (add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode))
 
 (use-package fillcode
   :diminish fillcode-mode
@@ -143,18 +130,10 @@
 
 ;;; Sexp
 
-(defun luis-backwards-kill-sexp (&optional argument)
-  (interactive "P")
-  (kill-sexp (- (or argument 1))))
-
-;; More handy then C-M-k with negative argument.
-(global-set-key (kbd "<C-M-backspace>") #'luis-backwards-kill-sexp)
-
 ;; Always insert matching brackets.
 (if (version< emacs-version "25.1")
     (electric-pair-mode 1)
   (add-hook 'prog-mode-hook #'electric-pair-local-mode))
-
 
 ;;; Commenting
 

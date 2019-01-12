@@ -6,7 +6,6 @@
 (require 'luis-swift)
 (require 'luis-apache)
 (require 'luis-python)
-(require 'luis-nxc)
 (require 'luis-c)
 (require 'luis-org)
 (require 'luis-asm)
