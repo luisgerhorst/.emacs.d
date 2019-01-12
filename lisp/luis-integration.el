@@ -12,7 +12,6 @@
 
 (setenv "LC_ALL" "en_US.UTF-8")
 
-
 ;;; General
 
 (when (not (display-graphic-p))

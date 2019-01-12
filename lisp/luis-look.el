@@ -102,6 +102,5 @@
 (when (not (display-graphic-p))
   (menu-bar-mode -1))
 
-
 (provide 'luis-look)
 ;;; luis-look.el ends here
