@@ -27,50 +27,6 @@
 ;; server in that instance. This way we always connect to the Emacs deamon when
 ;; using emacsclient and not some random instance started in a terminal.
 
-;;; Finder
-
-(defun ido-find-file-in-finder-dir ()
-  "ido-find-file-in-dir but start in directory currently open in Finder"
-  (interactive)
-  (let ((finder-dir (do-applescript "tell application \"Finder\"\nreturn POSIX path of (target of window 1 as alias)\nend tell")))
-    (ido-find-file-in-dir finder-dir)))
-
-(use-package reveal-in-osx-finder
-  :bind ("C-c z" . reveal-in-osx-finder))
-
-
-;;; macOS: Keep Emacs.app running when the last window is closed.
-
-(when (and (display-graphic-p) (eq system-type 'darwin))
-  ;; Directly copied from frame.el but now hide Emacs instead of killing
-  ;; it when last frame will be closed.
-  (defun handle-delete-frame-without-kill-emacs (event)
-    "Handle delete-frame events from the X server."
-    (interactive "e")
-    (let ((frame (posn-window (event-start event)))
-          (i 0)
-          (tail (frame-list)))
-      (while tail
-        (and (frame-visible-p (car tail))
-             (not (eq (car tail) frame))
-             (setq i (1+ i)))
-        (setq tail (cdr tail)))
-      (if (> i 0)
-          (delete-frame frame t)
-        ;; Not (save-buffers-kill-emacs) but instead:
-        (luis-ns-close-window))))
-
-  (defun luis-ns-close-window ()
-    (interactive)
-    (save-some-buffers)
-    (delete-other-windows)
-    (switch-to-buffer "*Bookmark List*")
-    (ns-do-hide-emacs))
-
-  (global-set-key [remap suspend-frame] #'luis-ns-close-window)
-  (advice-add 'handle-delete-frame :override
-              #'handle-delete-frame-without-kill-emacs))
-
 ;;; Copy/Paste in Terminal Emacs
 
 (setq select-enable-clipboard t
