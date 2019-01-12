@@ -10,19 +10,9 @@
 (use-package paradox
   :bind ("C-c s p" . paradox-list-packages))
 
-;; Because proced does not work on OS X.
-(use-package vkill
-  :commands (vkill list-unix-processes))
-
 ;; Mail
 (require 'luis-mail)
 (global-set-key (kbd "C-c s m") #'mu4e)
-
-;; Terminal: see lib/luis-terminal.el
-
-(use-package dsvn
-  :after vc-svn
-  :bind (("C-c s v" . svn-status)))
 
 (global-set-key (kbd "C-c m") #'man)
 
