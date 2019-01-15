@@ -230,6 +230,7 @@
     (read-file-name-internal read-buffer todo-add-category gnus-emacs-completing-read gnus-iswitchb-completing-read grep-read-files magit-builtin-completing-read ess-completing-read Info-read-node-name tmm-prompt man woman)))
  '(ido-ubiquitous-mode t)
  '(ido-vertical-define-keys nil)
+ '(initial-buffer-choice "~/")
  '(ispell-dictionary "de_DE")
  '(jedi:environment-root "3.5.3")
  '(magit-completing-read-function (quote magit-ido-completing-read))
