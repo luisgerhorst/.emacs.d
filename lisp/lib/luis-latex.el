@@ -4,7 +4,6 @@
   (setq TeX-auto-save t
         TeX-parse-self t
         TeX-newline-function #'newline-and-indent)
-
   (add-hook 'LaTeX-mode-hook #'visual-line-mode)
   (add-hook 'LaTeX-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'LaTeX-mode-hook #'flycheck-mode))
