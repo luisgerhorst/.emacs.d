@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'luis-sbt)
 
 (use-package scala-mode

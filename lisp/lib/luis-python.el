@@ -28,5 +28,4 @@
 (add-hook 'python-mode-hook #'luis-company-configure-automatic-completion)
 (add-hook 'python-mode-hook #'flycheck-mode)
 
-
 (provide 'luis-python)

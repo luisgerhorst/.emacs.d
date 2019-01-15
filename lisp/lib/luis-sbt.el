@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package sbt-mode
   :commands sbt-start sbt-command
   :config

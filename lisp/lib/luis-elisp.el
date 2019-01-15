@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package paredit
   :diminish (paredit-mode . "")
   :commands (paredit-mode)
@@ -21,6 +23,5 @@
   :config
   (add-hook 'emacs-lisp-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode))
-
 
 (provide 'luis-elisp)

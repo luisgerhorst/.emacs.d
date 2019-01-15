@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'adaptive-wrap)
 
 (defvar luis-code-wrap--saved-variable-states nil)
@@ -49,6 +51,5 @@ default.")
               word-wrap t)
         (adaptive-wrap-prefix-mode 1))
     (luis-code-wrap--restore-state)))
-
 
 (provide 'luis-code-wrap)

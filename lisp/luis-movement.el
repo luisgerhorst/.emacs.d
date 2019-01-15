@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Scrolling
 
 (setq scroll-preserve-screen-position t
@@ -44,7 +46,5 @@
          ;; I need these more often then forward/backward-list.
          ("C-M-p" . paredit-backward-down)
          ("C-M-n" . paredit-forward-up)))
-
-
 
 (provide 'luis-movement)

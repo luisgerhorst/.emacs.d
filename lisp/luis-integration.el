@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;; Work nice together with other apps / Mac OS X.
 
 ;;; Shell

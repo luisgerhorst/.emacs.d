@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (add-hook 'nxml-mode-hook #'luis-company-configure-automatic-completion)
 (add-hook 'nxml-mode-hook
           (lambda ()

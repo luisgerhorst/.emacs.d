@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;; Settings for interacting with the file system
 
 (use-package autorevert

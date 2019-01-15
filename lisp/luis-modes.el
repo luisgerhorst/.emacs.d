@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'luis-elisp)
 (require 'luis-markdown)
 (require 'luis-latex)

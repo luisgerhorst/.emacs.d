@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;; Customizations relating to editing a buffer.
 
 ;;; Indentation

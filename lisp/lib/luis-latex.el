@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package tex-site ;; AUCTeX overrides LaTeX
   :mode ("\\.tex\\'" . LaTeX-mode)
   :config
