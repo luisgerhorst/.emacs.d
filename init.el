@@ -35,7 +35,6 @@
 (require 'luis-modification)
 (require 'luis-movement)
 (require 'luis-compile)
-(require 'luis-misc)
 
 (require 'luis-user-interaction)
 (require 'luis-look)

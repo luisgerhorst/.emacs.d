@@ -5,10 +5,6 @@
 ;; Start Emacs in Fullscreen
 ;; (set-frame-parameter nil 'fullscreen 'fullboth)
 
-;; Required for reading mail. Location of mu binary (the following path
-;; should be correct if mu was installed with homebrew).
-;; (setq mu4e-mu-binary "/usr/local/bin/mu")
-
 ;; For Java Development, see Java section in README.
 ;; Should be correct if Eclipse was installed using
 ;; brew cask install eclipse-java

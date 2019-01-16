@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Compilation
 
 (setq compilation-ask-about-save nil)

@@ -230,6 +230,7 @@
     (read-file-name-internal read-buffer todo-add-category gnus-emacs-completing-read gnus-iswitchb-completing-read grep-read-files magit-builtin-completing-read ess-completing-read Info-read-node-name tmm-prompt man woman)))
  '(ido-ubiquitous-mode t)
  '(ido-vertical-define-keys nil)
+ '(initial-buffer-choice "~/")
  '(ispell-dictionary "de_DE")
  '(jedi:environment-root "3.5.3")
  '(magit-completing-read-function (quote magit-ido-completing-read))
@@ -250,7 +251,7 @@
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
-    (magit-svn mips-mode ess racer company-racer cargo rust-mode delight esh-autosuggest reveal-in-osx-finder flx-ido ido-completing-read+ ace-window xcscope company-jedi anaconda-mode frame-restore meghanada osx-trash gradle-mode dsvn groovy-mode company-emacs-eclim eclim flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode fillcode expand-region exec-path-from-shell discover-my-major discover diminish crm-custom company-quickhelp company-c-headers company-auctex avy auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
+    (git-commit flycheck-rust magit-svn mips-mode ess racer company-racer cargo rust-mode delight esh-autosuggest reveal-in-osx-finder flx-ido ido-completing-read+ ace-window xcscope company-jedi anaconda-mode frame-restore meghanada osx-trash gradle-mode dsvn groovy-mode company-emacs-eclim eclim flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit powerline auctex ws-butler which-key vkill visual-fill-column swift-mode solarized-theme smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode fillcode expand-region exec-path-from-shell discover-my-major discover diminish crm-custom company-quickhelp company-c-headers company-auctex avy auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'diminish)
 
 (define-minor-mode luis-comment-auto-fill-mode
@@ -11,6 +13,5 @@
     (kill-local-variable 'comment-auto-fill-only-comments)
     (diminish-undo 'auto-fill-function)
     (auto-fill-mode -1)))
-
 
 (provide 'luis-comment-auto-fill)

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package swift-mode
   :mode "\\.swift\\'"
   :commands (swift-mode))

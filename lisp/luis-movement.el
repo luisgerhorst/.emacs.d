@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Scrolling
 
 (setq scroll-preserve-screen-position t
@@ -10,18 +12,6 @@
 (global-set-key (kbd "M-N") #'scroll-up-line)
 (global-set-key (kbd "M-P") #'scroll-down-line)
 
-
-;;; Jump to definition
-
-(defun luis-dumb-jump-save-and-go ()
-  (interactive)
-  (save-buffer)
-  (dumb-jump-go))
-
-;; On Mac: Meta-Option-.
-(global-set-key (kbd "M-'") #'luis-dumb-jump-save-and-go)
-
-
 ;;; Windows
 
 (use-package ace-window
@@ -29,14 +19,6 @@
   :init
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
         aw-scope 'frame))
-
-(use-package winner
-  :demand
-  :bind (("M-_" . winner-undo)
-         ("M-Ö" . winner-redo))
-  :config
-  (winner-mode 1))
-
 
 ;;; Misc
 
@@ -46,9 +28,6 @@
   (add-hook 'prog-mode-hook #'subword-mode)
   :config
   (diminish 'subword-mode))
-
-(use-package avy
-  :bind (("C-:" . avy-goto-char)))
 
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
@@ -67,7 +46,5 @@
          ;; I need these more often then forward/backward-list.
          ("C-M-p" . paredit-backward-down)
          ("C-M-n" . paredit-forward-up)))
-
-
 
 (provide 'luis-movement)

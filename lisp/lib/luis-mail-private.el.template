@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Sending
 
 ;; (setq user-full-name "YOUR_FULL_NAME"
@@ -93,6 +95,5 @@
 
 ;; (setq mu4e-alert-interesting-mail-query
 ;;       "flag:unread AND ( maildir:\"/Inbox\" OR maildir:\"/Arbeit\" OR maildir:\"/Uni\" )")
-
 
 (provide 'luis-mail-private)

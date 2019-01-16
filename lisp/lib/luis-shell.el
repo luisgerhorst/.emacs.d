@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;; Configuration regarding shellscripts.
 
 (setq-default sh-basic-offset 4)

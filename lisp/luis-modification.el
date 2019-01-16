@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;;; Customizations relating to editing a buffer.
 
 ;;; Indentation
@@ -36,21 +38,6 @@
   (define-key yas-minor-mode-map (kbd "TAB") nil)
   (define-key yas-keymap [(tab)] nil)
   (define-key yas-keymap (kbd "TAB") nil))
-
-
-(use-package auto-complete
-  :commands (auto-complete-mode)
-  :bind (:map
-         ac-menu-map
-         ;; Use M-n and M-p to select next/previous completion and use
-         ;; these for moving by line.
-         ("C-n" . nil)
-         ("C-p" . nil))
-  :init
-  (setq ac-auto-show-menu 0.8
-        ac-auto-start 3
-        ac-use-fuzzy t
-        ac-use-menu-map t))
 
 (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
   (setq-local company-idle-delay idle-delay)
@@ -94,22 +81,9 @@
 
 (setq-default fill-column 80)
 
-(defun luis-resize-window-to-fill-column ()
-  (interactive)
-  (window-resize (selected-window)
-                 (+ (- fill-column (window-total-width)) 2)
-                 t))
-
 ;; Disabled because of http://debbugs.gnu.org/cgi/bugreport.cgi?bug=29789
 ;; (use-package visual-fill-column
 ;; :commands (visual-fill-column-mode))
-
-;; Auto Fill for comments, enable per major mode.
-(use-package luis-comment-auto-fill
-  :diminish luis-comment-auto-fill-mode
-  :commands (luis-comment-auto-fill-mode)
-  :init
-  (add-hook 'prog-mode-hook #'luis-comment-auto-fill-mode))
 
 (use-package fillcode
   :diminish fillcode-mode
@@ -143,18 +117,10 @@
 
 ;;; Sexp
 
-(defun luis-backwards-kill-sexp (&optional argument)
-  (interactive "P")
-  (kill-sexp (- (or argument 1))))
-
-;; More handy then C-M-k with negative argument.
-(global-set-key (kbd "<C-M-backspace>") #'luis-backwards-kill-sexp)
-
 ;; Always insert matching brackets.
 (if (version< emacs-version "25.1")
     (electric-pair-mode 1)
   (add-hook 'prog-mode-hook #'electric-pair-local-mode))
-
 
 ;;; Commenting
 
@@ -189,13 +155,15 @@ If region is active, apply to active region instead."
 
 (put 'narrow-to-region 'disabled nil)
 
-(use-package whole-line-or-region
-  :diminish
-  (whole-line-or-region-mode . "")
-  (whole-line-or-region-global-mode . "")
-  (whole-line-or-region-local-mode . "")
-  :init
-  (whole-line-or-region-mode 1))
+;; TODO: Remove if really not needed.
+;;
+;; (use-package whole-line-or-region
+;;   :diminish
+;;   (whole-line-or-region-mode . "")
+;;   (whole-line-or-region-global-mode . "")
+;;   (whole-line-or-region-local-mode . "")
+;;   :init
+;;   (whole-line-or-region-mode 1))
 
 
 (provide 'luis-modification)

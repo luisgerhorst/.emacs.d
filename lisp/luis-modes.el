@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'luis-elisp)
 (require 'luis-markdown)
 (require 'luis-latex)
@@ -6,7 +8,6 @@
 (require 'luis-swift)
 (require 'luis-apache)
 (require 'luis-python)
-(require 'luis-nxc)
 (require 'luis-c)
 (require 'luis-org)
 (require 'luis-asm)
@@ -15,7 +16,6 @@
 (require 'luis-scala)
 (require 'luis-make)
 (require 'luis-xml)
-(require 'luis-terminal)
 (require 'luis-rust)
 
 (provide 'luis-modes)
