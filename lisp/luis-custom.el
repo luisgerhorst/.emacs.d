@@ -177,6 +177,7 @@
        ("date")
        ("author" nil nil))))))
  '(coffee-tab-width 2)
+ '(comment-column 0)
  '(comment-multi-line t)
  '(company-etags-use-main-table-list nil)
  '(compilation-message-face (quote default))
