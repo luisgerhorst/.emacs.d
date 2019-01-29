@@ -17,9 +17,6 @@
 
 ;; Dired config
 
-(setq dired-recursive-deletes 'always
-      delete-by-moving-to-trash t)
-
 (when (eq system-type 'darwin)
   ;; Use ls from GNU coreutils for dired when on macOS. Install them via brew.
   (setq insert-directory-program (executable-find "gls")))
