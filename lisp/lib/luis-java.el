@@ -6,8 +6,6 @@
   (add-hook 'java-mode-hook
             #'luis-company-configure-automatic-completion))
 
-;;; Eclim
-
 (use-package meghanada
   :defer t
   :config
