@@ -49,6 +49,7 @@
 
 (use-package projectile
   :demand
+  :bind-keymap ("C-c p" . projectile-command-map)
   :config
   (projectile-mode))
 
