@@ -10,10 +10,6 @@
 (use-package paradox
   :bind ("C-c s p" . paradox-list-packages))
 
-;; Mail
-(require 'luis-mail)
-(global-set-key (kbd "C-c s m") #'mu4e)
-
 (global-set-key (kbd "C-c m") #'man)
 
 (provide 'luis-apps)

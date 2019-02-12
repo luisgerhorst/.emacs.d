@@ -144,8 +144,6 @@ If region is active, apply to active region instead."
       (back-to-indentation))))
 
 (global-set-key (kbd "C-\\") #'comment-line)
-(setq comment-style 'extra-line)
-(setq-default comment-column 0)
 
 ;;; Misc
 

@@ -33,6 +33,8 @@ TAGS
 /history
 /jdee-server/
 /frame-restore-parameters
+/network-security.data
+/%backup%~
 
 /lisp/luis-private.el
 /lisp/lib/luis-mail-private.el
