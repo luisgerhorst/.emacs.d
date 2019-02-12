@@ -16,7 +16,7 @@
   (interactive)
   (add-dir-local-variable 'rust-mode 'mode 'cargo-minor))
 
-(use-package company-race
+(use-package company-racer
   :defer t
   :init
   (with-eval-after-load 'company
