@@ -16,9 +16,9 @@
 ;;; Variables
 
 (setq custom-file (locate-user-emacs-file "lisp/luis-custom.el"))
-(when (file-exists-p custom-file) (load custom-file))
+(load custom-file t)
 
-(require 'luis-private)
+(require 'luis-private nil t)
 
 ;;; Load Path
 
