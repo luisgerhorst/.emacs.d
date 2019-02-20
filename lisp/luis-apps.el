@@ -13,8 +13,6 @@
 (use-package man
   :bind ("C-c m" . man)
   :config
-  ;; Warning: When changing `Man-notify-method', keep in mind that .zshrc
-  ;; assumes that M-x man makes the manpage the current buffer.
   (setq Man-notify-method 'aggressive))
 
 (provide 'luis-apps)
