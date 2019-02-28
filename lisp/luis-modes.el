@@ -17,5 +17,6 @@
 (require 'luis-make)
 (require 'luis-xml)
 (require 'luis-rust)
+(require 'luis-julia)
 
 (provide 'luis-modes)
