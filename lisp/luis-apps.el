@@ -10,6 +10,9 @@
 (use-package paradox
   :bind ("C-c s p" . paradox-list-packages))
 
-(global-set-key (kbd "C-c m") #'man)
+(use-package man
+  :bind ("C-c m" . man)
+  :config
+  (setq Man-notify-method 'aggressive))
 
 (provide 'luis-apps)
