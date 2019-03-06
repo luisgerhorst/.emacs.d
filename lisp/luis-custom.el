@@ -199,6 +199,7 @@
  '(eshell-hist-ignoredups t)
  '(eshell-mv-interactive-query t)
  '(eshell-rm-removes-directories t)
+ '(ess-smart-S-assign-key nil)
  '(fci-rule-color "#073642")
  '(flycheck-display-errors-delay 60)
  '(flycheck-mode-line (quote (:eval "FlyC")))
