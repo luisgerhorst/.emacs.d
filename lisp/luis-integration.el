@@ -12,8 +12,6 @@
   (setq exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize))
 
-(setenv "LC_ALL" "en_US.UTF-8")
-
 ;;; General
 
 (when (not (display-graphic-p))
@@ -37,18 +35,17 @@
 ;; Uses the clipboard-copy/paste executables to access the system clipboard from
 ;; within terminal Emacs.
 (when (not (display-graphic-p))
-  (defun luis-paste-from-terminal ()
-    "Get the current clipboard contents."
-    (shell-command-to-string "clipboard-paste"))
-
   (defun luis-copy-to-terminal (text)
     "Store the given text into the clipboard."
     (let ((process-connection-type nil))
       (let ((proc (start-process "clipboard-copy" "*Messages*" "clipboard-copy")))
         (process-send-string proc text)
         (process-send-eof proc))))
-
   (setq interprogram-cut-function 'luis-copy-to-terminal)
+
+  ;; (defun luis-paste-from-terminal ()
+  ;;   "Get the current clipboard contents."
+  ;;   (shell-command-to-string "clipboard-paste"))
   ;; TODO: Correctly implement interprogram-paste-function, see help.
   ;; (setq interprogram-paste-function 'luis-paste-from-terminal)
   )
