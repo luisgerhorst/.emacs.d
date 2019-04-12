@@ -273,7 +273,13 @@
  '(python-shell-interpreter "/usr/local/bin/python3")
  '(safe-local-variable-values
    (quote
-    ((flycheck-checker . luis-c-gcc-make)
+    ((eval progn
+           (make-local-variable
+            (quote process-environment))
+           (setq process-environment
+                 (copy-sequence process-environment))
+           (setenv "ARCH" "arm"))
+     (flycheck-checker . luis-c-gcc-make)
      (eval progn
            (make-local-variable
             (quote process-environment))
