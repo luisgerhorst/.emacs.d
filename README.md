@@ -88,14 +88,20 @@ Then read the following:
     brew install isync
     ```
 
-    Now __configure it__, you can find my config in my dotfiles. Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html).
+    Now __configure it__, you can find my config in my dotfiles. Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html). Now run
 
-    Now run `mbsync -a` once from the terminal to fill your maildir with messages.
+    ```sh
+    mkdir ~/.maildir
+    mkdir ~/.maildir/fastmail
+    mbsync -a
+    ```
+
+    once from the terminal to fill your maildir with messages.
 
     When done, install `mu4e` (if `mu` is already installed reinstall it since `EMACS` has to be set, make sure `brew` is not wrapped by `brew-file` or something, you can do so by e.g. temporarily switching to `bash` if you use `zsh`) and index your maildir using the following commands:
 
     ```sh
-    EMACS=$(which emacs) brew install mu --with-emacs
+    EMACS=$(which emacs) brew install mu
     mu index --maildir=~/.maildir
     ```
 
