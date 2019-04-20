@@ -12,6 +12,7 @@
 
 ;;; Reading Mail.
 
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
 (use-package mu4e
   :defer 30
   ;; Since mu4e is not installed via elpa we have to define the autoloads
