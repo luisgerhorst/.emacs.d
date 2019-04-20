@@ -5,9 +5,9 @@
 ;; smtpmail-smtp-server / user-mail-address / user-full-name set by SMTPSERVER /
 ;; EMAIL / NAME in .zprofile
 (setq smtpmail-smtp-service 465
+      smtpmail-stream-type 'ssl
       smtpmail-smtp-user "mumble@fastmail.com"
-      smtpmail-local-domain "fastmail.com"
-      smtpmail-debug-info t)
+      smtpmail-local-domain "fastmail.com")
 
 ;; (let* ((luis-mu4e-interesting-mail-query
 ;;         "maildir:\"/Inbox\" OR maildir:\"/Arbeit\" OR maildir:\"/Uni\" OR maildir:\"/Uni Lists\"")
