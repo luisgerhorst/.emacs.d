@@ -8,7 +8,8 @@
 ;; http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
 ;; for a good tutorial.
 
-(setq send-mail-function 'smtpmail-send-it)
+(setq send-mail-function 'smtpmail-send-it
+      message-send-mail-function 'smtpmail-send-it)
 
 ;;; Reading Mail.
 
@@ -89,7 +90,7 @@
                 (signal 'quit nil))))
 
   ;; Load account specific configuration.
-  (require 'luis-mail-private)
+  (require 'luis-mail-fastmail)
 
   ;; Start mu4e in background.
   (mu4e t))

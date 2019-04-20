@@ -2,9 +2,12 @@
 
 ;;; Sending
 
-(setq smtpmail-default-smtp-server "smtp.fastmail.com"
-      smtpmail-smtp-server "smtp.fastmail.com"
-      smtpmail-smtp-service 465)
+;; smtpmail-smtp-server / user-mail-address / user-full-name set by SMTPSERVER /
+;; EMAIL / NAME in .zprofile
+(setq smtpmail-smtp-service 465
+      smtpmail-smtp-user "mumble@fastmail.com"
+      smtpmail-local-domain "fastmail.com"
+      smtpmail-debug-info t)
 
 ;; (let* ((luis-mu4e-interesting-mail-query
 ;;         "maildir:\"/Inbox\" OR maildir:\"/Arbeit\" OR maildir:\"/Uni\" OR maildir:\"/Uni Lists\"")
@@ -19,8 +22,7 @@
 ;;; Reading
 
 ;; The following variables are account specific.
-(setq mu4e-maildir "~/Maildir"
-      mu4e-drafts-folder "/Drafts"
+(setq mu4e-drafts-folder "/Drafts"
       mu4e-sent-folder "/Sent Items"
       mu4e-trash-folder "/Trash"
       mu4e-refile-folder "/Archive"
@@ -88,4 +90,4 @@
                                    (mu4e-context-vars context)))))
                     mu4e-contexts)))
 
-(provide 'luis-mail-private)
+(provide 'luis-mail-fastmail)
