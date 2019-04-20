@@ -91,8 +91,7 @@ Then read the following:
     Now __configure it__, you can find my config in my dotfiles. Here's a [turorial for switching from `offlineimap` to `mbsync`](http://pragmaticemacs.com/emacs/migrating-from-offlineimap-to-mbsync-for-mu4e/). Here's the [man page](http://isync.sourceforge.net/mbsync.html). Now run
 
     ```sh
-    mkdir ~/.maildir
-    mkdir ~/.maildir/fastmail
+    mkdir ~/Maildir
     mbsync -a
     ```
 
@@ -102,7 +101,7 @@ Then read the following:
 
     ```sh
     EMACS=$(which emacs) brew install mu
-    mu index --maildir=~/.maildir
+    mu index --maildir=~/Maildir
     ```
 
     Ensure `mu4e` (contained in `mu`) is loaded when Emacs starts. You can check for it using `M-x mu4e`. If Emacs was installed using Cask, symlink `mu4e` to `.emacs.d/site-lisp`
