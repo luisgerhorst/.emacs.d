@@ -37,5 +37,4 @@ TAGS
 /%backup%~
 
 /lisp/luis-private.el
-/lisp/lib/luis-mail-private.el
 /lisp/luis-machine-local.el
