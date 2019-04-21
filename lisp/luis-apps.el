@@ -15,7 +15,8 @@
   :config
   (setq Man-notify-method 'aggressive))
 
-(require 'luis-mail)
-(global-set-key (kbd "C-c s m") #'mu4e)
+(when (eq system-type 'darwin)
+  (require 'luis-mail)
+  (global-set-key (kbd "C-c s m") #'mu4e))
 
 (provide 'luis-apps)
