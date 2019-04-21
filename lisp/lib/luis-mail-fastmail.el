@@ -2,9 +2,9 @@
 
 ;;; Sending
 
-;; smtpmail-smtp-server / user-mail-address / user-full-name set by SMTPSERVER /
-;; EMAIL / NAME in .zprofile
-(setq smtpmail-smtp-service 465
+;; user-mail-address / user-full-name set using EMAIL / NAME in .zprofile
+(setq smtpmail-smtp-server "smtp.fastmail.com"
+      smtpmail-smtp-service 465
       smtpmail-stream-type 'ssl
       smtpmail-smtp-user "mumble@fastmail.com"
       smtpmail-local-domain "fastmail.com")
