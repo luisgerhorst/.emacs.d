@@ -17,8 +17,10 @@
 (use-package luis-code-wrap
   :commands (luis-code-wrap-mode))
 
-;; (use-package luis-text-wrap
-;; :commands (luis-text-wrap-mode))
+(use-package luis-text-wrap
+  :commands (luis-text-wrap-mode)
+  :init
+  (setq luis-text-wrap-mode-no-warn-visual-fill-column-mode-in-emacs-pre-26-1 t))
 
 ;;; Mode Line and Theme
 

@@ -72,12 +72,12 @@
        ;; use html if it's prefered, unless there is no html
        (or (not mu4e-view-prefer-html) (not html)))))
 
-  ;; (defun luis-mu4e-enable-text-wrap-mode-when-plain-text ()
-  ;;   (if (luis-mu4e-message-txt-body-will-show (mu4e-message-at-point))
-  ;;       (luis-text-wrap-mode 1)
-  ;;     (luis-text-wrap-mode -1)))
-  ;; (add-hook 'mu4e-view-mode-hook
-  ;;           #'luis-mu4e-enable-text-wrap-mode-when-plain-text)
+  (defun luis-mu4e-enable-text-wrap-mode-when-plain-text ()
+    (if (luis-mu4e-message-txt-body-will-show (mu4e-message-at-point))
+        (luis-text-wrap-mode 1)
+      (luis-text-wrap-mode -1)))
+  (add-hook 'mu4e-view-mode-hook
+            #'luis-mu4e-enable-text-wrap-mode-when-plain-text)
 
   ;; To protect yourself from sending messages too hastily, add a
   ;; final confirmation.
