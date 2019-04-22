@@ -153,15 +153,5 @@ If region is active, apply to active region instead."
 
 (put 'narrow-to-region 'disabled nil)
 
-;; TODO: Remove if really not needed.
-;;
-;; (use-package whole-line-or-region
-;;   :diminish
-;;   (whole-line-or-region-mode . "")
-;;   (whole-line-or-region-global-mode . "")
-;;   (whole-line-or-region-local-mode . "")
-;;   :init
-;;   (whole-line-or-region-mode 1))
-
 
 (provide 'luis-modification)
