@@ -9,37 +9,28 @@
       smtpmail-smtp-user "mumble@fastmail.com"
       smtpmail-local-domain "fastmail.com")
 
-;; (let* ((luis-mu4e-interesting-mail-query
-;;         "maildir:\"/Inbox\" OR maildir:\"/Arbeit\" OR maildir:\"/Uni\" OR maildir:\"/Uni Lists\"")
-;;        (luis-mu4e-interesting-unread-mail-query
-;;         (concat "flag:unread AND (" luis-mu4e-interesting-mail-query ")")))
+(setq luis-mu4e-interesting-mail-query
+      (concat "not maildir:\"/Mailing Lists/*/*\""
+              " AND not maildir:\"/Learn Junk\""
+              " AND not maildir:\"/Junk Mail\""
+              " AND not maildir:\"/Drafts\""
+              " AND not maildir:\"/Sent Items\""
+              " AND not maildir:\"/Trash\""
+              " AND not maildir:\"/Archive\""))
+(setq luis-mu4e-interesting-unread-mail-query
+      (concat "flag:unread AND (" luis-mu4e-interesting-mail-query ")"))
 
-;;; Alerts
-
-;; (setq mu4e-alert-interesting-mail-query
-;;       luis-mu4e-interesting-unread-mail-query)
-
-;;; Reading
-
-;; The following variables are account specific.
 (setq mu4e-drafts-folder "/Drafts"
       mu4e-sent-folder "/Sent Items"
       mu4e-trash-folder "/Trash"
       mu4e-refile-folder "/Archive"
-      ;; mu4e-maildir-shortcuts
-      ;; '(("/Inbox" . ?i)
-      ;;   ("/Arbeit" . ?w)
-      ;;   ("/Uni" . ?u)
-      ;;   ("/Uni Lists" . ?l)
-      ;;   ("/Sent Items" . ?s)
-      ;;   ("/Dokumente" . ?d))
-      ;; mu4e-bookmarks
-      ;; `((,luis-mu4e-interesting-mail-query
-      ;;    "Personal messages"
-      ;;    ?p)
-      ;;   (,luis-mu4e-interesting-unread-mail-query
-      ;;    "Unread personal messages"
-      ;;    ?u))
+      mu4e-bookmarks
+      `((,luis-mu4e-interesting-mail-query
+         "Personal messages"
+         ?p)
+        (,luis-mu4e-interesting-unread-mail-query
+         "Unread personal messages"
+         ?u))
       mu4e-contexts
       `(,(make-mu4e-context
           :name "Privat"
