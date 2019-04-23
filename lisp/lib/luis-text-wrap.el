@@ -39,6 +39,7 @@ default.")
 Confirmation is always skipped if
 `luis-text-wrap-fill-paragraph-require-confirmation' is nil."
   (interactive)
+  ;; TODO: Add choice to disable this mode and fill paragraph.
   (when (not (when luis-text-wrap-fill-paragraph-require-confirmation
                (not (y-or-n-p "Really fill paragraph in visually wrapped buffer? "))))
     (setq-local luis-text-wrap-fill-paragraph-require-confirmation nil)
