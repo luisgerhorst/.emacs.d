@@ -39,11 +39,17 @@ default.")
 Confirmation is always skipped if
 `luis-text-wrap-fill-paragraph-require-confirmation' is nil."
   (interactive)
-  ;; TODO: Add choice to disable this mode and fill paragraph.
   (when (not (when luis-text-wrap-fill-paragraph-require-confirmation
-               (not (y-or-n-p "Really fill paragraph in visually wrapped buffer? "))))
-    (setq-local luis-text-wrap-fill-paragraph-require-confirmation nil)
-    (call-interactively #'fill-paragraph)))
+               (pcase (car (read-multiple-choice
+                            "Really fill paragraph in visually wrapped buffer?"
+                            '((?y "yes" "Fill the paragraph and do not ask again")
+                              (?n "no" "Don't fill the paragraph and warn me again next time")
+                              (?d "disable visual wrapping" "Disable luis-text-wrap-mode"))))
+                 (?y (progn (setq-local luis-text-wrap-fill-paragraph-require-confirmation nil)
+                            (call-interactively #'fill-paragraph)))
+                 (?n nil)
+                 (?d (progn (luis-text-wrap-mode -1)
+                            (call-interactively #'fill-paragraph))))))))
 
 (defvar luis-text-wrap-mode-enable-visual-fill-column-mode-in-emacs-pre-26-1 nil
   "Enable this mode even if the Emacs version is lower than 26.1
