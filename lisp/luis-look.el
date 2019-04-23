@@ -20,7 +20,7 @@
 (use-package luis-text-wrap
   :commands (luis-text-wrap-mode)
   :init
-  (setq luis-text-wrap-mode-no-warn-visual-fill-column-mode-in-emacs-pre-26-1 t))
+  (setq luis-text-wrap-mode-visual-fill-column-mode-warning-in-emacs-pre-26-1 nil))
 
 ;;; Mode Line and Theme
 
