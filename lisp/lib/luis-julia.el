@@ -2,15 +2,8 @@
 (require 'luis-modification)
 
 (use-package ess-julia
+  :defer
   :config
-  (add-hook 'ess-julia-mode-hook #'luis-company-configure-automatic-completion)
-  ;; (add-hook 'ess-julia-mode-hook #'luis-flycheck-unless-file-remote)
-  )
-
-;; (use-package flycheck-julia
-;;   :defer t
-;;   :init
-;;   (with-eval-after-load 'flycheck
-;;     (flycheck-julia-setup)))
+  (add-hook 'ess-julia-mode-hook #'luis-company-configure-automatic-completion))
 
 (provide 'luis-julia)
