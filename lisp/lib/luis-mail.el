@@ -8,8 +8,7 @@
 ;; http://justinsboringpage.blogspot.de/2013/02/configuring-emacs-to-send-icloud-mail.html
 ;; for a good tutorial.
 
-(setq send-mail-function 'smtpmail-send-it
-      message-send-mail-function 'smtpmail-send-it)
+(setq send-mail-function 'smtpmail-send-it)
 
 ;;; Reading Mail.
 
