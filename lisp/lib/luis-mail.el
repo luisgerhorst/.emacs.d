@@ -55,9 +55,7 @@
 
   (add-hook 'mu4e-compose-mode-hook #'turn-off-auto-fill)
 
-  (require 'luis-look)
   (add-hook 'mu4e-compose-mode-hook #'luis-text-wrap-mode)
-  (remove-hook 'mu4e-view-mode-hook #'luis-text-wrap-mode)
   (defun luis-mu4e-message-txt-body-will-show (msg)
     (let* ((txt (mu4e-message-field msg :body-txt))
            (html (mu4e-message-field msg :body-html)))
@@ -76,6 +74,7 @@
     (if (luis-mu4e-message-txt-body-will-show (mu4e-message-at-point))
         (luis-text-wrap-mode 1)
       (luis-text-wrap-mode -1)))
+  (remove-hook 'mu4e-view-mode-hook #'luis-text-wrap-mode)
   (add-hook 'mu4e-view-mode-hook
             #'luis-mu4e-enable-text-wrap-mode-when-plain-text)
 
