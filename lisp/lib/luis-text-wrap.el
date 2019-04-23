@@ -61,35 +61,25 @@ https://github.com/joostkremers/visual-fill-column/issues/1.")
 (define-minor-mode luis-text-wrap-mode
   "Visually wrap lines between wrap prefix and `fill-column'."
   :lighter " TextWrap"
-  (
-   (if luis-text-wrap-mode
-       (progn
-         (luis-text-wrap--save-state)
-         (visual-line-mode 1)
-         (diminish 'visual-line-mode)
-         (adaptive-wrap-prefix-mode 1)
-         (if (and (version< emacs-version "26.1")
-                  (not luis-text-wrap-mode-enable-visual-fill-column-mode-in-emacs-pre-26-1))
-             (when (not luis-text-wrap-mode-no-warn-visual-fill-column-mode-in-emacs-pre-26-1)
-               (message "You are running Emacs version < 26.1 which has a
-bug that can crash Emacs when visual-fill-column-mode is
-enabled (a mode employed by luis-text-wrap-mode). This bug has
-been fixed starting with Emacs version 26.1. For further
-information, see
-https://github.com/joostkremers/visual-fill-column/issues/1. visual-fill-column-mode
-is left disabled for now. To enable it anyway, set
-`luis-text-wrap-mode-enable-visual-fill-column-mode-in-emacs-pre-26-1' to t and retry. To
-disable this warning (but leave luis-text-wrap-mode disabled),
-set `luis-text-wrap-mode-no-warn-visual-fill-column-mode-in-emacs-pre-26-1' to t."))
-           (visual-fill-column-mode 1))
-         (local-set-key [remap fill-paragraph]
-                        #'luis-text-wrap-fill-paragraph-after-confirmation)
-         (local-set-key [remap mu4e-fill-paragraph]
-                        #'luis-text-wrap-fill-paragraph-after-confirmation))
-     (luis-text-wrap--restore-state)
-     (diminish-undo 'visual-line-mode)
-     (local-set-key [remap fill-paragraph] nil)
-     (local-set-key [remap mu4e-fill-paragraph] nil)
-     (kill-local-variable 'luis-text-wrap-fill-paragraph-require-confirmation))))
+  (if luis-text-wrap-mode
+      (progn
+        (luis-text-wrap--save-state)
+        (visual-line-mode 1)
+        (diminish 'visual-line-mode)
+        (adaptive-wrap-prefix-mode 1)
+        (if (and (version< emacs-version "26.1")
+                 (not luis-text-wrap-mode-enable-visual-fill-column-mode-in-emacs-pre-26-1))
+            (when (not luis-text-wrap-mode-no-warn-visual-fill-column-mode-in-emacs-pre-26-1)
+              (message "You are running Emacs version < 26.1 which has a bug that can crash Emacs when visual-fill-column-mode is enabled (a mode employed by luis-text-wrap-mode). This bug has been fixed starting with Emacs version 26.1. visual-fill-column-mode is left disabled for now. To enable it anyway, add (setq luis-text-wrap-mode-enable-visual-fill-column-mode-in-emacs-pre-26-1 t) to your .emacs.d/init.el and retry. To disable this warning (but leave luis-text-wrap-mode disabled), add (setq luis-text-wrap-mode-no-warn-visual-fill-column-mode-in-emacs-pre-26-1 t). For further information, see https://github.com/joostkremers/visual-fill-column/issues/1"))
+          (visual-fill-column-mode 1))
+        (local-set-key [remap fill-paragraph]
+                       #'luis-text-wrap-fill-paragraph-after-confirmation)
+        (local-set-key [remap mu4e-fill-paragraph]
+                       #'luis-text-wrap-fill-paragraph-after-confirmation))
+    (luis-text-wrap--restore-state)
+    (diminish-undo 'visual-line-mode)
+    (local-set-key [remap fill-paragraph] nil)
+    (local-set-key [remap mu4e-fill-paragraph] nil)
+    (kill-local-variable 'luis-text-wrap-fill-paragraph-require-confirmation)))
 
 (provide 'luis-text-wrap)
