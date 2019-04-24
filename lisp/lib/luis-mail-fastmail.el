@@ -23,10 +23,10 @@
 ;; only move the message to the Trash folder:
 (setf (alist-get 'trash mu4e-marks)
       (list :char '("d" . "▼")
-	        :prompt "dtrash"
-	        :dyn-target (lambda (target msg)
+            :prompt "dtrash"
+            :dyn-target (lambda (target msg)
                           (mu4e-get-trash-folder msg))
-	        :action (lambda (docid msg target)
+            :action (lambda (docid msg target)
                       ;; Here's the main difference to the regular trash mark,
                       ;; no +T before -N so the message is not marked as
                       ;; IMAP-deleted:
