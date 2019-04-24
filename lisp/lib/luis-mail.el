@@ -61,6 +61,8 @@
   ;; When composing a blank new message, keep the current context.
   (setq mu4e-compose-context-policy nil)
 
+  (setq mu4e-headers-results-limit 100)
+
   (defun luis-kill-mu4e-update-process-without-query (run-in-background)
     ;; Name from mu4e-utils.el function mu4e~update-mail-and-index-real. This
     ;; prevents Emacs from asking you if it is ok to kill offlineimap when Emacs
