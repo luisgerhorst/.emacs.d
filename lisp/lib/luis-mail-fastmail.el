@@ -9,29 +9,6 @@
       smtpmail-smtp-user "mumble@fastmail.com"
       smtpmail-local-domain "fastmail.com")
 
-;; When deleting a message in mu4e (i.e. press d in mu4e-headers-mode), the
-;; message is marked as IMAP-deleted and will be removed permanently the next
-;; time an expunge takes place (e.g. the next time mbsync runs), see
-;; https://github.com/djcb/mu/issues/1136. In contrast, what desktop mail
-;; clients usually do, is to just move the message to the Trash folder from
-;; where the server auto-deletes it after some delay (by default 1 week at
-;; FastMail), see
-;; https://www.fastmail.com/help/clients/deleteissue.html?u=4bbc411b.
-;;
-;; In mu4e-headers-mode, d marks a message as IMAP-deleted AND moves it to the
-;; trash folder, D only marks a message as IMAP-deleted. Thus rebind d to
-;; only move the message to the Trash folder:
-(setf (alist-get 'trash mu4e-marks)
-      (list :char '("d" . "▼")
-            :prompt "dtrash"
-            :dyn-target (lambda (target msg)
-                          (mu4e-get-trash-folder msg))
-            :action (lambda (docid msg target)
-                      ;; Here's the main difference to the regular trash mark,
-                      ;; no +T before -N so the message is not marked as
-                      ;; IMAP-deleted:
-                      (mu4e~proc-move docid (mu4e~mark-check-target target) "-N"))))
-
 (setq luis-mu4e-interesting-mail-query
       (concat "not maildir:\"/Mailing Lists/*/*\""
               " AND not maildir:\"/Learn Junk\""
