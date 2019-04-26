@@ -78,9 +78,6 @@
   (add-to-list 'mu4e-view-actions
                '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
-  (add-hook 'mu4e-compose-mode-hook #'turn-off-auto-fill)
-
-  (add-hook 'mu4e-compose-mode-hook #'luis-text-wrap-mode)
   (defun luis-mu4e-message-txt-body-will-show (msg)
     (let* ((txt (mu4e-message-field msg :body-txt))
            (html (mu4e-message-field msg :body-html)))
