@@ -81,15 +81,26 @@
 
 (setq-default fill-column 80)
 
-;; Disabled because of http://debbugs.gnu.org/cgi/bugreport.cgi?bug=29789
-;; (use-package visual-fill-column
-;; :commands (visual-fill-column-mode))
-
 (use-package fillcode
   :diminish fillcode-mode
   :commands (fillcode-mode)
   :init
   (add-hook 'prog-mode-hook #'fillcode-mode))
+
+(use-package luis-comment-auto-fill
+  :commands (luis-comment-auto-fill-mode)
+  :init
+  (add-hook 'prog-mode #'luis-comment-auto-fill-mode))
+
+(defun luis-use-hard-newlines-t-guess ()
+  "Distinct between hard and soft newlines but don't ask the user.
+When composing mail, this automatically sets format=flowed, see
+https://github.com/djcb/mu/issues/569."
+  (use-hard-newlines t 'guess))
+;; This should also enable it in `mu4e-compose-mode' as it's parent mode is
+;; `message-mode', whose parent mode is `text-mode'.
+(add-hook 'text-mode-hook #'luis-use-hard-newlines-t-guess)
+(add-hook 'text-mode-hook #'luis-use-hard-newlines-t-guess)
 
 ;;; Whitespaces
 
