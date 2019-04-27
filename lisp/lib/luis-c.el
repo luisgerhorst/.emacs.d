@@ -18,19 +18,21 @@
          c-mode-map
          ("C-c ;" . luis-sp-comment))
   :config
-  ;; C
-  (setq c-basic-offset tab-width)
-
-  ;; Set default indentation style to K&R instead of weird GNU style. See
+  ;; Set default indentation style to Java (which is mostly like K&R, but uses a
+  ;; `c-basic-offset' of 4 instead of 5) instead of weird GNU style. See
   ;; https://www.emacswiki.org/emacs/IndentingC#toc2
   (unless (listp c-default-style)
     (setq c-default-style nil))
-  (add-to-list 'c-default-style '(other . "k&r"))
+  (add-to-list 'c-default-style '(other . "java"))
+
+  ;; Leave `c-basic-offset' set to the default 'set-from-style here. For java,
+  ;; that's 4. If you want to change it, create your own c-style instead of
+  ;; setting it manually. Otherwise setting the style in dir-locals may not have
+  ;; the desired effect.
 
   (add-hook 'c-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'c-mode-hook #'luis-flycheck-unless-file-remote)
 
-  ;; C++
   (add-hook 'c++-mode-hook #'luis-company-configure-automatic-completion))
 
 (use-package xcscope
