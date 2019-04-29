@@ -24,27 +24,7 @@
 
 ;;; Mode Line and Theme
 
-(use-package powerline
-  :config
-  (set-face-underline 'mode-line nil)
-  (set-face-underline 'mode-line-inactive nil)
-  ;; Causes incorrect display of active mode line when Emacs is not focused.
-  (remove-hook 'focus-out-hook 'powerline-unset-selected-window)
-
-  (when (not (display-graphic-p))
-    ;; We do this since the patched fonts for powerline don't always work. In
-    ;; iTerm e.g. they may be vertically off as described at
-    ;; https://github.com/powerline/fonts/issues/31
-    (setq powerline-utf-8-separator-left (string-to-char " ")
-          powerline-utf-8-separator-right (string-to-char " ")
-          ;; The following is default anyway in terminals.
-          powerline-default-separator 'utf-8)))
-
 (defun luis-style-set (new background-mode powerline-seperator)
-  (when (display-graphic-p)
-    (setq powerline-default-separator powerline-seperator))
-  (powerline-default-theme)
-
   (mapc #'disable-theme custom-enabled-themes)
   (load-theme new t)
 
