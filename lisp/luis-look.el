@@ -1,6 +1,11 @@
 ;; -*- lexical-binding: t -*-
 ;;;; For things concerning the way it looks and what is highlighted.
 
+;;; Mode Line
+
+(column-number-mode 1)
+(size-indication-mode 1)
+
 ;;; Wrapping
 
 ;; Prefix wrapped lines like filling does but don't change the buffer. Does not
@@ -22,7 +27,7 @@
   :init
   (setq luis-text-wrap-mode-visual-fill-column-mode-warning-in-emacs-pre-26-1 nil))
 
-;;; Mode Line and Theme
+;;; Theme
 
 (defun luis-style-set (new background-mode powerline-seperator)
   (mapc #'disable-theme custom-enabled-themes)
@@ -74,9 +79,6 @@
 ;; otherwise eshell always scrolls to the right when a process (like homebrew)
 ;; shows a progress bar.
 (setq overflow-newline-into-fringe t)
-
-;; Display column number in mode line.
-(column-number-mode 1)
 
 ;; Highlight FIXME/TODO in comments.
 (add-hook 'prog-mode-hook #'fic-mode)
