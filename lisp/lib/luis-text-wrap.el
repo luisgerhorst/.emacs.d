@@ -4,7 +4,7 @@
 (require 'visual-fill-column)
 (require 'diminish)
 
-(require 'rmc)
+(require 'rmc nil t)
 (unless (fboundp 'read-multiple-choice)
   ;; Copied from rmc.el
   (defun read-multiple-choice (prompt choices)
