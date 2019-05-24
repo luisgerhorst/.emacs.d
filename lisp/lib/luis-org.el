@@ -7,7 +7,6 @@
          ("C-c o c" . org-capture)
          ("C-c o b" . org-switchb))
   :config
-  (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'auto-fill-mode)
   (add-to-list 'org-latex-packages-alist '("ngerman" "babel" t)))
 
