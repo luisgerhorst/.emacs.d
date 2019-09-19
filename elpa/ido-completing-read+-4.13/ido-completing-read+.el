@@ -5,8 +5,8 @@
 ;; Filename: ido-completing-read+.el
 ;; Author: Ryan Thompson
 ;; Created: Sat Apr  4 13:41:20 2015 (-0700)
-;; Version: 4.12
-;; Package-Version: 4.12
+;; Version: 4.13
+;; Package-Version: 4.13
 ;; Package-Requires: ((emacs "24.4") (cl-lib "0.5") (s "0.1") (memoize "1.1"))
 ;; URL: https://github.com/DarwinAwardWinner/ido-completing-read-plus
 ;; Keywords: ido, completion, convenience
@@ -78,7 +78,7 @@
 ;;
 ;;; Code:
 
-(defconst ido-completing-read+-version "4.12"
+(defconst ido-completing-read+-version "4.13"
   "Currently running version of ido-completing-read+.
 
 Note that when you update ido-completing-read+, this variable may
@@ -301,6 +301,8 @@ disable fallback based on collection size, set this to nil."
     ;; https://github.com/DarwinAwardWinner/ido-completing-read-plus/issues/159
     ffap-read-file-or-url
     ffap-read-file-or-url-internal
+    ;; https://github.com/DarwinAwardWinner/ido-completing-read-plus/issues/161
+    sly-read-symbol-name
     )
   "Functions & commands for which ido-cr+ should be disabled.
 
@@ -694,10 +696,10 @@ completion for them."
             (signal 'ido-cr+-fallback
                     '("ido cannot handle the empty string as an option when `ido-enable-dot-prefix' is non-nil; see https://debbugs.gnu.org/cgi/bugreport.cgi?bug=26997")))
 
-          ;; Fix ido handling of cons-style INITIAL-INPUT. TODO add a
-          ;; version check after this bug is fixed:
-          ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=27807
-          (when (consp initial-input)
+          ;; Fix ido's broken handling of cons-style INITIAL-INPUT on
+          ;; Emacsen older than 27.1.
+          (when (and (consp initial-input)
+                     (version< emacs-version "27.1"))
             ;; `completing-read' uses 0-based index while
             ;; `read-from-minibuffer' uses 1-based index.
             (cl-incf (cdr initial-input)))
@@ -1184,7 +1186,7 @@ blacklist was modified."
              (new-entries (cl-set-difference defval curval :test #'equal)))
         (if new-entries
             (if (eq ido-cr+-auto-update-blacklist 'notify)
-                (display-warning 'ido-completing-read+ "There are %s new blacklist entries available. Use `M-x ido-cr+-update-blacklist' to install them. (See `ido-cr+-auto-update-blacklist' for more information.)")
+                (display-warning 'ido-completing-read+ (format "There are %s new blacklist entries available. Use `M-x ido-cr+-update-blacklist' to install them. (See `ido-cr+-auto-update-blacklist' for more information.)" (length new-entries)))
               (ido-cr+--debug-message "Initiating blacklist update.")
               (ido-cr+-update-blacklist t))
           (ido-cr+--debug-message "No blacklist updates available.")))
