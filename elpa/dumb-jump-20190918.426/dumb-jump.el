@@ -1,8 +1,8 @@
-;;; dumb-jump.el --- jump to definition for multiple languages without configuration. -*- lexical-binding: t; -*-
-;; Copyright (C) 2015-2018 jack angers
-;; Author: jack angers
-;; Version: 0.5.2
-;; Package-Version: 20190327.1727
+;;; dumb-jump.el --- jump to definition for 40+ languages without configuration. -*- lexical-binding: t; -*-
+;; Copyright (C) 2015-2019 jack angers
+;; Author: jack angers and contributors
+;; Version: 0.5.3
+;; Package-Version: 20190918.426
 ;; Package-Requires: ((emacs "24.3") (f "0.20.0") (s "1.11.0") (dash "2.9.0") (popup "0.5.3"))
 ;; Keywords: programming
 
@@ -21,7 +21,7 @@
 
 ;;; Commentary:
 
-;; Dumb Jump is an Emacs "jump to definition" package with support for multiple programming languages that favors
+;; Dumb Jump is an Emacs "jump to definition" package with support for 40+ programming languages that favors
 ;; "just working" over speed or accuracy.  This means minimal -- and ideally zero -- configuration with absolutely
 ;; no stored indexes (TAGS) or persistent background processes.  Dumb Jump performs best with The Silver Searcher
 ;; `ag` or ripgrep `rg` installed.  Dumb Jump requires at least GNU Emacs 24.3.
@@ -69,7 +69,7 @@
 
 (defcustom dumb-jump-ivy-jump-to-selected-function
   #'dumb-jump-ivy-jump-to-selected
-  "Prompts user for a choice using ivy then dumb-jump to that choice")
+  "Prompts user for a choice using ivy then dumb-jump to that choice.")
 
 (defcustom dumb-jump-prefer-searcher
   nil
@@ -82,7 +82,6 @@ If nil then the most optimal searcher will be chosen at runtime."
                  (const :tag "grep" gnu-grep)
                  (const :tag "git grep" git-grep)
                  (const :tag "git grep + ag" git-grep-plus-ag)))
-
 
 (defcustom dumb-jump-force-searcher
   nil
@@ -404,6 +403,17 @@ or most optimal searcher."
            :tests ("NSString *test = @\"asdf\"")
            :not ("NSString *testnot = @\"asdf\"" "NSString *nottest = @\"asdf\""))
 
+    (:type "type" :supports ("ag" "grep" "rg" "git-grep") :language "objc"
+           :regex "(@interface|@protocol|@implementation)\\b\\s*JJJ\\b\\s*"
+           :tests ("@interface test: UIWindow")
+           :not ("@interface testnon: UIWindow"))
+
+
+    (:type "type" :supports ("ag" "grep" "rg" "git-grep") :language "objc"
+           :regex "typedef\\b\\s+(NS_OPTIONS|NS_ENUM)\\b\\([^,]+?,\\s*JJJ\\b\\s*"
+           :tests ("typedef NS_ENUM(NSUInteger, test)")
+           :not ("typedef NS_ENUMD(NSUInteger, test)"))
+
     ;; swift
     (:type "variable" :supports ("ag" "grep" "rg" "git-grep") :language "swift"
            :regex "(let|var)\\s*JJJ\\s*(=|:)[^=:\\n]+"
@@ -527,6 +537,22 @@ or most optimal searcher."
            :tests ("class test(object):" "class test:")
            :not ("class testnot:" "class testnot(object):"))
 
+    ;; matlab
+    (:type "variable" :supports ("ag" "grep" "rg" "git-grep") :language "matlab"
+           :regex "^\\s*\\bJJJ\\s*=[^=\\n]+"
+           :tests ("test = 1234")
+           :not ("for test = 1:2:" "_test = 1234"))
+
+    (:type "function" :supports ("ag" "grep" "rg" "git-grep") :language "matlab"
+             :regex "^\\s*function\\s*[^=]+\\s*=\\s*JJJ\\b"
+           :tests ("\tfunction y = test(asdf)" "function x = test()" "function [x, losses] = test(A, y, lambda, method, qtile)")
+           :not ("\tfunction testnot(asdf)" "function testnot()"))
+
+    (:type "type" :supports ("ag" "grep" "rg" "git-grep") :language "matlab"
+           :regex "^\\s*classdef\\s*JJJ\\b\\s*"
+           :tests ("classdef test")
+           :not ("classdef testnot"))
+
     ;; nim
     (:type "variable" :supports ("ag" "grep" "rg" "git-grep") :language "nim"
            :regex "(const|let|var)\\s*JJJ\\s*(=|:)[^=:\\n]+"
@@ -627,6 +653,18 @@ or most optimal searcher."
     (:type "type" :supports ("ag" "rg" "git-grep") :language "crystal"
            :regex "(^|[^\\w.])alias\\s+(\\w*::)*JJJ($|[^\\w|:])"
            :tests ("alias test" "alias Foo::test"))
+
+    ;; scad
+    (:type "variable" :supports ("ag" "grep" "rg" "git-grep") :language "scad"
+           :regex "\\s*\\bJJJ\\s*=[^=\\n]+" :tests ("test = 1234") :not ("if test == 1234 {"))
+
+    (:type "function" :supports ("ag" "grep" "rg" "git-grep") :language "scad"
+           :regex "function\\s*JJJ\\s*\\\("
+           :tests ("function test()" "function test ()"))
+
+    (:type "module" :supports ("ag" "grep" "rg" "git-grep") :language "scad"
+           :regex "module\\s*JJJ\\s*\\\("
+           :tests ("module test()" "module test ()"))
 
     ;; scala
     (:type "variable" :supports ("ag" "grep" "rg" "git-grep") :language "scala"
@@ -1271,7 +1309,19 @@ or most optimal searcher."
     (:type "type" :supports ("ag" "grep" "git-grep") :language "fsharp"
 	   :regex "type\\s+JJJ\\b.*\\\="
 	   :tests ("type test = 1234")
-	   :not ("type testnot = 1234")))
+	   :not ("type testnot = 1234"))
+
+    ;; kotlin
+    (:type "function" :supports ("ag" "grep" "rg" "git-grep") :language "kotlin"
+           :regex "fun\\s*(<[^>]*>)?\\s*JJJ\\s*\\("
+           :tests ("fun test()" "fun <T> test()"))
+    (:type "variable" :supports ("ag" "grep" "rg" "git-grep") :language "kotlin"
+           :regex "(val|var)\\s*JJJ\\b"
+           :not ("val testval" "var testvar")
+           :tests ("val test " "var test"))
+    (:type "type" :supports ("ag" "grep" "rg" "git-grep") :language "kotlin"
+           :regex "(class|interface)\\s*JJJ\\b"
+           :tests ("class test" "class test : SomeInterface" "interface test")))
 
 
   "List of regex patttern templates organized by language and type to use for generating the grep command."
@@ -1348,6 +1398,9 @@ or most optimal searcher."
     (:language "javascript" :ext "css" :agtype "css" :rgtype "css")
     (:language "dart" :ext "dart" :agtype nil :rgtype "dart")
     (:language "lua" :ext "lua" :agtype "lua" :rgtype "lua")
+    ;; the extension "m" is also used by obj-c so must use matlab-mode
+    ;; since obj-c will win by file extension, but here for searcher types
+    (:language "matlab" :ext "m" :agtype "matlab" :rgtype "matlab")
     (:language "nim" :ext "nim" :agtype "nim" :rgtype "nim")
     (:language "nix" :ext "nix" :agtype "nix" :rgtype "nix")
     (:language "org" :ext "org" :agtype nil :rgtype "org")
@@ -1380,6 +1433,7 @@ or most optimal searcher."
     (:language "ruby" :ext "rake" :agtype "ruby" :rgtype nil)
     (:language "ruby" :ext "slim" :agtype "ruby" :rgtype nil)
     (:language "rust" :ext "rs" :agtype "rust" :rgtype "rust")
+    (:language "scad" :ext "scad" :agtype nil :rgtype nil)
     (:language "scala" :ext "scala" :agtype "scala" :rgtype "scala")
     (:language "scheme" :ext "scm" :agtype "scheme" :rgtype "lisp")
     (:language "scheme" :ext "ss" :agtype "scheme" :rgtype "lisp")
@@ -1408,7 +1462,9 @@ or most optimal searcher."
     (:language "pascal" :ext "dfm" :agtype "delphi" :rgtype nil)
     (:language "fsharp" :ext "fs" :agtype "fsharp" :rgtype nil)
     (:language "fsharp" :ext "fsi" :agtype "fsharp" :rgtype nil)
-    (:language "fsharp" :ext "fsx" :agtype "fsharp" :rgtype nil))
+    (:language "fsharp" :ext "fsx" :agtype "fsharp" :rgtype nil)
+    (:language "kotlin" :ext "kt" :agtype "kotlin" :rgtype "kotlin")
+    (:language "kotlin" :ext "kts" :agtype "kotlin" :rgtype "kotlin"))
 
   "Mapping of programming language(s) to file extensions."
   :group 'dumb-jump
@@ -1482,7 +1538,13 @@ If `nil` always show list of more than 1 match."
   "If `t` will print helpful debug information."
   :group 'dumb-jump
   :type 'boolean)
-
+           
+(defcustom dumb-jump-confirm-jump-to-modified-file
+  t
+  "If t, confirm before jumping to a modified file (which may lead to an
+inaccurate jump).  If nil, jump without confirmation but print a warning."
+  :group 'dumb-jump
+  :type 'boolean)
 
 (defun dumb-jump-message-prin1 (str &rest args)
   "Helper function when debugging apply STR 'prin1-to-string' to all ARGS."
@@ -1753,17 +1815,23 @@ to keep looking for another root."
   (let* ((languages (-distinct
                      (--map (plist-get it :language)
                             dumb-jump-find-rules)))
-         (language (or (dumb-jump-get-language-by-filename file)
-                       (dumb-jump-get-language-from-mode))))
+         (language (or (dumb-jump-get-language-from-mode)
+                       (dumb-jump-get-language-by-filename file)
+                       (dumb-jump-get-mode-base-name))))
     (if (member language languages)
       language
       (format ".%s file" (or (f-ext file) "")))))
 
+(defun dumb-jump-get-mode-base-name ()
+  "Get the base name of the mode."
+  (s-replace "-mode" "" (symbol-name major-mode)))
+
 (defun dumb-jump-get-language-from-mode ()
   "Extract the language from the 'major-mode' name.  Currently just everything before '-mode'."
-  (let ((lookup '(sh "shell" cperl "perl"))
-        (m (s-replace "-mode" "" (symbol-name major-mode))))
-        (or (plist-get lookup (intern m)) m)))
+  (let* ((lookup '(sh "shell" cperl "perl" matlab "matlab"))
+        (m (dumb-jump-get-mode-base-name))
+        (result (plist-get lookup (intern m))))
+    result))
 
 
 (defun dumb-jump-get-language-by-filename (file)
@@ -1894,7 +1962,7 @@ of project configuraiton."
                                               cur-line-num parse-fn generate-fn)
                        search-paths))
 
-         (results (--map (plist-put it :target look-for) raw-results)))
+         (results (delete-dups (--map (plist-put it :target look-for) raw-results))))
 
     `(:results ,results :lang ,(if (null lang) "" lang) :symbol ,look-for :ctx-type ,(if (null ctx-type) "" ctx-type) :file ,cur-file :root ,proj-root)))
 
@@ -2004,6 +2072,7 @@ current file."
     (:comment "#" :language "perl")
     (:comment "//" :language "php")
     (:comment "#" :language "python")
+    (:comment "%" :language "matlab")
     (:comment "#" :language "r")
     (:comment "#" :language "ruby")
     (:comment "#" :language "crystal")
@@ -2180,10 +2249,16 @@ Ffrom the ROOT project CONFIG-FILE."
     (member (f-full path) (--map (buffer-file-name it) modified-file-buffers))))
 
 (defun dumb-jump-result-follow (result &optional use-tooltip proj)
-  "Take the RESULT to jump to and record the jump, for jumping back, and then trigger jump.  Prompt if we should continue if destentation has been modified."
+  "Take the RESULT to jump to and record the jump, for jumping back, and then trigger jump.  If dumb-jump-confirm-jump-to-modified-file is t, prompt if we should continue if destination has been modified.  If it is nil, display a warning."
   (if (dumb-jump-file-modified-p (plist-get result :path))
-      (when (y-or-n-p (concat (plist-get result :path) " has been modified so we may have the wrong location. Continue?"))
-        (dumb-jump--result-follow result use-tooltip proj))
+      (let ((target-file (plist-get result :path)))
+        (if dumb-jump-confirm-jump-to-modified-file
+            (when (y-or-n-p (concat target-file " has been modified so we may have the wrong location. Continue?"))
+              (dumb-jump--result-follow result use-tooltip proj))
+          (progn (message
+                  "Warning: %s has been modified so we may have the wrong location."
+                  target-file)
+                 (dumb-jump--result-follow result use-tooltip proj))))
     (dumb-jump--result-follow result use-tooltip proj)))
 
 (defun dumb-jump--result-follow (result &optional use-tooltip proj)

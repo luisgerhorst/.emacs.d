@@ -10,7 +10,7 @@
 ;; Maintainer: Dima Kogan <dima@secretsauce.net>
 ;; Keywords: languages c
 ;; Homepage: https://github.com/dkogan/xcscope.el
-;; Package-Version: 1.4
+;; Package-Version: 1.5
 ;; Package-X-Original-Version: 1.0
 
 ;; This file is not part of GNU Emacs.
@@ -2145,6 +2145,18 @@ concatenation of ARGS is returned"
   dir
   )
 
+
+(defun cscope--expand-file-name-with-absolute-remote (file)
+  "Returns an expanded filename, with the remote prefix.
+This is just like `expand-file-name', but will always contain the
+remote prefix if `default-directory' has one. `expand-file-name'
+will not do this if FILE is an absolute (but local) path"
+  (let ((file-expanded (expand-file-name file)))
+    (if (file-remote-p file-expanded)
+        file-expanded
+      (concat (or (file-remote-p default-directory) "")
+              file-expanded))))
+
 (defun cscope-construct-custom-options-list ()
   "Returns a list of cscope options defined by the
 cscope-option-* variables"
@@ -2362,7 +2374,7 @@ using the mouse."
                                                  str))
                           (cscope-insert-with-text-properties
                            str
-                           (expand-file-name file))
+                           (cscope--expand-file-name-with-absolute-remote file))
                           (insert "\n")))
 
                     (if cscope-first-match-point
@@ -2375,7 +2387,7 @@ using the mouse."
                      (cscope-make-entry-line function-name
                                              line-number
                                              line)
-                     (expand-file-name file)
+                     (cscope--expand-file-name-with-absolute-remote file)
                      line-number
                      line)
                     (insert "\n")
