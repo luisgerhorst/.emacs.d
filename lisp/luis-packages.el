@@ -23,36 +23,46 @@
 
 (require 'package)
 
-(setq package-archives
-      (append `(("melpa-stable" . "https://stable.melpa.org/packages/")
-                ("melpa" . "https://melpa.org/packages/")
-                ;; See below for additional items added to this list.
-                )
-              package-archives)
+(defvar luis-online-package-archives t
+  "Include online package archives in `package-archives'.
+Disable this if you behind a proxy/firewall that may cause
+requests to online package archives to hang.")
 
-      ;; When installing packages, the package with the highest version number
-      ;; from the archive with the highest priority is selected.  When higher
-      ;; versions are available from archives with lower priorities, the user
-      ;; has to select those manually.
-      package-archive-priorities
-      '(("melpa-stable" . 10)
-        ("melpa" . 5)
-        ("gnu" . 0)
-        ;; See below for additional items added to this list.
-        )
+(when (not luis-online-package-archives)
+  ;; Remove standard archives (i.e. gnu).
+  (setq package-archives nil))
 
-      ;; Pinned packages. Must be added here since use-package's :pin does not
-      ;; really work, see https://github.com/jwiegley/use-package/issues/343
-      ;;
-      ;; After adding a new pinned repository you MUST run
-      ;; `package-refresh-contents' before installing the package.
-      package-pinned-packages
-      '((eclim . "melpa")
-        (company-emacs-eclim . "melpa")
-        (ensime . "melpa-stable")
-        (dumb-jump . "melpa")
-        ;; Because I wanted to customize `exec-path-from-shell-shell-name':
-        (exec-path-from-shell . "melpa")))
+(when luis-online-package-archives
+  (setq package-archives
+        (append `(("melpa-stable" . "https://stable.melpa.org/packages/")
+                  ("melpa" . "https://melpa.org/packages/")
+                  ;; See below for additional items added to this list.
+                  )
+                package-archives)
+
+        ;; When installing packages, the package with the highest version number
+        ;; from the archive with the highest priority is selected.  When higher
+        ;; versions are available from archives with lower priorities, the user
+        ;; has to select those manually.
+        package-archive-priorities
+        '(("melpa-stable" . 10)
+          ("melpa" . 5)
+          ;; Default is 0. This applies to the gnu archive.  See below for
+          ;; additional items added to this list.
+          )
+
+        ;; Pinned packages. Must be added here since use-package's :pin does not
+        ;; really work, see https://github.com/jwiegley/use-package/issues/343
+        ;;
+        ;; After adding a new pinned repository you MUST run
+        ;; `package-refresh-contents' before installing the package.
+        package-pinned-packages
+        '((eclim . "melpa")
+          (company-emacs-eclim . "melpa")
+          (ensime . "melpa-stable")
+          (dumb-jump . "melpa")
+          ;; Because I wanted to customize `exec-path-from-shell-shell-name':
+          (exec-path-from-shell . "melpa"))))
 
 ;; Create a local package archive mirror that only contains the installed
 ;; packages, using `elpamr-create-mirror-for-installed'. Then copy it to a
