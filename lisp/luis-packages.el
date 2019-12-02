@@ -26,7 +26,6 @@
 (setq package-archives
       (append `(("melpa-stable" . "https://stable.melpa.org/packages/")
                 ("melpa" . "https://melpa.org/packages/")
-                ("marmalade" . "http://marmalade-repo.org/packages/")
                 ;; See below for additional items added to this list.
                 )
               package-archives)
@@ -39,7 +38,6 @@
       '(("melpa-stable" . 10)
         ("melpa" . 5)
         ("gnu" . 0)
-        ("marmalade" . -5)
         ;; See below for additional items added to this list.
         )
 
