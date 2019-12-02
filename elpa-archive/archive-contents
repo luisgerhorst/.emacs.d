@@ -48,7 +48,7 @@
  (flycheck-irony . [(0 1 0) ((emacs (24 1)) (flycheck (0 22)) (irony (0 2 0))) "Flycheck: C/C++ support via Irony" tar])
  (flycheck-julia . [(0 1 1) ((emacs (24)) (flycheck (0 22))) "Julia support for Flycheck" tar])
  (flycheck-rust . [(1 1) ((emacs (24 1)) (flycheck (28)) (dash (2 13 0)) (seq (2 3)) (let-alist (1 0 4))) "Flycheck: Rust additions and Cargo support" tar])
- (frame-restore . [(0 5) ((emacs (24 1))) "Restore Emacs frame" tar])
+ (fzf . [(0 2) ((emacs (24 4))) "A front-end for fzf." tar])
  (ghub . [(3 2 0) ((emacs (25 1)) (dash (2 14 1)) (graphql (0 1 1)) (let-alist (1 0 5)) (treepy (0 1 1))) "Minuscule client libraries for Git forge APIs." tar])
  (git-commit . [(2 90 1) ((emacs (25 1)) (dash (2 14 1)) (with-editor (2 8 0))) "Edit Git commit messages" tar])
  (git-timemachine . [(4 11) ((emacs (24 3)) (transient (0 1 0))) "Walk through git revisions of a file" tar])
