@@ -7,3 +7,6 @@
 [submodule "site-lisp/solarized-emacs"]
 	path = site-lisp/solarized-emacs
 	url = git@github.com:luisgerhorst/solarized-emacs.git
+[submodule "site-lisp/elpa-mirror"]
+	path = site-lisp/elpa-mirror
+	url = git@github.com:redguardtoo/elpa-mirror.git
