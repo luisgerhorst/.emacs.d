@@ -4,17 +4,24 @@
   :defer t
   :config
   (add-hook 'java-mode-hook
-            #'luis-company-configure-automatic-completion))
+            #'luis-company-configure-automatic-completion)
+
+  ;; Not sure if this is bad if the project does not use gradle/maven. If it
+  ;; causes problems remove it / make it conditional.
+  (add-hook 'java-mode-hook
+            #'meghanada-mode))
 
 (use-package meghanada
   :defer t
   :config
-  (add-hook 'meghanda-mode-hook #'flycheck-mode))
+  (with-eval-after-load 'flycheck
+    (add-hook 'meghanada-mode-hook #'flycheck-mode)))
 
 (defun luis-gradle-run ()
   (interactive)
   (gradle-execute "run"))
 
+;;; Only works if the gradle binary is in the PATH.
 (use-package gradle-mode
   :diminish gradle-mode
   :bind (:map
