@@ -8,10 +8,6 @@
       ;; Scroll in smaller steps when mouse is used.
       mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
-;; On Mac: Meta-Option-n/p
-(global-set-key (kbd "M-N") #'scroll-up-line)
-(global-set-key (kbd "M-P") #'scroll-down-line)
-
 ;;; Windows
 
 (use-package ace-window
