@@ -8,6 +8,12 @@
       ;; Scroll in smaller steps when mouse is used.
       mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
+;;; I used to bind these to M-N/P (== Option-Shift-n/p) but for some reason
+;;; these key bindings no longer work on macOS Catalina. Maybe recheck this
+;;; later. For now they only work if not overlayed by another keymap.
+(global-set-key (kbd "M-n") #'scroll-up-line)
+(global-set-key (kbd "M-p") #'scroll-down-line)
+
 ;;; Windows
 
 (use-package ace-window
