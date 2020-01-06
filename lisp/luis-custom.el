@@ -253,7 +253,7 @@
  '(ns-pop-up-frames nil)
  '(package-selected-packages
    (quote
-    (fzf cuda-mode flycheck-julia async git-commit flycheck-rust magit-svn mips-mode ess racer company-racer cargo rust-mode delight esh-autosuggest reveal-in-osx-finder flx-ido ido-completing-read+ ace-window xcscope company-jedi anaconda-mode frame-restore meghanada gradle-mode dsvn groovy-mode flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit auctex ws-butler which-key vkill visual-fill-column swift-mode smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode fillcode expand-region exec-path-from-shell discover-my-major discover diminish crm-custom company-quickhelp company-c-headers company-auctex avy auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
+    (lsp-ui company-lsp cargo rust-auto-use rustic fzf cuda-mode flycheck-julia async git-commit magit-svn mips-mode ess rust-mode delight esh-autosuggest reveal-in-osx-finder flx-ido ido-completing-read+ ace-window xcscope company-jedi anaconda-mode frame-restore meghanada gradle-mode dsvn groovy-mode flycheck-irony company ag git-timemachine whole-line-or-region fic-mode yaml-mode projectile ido-vertical-mode flycheck company-irony irony use-package dumb-jump ensime iedit auctex ws-butler which-key vkill visual-fill-column swift-mode smex scss-mode paredit paradox nasm-mode mu4e-alert markdown-mode magit lua-mode fillcode expand-region exec-path-from-shell discover-my-major discover diminish crm-custom company-quickhelp company-c-headers company-auctex avy auto-complete auto-compile apache-mode aggressive-indent adaptive-wrap)))
  '(paradox-automatically-star t)
  '(paradox-execute-asynchronously t)
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
@@ -338,4 +338,5 @@
  '(helm-selection ((t (:background "#839496" :foreground "#002b36" :underline nil))))
  '(helm-source-header ((t (:background "#268bd2" :foreground "#002b36" :underline nil))))
  '(iedit-occurrence ((t (:inherit lazy-highlight))))
- '(leerzeichen ((t (:foreground "#475B62")))))
+ '(leerzeichen ((t (:foreground "#475B62"))))
+ '(lsp-ui-sideline-global ((t (:background "black" :foreground "brightgreen")))))
