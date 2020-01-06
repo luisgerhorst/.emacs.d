@@ -25,20 +25,6 @@
 
 ;;; Completion
 
-(use-package yasnippet
-  :diminish yas-minor-mode
-  :bind (:map
-         yas-minor-mode-map
-         ("C-c y y" . yas-expand)
-         :map
-         yas-keymap
-         ("C-c y i" . yas-next-field-or-maybe-expand))
-  :config
-  (define-key yas-minor-mode-map [(tab)] nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-keymap [(tab)] nil)
-  (define-key yas-keymap (kbd "TAB") nil))
-
 (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
   (setq-local company-idle-delay idle-delay)
   (setq-local company-minimum-prefix-length minimum-prefix-length))
