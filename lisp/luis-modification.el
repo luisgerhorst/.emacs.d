@@ -63,10 +63,6 @@
 (use-package abbrev
   :diminish abbrev-mode)
 
-(use-package lsp-mode
-  :init
-  (add-hook 'prog-mode-hook #'lsp))
-
 ;;; Filling
 
 (setq-default fill-column 80)

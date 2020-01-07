@@ -5,6 +5,20 @@
 (setq compilation-ask-about-save nil)
 (global-set-key (kbd "C-c c") #'compile)
 
+;;; Language Server Protocol
+
+;; To enable this in a specific language, add
+;;
+;; (use-package lang-mode
+;;   :config
+;;   (add-hook 'lang-mode-hook #'lsp))
+;;
+;; to 'lib/luis-lang.el'.
+(use-package lsp-mode
+  :defer t)
+
+;; For configuration of `lsp-ui', see 'M-x customize-group lsp-ui'.
+
 ;;; Syntax Checking
 
 (setq flymake-gui-warnings-enabled nil

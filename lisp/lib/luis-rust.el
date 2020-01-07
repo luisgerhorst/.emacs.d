@@ -5,6 +5,7 @@
   :init
   (setq rust-format-on-save t)
   :config
+  (add-hook 'rust-mode-hook #'lsp)
   (add-hook 'rust-mode-hook #'luis-company-configure-automatic-completion))
 
 (use-package cargo
