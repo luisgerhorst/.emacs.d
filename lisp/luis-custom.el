@@ -201,8 +201,6 @@
  '(eshell-rm-removes-directories t)
  '(ess-smart-S-assign-key nil)
  '(fci-rule-color "#073642")
- '(flycheck-display-errors-delay 60)
- '(flycheck-mode-line (quote (:eval "FlyC")))
  '(git-commit-fill-column 72)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors

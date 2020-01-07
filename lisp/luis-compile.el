@@ -37,7 +37,11 @@
          flycheck-mode-map
          ;; We could also use 'C-c ! ...' but this way flymake and flycheck have
          ;; the same interface.
-         ("C-c n" . flycheck-next-error)))
+         ("C-c n" . flycheck-next-error))
+  :init
+  ;; Prevent multi-line error messages popping up in the mode line from
+  ;; distracting us.
+  (setq flycheck-display-errors-delay 60))
 
 (defun luis-flycheck-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))
