@@ -235,6 +235,7 @@
  '(initial-buffer-choice "~/")
  '(ispell-dictionary "de_DE")
  '(jedi:environment-root "3.5.3")
+ '(lsp-ui-sideline-enable nil)
  '(magit-completing-read-function (quote magit-ido-completing-read))
  '(magit-diff-use-overlays nil)
  '(magit-push-always-verify nil)
