@@ -21,12 +21,23 @@
 
 ;;; Syntax Checking
 
-(setq flymake-gui-warnings-enabled nil
-      flymake-log-level 0)
+(use-package flymake
+  :defer t
+  :bind (:map
+         flymake-mode-map
+         ("C-c n" . flymake-goto-next-error))
+  :init
+  (setq flymake-gui-warnings-enabled nil
+        flymake-log-level 0))
 
 (use-package flycheck
   :commands (flycheck-mode)
-  :bind-keymap ("C-c !" . flycheck-command-map))
+  :bind-keymap ("C-c !" . flycheck-command-map)
+  :bind (:map
+         flycheck-mode-map
+         ;; We could also use 'C-c ! ...' but this way flymake and flycheck have
+         ;; the same interface.
+         ("C-c n" . flycheck-next-error)))
 
 (defun luis-flycheck-unless-file-remote ()
   (let ((current-file (buffer-file-name (current-buffer))))
