@@ -332,6 +332,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:height 130 :family "Input Mono"))))
  '(completions-common-part ((t (:inherit company-preview-common))))
+ '(flymake-warning ((t nil)))
  '(helm-ff-dotted-directory ((t (:foreground "#586e75"))))
  '(helm-ff-dotted-symlink-directory ((t (:foreground "#586e75"))))
  '(helm-selection ((t (:background "#839496" :foreground "#002b36" :underline nil))))
