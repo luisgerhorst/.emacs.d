@@ -23,7 +23,7 @@
 ;;; Load Path
 
 (require 'luis-packages)
-(require 'use-package)
+(straight-use-package 'use-package)
 (require 'diminish)
 
 ;;; Features
