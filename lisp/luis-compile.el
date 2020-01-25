@@ -21,14 +21,15 @@
 
 ;;; Syntax Checking
 
-(use-package flymake
-  :defer t
-  :bind (:map
-         flymake-mode-map
-         ("C-c n" . flymake-goto-next-error))
-  :init
-  (setq flymake-gui-warnings-enabled nil
-        flymake-log-level 0))
+(setq flymake-gui-warnings-enabled nil
+      flymake-log-level 0)
+
+(when (version< "26.1" emacs-version)
+  (use-package flymake
+	       :defer t
+	       :bind (:map
+		      flymake-mode-map
+		      ("C-c n" . flymake-goto-next-error))))
 
 (use-package flycheck
   :commands (flycheck-mode)
