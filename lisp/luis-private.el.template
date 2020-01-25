@@ -1,10 +1,5 @@
-;; If you hit GitHubs rate limit when using paradox, you can enter your
-;; GitHub access token here to increase it.
-;; (setq paradox-github-token "YOUR_GITHUB_TOKEN")
-
-;; If you are behind a corporate proxy/firewall disable access to online package
-;; archives.
-;; (setq luis-online-package-archives nil)
+;;; Remove the .template suffix and insert machine local / private configuration
+;;; here.
 
 
 (provide 'luis-private)

@@ -250,8 +250,6 @@
  '(ns-control-modifier (quote control))
  '(ns-function-modifier (quote none))
  '(ns-pop-up-frames nil)
- '(paradox-automatically-star t)
- '(paradox-execute-asynchronously t)
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
