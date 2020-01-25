@@ -40,28 +40,16 @@
   (setq frame-background-mode background-mode)
   (frame-set-background-mode (selected-frame)))
 
-(defun luis-style-dark ()
-  (require 'solarized)
-  (luis-style-set 'solarized-dark 'dark 'utf-8)
+(use-package solarized
+  :straight (solarized :host github :repo "bbatsov/solarized-emacs"
+                       :fork (:host github :repo "luisgerhorst/solarized-emacs" :branch "terminal_workaround"))
+  :init
+  (load-theme 'solarized-dark t)
+  :config
   (when solarized-iterm
     (set-face-attribute 'vertical-border nil
                         :background "brightgreen"
                         :foreground "brightgreen")))
-
-(defun luis-style-light ()
-  (luis-style-set 'adwaita 'light nil))
-
-(defvar luis-style-toggle-state t)
-
-(defun luis-theme-toggle ()
-  (interactive)
-  (if luis-style-toggle-state
-      (luis-style-light)
-    (luis-style-dark))
-  (setq luis-style-toggle-state (not luis-style-toggle-state)))
-
-(luis-style-dark)
-
 
 ;;; Whitespaces
 
