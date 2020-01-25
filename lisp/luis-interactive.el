@@ -74,9 +74,7 @@
 ;; The forward naming method includes part of the file's directory
 ;; name at the beginning of the buffer name
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Uniquify.html
-(use-package uniquify
-  :config
-  (setq uniquify-buffer-name-style 'forward))
+(setq uniquify-buffer-name-style 'forward)
 
 ;;; Discover Emacs commands and shortcuts with popup buffers.
 

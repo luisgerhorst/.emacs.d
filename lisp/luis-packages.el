@@ -19,81 +19,101 @@
 ;; from elpa package archives.
 (luis-add-subdirs-to-load-path (locate-user-emacs-file "site-lisp/"))
 
-;;; ELPA
+;;; straight.el
 
-(require 'package)
+(setq straight-use-package-by-default t)
 
-(defvar luis-online-package-archives t
-  "Include online package archives in `package-archives'.
-Disable this if you behind a proxy/firewall that may cause
-requests to online package archives to hang.")
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(when (not luis-online-package-archives)
-  ;; Remove standard archives (i.e. gnu).
-  (setq package-archives nil))
+(straight-use-package 'use-package)
 
-(when luis-online-package-archives
-  (setq package-archives
-        (append `(("melpa" . "https://melpa.org/packages/")
-                  ;; See below for additional items added to this list.
-                  )
-                package-archives)
-
-        ;; When installing packages, the package with the highest version number
-        ;; from the archive with the highest priority is selected.  When higher
-        ;; versions are available from archives with lower priorities, the user
-        ;; has to select those manually.
-        package-archive-priorities
-        '(("melpa" . 5)
-          ;; Default is 0. This applies to the gnu archive.  See below for
-          ;; additional items added to this list.
-          )
-
-        ;; Pinned packages. Must be added here since use-package's :pin does not
-        ;; really work, see https://github.com/jwiegley/use-package/issues/343
-        ;;
-        ;; After adding a new pinned repository you MUST run
-        ;; `package-refresh-contents' before installing the package.
-        package-pinned-packages
-        '((eclim . "melpa"))))
-
-;; Create a local package archive mirror that only contains the installed
-;; packages, using `elpamr-create-mirror-for-installed'. Then copy it to a
-;; machine without direct archive access (e.g. by commiting it to your dotfiles
-;; repo) and install the packages there.
+;; package-selected-packages that may have to be installed:
 ;;
-;; `elpa-mirror' must be in Site-Lisp.
-(require 'elpa-mirror)
-(setq elpamr-default-output-directory
-      ;; Trailing slash required for use in `package-archives' list and `concat'!
-      (file-name-as-directory (locate-user-emacs-file "elpa-archive")))
-
-;; Only add the local mirror to the package archive lists when it is initialized
-;; (detect it by checking whether 'archive-contents' exists as a heuristic).
-(when (file-readable-p (concat elpamr-default-output-directory "archive-contents"))
-  (setq package-archives
-        (append `(("local" . ,elpamr-default-output-directory)) package-archives)
-        ;; When possible we want to use the local mirror. When there's a new
-        ;; version available online we install it and then update the local
-        ;; archive mirror using `elpamr-create-mirror-for-installed' if it works
-        ;; fine.
-        package-archive-priorities
-        '(("local" . 15))))
-
-(package-initialize)
-
-;; Load archives and install packages when Emacs opens for the first time
-(when (not package-archive-contents)
-  (package-refresh-contents)
-  ;; We'll use the `package-selected-packages' variable to remember installed
-  ;; packages if .emacs.d/elpa gets deleted. The following code ensures all
-  ;; listed packages are installed. Before calling this function you should
-  ;; always call `package-refresh-contents' because otherwise newly pinned
-  ;; packages may not be considered. Packages installed by the user
-  ;; (e.g. using `package-install') will be added automatically to
-  ;; `package-selected-packages' which is stored in `custom-file'.
-  (when (version<= "25.1" emacs-version)
-    (package-install-selected-packages)))
+;; lsp-ui
+;; company-lsp
+;; cargo
+;; rust-auto-use
+;; fzf
+;; cuda-mode
+;; flycheck-julia
+;; async
+;; git-commit
+;; magit-svn
+;; mips-mode
+;; ess
+;; rust-mode
+;; delight
+;; esh-autosuggest
+;; reveal-in-osx-finder
+;; flx-ido
+;; ido-completing-read+
+;; ace-window
+;; xcscope
+;; company-jedi
+;; anaconda-mode
+;; frame-restore
+;; meghanada
+;; gradle-mode
+;; dsvn
+;; groovy-mode
+;; flycheck-irony
+;; company
+;; ag
+;; git-timemachine
+;; whole-line-or-region
+;; fic-mode
+;; yaml-mode
+;; projectile
+;; ido-vertical-mode
+;; flycheck
+;; company-irony
+;; irony
+;; use-package
+;; dumb-jump
+;; ensime
+;; iedit
+;; auctex
+;; ws-butler
+;; which-key
+;; vkill
+;; visual-fill-column
+;; swift-mode
+;; smex
+;; scss-mode
+;; paredit
+;; paradox
+;; nasm-mode
+;; mu4e-alert
+;; markdown-mode
+;; magit
+;; lua-mode
+;; fillcode
+;; expand-region
+;; exec-path-from-shell
+;; discover-my-major
+;; discover
+;; diminish
+;; crm-custom
+;; company-quickhelp
+;; company-c-headers
+;; company-auctex
+;; avy
+;; auto-complete
+;; auto-compile
+;; apache-mode
+;; aggressive-indent
+;; adaptive-wrap
 
 
 (provide 'luis-packages)

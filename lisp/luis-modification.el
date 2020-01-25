@@ -61,6 +61,7 @@
   (global-company-mode 1))
 
 (use-package abbrev
+  :straight nil
   :diminish abbrev-mode)
 
 ;;; Filling
@@ -74,6 +75,7 @@
   (add-hook 'prog-mode-hook #'fillcode-mode))
 
 (use-package luis-comment-auto-fill
+  :straight nil
   :commands (luis-comment-auto-fill-mode)
   :init
   (add-hook 'prog-mode #'luis-comment-auto-fill-mode))

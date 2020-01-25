@@ -18,11 +18,15 @@
 (setq-default truncate-lines t)
 (setq-default word-wrap t)
 
+(use-package visual-fill-column)
+
 ;; Enable in files with long lines that can not be modified.
 (use-package luis-code-wrap
+  :straight nil
   :commands (luis-code-wrap-mode))
 
 (use-package luis-text-wrap
+  :straight nil
   :commands (luis-text-wrap-mode)
   :init
   (setq luis-text-wrap-mode-visual-fill-column-mode-warning-in-emacs-pre-26-1 nil))
@@ -65,7 +69,6 @@
 
 ;;; Cursor
 
-(blink-cursor-mode -1)
 (show-paren-mode 1)
 
 ;;; Misc
@@ -81,7 +84,10 @@
 (setq overflow-newline-into-fringe t)
 
 ;; Highlight FIXME/TODO in comments.
-(add-hook 'prog-mode-hook #'fic-mode)
+(use-package fic-mode
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook #'fic-mode))
 
 (when (not (display-graphic-p))
   (menu-bar-mode -1))

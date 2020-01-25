@@ -16,6 +16,7 @@
   (add-hook 'scheme-mode-hook #'paredit-mode))
 
 (use-package elisp-mode
+  :straight nil
   :mode ("\\.el\\.template\\'" . emacs-lisp-mode)
   :bind (:map
          emacs-lisp-mode-map

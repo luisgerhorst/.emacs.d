@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package tex-site ;; AUCTeX overrides LaTeX
+  :straight auctex
   :mode ("\\.tex\\'" . LaTeX-mode)
   :config
   (setq TeX-auto-save t
