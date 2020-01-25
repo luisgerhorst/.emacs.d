@@ -35,7 +35,10 @@ TAGS
 /frame-restore-parameters
 /network-security.data
 /%backup%~
+/transient/history.el
 
 /lisp/luis-private.el
 /lisp/luis-machine-local.el
-/transient/history.el
+
+/straight/*
+!/straight/versions
