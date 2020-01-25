@@ -34,8 +34,7 @@ requests to online package archives to hang.")
 
 (when luis-online-package-archives
   (setq package-archives
-        (append `(("melpa-stable" . "https://stable.melpa.org/packages/")
-                  ("melpa" . "https://melpa.org/packages/")
+        (append `(("melpa" . "https://melpa.org/packages/")
                   ;; See below for additional items added to this list.
                   )
                 package-archives)
@@ -45,8 +44,7 @@ requests to online package archives to hang.")
         ;; versions are available from archives with lower priorities, the user
         ;; has to select those manually.
         package-archive-priorities
-        '(("melpa-stable" . 10)
-          ("melpa" . 5)
+        '(("melpa" . 5)
           ;; Default is 0. This applies to the gnu archive.  See below for
           ;; additional items added to this list.
           )
@@ -57,12 +55,7 @@ requests to online package archives to hang.")
         ;; After adding a new pinned repository you MUST run
         ;; `package-refresh-contents' before installing the package.
         package-pinned-packages
-        '((eclim . "melpa")
-          (company-emacs-eclim . "melpa")
-          (ensime . "melpa-stable")
-          (dumb-jump . "melpa")
-          ;; Because I wanted to customize `exec-path-from-shell-shell-name':
-          (exec-path-from-shell . "melpa"))))
+        '((eclim . "melpa"))))
 
 ;; Create a local package archive mirror that only contains the installed
 ;; packages, using `elpamr-create-mirror-for-installed'. Then copy it to a
