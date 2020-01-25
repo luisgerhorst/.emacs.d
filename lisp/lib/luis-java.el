@@ -4,15 +4,15 @@
   :defer t
   :config
   (add-hook 'java-mode-hook
-            #'luis-company-configure-automatic-completion)
-
-  ;; Not sure if this is bad if the project does not use gradle/maven. If it
-  ;; causes problems remove it / make it conditional.
-  (add-hook 'java-mode-hook
-            #'meghanada-mode))
+            #'luis-company-configure-automatic-completion))
 
 (use-package meghanada
   :defer t
+  :init
+  (with-eval-after-load 'cc-mode
+    ;; Not sure if this is bad if the project does not use gradle/maven. If it
+    ;; causes problems remove it / make it conditional.
+    (add-hook 'java-mode-hook #'meghanada-mode))
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'meghanada-mode-hook #'flycheck-mode)))
