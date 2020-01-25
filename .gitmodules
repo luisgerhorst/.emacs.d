@@ -1,6 +1,3 @@
-[submodule "yasnippet-snippets"]
-	path = snippets
-	url = git@github.com:AndreaCrotti/yasnippet-snippets.git
 [submodule "benchmark-init-el"]
 	path = site-lisp/benchmark-init-el
     url = git@github.com:dholm/benchmark-init-el.git
