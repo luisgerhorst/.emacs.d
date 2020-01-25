@@ -1,24 +1,5 @@
 ;; -*- lexical-binding: t; -*-
 
-;;; Site-Lisp
-
-(add-to-list 'load-path (locate-user-emacs-file "site-lisp"))
-
-(require 'cl)
-(defun luis-add-subdirs-to-load-path (parent-dir)
-  "Adds every non-hidden subdir of PARENT-DIR to `load-path'."
-  (let ((default-directory parent-dir))
-    (setq load-path
-          (append
-           (remove-if-not
-            #'file-directory-p
-            (directory-files (expand-file-name parent-dir) t "^[^\\.]"))
-           load-path))))
-
-;; Beware that packages installed this way are overwritten by packages installed
-;; from elpa package archives.
-(luis-add-subdirs-to-load-path (locate-user-emacs-file "site-lisp/"))
-
 ;;; straight.el
 
 (setq straight-use-package-by-default t)
