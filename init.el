@@ -17,7 +17,13 @@
 ;;; Load Path
 
 (require 'luis-packages)
+
+;;; Essentials
+
 (straight-use-package 'use-package)
+(use-package diminish)
+
+;;; Benchmark
 
 ;; You can access the stats using `benchmark-init/show-durations-tree' and
 ;; `benchmark-init/show-durations-tabulated'.
