@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 
-(require 'luis-text-wrap)
+(require 'virtual-auto-fill)
 
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode)
@@ -8,6 +8,6 @@
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :config
-  (add-hook 'markdown-mode-hook #'luis-text-wrap-mode))
+  (add-hook 'markdown-mode-hook #'virtual-auto-fill-mode))
 
 (provide 'luis-markdown)

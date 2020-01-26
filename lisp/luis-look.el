@@ -25,11 +25,13 @@
   :straight nil
   :commands (luis-code-wrap-mode))
 
-(use-package luis-text-wrap
-  :straight nil
-  :commands (luis-text-wrap-mode)
+(use-package virtual-auto-fill
+  :straight (virtual-auto-fill
+             :type git
+             :host github
+             :repo "luisgerhorst/virtual-auto-fill")
   :init
-  (setq luis-text-wrap-mode-visual-fill-column-mode-warning-in-emacs-pre-26-1 nil))
+  (setq virtual-auto-fill-mode-visual-fill-column-mode-warning-in-emacs-pre-26-1 nil))
 
 ;;; Theme
 
