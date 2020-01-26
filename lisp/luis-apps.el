@@ -6,6 +6,8 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   :bind ("C-c g" . magit-status))
 
+(use-package ag)
+
 (use-package man
   :bind ("C-c m" . man)
   :config
