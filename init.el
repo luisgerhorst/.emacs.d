@@ -5,7 +5,7 @@
 ;; (package-initialize)
 
 (add-to-list 'load-path (locate-user-emacs-file "lisp"))
-(add-to-list 'load-path (locate-user-emacs-file "lisp/lib"))
+(add-to-list 'load-path (locate-user-emacs-file "lisp/modes"))
 
 ;;; Variables
 
