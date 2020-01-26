@@ -33,13 +33,6 @@
 
 ;;; Theme
 
-(defun luis-style-set (new background-mode powerline-seperator)
-  (mapc #'disable-theme custom-enabled-themes)
-  (load-theme new t)
-
-  (setq frame-background-mode background-mode)
-  (frame-set-background-mode (selected-frame)))
-
 (use-package solarized
   :straight (solarized :host github :repo "bbatsov/solarized-emacs"
                        :fork (:host github :repo "luisgerhorst/solarized-emacs" :branch "terminal_workaround"))
