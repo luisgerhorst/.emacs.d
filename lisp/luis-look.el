@@ -51,11 +51,15 @@
 ;;; Cursor
 
 (show-paren-mode 1)
+(blink-cursor-mode -1)
 
 ;;; Misc
 
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+(when (not (display-graphic-p))
+  (menu-bar-mode -1))
 
 (setq ring-bell-function 'ignore)
 
@@ -69,9 +73,6 @@
   :defer t
   :init
   (add-hook 'prog-mode-hook #'fic-mode))
-
-(when (not (display-graphic-p))
-  (menu-bar-mode -1))
 
 (provide 'luis-look)
 ;;; luis-look.el ends here
