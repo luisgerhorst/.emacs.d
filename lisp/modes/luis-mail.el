@@ -14,6 +14,7 @@
 
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
 (use-package mu4e
+  :straight nil
   :defer 30
   ;; Since mu4e is not installed via elpa we have to define the autoloads
   ;; manually.
@@ -65,7 +66,7 @@
 
   (defun luis-kill-mu4e-update-process-without-query (run-in-background)
     ;; Name from mu4e-utils.el function mu4e~update-mail-and-index-real. This
-    ;; prevents Emacs from asking you if it is ok to kill offlineimap when Emacs
+    ;; prevents Emacs from asking you if it is ok to kill mbsync when Emacs
     ;; quits and mu4e is currently updating.
     (set-process-query-on-exit-flag (get-process "mu4e-update") nil))
 
@@ -79,28 +80,6 @@
   ;; add option to view html message in a browser. Type `aV` in view to activate
   (add-to-list 'mu4e-view-actions
                '("ViewInBrowser" . mu4e-action-view-in-browser) t)
-
-  (defun luis-mu4e-message-txt-body-will-show (msg)
-    (let* ((txt (mu4e-message-field msg :body-txt))
-           (html (mu4e-message-field msg :body-html)))
-      ;; From `mu4e-message-body-text' definiting in mu4e-message.el
-      (and
-       ;; does it look like some text? ie., if the text part is more than
-       ;; mu4e-view-html-plaintext-ratio-heuristic times shorter than the html
-       ;; part, it should't be used. This is an heuristic to guard against 'This
-       ;; messages requires html' text bodies.
-       (> (* mu4e-view-html-plaintext-ratio-heuristic
-             (length txt))
-          (length html))
-       ;; use html if it's prefered, unless there is no html
-       (or (not mu4e-view-prefer-html) (not html)))))
-  (defun luis-mu4e-enable-text-wrap-mode-when-plain-text ()
-    (if (luis-mu4e-message-txt-body-will-show (mu4e-message-at-point))
-        (luis-text-wrap-mode 1)
-      (luis-text-wrap-mode -1)))
-  (remove-hook 'mu4e-view-mode-hook #'luis-text-wrap-mode)
-  (add-hook 'mu4e-view-mode-hook
-            #'luis-mu4e-enable-text-wrap-mode-when-plain-text)
 
   ;; To protect yourself from sending messages too hastily, add a
   ;; final confirmation.
