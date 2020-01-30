@@ -1,5 +1,4 @@
-(require 'luis-compile)
-(require 'luis-modification)
+(require 'luis-ide)
 
 (use-package ess-julia
   :straight ess

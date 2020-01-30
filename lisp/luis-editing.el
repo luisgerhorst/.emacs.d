@@ -23,54 +23,13 @@
          (not (string-match "[;{}]"
                             (thing-at-point 'line))))))
 
-;;; Completion
-
-(defun luis-company-configure-completion (idle-delay minimum-prefix-length)
-  (setq-local company-idle-delay idle-delay)
-  (setq-local company-minimum-prefix-length minimum-prefix-length))
-
-(defun luis-company-configure-automatic-completion ()
-  (interactive)
-  (luis-company-configure-completion 0.5 2))
-
-;; Used to only enable certain backends in a buffer to avoid possibly
-;; annoying completions while for example writing comments.
-(defun luis-set-local-company-backends (local-company-backends)
-  (if (company-safe-backends-p local-company-backends)
-      (setq-local company-backends local-company-backends)
-    (message (concat "Warning: '%S did not fullfill "
-                     "company-safe-backends-p predicate. "
-                     "Automatic completion was disabled in this buffer.")
-             local-company-backends)
-    ;; Disable automatic completion locally.
-    (setq-local company-idle-delay nil)))
-
-(use-package company
-  :demand
-  :diminish company-mode
-  :bind (("C-M-i" . company-complete))
-  :config
-  (setq company-idle-delay nil)
-  (setq company-frontends '(company-preview-common-frontend
-                            company-pseudo-tooltip-unless-just-one-frontend
-                            company-preview-if-just-one-frontend
-                            company-echo-metadata-frontend))
-  (setq company-backends '((company-elisp :with company-dabbrev-code)
-                           company-css
-                           (company-dabbrev-code company-keywords)))
-  (global-company-mode 1))
-
-(use-package abbrev
-  :straight nil
-  :diminish abbrev-mode)
-
 ;;; Filling
 
 (setq-default fill-column 80)
 
 (use-package fillcode
+  :defer t
   :diminish fillcode-mode
-  :commands (fillcode-mode)
   :init
   (add-hook 'prog-mode-hook #'fillcode-mode))
 
@@ -100,8 +59,8 @@ https://github.com/djcb/mu/issues/569."
 
 ;; Auto-delete trailing whitespaces from modified lines.
 (use-package ws-butler
+  :defer t
   :diminish ws-butler-mode
-  :commands (ws-butler-mode)
   :init
   (add-hook 'prog-mode-hook #'ws-butler-mode)
   (add-hook 'text-mode-hook #'ws-butler-mode))
@@ -152,5 +111,4 @@ If region is active, apply to active region instead."
 
 (put 'narrow-to-region 'disabled nil)
 
-
-(provide 'luis-modification)
+(provide 'luis-editing)

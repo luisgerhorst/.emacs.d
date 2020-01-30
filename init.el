@@ -36,9 +36,9 @@
 (require 'luis-integration)
 (require 'luis-files)
 (require 'luis-interactive)
-(require 'luis-modification)
+(require 'luis-editing)
 (require 'luis-movement)
-(require 'luis-compile)
+(require 'luis-ide)
 
 (require 'luis-user-interaction)
 (require 'luis-look)

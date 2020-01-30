@@ -19,9 +19,6 @@
 
 ;; package-selected-packages that may have to be installed:
 ;;
-;; lsp-ui
-;; company-lsp
-;; cargo
 ;; rust-auto-use
 ;; fzf
 ;; cuda-mode
@@ -30,8 +27,6 @@
 ;; git-commit
 ;; magit-svn
 ;; mips-mode
-;; ess
-;; rust-mode
 ;; delight
 ;; esh-autosuggest
 ;; reveal-in-osx-finder
@@ -51,22 +46,16 @@
 ;; ag
 ;; git-timemachine
 ;; whole-line-or-region
-;; fic-mode
 ;; yaml-mode
 ;; projectile
 ;; ido-vertical-mode
-;; flycheck
 ;; company-irony
-;; irony
-;; use-package
 ;; dumb-jump
 ;; ensime
 ;; iedit
-;; auctex
 ;; ws-butler
 ;; which-key
 ;; vkill
-;; visual-fill-column
 ;; swift-mode
 ;; smex
 ;; scss-mode

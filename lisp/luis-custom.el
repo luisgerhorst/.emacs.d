@@ -267,7 +267,42 @@
  '(python-shell-interpreter "/usr/local/bin/python3")
  '(safe-local-variable-values
    (quote
-    ((eval progn
+    ((flycheck-disabled-checkers emacs-lisp-checkdoc)
+     (eval when
+           (and
+            (buffer-file-name)
+            (not
+             (file-directory-p
+              (buffer-file-name)))
+            (string-match-p "^[^.]"
+                            (buffer-file-name)))
+           (unless
+               (featurep
+                (quote package-build))
+             (let
+                 ((load-path
+                   (cons "../package-build" load-path)))
+               (require
+                (quote package-build))))
+           (unless
+               (derived-mode-p
+                (quote emacs-lisp-mode))
+             (emacs-lisp-mode))
+           (package-build-minor-mode)
+           (setq-local flycheck-checkers nil)
+           (set
+            (make-local-variable
+             (quote package-build-working-dir))
+            (expand-file-name "../working/"))
+           (set
+            (make-local-variable
+             (quote package-build-archive-dir))
+            (expand-file-name "../packages/"))
+           (set
+            (make-local-variable
+             (quote package-build-recipes-dir))
+            default-directory))
+     (eval progn
            (make-local-variable
             (quote process-environment))
            (setq process-environment

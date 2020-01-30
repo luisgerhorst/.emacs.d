@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
+(require 'luis-ide)
+
 ;;; Systemprogrammierung
 
 (defun luis-sp-comment (&optional arg)
