@@ -28,7 +28,7 @@
 
 (defun luis-company-configure-automatic-completion ()
   (interactive)
-  (luis-company-configure-completion 0.2 0))
+  (luis-company-configure-completion 0.5 0))
 
 ;; Used to only enable certain backends in a buffer to avoid possibly
 ;; annoying completions while for example writing comments.
@@ -47,7 +47,6 @@
   :diminish company-mode
   :bind (("C-M-i" . company-complete))
   :config
-  (setq company-idle-delay nil)
   (setq company-frontends '(company-preview-common-frontend
                             company-pseudo-tooltip-unless-just-one-frontend
                             company-preview-if-just-one-frontend
@@ -55,6 +54,11 @@
   (setq company-backends '((company-elisp :with company-dabbrev-code)
                            company-lsp
                            (company-dabbrev-code company-keywords)))
+
+  ;; Initially, disable automatic completions but enable company mode
+  ;; globally. Use the global shortcut for `company-complete' to get
+  ;; completions.
+  (setq company-idle-delay nil)
   (global-company-mode 1))
 
 ;;; Syntax Checking
