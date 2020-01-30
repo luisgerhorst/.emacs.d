@@ -26,6 +26,8 @@
 ;; server in that instance. This way we always connect to the Emacs deamon when
 ;; using emacsclient and not some random instance started in a terminal.
 
+(global-set-key (kbd "C-c v") #'browse-url-at-point)
+
 ;;; Copy/Paste in Terminal Emacs
 
 (setq select-enable-clipboard t
