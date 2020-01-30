@@ -15,7 +15,11 @@
 ;;
 ;; to 'lib/luis-<lang>.el'.
 (use-package lsp-mode
-  :defer t)
+  :defer t
+  :config
+  ;; As of 2020-01-31 flycheck seems to work better. Also, I still have to often
+  ;; use Emacs < 26.1 and this makes it consitent.
+  (setq lsp-prefer-flymake nil))
 
 (use-package company-lsp
   :defer t)
@@ -76,6 +80,7 @@
 
 (if (version< "26.1" emacs-version)
     (use-package flymake
+      :straight nil
       :defer t
       :bind (:map
              flymake-mode-map
