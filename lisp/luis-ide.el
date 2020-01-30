@@ -20,6 +20,14 @@
 (use-package company-lsp
   :defer t)
 
+;; To get lsp syntax checks in flycheck:
+(use-package lsp-ui
+  :defer t
+  ;; For customizations see 'M-x customize-group lsp-ui'.
+  :init
+  (with-eval-after-load 'lsp-mode
+    (add-hook 'lsp-mode-hook #'lsp-ui-mode)))
+
 ;;; Completion
 
 (defun luis-company-configure-completion (idle-delay minimum-prefix-length)
@@ -28,7 +36,7 @@
 
 (defun luis-company-configure-automatic-completion ()
   (interactive)
-  (luis-company-configure-completion 0.5 0))
+  (luis-company-configure-completion 0.5 1))
 
 ;; Used to only enable certain backends in a buffer to avoid possibly
 ;; annoying completions while for example writing comments.
@@ -66,12 +74,12 @@
 (setq flymake-gui-warnings-enabled nil
       flymake-log-level 0)
 
-(when (version< "26.1" emacs-version)
-  (use-package flymake
-    :defer t
-    :bind (:map
-           flymake-mode-map
-           ("C-c n" . flymake-goto-next-error))))
+(if (version< "26.1" emacs-version)
+    (use-package flymake
+      :defer t
+      :bind (:map
+             flymake-mode-map
+             ("C-c n" . flymake-goto-next-error))))
 
 (use-package flycheck
   :commands (flycheck-mode)

@@ -1,5 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
+(require 'luis-ide)
+
 (use-package rust-mode
   :defer t
   :init
