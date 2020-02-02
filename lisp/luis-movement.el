@@ -34,13 +34,7 @@
 
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
-;; http://www.emacswiki.org/emacs/SavePlace
-(use-package saveplace
-  :demand
-  :init
-  (setq-default save-place t)
-  ;; Keep track of saved places in ~/.emacs.d/places
-  (setq save-place-file (locate-user-emacs-file "places")))
+(save-place-mode 1)
 
 (use-package paredit
   :bind (;; These also work in strings.
