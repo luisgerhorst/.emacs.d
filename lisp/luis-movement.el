@@ -19,7 +19,8 @@
 (use-package ace-window
   :bind ("C-x o" . ace-window)
   :init
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+  (setq aw-dispatch-when-more-than 3
+        aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
         aw-scope 'frame))
 
 ;;; Misc
