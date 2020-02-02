@@ -1,34 +1,30 @@
 ;; -*- lexical-binding: t; -*-
 
+(require 'luis-ide)
+
 (use-package cc-mode
   :defer t
   :config
   (add-hook 'java-mode-hook
-            #'luis-company-configure-automatic-completion)
+            #'luis-company-configure-automatic-completion))
 
-  ;; Not sure if this is bad if the project does not use gradle/maven. If it
-  ;; causes problems remove it / make it conditional.
-  (add-hook 'java-mode-hook
-            #'meghanada-mode))
+(use-package lsp-java
+  :defer t
+  ;; As of 2020-02-02 meghanada works better for Gradle projects (lsp-java did
+  ;; not highlight syntax errors in some files). However, try lsp-java again at
+  ;; a later point or when the project is not supported by meghanada.
+  ;;
+  ;; :init
+  ;; (add-hook 'java-mode-hook #'lsp)
+  )
 
 (use-package meghanada
   :defer t
+  ;; Not sure if this is bad if the project does not use gradle/maven. If it
+  ;; causes problems remove it / make it conditional.
+  :init
+  (add-hook 'java-mode-hook #'meghanada-mode)
   :config
-  (with-eval-after-load 'flycheck
-    (add-hook 'meghanada-mode-hook #'flycheck-mode)))
-
-(defun luis-gradle-run ()
-  (interactive)
-  (gradle-execute "run"))
-
-;;; Only works if the gradle binary is in the PATH.
-(use-package gradle-mode
-  :diminish gradle-mode
-  :bind (:map
-         gradle-mode-map
-         ("C-c C-g e" . luis-gradle-run))
-  :bind-keymap ("C-c C-g" . gradle-mode-map)
-  :config
-  (gradle-mode 1))
+  (add-hook 'meghanada-mode-hook #'flycheck-mode))
 
 (provide 'luis-java)
