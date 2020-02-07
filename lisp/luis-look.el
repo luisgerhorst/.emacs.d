@@ -51,6 +51,8 @@
 (when (member "Input Mono" (font-family-list))
   (set-frame-font "Input Mono" t t))
 
+(set-face-attribute 'default nil :height 130)
+
 ;;; Whitespaces
 
 (setq-default indicate-empty-lines t)
