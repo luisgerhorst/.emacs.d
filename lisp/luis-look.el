@@ -46,6 +46,11 @@
                         :background "brightgreen"
                         :foreground "brightgreen")))
 
+;;; Font
+
+(when (member "Input Mono" (font-family-list))
+  (set-frame-font "Input Mono" t t))
+
 ;;; Whitespaces
 
 (setq-default indicate-empty-lines t)
