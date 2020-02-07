@@ -48,10 +48,14 @@
 
 ;;; Font
 
+;; First check whether the font is installed.
 (when (member "Input Mono" (font-family-list))
   (set-frame-font "Input Mono" t t))
 
-(set-face-attribute 'default nil :height 130)
+(when (string-equal system-type "darwin")
+  ;; For some reason macOS and GNU/Linux Gnome do not agree about font sizes. In
+  ;; Gnome, 10.0 is as large as 13.0 in macOS.
+  (set-face-attribute 'default nil :height 130))
 
 ;;; Whitespaces
 
