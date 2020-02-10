@@ -75,7 +75,9 @@
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-(when (not (display-graphic-p))
+(unless (and (display-graphic-p) (string-equal system-type "darwin"))
+  ;; I don't use the menubar usually. In macOS Emacs.app however the system
+  ;; menubar is visible anyway, thus leave it enabled there.
   (menu-bar-mode -1))
 
 (setq ring-bell-function 'ignore)
