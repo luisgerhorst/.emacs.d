@@ -50,8 +50,12 @@
 
 ;; First check whether the font is installed.
 (when (member "Input Mono" (font-family-list))
+  ;; On macOS you have to install theses manually (e.g. by opening them, they are
+  ;; in dotfiles/home/.fonts).
   (set-frame-font "Input Mono" t t))
 
+;; In GNU/Linux Gnome just open the Tweaks application and set the default
+;; monospace font to Input Mono (size 10.0 or 11.0 depending on display).
 (when (string-equal system-type "darwin")
   ;; For some reason macOS and GNU/Linux Gnome do not agree about font sizes. In
   ;; Gnome, 10.0 is as large as 13.0 in macOS.
