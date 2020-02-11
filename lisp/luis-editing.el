@@ -2,6 +2,8 @@
 
 ;;;; Customizations relating to editing a buffer.
 
+(prefer-coding-system 'utf-8-unix)
+
 ;;; Indentation
 
 (electric-indent-mode 1)
