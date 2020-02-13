@@ -13,7 +13,7 @@
   :config
   (setq Man-notify-method 'aggressive))
 
-(when (eq system-type 'darwin)
+(when (string-prefix-p "luis-" (system-name))
   (require 'luis-mail)
   (global-set-key (kbd "C-c s m") #'mu4e))
 

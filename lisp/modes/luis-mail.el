@@ -12,7 +12,12 @@
 
 ;;; Reading Mail.
 
+;; macOS, installed via Homebrew:
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+
+;; Debian, installed from source:
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e")
+
 (use-package mu4e
   :straight nil
   :defer 30
