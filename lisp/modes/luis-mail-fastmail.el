@@ -10,13 +10,14 @@
       smtpmail-local-domain "fastmail.com")
 
 (setq luis-mu4e-interesting-mail-query
-      (concat "not maildir:\"/Mailing Lists/*/*\""
-              " AND not maildir:\"/Learn Junk\""
+      (concat "not maildir:/Mailing_Lists/*/*"
+              " AND not maildir:/Mailing_Lists/*"
+              " AND not maildir:/Learn_Junk"
               " AND not maildir:\"/Junk Mail\""
-              " AND not maildir:\"/Drafts\""
+              " AND not maildir:/Drafts"
               " AND not maildir:\"/Sent Items\""
-              " AND not maildir:\"/Trash\""
-              " AND not maildir:\"/Archive\""))
+              " AND not maildir:/Trash"
+              " AND not maildir:/Archive"))
 (setq luis-mu4e-interesting-unread-mail-query
       (concat "flag:unread AND (" luis-mu4e-interesting-mail-query ")"))
 
