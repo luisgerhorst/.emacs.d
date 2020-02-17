@@ -36,10 +36,12 @@
 ;;; Theme
 
 (use-package solarized
+  :defer t
   :straight (solarized :host github :repo "bbatsov/solarized-emacs"
                        :fork (:host github :repo "luisgerhorst/solarized-emacs" :branch "terminal_workaround"))
   :init
-  (load-theme 'solarized-dark t)
+  (unless (display-graphic-p)
+    (load-theme 'solarized-dark t))
   :config
   (when solarized-iterm
     (set-face-attribute 'vertical-border nil
