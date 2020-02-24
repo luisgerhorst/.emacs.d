@@ -36,6 +36,7 @@
 ;;; Theme
 
 (use-package solarized
+  :defer t
   :straight (solarized :host github :repo "bbatsov/solarized-emacs"
                        :fork (:host github :repo "luisgerhorst/solarized-emacs" :branch "terminal_workaround"))
   :init
