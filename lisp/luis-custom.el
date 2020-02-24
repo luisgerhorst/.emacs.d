@@ -108,6 +108,9 @@
  '(ns-control-modifier (quote control))
  '(ns-function-modifier (quote none))
  '(ns-pop-up-frames nil)
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/org/UNI.org" "~/Dropbox/org/PRIVAT.org" "~/Dropbox/org/neuer-computer.org" "~/Dropbox/org/INBOX.org" "~/Dropbox/org/EINKAUFEN.org" "~/Dropbox/org/corediff.org" "~/Dropbox/org/COMPUTER.org")))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
