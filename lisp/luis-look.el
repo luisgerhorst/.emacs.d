@@ -39,8 +39,8 @@
   :defer t
   :straight (solarized :host github :repo "bbatsov/solarized-emacs"
                        :fork (:host github :repo "luisgerhorst/solarized-emacs" :branch "terminal_workaround"))
-  :init
-  (load-theme 'solarized-dark t)
+  ;; :init
+  ;; (load-theme 'solarized-dark t)
   :config
   (when solarized-iterm
     (set-face-attribute 'vertical-border nil
