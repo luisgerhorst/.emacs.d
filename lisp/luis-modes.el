@@ -4,7 +4,6 @@
 (require 'luis-markdown)
 (require 'luis-latex)
 (require 'luis-shell)
-(require 'luis-css)
 (require 'luis-swift)
 (require 'luis-apache)
 (require 'luis-python)
@@ -17,6 +16,11 @@
 (require 'luis-make)
 (require 'luis-xml)
 (require 'luis-rust)
-(require 'luis-haskell)
+
+;; ESS (i.e. R)
+(use-package ess)
+
+;; Haskell
+(use-package haskell-mode)
 
 (provide 'luis-modes)
