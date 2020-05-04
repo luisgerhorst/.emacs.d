@@ -2,6 +2,7 @@
 
 ;;; straight.el
 
+;; (use-package my-mode) installs my-mode as required.
 (setq straight-use-package-by-default t)
 
 (defvar bootstrap-version)
