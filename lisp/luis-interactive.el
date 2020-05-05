@@ -18,9 +18,9 @@
   :config
   (ido-ubiquitous-mode 1))
 
-(use-package smex
-  :bind (("M-x" . smex)
-         ("M-X" . smex-major-mode-commands)))
+(use-package amx
+  :config
+  (amx-mode 1))
 
 ;; https://github.com/DarwinAwardWinner/ido-ubiquitous/tree/4cc53187bf37fedabbc5b6dea41e041c80982552#ido-for-describe-face-and-certain-other-commands
 (use-package crm-custom
