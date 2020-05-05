@@ -110,7 +110,7 @@
  '(ns-pop-up-frames nil)
  '(org-agenda-files
    (quote
-    ("~/Dropbox/org/UNI.org" "~/Dropbox/org/PRIVAT.org" "~/Dropbox/org/INBOX.org" "~/Dropbox/org/EINKAUFEN.org" "~/Dropbox/org/COMPUTER.org")))
+    ("~/Dropbox/org/JOB.org" "~/Dropbox/org/PRIVAT.org" "~/Dropbox/org/INBOX.org" "~/Dropbox/org/FREIZEIT.org")))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
