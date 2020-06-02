@@ -18,9 +18,15 @@
 (require 'luis-rust)
 
 ;; ESS (i.e. R)
-(use-package ess)
+(unless (eq system-type 'darwin)
+  ;; For some reason ess causes a cyclic dependency when installed using
+  ;; straight.el on macOS. Error message is 'Symbol’s chain of function
+  ;; indirections contains a loop: R-mode'.
+  (use-package ess
+    :defer t))
 
 ;; Haskell
-(use-package haskell-mode)
+(use-package haskell-mode
+  :defer t)
 
 (provide 'luis-modes)
