@@ -108,9 +108,9 @@
  '(ns-control-modifier (quote control))
  '(ns-function-modifier (quote none))
  '(ns-pop-up-frames nil)
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/org/JOB.org" "~/Dropbox/org/PRIVAT.org" "~/Dropbox/org/INBOX.org" "~/Dropbox/org/FREIZEIT.org")))
+ '(org-agenda-files (quote ("~/Dropbox/org/")))
+ '(org-default-notes-file "~/Dropbox/org/INBOX.org")
+ '(org-directory "~/Dropbox/org")
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
