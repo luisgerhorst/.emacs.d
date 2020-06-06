@@ -108,7 +108,12 @@
  '(ns-control-modifier (quote control))
  '(ns-function-modifier (quote none))
  '(ns-pop-up-frames nil)
- '(org-agenda-files (quote ("~/Dropbox/org/")))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/org/INBOX.org" "~/Dropbox/org/NEXT.org" "~/Dropbox/org/SCHEDULED.org")))
+ '(org-agenda-todo-ignore-deadlines (quote far))
+ '(org-agenda-todo-ignore-scheduled t)
+ '(org-agenda-todo-list-sublevels nil)
  '(org-default-notes-file "~/Dropbox/org/INBOX.org")
  '(org-directory "~/Dropbox/org")
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
