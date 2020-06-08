@@ -110,9 +110,10 @@
  '(ns-pop-up-frames nil)
  '(org-agenda-files
    (quote
-    ("~/Dropbox/org/INBOX.org" "~/Dropbox/org/NEXT.org" "~/Dropbox/org/SCHEDULED.org")))
+    ("~/Dropbox/org/Inbox.org" "~/Dropbox/org/Privat.org")))
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
+ '(org-agenda-start-on-weekday nil)
  '(org-agenda-todo-ignore-deadlines nil)
  '(org-agenda-todo-ignore-scheduled t)
  '(org-agenda-todo-list-sublevels nil)
