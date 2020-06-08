@@ -111,7 +111,9 @@
  '(org-agenda-files
    (quote
     ("~/Dropbox/org/INBOX.org" "~/Dropbox/org/NEXT.org" "~/Dropbox/org/SCHEDULED.org")))
- '(org-agenda-todo-ignore-deadlines (quote far))
+ '(org-agenda-skip-deadline-if-done t)
+ '(org-agenda-skip-deadline-prewarning-if-scheduled t)
+ '(org-agenda-todo-ignore-deadlines nil)
  '(org-agenda-todo-ignore-scheduled t)
  '(org-agenda-todo-list-sublevels nil)
  '(org-default-notes-file "~/Dropbox/org/INBOX.org")
