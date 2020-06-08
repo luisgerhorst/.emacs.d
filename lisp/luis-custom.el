@@ -110,7 +110,8 @@
  '(ns-pop-up-frames nil)
  '(org-agenda-files
    (quote
-    ("~/Dropbox/org/Inbox.org" "~/Dropbox/org/Privat.org")))
+    ("~/Dropbox/org/Inbox.org" "~/Dropbox/org/Scheduled.org" "~/Dropbox/org/Next.org")))
+ '(org-agenda-loop-over-headlines-in-active-region nil)
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
  '(org-agenda-start-on-weekday nil)
@@ -119,6 +120,7 @@
  '(org-agenda-todo-list-sublevels nil)
  '(org-default-notes-file "~/Dropbox/org/INBOX.org")
  '(org-directory "~/Dropbox/org")
+ '(org-todo-keywords (quote ((sequence "TODO" "WAITING" "|" "DONE"))))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
