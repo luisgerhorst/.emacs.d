@@ -114,6 +114,7 @@
  '(org-agenda-loop-over-headlines-in-active-region nil)
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
+ '(org-agenda-span (quote day))
  '(org-agenda-start-on-weekday nil)
  '(org-agenda-todo-ignore-deadlines nil)
  '(org-agenda-todo-ignore-scheduled t)
