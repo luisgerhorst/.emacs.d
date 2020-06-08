@@ -87,7 +87,7 @@
  '(ido-ubiquitous-mode t)
  '(ido-vertical-define-keys nil)
  '(initial-buffer-choice "~/")
- '(ispell-dictionary "de_DE")
+ '(ispell-program-name "aspell")
  '(jedi:environment-root "3.5.3")
  '(lsp-ui-doc-enable nil)
  '(lsp-ui-flycheck-enable t)
