@@ -10,7 +10,6 @@
   (add-hook 'org-mode-hook #'auto-revert-mode)
   (add-hook 'org-mode-hook #'auto-save-visited-mode)
   (add-hook 'org-mode-hook #'auto-fill-mode)
-  (add-to-list 'org-latex-packages-alist '("ngerman" "babel" t))
-  (setq org-todo-keywords '((sequence "TODO" "WAITING" "|" "DONE"))))
+  (add-to-list 'org-latex-packages-alist '("ngerman" "babel" t)))
 
 (provide 'luis-org)
