@@ -108,14 +108,7 @@
  '(ns-control-modifier (quote control))
  '(ns-function-modifier (quote none))
  '(ns-pop-up-frames nil)
- '(org-agenda-custom-commands
-   (quote
-    (("n" "Agenda and all TODOs"
-      ((agenda "" nil)
-       (todo "TODO" nil)
-       (todo "WAITING" nil))
-      nil))))
- '(org-agenda-files (quote ("~/Dropbox/org/")))
+ '(org-agenda-files (quote ("~/Dropbox/org/Privat.org")))
  '(org-agenda-loop-over-headlines-in-active-region nil)
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
@@ -126,6 +119,7 @@
  '(org-agenda-todo-list-sublevels nil)
  '(org-default-notes-file "~/Dropbox/org/INBOX.org")
  '(org-directory "~/Dropbox/org")
+ '(org-priority-default 68)
  '(org-treat-insert-todo-heading-as-state-change t)
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#073642")
