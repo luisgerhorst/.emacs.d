@@ -14,16 +14,19 @@
   ;; not highlight syntax errors in some files). However, try lsp-java again at
   ;; a later point or when the project is not supported by meghanada.
   ;;
-  ;; :init
-  ;; (add-hook 'java-mode-hook #'lsp)
-  )
+  :init
+  (add-hook 'java-mode-hook #'lsp))
 
 (use-package meghanada
   :defer t
   ;; Not sure if this is bad if the project does not use gradle/maven. If it
   ;; causes problems remove it / make it conditional.
-  :init
-  (add-hook 'java-mode-hook #'meghanada-mode)
+  ;;
+  ;; As of 2020-06-29 meghanada causes 100% background CPU usage even after
+  ;; emacs was closed.
+  ;;
+  ;; :init
+  ;; (add-hook 'java-mode-hook #'meghanada-mode)
   :config
   (add-hook 'meghanada-mode-hook #'flycheck-mode))
 
