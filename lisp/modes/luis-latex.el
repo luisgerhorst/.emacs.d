@@ -10,6 +10,9 @@
   (add-hook 'LaTeX-mode-hook #'luis-company-configure-automatic-completion)
   (add-hook 'LaTeX-mode-hook #'flycheck-mode))
 
+(use-package bibclean-format
+  :defer t)
+
 (use-package company-auctex
   :commands (company-auctex-init)
   :init
