@@ -7,6 +7,7 @@
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
+ '(calendar-week-start-day 1)
  '(coffee-tab-width 2)
  '(comment-column 0)
  '(comment-multi-line t)
