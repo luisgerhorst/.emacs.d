@@ -29,4 +29,8 @@
 (use-package haskell-mode
   :defer t)
 
+;; PHP
+(use-package php-mode
+  :defer t)
+
 (provide 'luis-modes)
