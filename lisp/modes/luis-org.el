@@ -1,10 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package org
-  :defer t
   :bind (("C-c a" . org-agenda)
+         ("C-c t" . org-capture)
          ("C-c o l" . org-store-link)
-         ("C-c o c" . org-capture)
          ("C-c o b" . org-switchb))
   :config
   (add-hook 'org-mode-hook #'auto-revert-mode)

@@ -118,7 +118,15 @@
  '(org-agenda-todo-ignore-deadlines nil)
  '(org-agenda-todo-ignore-scheduled t)
  '(org-agenda-todo-list-sublevels nil)
- '(org-default-notes-file "~/Dropbox/org/INBOX.org")
+ '(org-capture-templates
+   (quote
+    (("f" "FAU/Inbox" entry
+      (file+headline "FAU.org" "Inbox")
+      "** TODO ")
+     ("p" "Privat/Inbox" entry
+      (file+headline "Privat.org" "Inbox")
+      "** TODO "))))
+ '(org-default-notes-file "~/Dropbox/org/Privat.org")
  '(org-directory "~/Dropbox/org")
  '(org-priority-default 68)
  '(org-treat-insert-todo-heading-as-state-change t)
