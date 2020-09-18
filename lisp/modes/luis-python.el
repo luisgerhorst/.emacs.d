@@ -2,11 +2,11 @@
 
 (setenv "PYTHONIOENCODING" "utf8")
 
-(use-package company-jedi
-  :defer t
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends #'company-jedi)))
+;; (use-package company-jedi
+;;   :defer t
+;;   :init
+;;   (with-eval-after-load 'company
+;;     (add-to-list 'company-backends #'company-jedi)))
 
 (use-package anaconda-mode
   :defer t
