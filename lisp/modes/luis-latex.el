@@ -8,7 +8,8 @@
         TeX-parse-self t
         TeX-newline-function #'newline-and-indent)
   (add-hook 'LaTeX-mode-hook #'luis-company-configure-automatic-completion)
-  (add-hook 'LaTeX-mode-hook #'flycheck-mode))
+  (add-hook 'LaTeX-mode-hook #'flycheck-mode)
+  (add-hook 'LaTeX-mode-hook #'auto-fill-mode))
 
 (use-package bibclean-format
   :defer t)
