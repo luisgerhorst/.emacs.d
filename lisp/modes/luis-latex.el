@@ -19,4 +19,8 @@
   :init
   (add-hook 'LaTeX-mode-hook #'company-auctex-init))
 
+(use-package langtool
+  :config
+  (setq langtool-language-tool-jar (locate-user-emacs-file "lib/LanguageTool-5.0/languagetool-commandline.jar")))
+
 (provide 'luis-latex)
