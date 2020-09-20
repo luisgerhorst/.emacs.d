@@ -67,4 +67,12 @@ evaluated by emacs server."
       ;; Add to kill-ring
       (kill-new paste-data))))
 
+;;; Open in Desktop Application
+
+(use-package openwith
+  :straight (openwith :fork (:host github :repo "luisgerhorst/openwith"))
+  :config
+  (when openwith-desktop-environment-open
+    (openwith-mode t)))
+
 (provide 'luis-integration)
