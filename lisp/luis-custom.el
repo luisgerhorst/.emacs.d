@@ -25,6 +25,8 @@
  '(directory-abbrev-alist
    (quote
     (("^/cip" . "/ssh:un65esoq@faui00l.informatik.uni-erlangen.de:"))))
+ '(directory-free-space-args "-Pkh")
+ '(dired-auto-revert-buffer (quote dired-directory-changed-p))
  '(dired-listing-switches "-alh")
  '(edts-man-root "/Users/luis/.emacs.d/edts/doc/17.5")
  '(enable-remote-dir-locals t)
