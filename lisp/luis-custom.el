@@ -111,7 +111,9 @@
  '(ns-control-modifier (quote control))
  '(ns-function-modifier (quote none))
  '(ns-pop-up-frames nil)
- '(org-agenda-files (quote ("~/Dropbox/org/Privat.org")))
+ '(org-agenda-files
+   (quote
+    ("~/Dropbox/org/Privat.org" "~/Dropbox/org/FAU.org")))
  '(org-agenda-loop-over-headlines-in-active-region nil)
  '(org-agenda-skip-deadline-if-done t)
  '(org-agenda-skip-deadline-prewarning-if-scheduled t)
