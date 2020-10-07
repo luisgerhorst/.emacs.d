@@ -10,8 +10,10 @@
       smtpmail-local-domain "fastmail.com")
 
 (setq luis-mu4e-interesting-mail-query
-      (concat "not maildir:/Mailing_Lists/*/*"
-              " AND not maildir:/Mailing_Lists/*"
+      (concat "not maildir:/Mailing_Lists/*"
+              " AND not maildir:/Mailing_Lists/*/*"
+              " AND not maildir:/Mailing_Lists/*/*/*"
+              " AND not maildir:/Mailing_Lists/*/*/*/*"
               " AND not maildir:/Learn_Junk"
               " AND not maildir:\"/Junk Mail\""
               " AND not maildir:/Drafts"
