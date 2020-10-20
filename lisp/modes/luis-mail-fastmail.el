@@ -50,11 +50,11 @@
                         (when msg
                           (or
                            (mu4e-message-contact-field-matches
-                            msg '(:to :cc :bcc) "work@luisgerhorst.de")
+                            msg '(:to :cc :bcc) "job@luisgerhorst.de")
                            (string-equal
                             (mu4e-message-field msg :maildir)
                             "/Arbeit"))))
-          :vars '((user-mail-address . "work@luisgerhorst.de")))
+          :vars '((user-mail-address . "job@luisgerhorst.de")))
         ,(make-mu4e-context
           :name "FAU"
           :match-func (lambda (msg)
@@ -64,18 +64,17 @@
                             msg '(:to :cc :bcc) "luis.gerhorst@fau.de")
                            (string-equal
                             (mu4e-message-field msg :maildir)
-                            "/Uni")
+                            "/FAU")
                            (string-equal
                             (mu4e-message-field msg :maildir)
-                            "/Uni Lists"))))
-          :vars '((user-mail-address . "luis.gerhorst@fau.de")))
-        ,(make-mu4e-context
-          :name "Uni"
-          :vars '((user-mail-address . "uni@luisgerhorst.de")))))
+                            "/FAU_Info"))))
+          :vars '((user-mail-address . "luis.gerhorst@fau.de")))))
 
 ;; This sets `mu4e-user-mail-address-list' to the concatenation of all
 ;; `user-mail-address' values for all contexts. If you have other mail
 ;; addresses as well, you'll need to add those manually.
+;;
+;; TODO: Remove as obsolete since 1.3.8
 (setq mu4e-user-mail-address-list
       (delq nil
             (mapcar (lambda (context)
