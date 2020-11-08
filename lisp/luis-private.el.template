@@ -1,5 +1,0 @@
-;;; Remove the .template suffix and insert machine local / private configuration
-;;; here.
-
-
-(provide 'luis-private)

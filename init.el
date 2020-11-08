@@ -12,8 +12,6 @@
 (setq custom-file (locate-user-emacs-file "lisp/luis-custom.el"))
 (load custom-file t)
 
-(require 'luis-private nil t)
-
 ;;; Load Path
 
 (require 'luis-packages)
