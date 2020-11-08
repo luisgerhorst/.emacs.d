@@ -2,32 +2,35 @@
 
 ;;; Sending
 
+(defun get-string-from-file (file-path)
+  "Return file-path's file content."
+  (with-temp-buffer
+    (insert-file-contents file-path)
+    (buffer-string)))
+
 ;; user-mail-address / user-full-name set using EMAIL / NAME in .zprofile
 (setq smtpmail-smtp-server "smtp.fastmail.com"
       smtpmail-smtp-service 465
       smtpmail-stream-type 'ssl
-      smtpmail-smtp-user "mumble@fastmail.com"
+      smtpmail-smtp-user (get-string-from-file "~/.authinfo.d/emacs_smtpmail-smtp-user")
       smtpmail-local-domain "fastmail.com")
-
-(setq luis-mu4e-interesting-mail-query
-      (concat "not maildir:/Mailing_Lists/*"
-              " AND not maildir:/Mailing_Lists/*/*"
-              " AND not maildir:/Mailing_Lists/*/*/*"
-              " AND not maildir:/Mailing_Lists/*/*/*/*"
-              " AND not maildir:/Learn_Junk"
-              " AND not maildir:\"/Junk Mail\""
-              " AND not maildir:/Drafts"
-              " AND not maildir:\"/Sent Items\""
-              " AND not maildir:/Trash"
-              " AND not maildir:/Archive"))
-(setq luis-mu4e-interesting-unread-mail-query
-      (concat "flag:unread AND (" luis-mu4e-interesting-mail-query ")"))
 
 (setq mu4e-drafts-folder "/Drafts"
       mu4e-sent-folder "/Sent Items"
       mu4e-trash-folder "/Trash"
-      mu4e-refile-folder "/Archive"
-      mu4e-bookmarks
+      mu4e-refile-folder "/Archive")
+
+(setq luis-mu4e-interesting-mail-query
+      (concat (get-string-from-file "~/.authinfo.d/emacs_luis-mu4e-interesting-mail-query")
+              " AND not maildir:\"/Junk Mail\""
+              " AND not maildir:" mu4e-drafts-folder ""
+              " AND not maildir:\"" mu4e-sent-folder "\""
+              " AND not maildir:" mu4e-trash-folder ""
+              " AND not maildir:" mu4e-refile-folder ""))
+(setq luis-mu4e-interesting-unread-mail-query
+      (concat "flag:unread AND (" luis-mu4e-interesting-mail-query ")"))
+
+(setq mu4e-bookmarks
       `((,luis-mu4e-interesting-mail-query
          "Personal messages"
          ?p)
@@ -69,18 +72,5 @@
                             (mu4e-message-field msg :maildir)
                             "/FAU_Info"))))
           :vars '((user-mail-address . "luis.gerhorst@fau.de")))))
-
-;; This sets `mu4e-user-mail-address-list' to the concatenation of all
-;; `user-mail-address' values for all contexts. If you have other mail
-;; addresses as well, you'll need to add those manually.
-;;
-;; TODO: Remove as obsolete since 1.3.8
-(setq mu4e-user-mail-address-list
-      (delq nil
-            (mapcar (lambda (context)
-                      (when (mu4e-context-vars context)
-                        (cdr (assq 'user-mail-address
-                                   (mu4e-context-vars context)))))
-                    mu4e-contexts)))
 
 (provide 'luis-mail-fastmail)
