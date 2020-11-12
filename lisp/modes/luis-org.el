@@ -1,6 +1,9 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package org
+  ;; Primarily added because this allows us to run Emacs without having to clone
+  ;; anything using HTTPS which is frequently blocked by firewalls.
+  :straight (org :type built-in)
   :bind (("C-c a" . org-agenda)
          ("C-c t" . org-capture)
          ("C-c o l" . org-store-link)

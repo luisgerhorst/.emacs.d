@@ -36,12 +36,4 @@
 ;; was when you previously visited the same file.
 (save-place-mode 1)
 
-(use-package paredit
-  :bind (;; These also work in strings.
-         ("C-M-u" . paredit-backward-up)
-         ("C-M-d" . paredit-forward-down)
-         ;; I need these more often then forward/backward-list.
-         ("C-M-p" . paredit-backward-down)
-         ("C-M-n" . paredit-forward-up)))
-
 (provide 'luis-movement)
