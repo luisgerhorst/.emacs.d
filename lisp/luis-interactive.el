@@ -84,9 +84,5 @@
   (which-key-setup-side-window-right-bottom)
   (which-key-mode))
 
-(use-package discover-my-major
-  :after discover
-  :bind ("C-h C-m" . discover-my-major))
-
 
 (provide 'luis-interactive)
