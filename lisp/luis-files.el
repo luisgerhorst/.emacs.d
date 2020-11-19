@@ -52,7 +52,14 @@
   :diminish
   :bind-keymap ("C-c p" . projectile-command-map)
   :config
-  (projectile-mode))
+  (projectile-mode)
+
+  ;; grep dwyc (do what you can)
+  (global-set-key (kbd "C-c f") #'projectile-grep)
+  (when (executable-find "ag")
+    (global-set-key (kbd "C-c f") #'projectile-ag))
+  (when (executable-find "rg")
+    (global-set-key (kbd "C-c f") #'projectile-ripgrep)))
 
 ;; Offer `revert-buffer' when asking to save changes.
 (add-to-list 'save-some-buffers-action-alist
