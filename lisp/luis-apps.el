@@ -6,7 +6,10 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   :bind ("C-c g" . magit-status))
 
-(use-package ag)
+(global-set-key (kbd "C-c s .") #'find-grep)
+(use-package ag
+  :if (executable-find "ag")
+  :bind ("C-c s ." . ag))
 
 (use-package man
   :bind ("C-c m" . man)
@@ -15,6 +18,6 @@
 
 (when (string-prefix-p "luis-" (system-name))
   (require 'luis-mail)
-  (global-set-key (kbd "C-c s m") #'mu4e))
+  (global-set-key (kbd "C-c u") #'mu4e))
 
 (provide 'luis-apps)

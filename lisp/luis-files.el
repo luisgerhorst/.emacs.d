@@ -55,11 +55,11 @@
   (projectile-mode)
 
   ;; grep dwyc (do what you can)
-  (global-set-key (kbd "C-c f") #'projectile-grep)
+  (global-set-key (kbd "C-c s p") #'projectile-grep)
   (when (executable-find "ag")
-    (global-set-key (kbd "C-c f") #'projectile-ag))
+    (global-set-key (kbd "C-c s p") #'projectile-ag))
   (when (executable-find "rg")
-    (global-set-key (kbd "C-c f") #'projectile-ripgrep)))
+    (global-set-key (kbd "C-c s p") #'projectile-ripgrep)))
 
 ;; Offer `revert-buffer' when asking to save changes.
 (add-to-list 'save-some-buffers-action-alist
