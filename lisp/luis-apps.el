@@ -6,11 +6,6 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   :bind ("C-c g" . magit-status))
 
-(global-set-key (kbd "C-c s .") #'find-grep)
-(use-package ag
-  :if (executable-find "ag")
-  :bind ("C-c s ." . ag))
-
 (use-package man
   :bind ("C-c m" . man)
   :config

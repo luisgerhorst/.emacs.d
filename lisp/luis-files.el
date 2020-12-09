@@ -47,6 +47,14 @@
 
 (global-set-key (kbd "C-c e") #'recentf-ido-find-file)
 
+(global-set-key (kbd "C-c s .") #'find-grep)
+(use-package ag
+  :if (executable-find "ag")
+  :bind ("C-c s ." . ag))
+(use-package ripgrep
+  :if (executable-find "rg")
+  :bind ("C-c s ." . ripgrep-regexp))
+
 (use-package projectile
   :demand
   :diminish
