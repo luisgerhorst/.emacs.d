@@ -33,4 +33,8 @@
 (use-package php-mode
   :defer t)
 
+;; https://en.wikipedia.org/wiki/Device_tree
+(use-package dts-mode
+  :defer t)
+
 (provide 'luis-modes)
