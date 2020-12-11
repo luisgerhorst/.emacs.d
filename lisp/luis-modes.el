@@ -37,4 +37,7 @@
 (use-package dts-mode
   :defer t)
 
+(use-package yaml-mode
+  :defer t)
+
 (provide 'luis-modes)
